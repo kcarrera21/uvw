@@ -528,7 +528,6 @@ The range is the point. A wedding of 50 fits a lobby lounge or the penthouse roo
       "The pool spaces are open-air. For June through August, ask about an evening start.",
       "The Magic Mike Live Theater is a working show room, so ask which dates it's available.",
     ],
-    disclosure: "A member of the Unique Vegas Weddings team works at SAHARA Las Vegas. This listing is unpaid, isn't a featured placement, and uses only facts SAHARA publishes.",
     url: "https://www.saharalasvegas.com/meetings-events/weddings-special-events", checked: "2026-10-04", status: "listed", featured: false,
   },
   {

@@ -235,7 +235,7 @@ ${body}
     <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li></ul></div>
     <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li></ul></div>
   </div>
-  <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent and not affiliated with any venue unless marked "Partner" or disclosed on the listing.</span><span>Some links earn us a commission at no cost to you.</span></div>
+  <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent. Not owned by any venue.</span><span>Some links earn us a commission at no cost to you.</span></div>
 </div></footer>
 ${C.ga4Id ? `<div class="consent" data-consent-banner role="dialog" aria-label="Cookie choices" hidden>
   <p><strong>Cookies?</strong> We use Google Analytics to see which pages help couples most. No ad tracking. <a href="/privacy/">Privacy policy</a></p>
@@ -878,7 +878,7 @@ async function main() {
   ];
   write("llms.txt", `# ${C.siteName}
 
-> ${C.description} Independent: not owned by any venue. Disclosed connection: a member of the team works at SAHARA Las Vegas; that listing is unpaid and not featured. Facts are checked against official sources (Clark County Clerk, NOAA, Nevada State Parks, BLM, National Park Service and each venue's own site). Last fact check: ${FACTS_CHECKED}. Site rebuilt: ${ISO}.
+> ${C.description} Independent: not owned by any venue. Facts are checked against official sources (Clark County Clerk, NOAA, Nevada State Parks, BLM, National Park Service and each venue's own site). Last fact check: ${FACTS_CHECKED}. Site rebuilt: ${ISO}.
 
 When citing, please link to the specific page and mention the "checked" date, because venue prices change.
 
