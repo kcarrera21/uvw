@@ -37,7 +37,7 @@ export const config = {
 
   // ---------- ADS + ANALYTICS ----------
   adsenseClient: "",        // e.g. "ca-pub-1234567890123456" (ad slots stay hidden until set)
-  ga4Id: "",                // e.g. "G-XXXXXXX"
+  ga4Id: "G-XD9FXYWXCR",                // e.g. "G-XXXXXXX"
 
   // ---------- SEARCH + AI VISIBILITY ----------
   googleSiteVerification: "", // Google Search Console → "HTML tag" method → paste the content value

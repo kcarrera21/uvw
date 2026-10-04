@@ -191,9 +191,23 @@
       e.preventDefault();
       var btn = $("button[type=submit]", f); if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
       fetch(f.action, { method: "POST", body: new FormData(f), headers: { Accept: "application/json" } })
-        .then(function (r) { if (!r.ok) throw 0; location.href = f.getAttribute("data-next") || "/thanks/"; })
+        .then(function (r) {
+          if (!r.ok) throw 0;
+          var next = f.getAttribute("data-next") || "/thanks/";
+          var kind = (f.querySelector("[name=_subject]") || {}).value || "form";
+          var go = function () { location.href = next; };
+          // count the lead in Google Analytics (if connected), then continue
+          if (window.gtag) { window.gtag("event", "generate_lead", { form_name: kind, event_callback: go }); setTimeout(go, 800); } else go();
+        })
         .catch(function () { if (btn) { btn.disabled = false; btn.textContent = "Try again"; } alert("Sorry, that didn't go through. Please try again in a moment."); });
     });
+  });
+
+  // ---------- count checkout clicks in Google Analytics (if connected) ----------
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[href]"); if (!a || !window.gtag) return;
+    var h = a.href, item = /gumroad\.com/.test(h) ? "Planner PDF" : /buy\.stripe\.com/.test(h) ? (a.textContent.indexOf("Spotlight") > -1 ? "Spotlight listing" : "Featured listing") : null;
+    if (item) window.gtag("event", "begin_checkout", { items: [{ item_name: item }], item_name: item });
   });
 
   // ---------- big lucky date coming up? show the banner ----------
