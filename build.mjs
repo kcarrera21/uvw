@@ -485,7 +485,7 @@ async function main() {
       <div><span>Starting price</span><strong>${v.priceFrom ? money(v.priceFrom) : "Custom quote"}</strong>${v.priceLabel ? `<div class="small">${esc(v.priceLabel)}</div>` : ""}</div>
       <div><span>Area</span><strong>${esc(v.area)}</strong></div>
       <div><span>Setting</span><strong>${esc(v.setting || "-")}</strong></div>
-      <div><span>${v.guestMax ? "Max guests (largest option)" : "Getting there"}</span><strong>${v.guestMax ? v.guestMax : esc(v.drive || "-")}</strong></div>
+      <div><span>${v.guestMax ? "Max guests (largest option)" : "Getting there"}</span><strong>${v.guestMax ? v.guestMax.toLocaleString("en-US") : esc(v.drive || "-")}</strong></div>
     </div>
 <p class="small">Prices change, so always confirm directly with the venue.</p>
   </div>
