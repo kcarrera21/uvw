@@ -24,10 +24,10 @@ export const config = {
   // ---------- PRODUCTS + PAYMENTS (Stripe Payment Links, Gumroad, or Lemon Squeezy) ----------
   plannerCheckoutUrl: "https://uniquevegasweddings.gumroad.com/l/jtixjn?wanted=true",    // link to buy "The Unique Vegas Wedding Planner" PDF
   plannerPrice: "$19",       // must match the price on the Gumroad listing
-  featuredCheckoutUrl: "",   // Stripe Payment Link: Featured Listing (monthly)
-  featuredPrice: "$79/mo",   // [Assumption]
-  spotlightCheckoutUrl: "",  // Stripe Payment Link: Spotlight Listing (monthly)
-  spotlightPrice: "$199/mo", // [Assumption]
+  featuredCheckoutUrl: "https://buy.stripe.com/eVq28sf0S8MzcO86Vu4wM00",   // Stripe Payment Link: Featured Listing (monthly)
+  featuredPrice: "$79/mo",   // must match the Stripe Payment Link
+  spotlightCheckoutUrl: "https://buy.stripe.com/8x27sM5qi3sf3dyenW4wM01",  // Stripe Payment Link: Spotlight Listing (monthly)
+  spotlightPrice: "$199/mo", // must match the Stripe Payment Link
 
   // ---------- AFFILIATES (paste your tracking IDs; links build themselves) ----------
   amazonTag: "",            // Amazon Associates tag, e.g. "uvw-20"
