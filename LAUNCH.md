@@ -1,6 +1,6 @@
 # Unique Vegas Weddings: launch guide
 
-The site is finished: 60 pages, 28 verified venues, 10 sourced guides, lucky-date tools, a 25-page paid planner, a free lead-magnet PDF, brand kit and 13 Pinterest pins. What's left are the account setups only you can do. Plan on about 2–3 hours total.
+The site is finished: 61 pages, 29 verified venues, 10 sourced guides, lucky-date tools, a 25-page paid planner, a free lead-magnet PDF, brand kit and 13 Pinterest pins. What's left are the account setups only you can do. Plan on about 2–3 hours total.
 
 ---
 

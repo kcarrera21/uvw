@@ -41,6 +41,18 @@ const copyDir = (src, dst) => {
     fs.statSync(s).isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d);
   }
 };
+// Outbound links to a venue's own site carry UTM tags, so the venue's analytics show the visit came from us.
+// Clean URLs stay in structured data, llms.txt and venues.json.
+const outUrl = (url, slug) => {
+  try {
+    const u = new URL(url);
+    u.searchParams.set("utm_source", "uniquevegasweddings.com");
+    u.searchParams.set("utm_medium", "referral");
+    u.searchParams.set("utm_campaign", "venue_listing");
+    if (slug) u.searchParams.set("utm_content", slug);
+    return u.toString();
+  } catch { return url; }
+};
 const ogFor = (name) => (fs.existsSync(path.join(ROOT, "src/assets/og", name + ".png")) ? `/assets/og/${name}.png` : "/assets/og/default.png");
 const budgetBand = (n) => (n == null ? "quote" : n < 1000 ? "1" : n < 3000 ? "2" : n < 10000 ? "3" : "4");
 const BAND_LABEL = { 1: "Under $1,000", 2: "$1,000–$2,999", 3: "$3,000–$9,999", 4: "$10,000+", quote: "Custom quote" };
@@ -223,7 +235,7 @@ ${body}
     <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li></ul></div>
     <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li></ul></div>
   </div>
-  <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent and not affiliated with any venue unless marked "Partner."</span><span>Some links earn us a commission at no cost to you.</span></div>
+  <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent and not affiliated with any venue unless marked "Partner" or disclosed on the listing.</span><span>Some links earn us a commission at no cost to you.</span></div>
 </div></footer>
 ${C.ga4Id ? `<div class="consent" data-consent-banner role="dialog" aria-label="Cookie choices" hidden>
   <p><strong>Cookies?</strong> We use Google Analytics to see which pages help couples most. No ad tracking. <a href="/privacy/">Privacy policy</a></p>
@@ -394,7 +406,7 @@ async function main() {
       { q: `How much does a ${lower} wedding in Las Vegas cost?`, a: cp.length > 1
         ? `Published starting prices for ${lower} venues in our directory range from ${money(cp[0].priceFrom)} (${cp[0].name}) to ${money(cp[cp.length - 1].priceFrom)} (${cp[cp.length - 1].name}), as checked ${fmtDate(maxChecked(list))}. ${list.length - cp.length} of the ${list.length} venues are quote-only.`
         : cp.length === 1 ? `${cp[0].name} publishes a starting price of ${money(cp[0].priceFrom)}. The other ${list.length - 1} venues in this category quote by date and guest count.` : `Venues in this category quote by date and guest count.` },
-      ...(biggest ? [{ q: `Which ${lower} venue holds the most guests?`, a: `${biggest.name}, with up to ${biggest.guestMax} guests in its largest published option.` }] : []),
+      ...(biggest ? [{ q: `Which ${lower} venue holds the most guests?`, a: `${biggest.name}, with up to ${biggest.guestMax.toLocaleString("en-US")} guests in its largest published option.` }] : []),
       { q: `What are the ${lower} wedding venues in Las Vegas?`, a: `Our directory lists ${list.length}: ${list.map((v) => v.name).join(", ")}.` },
     ];
     page(`/venues/category/${c.slug}/`, {
@@ -437,7 +449,7 @@ async function main() {
         </form></div>`
       : `<div class="panel"><h3>Plan it</h3>
         <p class="small">Check dates and packages on the venue's official site, and save it to compare later.</p>
-        <div class="stack"><a class="btn btn-primary" style="width:100%" href="${esc(v.url)}" rel="nofollow noopener" target="_blank">Check dates on the official site ↗</a>
+        <div class="stack"><a class="btn btn-primary" style="width:100%" href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">Check dates on the official site ↗</a>
         <button class="btn btn-ghost" style="width:100%" type="button" data-save="${v.slug}" data-name="${esc(v.name)}" data-url="/venues/${v.slug}/"><span class="save-label">Save</span> to shortlist</button></div>
         <hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
         ${newsletterForm({ title: "Free Vegas wedding checklist", sub: "License steps, documents, witness rules and certified copies on one printable page." }).replace('<div class="panel">', "<div>")}
@@ -446,16 +458,16 @@ async function main() {
     const vBase = hasW ? v.name : `${v.name} Weddings`;
     const vTitle = (v.priceFrom ? ["Prices, Details & Tips", "Prices & Tips"] : ["Venue Details & Tips", "Details & Tips"]).map((t) => `${vBase}: ${t}`).find((t) => t.length <= 60) || vBase;
     const approx = /min|hr/.test(v.drive || "") ? " (approximate)" : "";
-    const glance = `${v.priceFrom ? `At ${v.name}, published wedding pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` (${v.priceLabel})` : ""}.` : `${v.name} doesn't publish wedding prices, so pricing is by custom quote.`}${v.guestMax ? ` The largest published option holds up to ${v.guestMax} guests.` : ""} Location: ${v.area}. Details checked ${fmtDate(v.checked)} against the venue's official site.`;
+    const glance = `${v.priceFrom ? `At ${v.name}, published wedding pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` (${v.priceLabel})` : ""}.` : `${v.name} doesn't publish wedding prices, so pricing is by custom quote.`}${v.guestMax ? ` The largest published option holds up to ${v.guestMax.toLocaleString("en-US")} guests.` : ""} Location: ${v.area}. Details checked ${fmtDate(v.checked)} against the venue's official site.`;
     const vFaq = [
       { q: `How much does a wedding at ${v.name} cost?`, a: v.priceFrom ? `Published pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` for the ${v.priceLabel}` : ""}, as checked ${fmtDate(v.checked)}. Confirm current pricing with the venue.` : `${v.name} doesn't publish wedding prices. Request a quote for your date and guest count through its official weddings page.` },
-      ...(v.guestMax ? [{ q: `How many guests can ${v.name} hold?`, a: `Up to ${v.guestMax} guests in its largest published option. Smaller spaces and packages have lower limits.` }] : []),
+      ...(v.guestMax ? [{ q: `How many guests can ${v.name} hold?`, a: `Up to ${v.guestMax.toLocaleString("en-US")} guests in its largest published option. Smaller spaces and packages have lower limits.` }] : []),
       { q: `Where is ${v.name}?`, a: `${v.area}. ${v.drive}${approx}.` },
       ...(v.setting ? [{ q: `Is ${v.name} an indoor or outdoor venue?`, a: `${v.setting}.` }] : []),
     ];
     const GUIDE_MAP = { "historic-iconic": ["how-to-elope-in-las-vegas", "best-time-to-get-married-in-las-vegas"], "desert-outdoors": ["desert-wedding-permits", "best-time-to-get-married-in-las-vegas", "vegas-elopement-packing-list"], "sky-high": ["how-to-elope-in-las-vegas", "las-vegas-wedding-weekend-guide"], "strip-luxury": ["las-vegas-wedding-weekend-guide", "legal-vs-symbolic-ceremony"], "quirky-pop-culture": ["las-vegas-vow-renewal", "how-to-elope-in-las-vegas"], "classic-chapels": ["las-vegas-courthouse-wedding", "las-vegas-vow-renewal", "legal-vs-symbolic-ceremony"] };
     const vGuides = ["las-vegas-marriage-license", "las-vegas-wedding-cost", ...(GUIDE_MAP[v.category] || [])].map((sl) => guides.find((g) => g.slug === sl)).filter(Boolean);
-    const vDesc = `${v.name} wedding guide: ${v.priceFrom ? `published prices from ${money(v.priceFrom)}` : "quote-only pricing"}${v.guestMax ? `, up to ${v.guestMax} guests` : ""}, ${v.area}. Verified details, tips and the official booking link.`;
+    const vDesc = `${v.name} wedding guide: ${v.priceFrom ? `published prices from ${money(v.priceFrom)}` : "quote-only pricing"}${v.guestMax ? `, up to ${v.guestMax.toLocaleString("en-US")} guests` : ""}, ${v.area}. Verified details, tips and the official booking link.`;
     page(`/venues/${v.slug}/`, {
       title: `${vBase}: Prices, Details & Tips`, seoTitle: vTitle, og: "v-" + v.slug, modified: v.checked,
       description: vDesc,
@@ -484,7 +496,8 @@ async function main() {
     <h2 class="mt0">Why couples choose it</h2>${paras}
     <h2>Verified details</h2><ul class="checklist">${(v.facts || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     <h2>Good to know</h2><ul class="checklist">${(v.tips || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
-    <p><a href="${esc(v.url)}" rel="nofollow noopener" target="_blank">Official weddings page ↗</a></p>
+    <p><a href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">Official weddings page ↗</a></p>
+    ${v.disclosure ? `<div class="note"><strong>Disclosure.</strong> ${esc(v.disclosure)}</div>` : ""}
     <div class="note"><strong>Getting married here legally?</strong> You'll still need a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step.</a></div>
     ${plannerCta()}
     ${v.status !== "partner" ? `<div class="panel" style="box-shadow:none"><h3 class="mt0">Is this your venue?</h3><p class="small">Claim this listing to add your own photos and copy, correct anything we got wrong, and receive inquiries directly.</p><a class="btn btn-ghost btn-sm" href="/for-venues/?venue=${encodeURIComponent(v.name)}">Claim ${esc(v.name)}</a></div>` : ""}
@@ -718,6 +731,7 @@ async function main() {
     "the-mob-museum": ["mob museum", "courtroom"], "area15": ["area15", "area 15"], "omega-mart-meow-wolf": ["omega mart", "meow wolf"], "bellagio": ["bellagio"],
     "venetian-gondola-weddings": ["venetian", "gondola"], "caesars-palace-weddings": ["caesars", "caesar's"], "spring-mountain-ranch-state-park": ["spring mountain"],
     "floyd-lamb-park": ["floyd lamb", "tule springs"], "lake-mead-cruises-desert-princess": ["lake mead", "desert princess", "paddle wheeler", "boat"], "welcome-to-fabulous-las-vegas-sign": ["welcome sign", "vegas sign", "las vegas sign"],
+    "sahara-las-vegas": ["sahara", "azilo", "alexandria pool", "retro pool", "blanca penthouse", "casbar"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];
@@ -785,7 +799,7 @@ async function main() {
 <p class="lede">Las Vegas is the wedding capital of the world, and most of the internet's advice about it is either a sales page or ten years out of date. We built the guide we wanted to exist.</p>
 <h2>What we do</h2><p>We curate Las Vegas-area wedding venues that are genuinely distinctive, from neon and desert to sky-high and only-in-Vegas. Then we write about them honestly, in our own words.</p>
 <h2>How we keep it accurate</h2><ul class="checklist"><li>Every venue fact is checked against the venue's official site, and every listing shows the date we checked.</li><li>Legal and permit information comes from the Clark County Clerk, Nevada State Parks, the BLM, the National Park Service and the U.S. Forest Service, and we link to them.</li><li>We don't copy venue marketing copy or photos. Our illustrations are original, and venues can add their own photos by claiming their listing.</li><li>Paid placements are labeled "Featured" or "Partner." They never change the facts.</li></ul>
-<h2>Independent</h2><p>Unique Vegas Weddings isn't owned by or affiliated with any venue, chapel or resort. Some links earn us a commission. See our <a href="/disclosure/">disclosure</a>.</p>
+<h2>Independent</h2><p>Unique Vegas Weddings isn't owned by any venue, chapel or resort, and no venue pays to be listed. One disclosure: a member of our team works at SAHARA Las Vegas. <a href="/venues/sahara-las-vegas/">That listing</a> is unpaid, isn't featured, and follows the same rules as every other. Some links earn us a commission. See our <a href="/disclosure/">disclosure</a>.</p>
 <p>Spotted something out of date? <a href="/contact/">Tell us</a> and we'll fix it.</p>`);
   simple("/contact/", "Contact", "Contact Unique Vegas Weddings about corrections, partnerships, press or a Las Vegas wedding question we haven't answered yet.", `
 <p class="lede">Corrections, partnerships, press or a question we haven't answered yet: we'd love to hear it.</p>
@@ -852,7 +866,7 @@ async function main() {
     .replace(/\{\{venue-picks:([^}]+)\}\}/g, (_, sl) => sl.split(",").map((x) => venues.find((v) => v.slug === x)).filter(Boolean).map((v) => `<li><a href="/venues/${v.slug}/">${v.name}</a></li>`).join(""))
     .replace(/\{\{price-min\}\}/g, money(priceMin)).replace(/\{\{price-max\}\}/g, money(priceMax))
     .replace(/\{\{[^}]+\}\}/g, "");
-  const venueLine = (v) => `${catBy[v.category].name}; ${v.area}; ${v.priceFrom ? `from ${money(v.priceFrom)}${v.priceLabel ? ` (${v.priceLabel})` : ""}` : "custom quote"}${v.guestMax ? `; up to ${v.guestMax} guests` : ""}; checked ${v.checked}`;
+  const venueLine = (v) => `${catBy[v.category].name}; ${v.area}; ${v.priceFrom ? `from ${money(v.priceFrom)}${v.priceLabel ? ` (${v.priceLabel})` : ""}` : "custom quote"}${v.guestMax ? `; up to ${v.guestMax.toLocaleString("en-US")} guests` : ""}; checked ${v.checked}`;
   const keyFacts = [
     "Clark County marriage license: $102; both partners must appear in person with original photo ID; no waiting period, blood test or residency requirement; valid for 1 year.",
     "Marriage License Bureau: 201 E. Clark Ave., Las Vegas, NV 89101; open 8 a.m. to midnight every day, including holidays; walk-in only.",
@@ -864,7 +878,7 @@ async function main() {
   ];
   write("llms.txt", `# ${C.siteName}
 
-> ${C.description} Independent: not owned by or affiliated with any venue. Facts are checked against official sources (Clark County Clerk, NOAA, Nevada State Parks, BLM, National Park Service and each venue's own site). Last fact check: ${FACTS_CHECKED}. Site rebuilt: ${ISO}.
+> ${C.description} Independent: not owned by any venue. Disclosed connection: a member of the team works at SAHARA Las Vegas; that listing is unpaid and not featured. Facts are checked against official sources (Clark County Clerk, NOAA, Nevada State Parks, BLM, National Park Service and each venue's own site). Last fact check: ${FACTS_CHECKED}. Site rebuilt: ${ISO}.
 
 When citing, please link to the specific page and mention the "checked" date, because venue prices change.
 
@@ -894,7 +908,7 @@ ${CATEGORIES.map((c) => `- [${c.name}](${C.domain}/venues/category/${c.slug}/): 
   write("llms-full.txt", `# ${C.siteName}: full text\n\n> ${C.description} Last fact check: ${FACTS_CHECKED}.\n\n` +
     guides.map((g) => `# ${g.title}\n\nURL: ${C.domain}/guides/${g.slug}/\nFacts checked: ${g.updated || FACTS_CHECKED}\n\n**Quick answer:** ${fillTokens(g.answer || "")}\n\n${toMd(mdTokens(g.body))}\n\n## FAQ\n\n${(g.faq || []).map((f) => `**${f.q}**\n${f.a}`).join("\n\n")}\n\n## Sources\n\n${g.sources.map((x) => `- [${x.t}](${abs(x.u)})`).join("\n")}`).join("\n\n---\n\n") +
     "\n\n---\n\n# Venues\n\n" +
-    venues.map((v) => `## ${v.name}\n\nURL: ${C.domain}/venues/${v.slug}/\nOfficial site: ${v.url}\nSummary: ${venueLine(v)}\nSetting: ${v.setting || "n/a"}\nGetting there: ${v.drive || "n/a"}\nBest for: ${v.bestFor}\n\n${v.description}\n\nVerified details:\n${(v.facts || []).map((x) => `- ${x}`).join("\n")}\n\nGood to know:\n${(v.tips || []).map((x) => `- ${x}`).join("\n")}`).join("\n\n") + "\n");
+    venues.map((v) => `## ${v.name}\n\nURL: ${C.domain}/venues/${v.slug}/\nOfficial site: ${v.url}\nSummary: ${venueLine(v)}\nSetting: ${v.setting || "n/a"}\nGetting there: ${v.drive || "n/a"}\nBest for: ${v.bestFor}\n\n${v.description}\n\nVerified details:\n${(v.facts || []).map((x) => `- ${x}`).join("\n")}\n\nGood to know:\n${(v.tips || []).map((x) => `- ${x}`).join("\n")}${v.disclosure ? `\n\nDisclosure: ${v.disclosure}` : ""}`).join("\n\n") + "\n");
   write("data/venues.json", JSON.stringify({ source: C.siteName, url: C.domain, generated: ISO, note: "Starting prices are each venue's own published 'from' price on the lastChecked date. Confirm with the venue before booking.", venues: venues.map((v) => ({ name: v.name, url: `${C.domain}/venues/${v.slug}/`, officialUrl: v.url, category: catBy[v.category].name, area: v.area, setting: v.setting || null, startingPriceUSD: v.priceFrom ?? null, priceFor: v.priceLabel || null, maxGuests: v.guestMax ?? null, bestFor: v.bestFor, facts: v.facts || [], lastChecked: v.checked })) }, null, 1));
 
   // ---------- IndexNow (Bing, Copilot and other engines pick up changes fast) ----------

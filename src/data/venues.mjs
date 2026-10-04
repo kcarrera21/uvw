@@ -505,6 +505,33 @@ The private terrace is the showstopper: a small wedding with the fountains danci
     url: "https://bellagio.mgmresorts.com/en/meetings-groups/weddings.html", checked: "2026-10-04", status: "listed", featured: false,
   },
   {
+    name: "SAHARA Las Vegas", slug: "sahara-las-vegas", category: "strip-luxury",
+    area: "The Strip (north)", drive: "On the Strip", setting: "Indoor & outdoor",
+    vibe: ["Rooftop pools", "Lounges", "Theaters", "North Strip"],
+    priceFrom: null, priceLabel: null, guestMax: 1824,
+    facts: [
+      "SAHARA books weddings and receptions through its events team. Pricing is by custom quote, and no wedding package prices are published.",
+      "AZILO Ultra Pool is 29,225 sq ft with an event capacity of 1,824, 10 cabanas, three bungalows and three LED screens. AZILO Ultra Lounge beside it is 3,819 sq ft and holds up to 240.",
+      "Two rooftop pools: Alexandria Pool holds up to 300, with views of downtown and the mountains. Retro Pool Lounge is 10,000 sq ft for up to 250, with a VIP cabana, DJ booth and full bar.",
+      "Blanca Tower Penthouse is a 2,156 sq ft two-bedroom suite with two roof decks, a fireplace and a hot tub, for up to 100 guests.",
+      "The Theatre holds up to 999. The Magic Mike Live Theater is a two-story, 15,040 sq ft room for 446, with a 3,000 sq ft lounge for 150.",
+      "Lounges: CASBAR Lounge (4,140 sq ft, up to 280), Paradise Lounge (1,944 sq ft, up to 150) and The Tangier (750 sq ft, up to 55).",
+      "Sizes and capacities come from SAHARA's Unique Event Venues brochure dated April 2023, the version linked from its weddings page on the check date. Confirm the current list of spaces with the events team.",
+    ],
+    bestFor: "Couples who'd rather take over a pool, a rooftop or a lounge than book a ballroom.",
+    description: `SAHARA sits at the north end of the Strip, and its wedding spaces aren't chapels. They're the resort's pools, lounges, theaters and a penthouse, each bookable as a private venue.
+
+The range is the point. A wedding of 50 fits a lobby lounge or the penthouse roof decks. A few hundred guests fit a rooftop pool with views of downtown and the mountains. The largest space, AZILO Ultra Pool, is built for night events, with cabanas, bungalows and LED screens. Everything is priced by quote, so the first step is telling the events team your date, guest count and which space you have in mind.`,
+    tips: [
+      "Pricing is quote-only. Ask for the space fee, the food and beverage minimum and room-block terms in the same email.",
+      "The published capacities are event capacities, not seated-dinner counts. Ask for the seated number for your space.",
+      "The pool spaces are open-air. For June through August, ask about an evening start.",
+      "The Magic Mike Live Theater is a working show room, so ask which dates it's available.",
+    ],
+    disclosure: "A member of the Unique Vegas Weddings team works at SAHARA Las Vegas. This listing is unpaid, isn't a featured placement, and uses only facts SAHARA publishes.",
+    url: "https://www.saharalasvegas.com/meetings-events/weddings-special-events", checked: "2026-10-04", status: "listed", featured: false,
+  },
+  {
     name: "The Venetian Resort (Gondola Weddings)", slug: "venetian-gondola-weddings", category: "strip-luxury",
     area: "The Strip (center)", drive: "On the Strip", setting: "Indoor & outdoor",
     vibe: ["Italian", "Gondola", "Romantic", "Grand"],
