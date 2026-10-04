@@ -8,6 +8,48 @@
   };
   var now = new Date();
 
+  // ---------- cookie consent + Google Analytics ----------
+  (function () {
+    var root = document.documentElement, GA = root.getAttribute("data-ga");
+    if (!GA) return;
+    var mode = root.getAttribute("data-consent") || "eu", KEY = "uvw_consent";
+    var banner = $("[data-consent-banner]");
+    var tz = ""; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    var inEurope = /^Europe\//.test(tz) || /^(Atlantic\/(Reykjavik|Canary|Madeira|Azores|Faroe)|Arctic\/Longyearbyen)$/.test(tz);
+    var mustAsk = mode === "all" || (mode === "eu" && inEurope);
+    var gpc = navigator.globalPrivacyControl === true;
+    var choice = null; try { choice = localStorage.getItem(KEY); } catch (e) {}
+    var loaded = false;
+    function loadGA() {
+      if (loaded) return; loaded = true;
+      window["ga-disable-" + GA] = false;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date()); window.gtag("config", GA);
+      var s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA; document.head.appendChild(s);
+    }
+    function stopGA() {
+      window["ga-disable-" + GA] = true; window.gtag = undefined;
+      document.cookie.split(";").forEach(function (c) {
+        var n = c.split("=")[0].trim();
+        if (/^_ga/.test(n)) ["", "; domain=" + location.hostname, "; domain=." + location.hostname.replace(/^www\./, "")].forEach(function (d) { document.cookie = n + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + d; });
+      });
+    }
+    function decide(v) {
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (banner) banner.hidden = true;
+      if (v === "granted") loadGA(); else stopGA();
+    }
+    if (choice === "granted") loadGA();
+    else if (choice === "denied" || gpc) { /* stay off */ }
+    else if (mode === "off" || !mustAsk) loadGA();
+    else if (banner) banner.hidden = false;
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-consent-choice]"); if (b) return decide(b.getAttribute("data-consent-choice"));
+      if (e.target.closest("[data-cookie-settings]") && banner) { banner.hidden = false; banner.querySelector("button").focus(); }
+    });
+  })();
+
   // ---------- year stamps ----------
   $$("[data-year]").forEach(function (el) { el.textContent = now.getFullYear(); });
 

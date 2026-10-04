@@ -37,7 +37,12 @@ export const config = {
 
   // ---------- ADS + ANALYTICS ----------
   adsenseClient: "",        // e.g. "ca-pub-1234567890123456" (ad slots stay hidden until set)
-  ga4Id: "G-XD9FXYWXCR",                // e.g. "G-XXXXXXX"
+  ga4Id: "G-XD9FXYWXCR",    // e.g. "G-XXXXXXX"
+  // Cookie consent for Analytics:
+  //   "eu"  = visitors in Europe/UK must accept first; everyone else is counted unless they opt out
+  //   "all" = every visitor must accept first (most cautious, least data)
+  //   "off" = no banner, everyone is counted
+  consentMode: "eu",
 
   // ---------- SEARCH + AI VISIBILITY ----------
   googleSiteVerification: "", // Google Search Console → "HTML tag" method → paste the content value

@@ -171,7 +171,7 @@ function layout({ path: p, title, seoTitle, description, body, og = "default", s
   if (!noindex && description.length < 70) seoWarnings.push(`Meta description under 70 chars: ${p}`);
   const ogImg = C.domain + ogFor(og);
   return `<!doctype html>
-<html lang="en">
+<html lang="en"${C.ga4Id ? ` data-ga="${esc(C.ga4Id)}" data-consent="${esc(C.consentMode || "eu")}"` : ""}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -193,7 +193,6 @@ ${C.googleSiteVerification ? `<meta name="google-site-verification" content="${e
 <link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css?v=${ISO}">
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}
-${C.ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${C.ga4Id}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${C.ga4Id}');</script>` : ""}
 ${C.adsenseClient ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${C.adsenseClient}" crossorigin="anonymous"></script>` : ""}
 </head>
 <body>
@@ -222,10 +221,14 @@ ${body}
     </div>
     <div><h2 class="foot-h">Venues</h2><ul>${CATEGORIES.map((c) => `<li><a href="/venues/category/${c.slug}/">${esc(c.name)}</a></li>`).join("")}</ul></div>
     <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li></ul></div>
-    <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li></ul></div>
+    <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent and not affiliated with any venue unless marked "Partner."</span><span>Some links earn us a commission at no cost to you.</span></div>
 </div></footer>
+${C.ga4Id ? `<div class="consent" data-consent-banner role="dialog" aria-label="Cookie choices" hidden>
+  <p><strong>Cookies?</strong> We use Google Analytics to see which pages help couples most. No ad tracking. <a href="/privacy/">Privacy policy</a></p>
+  <div class="consent-btns"><button type="button" class="btn btn-ghost btn-sm" data-consent-choice="denied">Decline</button><button type="button" class="btn btn-primary btn-sm" data-consent-choice="granted">Accept</button></div>
+</div>` : ""}
 <script src="/assets/js/lucky.js?v=${ISO}" defer></script>
 <script src="/assets/js/main.js?v=${ISO}" defer></script>
 ${scripts.map((x) => `<script src="${x}?v=${ISO}" defer></script>`).join("\n")}
@@ -795,7 +798,7 @@ async function main() {
 <p>We only recommend things we'd suggest to a friend getting married in Las Vegas.</p>`);
   simple("/privacy/", "Privacy Policy", "How Unique Vegas Weddings handles your information: what our forms collect, how the shortlist is stored, analytics, cookies and your choices.", `
 <p class="small">Effective ${fmtDate(FACTS_CHECKED)}</p>
-<h2>What we collect</h2><ul class="checklist"><li><strong>Forms.</strong> When you submit a form (newsletter, shortlist, venue inquiry or partner application), we receive what you enter. Forms are processed by Formspree. Venue inquiries for Partner venues are sent to that venue.</li><li><strong>Your shortlist</strong> is stored only in your own browser (localStorage). We never see it unless you email it to yourself.</li><li><strong>Analytics.</strong> If enabled, we use Google Analytics to understand which pages are useful. It uses cookies.</li><li><strong>Advertising and affiliates.</strong> Ad networks and affiliate partners may set cookies to measure ads and attribute purchases.</li></ul>
+<h2>What we collect</h2><ul class="checklist"><li><strong>Forms.</strong> When you submit a form (newsletter, shortlist, venue inquiry or partner application), we receive what you enter. Forms are processed by Formspree. Venue inquiries for Partner venues are sent to that venue.</li><li><strong>Your shortlist</strong> is stored only in your own browser (localStorage). We never see it unless you email it to yourself.</li><li><strong>Analytics.</strong> We use Google Analytics to understand which pages are useful. It uses cookies. Visitors in Europe and the UK are asked first, and Analytics stays off unless they accept. Elsewhere it is on by default. Anyone can turn it off at any time with the "Cookie settings" link at the bottom of every page, and we honor the Global Privacy Control browser signal.</li><li><strong>Advertising and affiliates.</strong> Ad networks and affiliate partners may set cookies to measure ads and attribute purchases.</li></ul>
 <h2>How we use it</h2><p>To send what you asked for (like the checklist or lucky-date alerts), to pass inquiries to the venue you chose, and to improve the site. We don't sell your personal information.</p>
 <h2>Your choices</h2><p>Every email includes an unsubscribe link. You can clear your shortlist by clearing your browser storage. To ask us to delete your information, email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
 <p class="small">This policy is a plain-language template. Have it reviewed for your specific setup before launch.</p>`);
