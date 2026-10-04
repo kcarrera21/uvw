@@ -1,0 +1,12 @@
+{
+  "name": "unique-vegas-weddings",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static site for uniquevegasweddings.com. Zero dependencies.",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node build.mjs && cd public && python3 -m http.server 8080",
+    "creatives": "node scripts/creatives.mjs && python3 scripts/render.py"
+  }
+}

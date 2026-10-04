@@ -1,0 +1,6 @@
+public/
+.render/
+products/
+stale-report.md
+node_modules/
+.DS_Store
