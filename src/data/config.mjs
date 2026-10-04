@@ -15,9 +15,10 @@ export const config = {
 
   // ---------- LEADS + EMAIL (free tier: formspree.io) ----------
   // Create a form at formspree.io → copy the ID after /f/  (e.g. "xyzabcd")
-  // One form can serve all three: each submission carries its own email subject line.
-  formspreeVenueInquiry: "meaejdnv", // couples asking a venue for pricing/availability (your referral leads)
-  formspreePartner: "meaejdnv",      // venues/vendors applying for a listing
+  // Two forms: couples (checklist + shortlist) and business (venue applications + inquiries).
+  // Each submission carries its own email subject line.
+  formspreeVenueInquiry: "xbgdrbbl", // couples asking a venue for pricing/availability (your referral leads)
+  formspreePartner: "xbgdrbbl",      // venues/vendors applying for a listing
   formspreeNewsletter: "meaejdnv",   // email list (free checklist download)
 
   // ---------- PRODUCTS + PAYMENTS (Stripe Payment Links, Gumroad, or Lemon Squeezy) ----------
