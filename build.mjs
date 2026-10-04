@@ -115,7 +115,7 @@ function newsletterForm({ title = "Get the free Vegas Wedding Checklist", sub = 
   return `<div class="${dark ? "" : "panel"}">
   <${h} class="mt0 h3">${title}</${h}><p class="small" style="${dark ? "color:#CFC6C4" : ""}">${sub}</p>
   <form action="${formAction(C.formspreeNewsletter)}" ${formAttrs(C.formspreeNewsletter)} data-next="/thanks/?download=checklist" class="inline-form">
-    <input type="hidden" name="list" value="newsletter"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="list" value="newsletter"><input type="hidden" name="_subject" value="UVW: new checklist signup"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
     <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address">
     <button class="btn btn-primary" type="submit">Send it</button>
   </form></div>`;
@@ -425,7 +425,7 @@ async function main() {
     const sidebar = inquiryId
       ? `<div class="panel"><h3>Check availability</h3><p class="small">Your request goes directly to ${esc(v.name)}.</p>
         <form action="${formAction(inquiryId)}" ${formAttrs(inquiryId)} data-next="/thanks/?sent=inquiry">
-          <input type="hidden" name="venue" value="${esc(v.name)}"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="venue" value="${esc(v.name)}"><input type="hidden" name="_subject" value="UVW venue inquiry: ${esc(v.name)}"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
           <div class="field"><label for="iq-n">Your names</label><input id="iq-n" name="names" required></div>
           <div class="field"><label for="iq-e">Email</label><input id="iq-e" type="email" name="email" required></div>
           <div class="row2"><div class="field"><label for="iq-d">Date</label><input id="iq-d" type="date" name="date"></div><div class="field"><label for="iq-g">Guests</label><input id="iq-g" type="number" min="0" name="guests"></div></div>
@@ -670,6 +670,7 @@ async function main() {
   <div><h2 class="mt0">Claim or apply</h2><p>Tell us about your venue. We'll verify that you represent it, then set up your listing. Already paid for Featured or Spotlight? Use this form to send your photos, copy and inquiry email.</p>
   <ul class="checklist"><li>Photos must be yours or properly licensed</li><li>We verify facts against your official site</li><li>Weddings must be currently offered</li></ul></div>
   <div class="panel"><form action="${formAction(C.formspreePartner)}" ${formAttrs(C.formspreePartner)} data-next="/thanks/?sent=partner">
+    <input type="hidden" name="_subject" value="UVW: venue listing application">
     <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
     <div class="field"><label for="pv">Venue or business name</label><input id="pv" name="venue" required></div>
     <div class="row2"><div class="field"><label for="pn">Your name</label><input id="pn" name="name" required></div><div class="field"><label for="pr">Your role</label><input id="pr" name="role"></div></div>
@@ -767,7 +768,7 @@ async function main() {
   <div><span class="eyebrow">Saved on this device</span><h1>Your <em>shortlist</em></h1><ul class="shortlist-list" data-sl-list></ul><a class="btn btn-ghost btn-sm" href="/venues/">Keep browsing</a></div>
   <div class="panel"><h2 class="mt0 h3">Email me my shortlist</h2><p class="small">We'll send the list with links, plus the free Vegas wedding checklist.</p>
     <form action="${formAction(C.formspreeNewsletter)}" ${formAttrs(C.formspreeNewsletter)} data-next="/thanks/?download=checklist">
-      <input type="hidden" name="list" value="shortlist"><input type="hidden" name="shortlist" data-sl-field><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="list" value="shortlist"><input type="hidden" name="_subject" value="UVW: shortlist request"><input type="hidden" name="shortlist" data-sl-field><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
       <div class="field"><label for="sle">Email</label><input id="sle" type="email" name="email" required></div>
       <div class="field"><label for="sld">Wedding date (if you know it)</label><input id="sld" type="date" name="date"></div>
       <button class="btn btn-primary" type="submit" style="width:100%">Send my shortlist</button>
