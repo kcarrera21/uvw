@@ -23,7 +23,7 @@ export const config = {
 
   // ---------- PRODUCTS + PAYMENTS (Stripe Payment Links, Gumroad, or Lemon Squeezy) ----------
   plannerCheckoutUrl: "https://uniquevegasweddings.gumroad.com/l/jtixjn?wanted=true",    // link to buy "The Unique Vegas Wedding Planner" PDF
-  plannerPrice: "$5",        // must match the price on the Gumroad listing
+  plannerPrice: "$19",       // must match the price on the Gumroad listing
   featuredCheckoutUrl: "",   // Stripe Payment Link: Featured Listing (monthly)
   featuredPrice: "$79/mo",   // [Assumption]
   spotlightCheckoutUrl: "",  // Stripe Payment Link: Spotlight Listing (monthly)
