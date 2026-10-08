@@ -56,7 +56,7 @@ function og(name, { eyebrow, title, sub, slug, cat }) {
       ${sub ? `<div style="font:400 24px/1.4 IN;color:#5B5558;margin-top:20px">${esc(sub)}</div>` : ""}
     </div>
   </div>
-  <div style="padding:34px 56px 34px 0"><div style="height:562px;border-radius:170px 26px 170px 26px;overflow:hidden;border:8px solid #fff;box-shadow:0 20px 50px -20px rgba(142,79,90,.4)">${art(slug, cat, 800, 1000).replace('width="800" height="1000"', 'width="438" height="546"')}</div></div>
+  <div style="padding:0"><div style="height:630px;overflow:hidden">${art(slug, cat, 800, 1000).replace('width="800" height="1000"', 'width="510" height="630"')}</div></div>
   </div>`;
   job("og-" + name, html, `src/assets/og/${name}.png`, 1200, 630);
 }
@@ -80,7 +80,7 @@ for (const g of guides) og("g-" + g.slug, { eyebrow: g.eyebrow, title: esc(g.tit
 // ---------------------------------------------------------------- Pinterest 1000x1500
 function pin(name, { kicker, title, list = [], foot, slug, cat }) {
   const html = `<div style="width:1000px;height:1500px;background:#FFFBF8;position:relative;overflow:hidden;display:flex;flex-direction:column">
-  <div style="height:760px;margin:44px 44px 0;border-radius:220px 26px 220px 26px;overflow:hidden">${art(slug, cat, 912, 760).replace('width="912" height="760"', 'width="912" height="760"')}</div>
+  <div style="height:760px;margin:44px 44px 0;border-radius:20px;overflow:hidden">${art(slug, cat, 912, 760).replace('width="912" height="760"', 'width="912" height="760"')}</div>
   <div style="padding:46px 70px 0;flex:1;display:flex;flex-direction:column">
     <div style="font:600 22px IN;letter-spacing:.24em;text-transform:uppercase;color:#5E7356">${esc(kicker)}</div>
     <div class="serif" style="font-size:${title.length > 44 ? 66 : 80}px;line-height:1.04;font-weight:500;margin-top:16px">${title}</div>
@@ -148,7 +148,7 @@ const fieldsHtml = (labels) => labels.map((l) => `<div class="field"><span>${l}<
 
 const cover = `<div class="pg" style="padding:0;background:#FFFBF8">
   <div style="position:absolute;inset:0">${art("planner-cover", "historic-iconic", 816, 1056).replace('width="816" height="1056"', 'width="816" height="1056"')}</div>
-  <div style="position:absolute;left:.7in;right:.7in;top:.8in;background:rgba(255,251,248,.94);border-radius:200px 18px 200px 18px;padding:1.2in .5in .5in;text-align:center">
+  <div style="position:absolute;left:.7in;right:.7in;top:.8in;background:rgba(255,251,248,.94);border-radius:20px;padding:1.2in .5in .5in;text-align:center">
     <div style="width:70px;margin:0 auto 18px">${markSVG(70)}</div>
     <div style="font:600 11px IN;letter-spacing:.3em;text-transform:uppercase;color:#5E7356">The</div>
     <div class="serif" style="font-size:58px;line-height:1.02;margin:10px 0 6px">Unique <em>Vegas</em><br>Wedding Planner</div>
@@ -254,7 +254,7 @@ const checklist = [
    <div class="box blush" style="margin-top:16px"><p style="margin:0"><strong>No</strong> waiting period · <strong>No</strong> blood test · <strong>No</strong> residency requirement</p></div>`),
   P("Next steps", `<h1>Ready for the <em>fun part?</em></h1>
    <p>Find a venue that fits your story: neon, desert, sky-high, quirky or classic.</p>
-   <div style="height:4.2in;border-radius:150px 16px 150px 16px;overflow:hidden;margin:16px 0">${art("checklist-p2", "desert-outdoors", 700, 420).replace('width="700" height="420"', 'width="100%" height="100%"')}</div>
+   <div style="height:4.2in;border-radius:16px;overflow:hidden;margin:16px 0">${art("checklist-p2", "desert-outdoors", 700, 420).replace('width="700" height="420"', 'width="100%" height="100%"')}</div>
    ${ck([`Browse ${venues.length} unique venues at uniquevegasweddings.com/venues`, "Check the lucky-date calendar before you pick a date", "Get the 25-page Unique Vegas Wedding Planner"])}
    <p class="sm" style="margin-top:14px">Requirements can change. Confirm with the Clark County Clerk before you travel. Not legal advice.</p>`),
 ];
@@ -265,7 +265,7 @@ pageNo = 0;
 const sw = (hex, name, use, dark) => `<div style="border-radius:14px;overflow:hidden;border:1px solid #EBDCD8"><div style="height:1.05in;background:${hex}"></div><div style="padding:10px 12px"><div style="font:600 11px IN">${name}</div><div style="font:500 10px IN;color:#8E4F5A">${hex}</div><div class="sm" style="margin-top:4px">${use}</div></div></div>`;
 const BG = (k, inner) => P(k, inner).replace("The Unique Vegas Wedding Planner", "Brand Guide");
 const brand = [
-  `<div class="pg" style="padding:0">${art("brand-cover", "historic-iconic", 816, 1056)}<div style="position:absolute;left:.8in;right:.8in;top:3.2in;background:rgba(255,251,248,.95);border-radius:200px 18px 200px 18px;padding:.9in .5in .5in;text-align:center"><div style="width:420px;margin:0 auto">${logo({ width: 420 })}</div><div class="serif" style="font-size:34px;margin-top:24px">Brand <em>guide</em></div><p style="margin-top:8px">Vegas weddings, off-script.</p></div></div>`,
+  `<div class="pg" style="padding:0">${art("brand-cover", "historic-iconic", 816, 1056)}<div style="position:absolute;left:.8in;right:.8in;top:3.2in;background:rgba(255,251,248,.95);border-radius:20px;padding:.9in .5in .5in;text-align:center"><div style="width:420px;margin:0 auto">${logo({ width: 420 })}</div><div class="serif" style="font-size:34px;margin-top:24px">Brand <em>guide</em></div><p style="margin-top:8px">Vegas weddings, off-script.</p></div></div>`,
   BG("Logo", `<h1>The <em>logo</em></h1><p>The mark is a wedding ring crowned by a desert star: commitment meets neon. Use the full lockup wherever there's room, and the mark alone for icons and avatars.</p>
    <div class="two" style="margin-top:14px"><div class="box" style="display:grid;place-items:center;height:1.6in">${logo({ width: 290 })}</div><div class="box" style="display:grid;place-items:center;height:1.6in;background:#2B2B2E">${logo({ width: 290, color: "#FFFFFF", accent: "#E8A0A8", sub: "#9CAF88" })}</div></div>
    <div class="two"><div class="box" style="display:grid;place-items:center;height:1.4in">${markSVG(90)}</div><div class="box" style="display:grid;place-items:center;height:1.4in;background:#FBF2EF">${markSVG(90, "#8E4F5A", "#B76E79")}</div></div>
@@ -281,10 +281,10 @@ const brand = [
   BG("Voice", `<h1>Voice & <em>tone</em></h1><p>We sound like a well-connected friend who lives in Las Vegas: warm, witty, direct and allergic to fluff.</p>
    <div class="two"><div><h3>We are</h3>${ck(["Specific: real prices, real rules, real dates", "Warm, a little cheeky", "Sourced: we link to the official page", "Inclusive of every kind of couple"])}</div><div><h3>We aren't</h3>${ck(["Salesy or breathless", "Vague (“affordable packages!”)", "Snobby about chapels or Elvis", "Making claims we can't back up"])}</div></div>
    <h3>Examples</h3><div class="box blush"><p><strong>Yes:</strong> “A ceremony starts at $150, and you can scale up to Elvis.”</p><p style="margin:0"><strong>No:</strong> “Experience unforgettable, affordable, magical wedding packages!”</p></div>`),
-  BG("Illustration & social", `<h1>Illustration & <em>social</em></h1><p>Every venue gets an original petal-framed desert illustration, generated from the brand palette. One motif per category. No stock photos, no scraped images.</p>
-   <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:12px 0">${CATEGORIES.map((c) => `<div><div style="height:1.4in;border-radius:56px 8px 56px 8px;overflow:hidden">${art("bg-" + c.slug, c.slug, 400, 500).replace('width="400" height="500"', 'width="100%" height="100%"')}</div><div class="sm" style="text-align:center;margin-top:4px">${c.name}</div></div>`).join("")}</div>
-   <h3>Pinterest pin template (1000×1500)</h3><p>Petal-framed illustration on top, Inter eyebrow, Playfair headline with one italic phrase, three or four ✦ facts, logo and URL at the bottom. Ready-made pins are in /marketing/pins.</p>
-   <h3>Open Graph (1200×630)</h3><p>Every page ships with its own share image: logo, eyebrow, headline, petal-framed illustration.</p>`),
+  BG("Illustration & social", `<h1>Illustration & <em>social</em></h1><p>Every venue gets an original desert illustration, generated from the brand palette. One motif per category. No stock photos, no scraped images.</p>
+   <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:12px 0">${CATEGORIES.map((c) => `<div><div style="height:1.4in;border-radius:8px;overflow:hidden">${art("bg-" + c.slug, c.slug, 400, 500).replace('width="400" height="500"', 'width="100%" height="100%"')}</div><div class="sm" style="text-align:center;margin-top:4px">${c.name}</div></div>`).join("")}</div>
+   <h3>Pinterest pin template (1000×1500)</h3><p>Full-width illustration on top, Inter eyebrow, Playfair headline with one italic phrase, three or four ✦ facts, logo and URL at the bottom. Ready-made pins are in /marketing/pins.</p>
+   <h3>Open Graph (1200×630)</h3><p>Every page ships with its own share image: logo, eyebrow, headline, full-height illustration.</p>`),
 ];
 job("brand-guide", `<style>${PRINT_CSS}</style>${brand.join("")}`, "brand/brand-guide.pdf", 816, 1056, "pdf");
 
