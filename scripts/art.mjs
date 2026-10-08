@@ -77,7 +77,7 @@ function motif(cat, p, r) {
       <path d="M150 240 V400 M210 240 V400" stroke="${st}" stroke-width="${sw}" opacity=".8"/>`;
     }
     case "desert-outdoors": {
-      // Joshua tree + sandstone arch
+      // Joshua tree + ocotillo with flowering tips + desert rocks
       const tuft = (x, y) => {
         let s = "";
         for (let a = 0; a < 360; a += 30) {
@@ -88,8 +88,9 @@ function motif(cat, p, r) {
       };
       return `<g fill="none" stroke="${st}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">
         <path d="M120 400 V250 Q120 220 95 205 Q80 196 82 170 M120 260 Q122 225 150 214 Q170 206 168 180 M120 300 Q118 280 140 270 Q160 262 172 236 M120 232 Q118 210 120 190"/>
-        <path d="M232 400 V330 Q232 268 292 268 Q352 268 352 330 V400 M262 400 V340 Q262 300 292 300 Q322 300 322 340 V400"/>
-      </g>${tuft(82, 170)}${tuft(168, 180)}${tuft(172, 236)}${tuft(120, 190)}`;
+        ${[-34, -21, -9, 4, 16, 29].map((deg, i) => { const a = (deg * Math.PI) / 180, L = 120 + (i % 2) * 22; const x1 = 292 + Math.sin(a) * L, y1 = 400 - Math.cos(a) * L; const cx = 292 + Math.sin(a) * L * 0.55 + (i % 2 ? 6 : -6), cy = 400 - Math.cos(a) * L * 0.55; return `<path d="M292 400 Q${f(cx)} ${f(cy)} ${f(x1)} ${f(y1)}" stroke-width="2.6"/>`; }).join("")}
+        <path d="M236 400 Q240 384 258 384 Q272 384 276 400 M310 400 Q316 390 330 390 Q344 390 348 400" stroke-width="2.6"/>
+      </g>${[-34, -21, -9, 4, 16, 29].map((deg, i) => { const a = (deg * Math.PI) / 180, L = 120 + (i % 2) * 22; return `<path d="M${f(292 + Math.sin(a) * L)} ${f(400 - Math.cos(a) * L)} l${f(Math.sin(a) * 14)} ${f(-Math.cos(a) * 14)}" stroke="#B76E79" stroke-width="6" stroke-linecap="round"/>`; }).join("")}${tuft(82, 170)}${tuft(168, 180)}${tuft(172, 236)}${tuft(120, 190)}`;
     }
     case "sky-high": {
       // needle tower + observation wheel
