@@ -61,7 +61,9 @@ The build prints a reminder list of anything still blank. The forms work without
 
 ## Step 3: Get traffic (this is the actual business)
 
-1. **Google Search Console:** add the domain, paste the verification code into `googleSiteVerification` in the config, and submit `https://uniquevegasweddings.com/sitemap.xml`. (The domain isn't in your Search Console account yet.)
+Already done for you: every page was submitted to Bing, Yandex and the other IndexNow engines on 2026-10-09 (62 URLs accepted), and each future push re-submits changed pages automatically. Google doesn't accept IndexNow, so Search Console is the one step that needs your login.
+
+1. **Google Search Console:** add the domain, paste the verification code into `googleSiteVerification` in the config, and submit `https://uniquevegasweddings.com/sitemap.xml`. (The domain isn't in your Search Console account yet. Use your personal Google account, not your work one. Fastest route: choose "URL prefix" → "HTML tag", send the `content="…"` value to Claude, it adds it and publishes, then you click Verify.)
 1. **Bing Webmaster Tools:** same thing with `bingSiteVerification`. Bing's index feeds ChatGPT search and Copilot, so this is the AI-search step. It can import your site straight from Search Console.
 2. **Pinterest Business account:** post the 13 pins in `marketing/pins/`. Link each one to its page (pin filename = page topic). Weddings run on Pinterest, so this is your fastest free channel.
 3. **Venue outreach:** every venue page has a "Claim this listing" button. Email each venue a link to its page and the "for venues" page. That's how listings become Featured revenue.
