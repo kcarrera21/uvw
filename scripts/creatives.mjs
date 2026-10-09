@@ -44,6 +44,22 @@ function job(name, html, out, w, h, type = "png") {
   jobs.push({ html: file, out: path.join(ROOT, out), w, h, type });
 }
 
+// Free-license photo for a slug when we have one (see src/data/photo-credits.json); otherwise the illustration.
+const PHOTOS = fs.existsSync(path.join(ROOT, "src/data/photo-credits.json")) ? JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/photo-credits.json"), "utf8")) : {};
+const PIN_PHOTO = { "pin-license": "little-church-of-the-west", "pin-cost": "bellagio", "pin-court": "welcome-to-fabulous-las-vegas-sign", "pin-season": "hero-2", "pin-elope": "hero-1", "pin-desert": "valley-of-fire-state-park", "pin-venues": "high-roller-wheel", "pin-drive": "tunnel-of-love-drive-thru", "pin-heli": "papillon-helicopter-weddings", "cat-classic-chapels": "cat-classic-chapels" };
+const photoKey = (slug, cat) => (PHOTOS[slug] ? slug : PIN_PHOTO[slug] || (PHOTOS["cat-" + cat] ? "cat-" + cat : null));
+const visual = (slug, cat, w, h) => {
+  const key = photoKey(slug, cat);
+  if (key && PHOTOS[key]) return `<img src="file://${path.join(ROOT, "src/assets/photos", key + ".webp")}" style="display:block;width:${w}px;height:${h}px;object-fit:cover">`;
+  return art(slug, cat, 800, 1000).replace('width="800" height="1000"', `width="${w}" height="${h}"`);
+};
+// Small on-image credit, required by CC BY / BY-SA when the image travels without the page.
+const visualCredit = (slug, cat) => {
+  const key = photoKey(slug, cat);
+  const p = key && PHOTOS[key];
+  return p ? `<div style="position:absolute;right:10px;bottom:8px;font:500 13px IN;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7);opacity:.9">Photo: ${esc(p.creator || "unknown")} · ${esc(p.license)}</div>` : "";
+};
+
 // ---------------------------------------------------------------- OG 1200x630
 function og(name, { eyebrow, title, sub, slug, cat }) {
   const p = PALETTES[cat] || PALETTES["classic-chapels"];
@@ -56,7 +72,7 @@ function og(name, { eyebrow, title, sub, slug, cat }) {
       ${sub ? `<div style="font:400 24px/1.4 IN;color:#5B5558;margin-top:20px">${esc(sub)}</div>` : ""}
     </div>
   </div>
-  <div style="padding:0"><div style="height:630px;overflow:hidden">${art(slug, cat, 800, 1000).replace('width="800" height="1000"', 'width="510" height="630"')}</div></div>
+  <div style="padding:0;position:relative"><div style="height:630px;overflow:hidden">${visual(slug, cat, 510, 630)}</div>${visualCredit(slug, cat)}</div>
   </div>`;
   job("og-" + name, html, `src/assets/og/${name}.png`, 1200, 630);
 }
@@ -80,7 +96,7 @@ for (const g of guides) og("g-" + g.slug, { eyebrow: g.eyebrow, title: esc(g.tit
 // ---------------------------------------------------------------- Pinterest 1000x1500
 function pin(name, { kicker, title, list = [], foot, slug, cat }) {
   const html = `<div style="width:1000px;height:1500px;background:#FFFBF8;position:relative;overflow:hidden;display:flex;flex-direction:column">
-  <div style="height:760px;margin:44px 44px 0;border-radius:20px;overflow:hidden">${art(slug, cat, 912, 760).replace('width="912" height="760"', 'width="912" height="760"')}</div>
+  <div style="height:760px;margin:44px 44px 0;border-radius:20px;overflow:hidden;position:relative">${visual(slug, cat, 912, 760)}${visualCredit(slug, cat)}</div>
   <div style="padding:46px 70px 0;flex:1;display:flex;flex-direction:column">
     <div style="font:600 22px IN;letter-spacing:.24em;text-transform:uppercase;color:#5E7356">${esc(kicker)}</div>
     <div class="serif" style="font-size:${title.length > 44 ? 66 : 80}px;line-height:1.04;font-weight:500;margin-top:16px">${title}</div>

@@ -53,6 +53,21 @@ const outUrl = (url, slug) => {
     return u.toString();
   } catch { return url; }
 };
+// ---------- photos (free-license, credited; see src/data/photo-credits.json) ----------
+const PHOTOS = fs.existsSync(path.join(ROOT, "src/data/photo-credits.json")) ? JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/photo-credits.json"), "utf8")) : {};
+const photoSm = (key, fallback) => (PHOTOS[key] ? `/assets/photos/${key}-sm.webp` : fallback);
+// <img> for a photo key, falling back to the generated illustration when no photo exists.
+const pic = (key, fallback, { alt = "", eager = false, sizes = "(max-width: 620px) 100vw, 33vw", attrs = "" } = {}) => {
+  const p = PHOTOS[key];
+  if (!p) return `<img src="${fallback}" alt="${esc(alt)}" width="800" height="1000"${eager ? "" : ' loading="lazy"'}${attrs}>`;
+  return `<img src="/assets/photos/${key}-sm.webp" srcset="/assets/photos/${key}-sm.webp 720w, /assets/photos/${key}.webp ${p.w}w" sizes="${sizes}" alt="${esc(alt || p.alt)}" width="${p.w}" height="${p.h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"${attrs}>`;
+};
+const PHOTO_NOTES = { area: "This photo shows the surrounding area, not the venue itself.", operator: "Representative photo, not necessarily this company's aircraft." };
+const photoCredit = (key) => {
+  const p = PHOTOS[key];
+  if (!p) return "";
+  return `${esc(p.alt)}. ${p.note ? esc(PHOTO_NOTES[p.note]) + " " : ""}Photo: <a href="${esc(p.source)}" rel="nofollow noopener" target="_blank">${esc(p.creator || "unknown")}</a>, <a href="${esc(p.licenseUrl)}" rel="license nofollow noopener" target="_blank">${esc(p.license)}</a>.`;
+};
 const ogFor = (name) => (fs.existsSync(path.join(ROOT, "src/assets/og", name + ".png")) ? `/assets/og/${name}.png` : "/assets/og/default.png");
 const budgetBand = (n) => (n == null ? "quote" : n < 1000 ? "1" : n < 3000 ? "2" : n < 10000 ? "3" : "4");
 const BAND_LABEL = { 1: "Under $1,000", 2: "$1,000–$2,999", 3: "$3,000–$9,999", 4: "$10,000+", quote: "Custom quote" };
@@ -156,7 +171,7 @@ function venueCard(v) {
   return `<article class="vcard" data-venue data-cat="${v.category}" data-setting="${esc((v.setting || "").toLowerCase())}" data-budget="${budgetBand(v.priceFrom)}" data-search="${esc(search)}">
   ${v.status === "partner" ? `<span class="badge">Partner</span>` : v.featured ? `<span class="badge">Featured</span>` : ""}
   ${saveBtn(v)}
-  <div class="img"><img src="/assets/art/${v.slug}.svg" alt="" width="800" height="1000" loading="lazy"></div>
+  <div class="img">${pic(v.slug, `/assets/art/${v.slug}.svg`)}</div>
   <div class="body">
     <span class="tag sage" style="align-self:flex-start">${esc(c.name)}</span>
     <h3><a href="/venues/${v.slug}/">${esc(v.name)}</a></h3>
@@ -167,7 +182,7 @@ function venueCard(v) {
 
 function picks(slugs, venues) {
   const list = slugs.map((s) => venues.find((v) => v.slug === s)).filter(Boolean);
-  return `<div class="picks">${list.map((v) => `<a class="pick" href="/venues/${v.slug}/"><img src="/assets/art/${v.slug}.svg" alt="" width="56" height="70" loading="lazy"><div><strong>${esc(v.name)}</strong><span>${v.priceFrom ? "From " + money(v.priceFrom) : "Custom quote"}</span></div></a>`).join("")}</div>`;
+  return `<div class="picks">${list.map((v) => `<a class="pick" href="/venues/${v.slug}/"><img src="${photoSm(v.slug, `/assets/art/${v.slug}.svg`)}" alt="" width="56" height="70" loading="lazy"><div><strong>${esc(v.name)}</strong><span>${v.priceFrom ? "From " + money(v.priceFrom) : "Custom quote"}</span></div></a>`).join("")}</div>`;
 }
 
 // ---------- layout ----------
@@ -233,7 +248,7 @@ ${body}
     </div>
     <div><h2 class="foot-h">Venues</h2><ul>${CATEGORIES.map((c) => `<li><a href="/venues/category/${c.slug}/">${esc(c.name)}</a></li>`).join("")}</ul></div>
     <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li></ul></div>
-    <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li></ul></div>
+    <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li><li><a href="/photo-credits/">Photo credits</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent. Not owned by any venue.</span><span>Some links earn us a commission at no cost to you.</span></div>
 </div></footer>
@@ -283,7 +298,7 @@ async function main() {
   const priced = venues.filter((v) => v.priceFrom);
   const priceMin = Math.min(...priced.map((v) => v.priceFrom)), priceMax = Math.max(...priced.map((v) => v.priceFrom));
   const sortedByPrice = [...venues].sort((a, b) => (a.priceFrom ?? 1e9) - (b.priceFrom ?? 1e9));
-  const rotation = venues.map((v) => ({ name: v.name, bestFor: v.bestFor, meta: `${catBy[v.category].name} · ${v.area}${v.priceFrom ? " · from " + money(v.priceFrom) : ""}`, url: `/venues/${v.slug}/`, img: `/assets/art/${v.slug}.svg`, featured: !!v.featured }));
+  const rotation = venues.map((v) => ({ name: v.name, bestFor: v.bestFor, meta: `${catBy[v.category].name} · ${v.area}${v.priceFrom ? " · from " + money(v.priceFrom) : ""}`, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`), featured: !!v.featured }));
   const week = Math.floor((NOW - new Date(2026, 0, 5)) / 6048e5);
   const featPool = venues.filter((v) => v.featured);
   const votw = (featPool.length ? featPool : venues)[((week % (featPool.length || venues.length)) + (featPool.length || venues.length)) % (featPool.length || venues.length)];
@@ -310,21 +325,21 @@ async function main() {
     ${searchExamples(3)}
   </div>
   <div class="arches" aria-hidden="true">
-    <div class="a a1"><img src="/assets/art/the-neon-museum.svg" alt="" width="800" height="1000"></div>
-    <div class="a a2"><img src="/assets/art/valley-of-fire-state-park.svg" alt="" width="800" height="1000"></div>
-    <div class="a a3"><img src="/assets/art/strat-chapel-in-the-clouds.svg" alt="" width="800" height="1000"></div>
+    <div class="a a1">${pic("hero-1", "/assets/art/the-neon-museum.svg", { eager: true, sizes: "(max-width: 940px) 55vw, 28vw" })}</div>
+    <div class="a a2">${pic("hero-2", "/assets/art/valley-of-fire-state-park.svg", { eager: true, sizes: "(max-width: 940px) 45vw, 22vw" })}</div>
+    <div class="a a3">${pic("hero-3", "/assets/art/strat-chapel-in-the-clouds.svg", { eager: true, sizes: "(max-width: 940px) 45vw, 22vw" })}</div>
     <div class="hero-badge"><strong>$102</strong>License fee. No waiting period. Open until midnight, every day.</div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="section-head"><div><span class="eyebrow">Six ways to say I do</span><h2>Pick your <em>kind</em> of unforgettable</h2></div><a class="btn btn-ghost btn-sm" href="/venues/">See all ${venues.length} venues</a></div>
-  <div class="grid-3">${CATEGORIES.map((c) => `<a class="cat" href="/venues/category/${c.slug}/"><img src="/assets/art/cat-${c.slug}.svg" alt="" width="800" height="1000" loading="lazy"><div class="cat-txt"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><span class="n">${venues.filter((v) => v.category === c.slug).length} venues →</span></div></a>`).join("")}</div>
+  <div class="grid-3">${CATEGORIES.map((c) => `<a class="cat" href="/venues/category/${c.slug}/">${pic("cat-" + c.slug, `/assets/art/cat-${c.slug}.svg`)}<div class="cat-txt"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><span class="n">${venues.filter((v) => v.category === c.slug).length} venues →</span></div></a>`).join("")}</div>
 </div></section>
 
 <section class="band-blush"><div class="wrap">
   <div class="grid-2" style="align-items:center" data-rotation='${esc(JSON.stringify(rotation))}'>
-    <a data-rot-link href="/venues/${votw.slug}/" class="cat" style="max-width:420px"><img data-rot-img src="/assets/art/${votw.slug}.svg" alt="" width="800" height="1000" loading="lazy"></a>
+    <a data-rot-link href="/venues/${votw.slug}/" class="cat" style="max-width:420px"><img data-rot-img src="${photoSm(votw.slug, `/assets/art/${votw.slug}.svg`)}" alt="" width="800" height="1000" loading="lazy"></a>
     <div><span class="eyebrow">Venue of the week</span><h2 class="mt0" data-rot-name>${esc(votw.name)}</h2>
       <p class="small" data-rot-meta>${esc(catBy[votw.category].name)} · ${esc(votw.area)}${votw.priceFrom ? " · from " + money(votw.priceFrom) : ""}</p>
       <p class="lede" data-rot-blurb>${esc(votw.bestFor)}</p>
@@ -419,7 +434,7 @@ async function main() {
   ${crumbs([["Home", "/"], ["Venues", "/venues/"], [c.name, ""]])}
   <div class="grid-2" style="align-items:center;margin-bottom:40px">
     <div><span class="eyebrow">${list.length} venues</span><h1>${esc(c.name)} <em>weddings</em> in Las Vegas</h1><p class="lede">${esc(c.blurb)}</p></div>
-    <div class="cat" style="width:100%;max-width:340px;justify-self:end;aspect-ratio:4/4.4"><img src="/assets/art/cat-${c.slug}.svg" alt="" width="800" height="1000"></div>
+    <div class="cat" style="width:100%;max-width:340px;justify-self:end;aspect-ratio:4/4.4">${pic("cat-" + c.slug, `/assets/art/cat-${c.slug}.svg`, { eager: true, sizes: "340px" })}</div>${PHOTOS["cat-" + c.slug] ? `<p class="photo-credit" style="max-width:340px;justify-self:end">${photoCredit("cat-" + c.slug)}</p>` : ""}
   </div>
   <div class="prose narrow" style="margin-bottom:34px"><p>${c.intro}</p></div>
   <h2 class="mt0">${list.length} ${esc(lower)} venues</h2>
@@ -489,7 +504,7 @@ async function main() {
     </div>
 <p class="small">Prices change, so always confirm directly with the venue.</p>
   </div>
-  <div class="art"><img src="/assets/art/${v.slug}.svg" alt="Illustration for ${esc(v.name)}" width="800" height="1000"></div>
+  <figure class="art-fig"><div class="art">${pic(v.slug, `/assets/art/${v.slug}.svg`, { alt: PHOTOS[v.slug] ? "" : "Illustration for " + v.name, eager: true, sizes: "(max-width: 940px) 100vw, 560px" })}</div>${PHOTOS[v.slug] ? `<figcaption class="photo-credit">${photoCredit(v.slug)}</figcaption>` : ""}</figure>
 </div></section>
 <section style="padding-top:40px"><div class="wrap vlayout">
   <div class="prose">
@@ -749,7 +764,7 @@ async function main() {
     built: ISO,
     cats: Object.fromEntries(CATEGORIES.map((c) => [c.slug, c.name])),
     climate: CLIMATE.map(([m, hi, lo]) => [["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].indexOf(m)], hi, lo, verdict(hi)]),
-    venues: venues.map((v) => ({ name: v.name, url: `/venues/${v.slug}/`, img: `/assets/art/${v.slug}.svg`, cat: catBy[v.category].name, catSlug: v.category, area: v.area, drive: v.drive || "", setting: v.setting || "", price: v.priceFrom ?? null, priceLabel: v.priceLabel || "", guests: v.guestMax ?? null, vibe: v.vibe || [], bestFor: v.bestFor || "", alias: ALIASES[v.slug] || [], checkedText: fmtDate(v.checked), text: [v.description, ...(v.facts || []), ...(v.tips || [])].join(" ") })),
+    venues: venues.map((v) => ({ name: v.name, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`), cat: catBy[v.category].name, catSlug: v.category, area: v.area, drive: v.drive || "", setting: v.setting || "", price: v.priceFrom ?? null, priceLabel: v.priceLabel || "", guests: v.guestMax ?? null, vibe: v.vibe || [], bestFor: v.bestFor || "", alias: ALIASES[v.slug] || [], checkedText: fmtDate(v.checked), text: [v.description, ...(v.facts || []), ...(v.tips || [])].join(" ") })),
     faqs, sections,
     pages: [
       ...guides.map((g) => ({ kind: "Guide", title: g.title, url: `/guides/${g.slug}/`, text: g.metaDescription || g.description, kw: g.nav + " " + g.eyebrow })),
@@ -806,6 +821,11 @@ async function main() {
 <p>Email: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a></p>
 <p>Represent a venue? <a href="/for-venues/">Claim your listing here</a>, which is the fastest way to update your details.</p>
 <div class="note">We're a guide, not a booking agency, so we can't book venues or issue marriage licenses. For licenses, contact the Clark County Clerk directly.</div>`);
+  simple("/photo-credits/", "Photo Credits", "Credits and licenses for the free-license photos used on Unique Vegas Weddings.", `
+<p>The photos on this site are free-license images shared by their photographers under Creative Commons licenses or released to the public domain. We found them through <a href="https://openverse.org/" rel="nofollow noopener" target="_blank">Openverse</a>. Thank you to every photographer below.</p>
+<p>All photos were resized and cropped to fit the layout. No other changes were made. Venue logos and names that appear in photos belong to their owners, and their appearance doesn't mean the venue endorses this site.</p>
+<p>Is one of these yours and you'd like it credited differently or removed? <a href="/contact/">Tell us</a> and we'll fix it within a week.</p>
+<ul class="credits">${Object.entries(PHOTOS).filter(([k]) => !/^hero-/.test(k)).map(([k, p]) => `<li><strong>${esc(p.alt)}</strong>${p.note ? ` <span class="small">(${esc(PHOTO_NOTES[p.note])})</span>` : ""}<br><span class="small">“${esc(p.title)}” by ${p.creatorUrl ? `<a href="${esc(p.creatorUrl)}" rel="nofollow noopener" target="_blank">${esc(p.creator)}</a>` : esc(p.creator || "unknown")} · <a href="${esc(p.source)}" rel="nofollow noopener" target="_blank">source</a> · <a href="${esc(p.licenseUrl)}" rel="license nofollow noopener" target="_blank">${esc(p.license)}</a></span></li>`).join("")}</ul>`);
   simple("/disclosure/", "Affiliate & Advertising Disclosure", "How Unique Vegas Weddings makes money: affiliate links, labeled paid venue listings, our own printable planner and display advertising.", `
 <p>Unique Vegas Weddings is free to use. We earn money in a few ways, and we want you to know exactly how:</p>
 <ul class="checklist"><li><strong>Affiliate links.</strong> Some links (for example Amazon, Viator and hotel booking partners) earn us a commission if you buy, at no extra cost to you. As an Amazon Associate we earn from qualifying purchases.</li><li><strong>Paid listings.</strong> Venues can pay for Featured or Spotlight placement. These are always labeled. Paid status never changes the facts we publish.</li><li><strong>Digital products.</strong> We sell our own printable planner.</li><li><strong>Advertising.</strong> Some pages may show display ads from third-party networks.</li></ul>

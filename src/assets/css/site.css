@@ -236,7 +236,7 @@ table.data td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .mini span { font-size: .9rem; color: var(--ink-soft); }
 .picks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0 26px; }
 .pick { display: flex; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px; text-decoration: none; color: var(--ink); }
-.pick img { width: 56px; height: 70px; object-fit: cover; border-radius: 40px 40px 8px 8px; flex-shrink: 0; }
+.pick img { width: 56px; height: 70px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
 .pick strong { font-size: .92rem; display: block; line-height: 1.3; }
 .pick span { font-size: .78rem; color: var(--ink-soft); }
 @media (max-width: 720px) { .picks { grid-template-columns: 1fr; } }
@@ -351,3 +351,11 @@ table.data td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 [hidden] { display: none !important; }
 @media (max-width: 600px) { :root { --arch: 16px; } }
 @media (max-width: 600px) { .hero-badge { left: 10px; bottom: 10px; max-width: 170px; padding: 10px 12px; font-size: .76rem; } }
+
+/* ---------- photos ---------- */
+.vcard .img img, .cat img, .vhero .art img, .arches .a img { object-fit: cover; }
+.art-fig { margin: 0; }
+.photo-credit { font-size: .74rem; line-height: 1.45; color: var(--ink-soft); margin: 8px 0 0; }
+.photo-credit a { color: var(--ink-soft); }
+.credits { list-style: none; padding: 0; display: grid; gap: 14px; }
+.credits li { padding-bottom: 12px; border-bottom: 1px solid var(--line); }

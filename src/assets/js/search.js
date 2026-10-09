@@ -237,7 +237,7 @@
     return c;
   }
   function venueCard(v, p) {
-    return '<article class="vcard"><div class="img"><img src="' + v.img + '" alt="" width="800" height="1000" loading="lazy"></div><div class="body">' +
+    return '<article class="vcard"><div class="img"><img src="' + v.img + '" alt="" width="800" height="600" loading="lazy"></div><div class="body">' +
       '<span class="tag sage" style="align-self:flex-start">' + esc(v.cat) + '</span><h3><a href="' + v.url + '">' + esc(v.name) + '</a></h3>' +
       '<div class="meta">' + esc(v.area) + (v.setting ? " · " + esc(v.setting) : "") + (v.guests ? " · up to " + v.guests + " guests" : (p && p.guests != null ? " · guest limit not published" : "")) + '</div>' +
       '<div class="price">' + (v.price != null ? "<span>From</span><strong>" + money(v.price) + "</strong>" : "<span>Pricing</span><strong>Custom quote</strong>") + '</div></div></article>';

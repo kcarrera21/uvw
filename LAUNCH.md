@@ -118,6 +118,12 @@ What the site can't do for itself: earn links and mentions. AI assistants and Go
 ## Adding a venue (no code)
 Use the Google Sheet route (`docs/venue-sheet-template.csv` shows the columns), or copy any venue block in `src/data/venues.mjs`. Rule: only original copy and facts from the venue's official site. No scraped text or photos.
 
+## Photos
+Venue, category and homepage photos are free-license images (Creative Commons BY / BY-SA, CC0 or public domain) found through Openverse, saved in `src/assets/photos/`. Each photo's photographer, source and license is in `src/data/photo-credits.json`, shown under the photo on venue pages and listed at `/photo-credits/`. Keep the credits: they're the condition of using the photos for free.
+- Four photos show the area rather than the venue itself (Chapel of the Flowers, Viva Las Vegas, SAHARA, and the two helicopter operators use representative shots). Their captions say so.
+- When a venue sends its own photos (with permission in writing), save them as `src/assets/photos/<venue-slug>.webp` and `<venue-slug>-sm.webp` and update its entry in `photo-credits.json`.
+- A venue with no photo entry falls back to its generated illustration.
+
 ## Rebuilding creatives (optional)
 Changed a venue or the planner? `npm run creatives` regenerates OG images, pins, icons and PDFs. Needs Python Playwright.
 
