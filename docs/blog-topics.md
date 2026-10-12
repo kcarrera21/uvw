@@ -4,7 +4,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 
 ## Timely (next few months)
 - [x] Halloween 2026 wedding in Las Vegas (10/31/26 is a Saturday). Published 2026-10-11
-- [ ] Día de los Muertos–inspired wedding ideas in Las Vegas (early Nov)
+- [x] Día de los Muertos–inspired wedding ideas in Las Vegas (early Nov). Published 2026-10-12
 - [ ] Getting married over Veterans Day weekend in Las Vegas
 - [ ] Valley of Fire's Dec 1–14 closure: what desert couples should book instead
 - [ ] A Thanksgiving week elopement in Las Vegas: what's open, what to book
