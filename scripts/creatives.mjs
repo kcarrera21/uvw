@@ -46,8 +46,10 @@ function job(name, html, out, w, h, type = "png") {
 
 // Free-license photo for a slug when we have one (see src/data/photo-credits.json); otherwise the illustration.
 const PHOTOS = fs.existsSync(path.join(ROOT, "src/data/photo-credits.json")) ? JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/photo-credits.json"), "utf8")) : {};
-const PIN_PHOTO = { "pin-license": "little-church-of-the-west", "pin-cost": "bellagio", "pin-court": "welcome-to-fabulous-las-vegas-sign", "pin-season": "hero-2", "pin-elope": "hero-1", "pin-desert": "valley-of-fire-state-park", "pin-venues": "high-roller-wheel", "pin-drive": "tunnel-of-love-drive-thru", "pin-heli": "papillon-helicopter-weddings", "cat-classic-chapels": "cat-classic-chapels" };
-const photoKey = (slug, cat) => (PHOTOS[slug] ? slug : PIN_PHOTO[slug] || (PHOTOS["cat-" + cat] ? "cat-" + cat : null));
+const PIN_PHOTO = { "pin-license": "little-church-of-the-west", "pin-cost": "bellagio", "pin-court": "welcome-to-fabulous-las-vegas-sign", "pin-season": "hero-2", "pin-elope": "hero-1", "pin-desert": "valley-of-fire-state-park", "pin-venues": "high-roller-wheel", "pin-drive": "tunnel-of-love-drive-thru", "pin-heli": "cat-sky-high", "cat-classic-chapels": "cat-classic-chapels" };
+// A venue never borrows another place's photo: no exact match means its illustration.
+const VENUE_SLUGS = new Set(venues.map((v) => v.slug));
+const photoKey = (slug, cat) => (PHOTOS[slug] ? slug : VENUE_SLUGS.has(slug) ? null : PIN_PHOTO[slug] || (PHOTOS["cat-" + cat] ? "cat-" + cat : null));
 const visual = (slug, cat, w, h) => {
   const key = photoKey(slug, cat);
   if (key && PHOTOS[key]) return `<img src="file://${path.join(ROOT, "src/assets/photos", key + ".webp")}" style="display:block;width:${w}px;height:${h}px;object-fit:cover">`;

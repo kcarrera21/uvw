@@ -107,30 +107,6 @@
   "w": 1024,
   "h": 640
  },
- "chapel-of-the-flowers": {
-  "alt": "Vintage wedding chapel and motel signs on Las Vegas Boulevard",
-  "note": "area",
-  "title": "Las Vegas wedding chapel old",
-  "creator": "Carol M Highsmith",
-  "creatorUrl": null,
-  "license": "CC0",
-  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-  "source": "https://www.rawpixel.com/image/3089157/free-photo-image-motel-casino-nevada",
-  "w": 1024,
-  "h": 833
- },
- "viva-las-vegas-wedding-chapel": {
-  "alt": "Las Vegas Boulevard at night",
-  "note": "area",
-  "title": "Las Vegas Strip at Night",
-  "creator": "holidaypointau",
-  "creatorUrl": "https://www.flickr.com/photos/26071009@N04",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
-  "source": "https://www.flickr.com/photos/26071009@N04/8133584608",
-  "w": 1024,
-  "h": 683
- },
  "strat-chapel-in-the-clouds": {
   "alt": "The top of The STRAT tower above the valley",
   "note": "",
@@ -155,42 +131,6 @@
   "w": 1024,
   "h": 768
  },
- "eiffel-tower-paris-las-vegas": {
-  "alt": "The view down the Strip from the Eiffel Tower at Paris Las Vegas",
-  "note": "",
-  "title": "View down Strip from Paris Las Vegas Eiffel Tower #throughglass",
-  "creator": "brownpau",
-  "creatorUrl": "https://www.flickr.com/photos/44124483743@N01",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
-  "source": "https://www.flickr.com/photos/44124483743@N01/14859896543",
-  "w": 1024,
-  "h": 752
- },
- "maverick-helicopters-weddings": {
-  "alt": "A helicopter landed at Grand Canyon West",
-  "note": "operator",
-  "title": "Grand Canyon Helicopter Grand Canyon West rim",
-  "creator": "jamiejohndavies",
-  "creatorUrl": "https://www.flickr.com/photos/8374005@N02",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
-  "source": "https://www.flickr.com/photos/8374005@N02/3519350026",
-  "w": 1023,
-  "h": 685
- },
- "papillon-helicopter-weddings": {
-  "alt": "The Grand Canyon from the air",
-  "note": "operator",
-  "title": "Grand Canyon DEIS Aerial: Colorado River, Geikie Peak",
-  "creator": "Grand Canyon NPS",
-  "creatorUrl": "https://www.flickr.com/photos/50693818@N08",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
-  "source": "https://www.flickr.com/photos/50693818@N08/5477155394",
-  "w": 1023,
-  "h": 680
- },
  "valley-of-fire-state-park": {
   "alt": "The road through Valley of Fire's red sandstone",
   "note": "",
@@ -214,18 +154,6 @@
   "source": "https://www.flickr.com/photos/8928507@N02/3869432544",
   "w": 1024,
   "h": 683
- },
- "the-mob-museum": {
-  "alt": "Downtown Las Vegas, with the Mob Museum and Fremont Street",
-  "note": "",
-  "title": "Nevada - Las Vegas: Downtown with Fremont Street Experience and The Mob Museum",
-  "creator": "Traveller-Reini",
-  "creatorUrl": "https://www.flickr.com/photos/129472585@N03",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "source": "https://www.flickr.com/photos/129472585@N03/49633811971",
-  "w": 1024,
-  "h": 576
  },
  "area15": {
   "alt": "AREA15's entrance and outdoor sculpture",
@@ -260,18 +188,6 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
   "source": "https://www.flickr.com/photos/97402086@N00/11868105425",
-  "w": 1024,
-  "h": 683
- },
- "sahara-las-vegas": {
-  "alt": "The Las Vegas Strip at night",
-  "note": "area",
-  "title": "Las Vegas strip at night, Nevada",
-  "creator": "mattk1979",
-  "creatorUrl": "https://www.flickr.com/photos/24879135@N04",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "source": "https://www.flickr.com/photos/24879135@N04/43393619244",
   "w": 1024,
   "h": 683
  },
