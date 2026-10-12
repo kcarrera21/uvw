@@ -1,6 +1,6 @@
-# Daily blog playbook
+# Daily blog playbook (Off-Script)
 
-One new post goes live on uniquevegasweddings.com every day. This file is the standing brief for whoever writes it (usually the scheduled Claude task). Topic queue: `docs/blog-topics.md`.
+The blog is called **Off-Script** (from the site tagline, "Vegas weddings, off-script"). Call it that in copy, never "the blog" in headings. One new post goes live on uniquevegasweddings.com every day. This file is the standing brief for whoever writes it (usually the scheduled Claude task). Topic queue: `docs/blog-topics.md`.
 
 ## Where posts live
 - One file per post: `src/content/blog/YYYY-MM-DD-slug.mjs`. Copy the newest post's structure exactly (fields: slug, date, category, eyebrow, tags, guides, seoTitle, metaDescription, title, description, answer, readMins, body, faq, sources).

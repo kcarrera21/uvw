@@ -120,8 +120,8 @@ What the site can't do for itself: earn links and mentions. AI assistants and Go
 ## Adding a venue (no code)
 Use the Google Sheet route (`docs/venue-sheet-template.csv` shows the columns), or copy any venue block in `src/data/venues.mjs`. Rule: only original copy and facts from the venue's official site. No scraped text or photos.
 
-## Daily blog
-A new post publishes every morning at `/blog/` (scheduled Claude task, about 6 a.m. Pacific). Posts live in `src/content/blog/`, one file each. The rules every post follows are in `docs/blog-playbook.md`, and the topic queue is `docs/blog-topics.md`: add, reorder or delete topics there to steer what gets written. Each post shows on the homepage, in search, the RSS feed, the sitemap and `llms.txt` automatically.
+## Daily blog: Off-Script
+A new post publishes every morning in Off-Script, the site's blog, at `/blog/` (scheduled Claude task, about 6 a.m. Pacific). Posts live in `src/content/blog/`, one file each. The rules every post follows are in `docs/blog-playbook.md`, and the topic queue is `docs/blog-topics.md`: add, reorder or delete topics there to steer what gets written. Each post shows on the homepage, in search, the RSS feed, the sitemap and `llms.txt` automatically.
 
 ## Photos
 Venue, category and homepage photos are free-license images (Creative Commons BY / BY-SA, CC0 or public domain) found through Openverse, saved in `src/assets/photos/`. Each photo's photographer, source and license is in `src/data/photo-credits.json`, shown under the photo on venue pages and listed at `/photo-credits/`. Keep the credits: they're the condition of using the photos for free.

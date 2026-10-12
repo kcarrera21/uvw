@@ -193,7 +193,7 @@ function picks(slugs, venues) {
 
 // ---------- layout ----------
 const NAV = [
-  ["/venues/", "Venues"], ["/guides/", "Guides"], ["/blog/", "Blog"], ["/lucky-wedding-dates/", "Lucky dates"], ["/planner/", "Planner"], ["/for-venues/", "For venues"],
+  ["/venues/", "Venues"], ["/guides/", "Guides"], ["/blog/", "Off-Script"], ["/lucky-wedding-dates/", "Lucky dates"], ["/planner/", "Planner"], ["/for-venues/", "For venues"],
 ];
 function layout({ path: p, title, seoTitle, description, body, og = "default", schema = [], noindex = false, type = "website", modified, scripts = [] }) {
   const url = C.domain + p;
@@ -300,7 +300,7 @@ async function main() {
 
   const sitemap = [];
   const page = (p, opts) => { const modified = opts.modified || FACTS_CHECKED; write(p === "/" ? "index.html" : p.replace(/^\//, "") + "index.html", layout({ path: p, ...opts, modified })); if (!opts.noindex) sitemap.push([p, modified]); };
-  const postCard = (b) => `<a class="mini" href="/blog/${b.slug}/"><span class="tag sage">${esc(b.eyebrow || "Blog")}</span><strong style="margin-top:10px">${esc(b.title)}</strong><span>${esc(b.metaDescription || b.description)}</span><span class="small" style="margin-top:8px"><time datetime="${b.date}">${fmtDate(b.date)}</time></span></a>`;
+  const postCard = (b) => `<a class="mini" href="/blog/${b.slug}/"><span class="tag sage">${esc(b.eyebrow || "Off-Script")}</span><strong style="margin-top:10px">${esc(b.title)}</strong><span>${esc(b.metaDescription || b.description)}</span><span class="small" style="margin-top:8px"><time datetime="${b.date}">${fmtDate(b.date)}</time></span></a>`;
   const maxChecked = (list) => list.reduce((m, v) => (v.checked > m ? v.checked : m), FACTS_CHECKED);
   const priced = venues.filter((v) => v.priceFrom);
   const priceMin = Math.min(...priced.map((v) => v.priceFrom)), priceMax = Math.max(...priced.map((v) => v.priceFrom));
@@ -366,7 +366,7 @@ async function main() {
 
 <section><div class="wrap">
   <div class="section-head"><div><span class="eyebrow">Plan it right</span><h2>Straight answers, <em>sourced</em></h2><p>Every fact comes from the Clark County Clerk, NOAA, the park agencies or the venue itself, and we link to the source.</p></div><a class="btn btn-ghost btn-sm" href="/guides/">All guides</a></div>
-  <div class="grid-3">${guides.slice(0, 6).map((g) => `<a class="mini" href="/guides/${g.slug}/"><span class="tag sage">${esc(g.eyebrow)}</span><strong style="margin-top:10px">${esc(g.title)}</strong><span>${esc(g.description)}</span></a>`).join("")}</div>${posts.length ? `<div class="section-head" style="margin-top:46px"><div><span class="eyebrow">From the blog</span><h2>New this <em>week</em></h2></div><a class="btn btn-ghost btn-sm" href="/blog/">All posts</a></div><div class="grid-3">${posts.slice(0, 3).map(postCard).join("")}</div>` : ""}
+  <div class="grid-3">${guides.slice(0, 6).map((g) => `<a class="mini" href="/guides/${g.slug}/"><span class="tag sage">${esc(g.eyebrow)}</span><strong style="margin-top:10px">${esc(g.title)}</strong><span>${esc(g.description)}</span></a>`).join("")}</div>${posts.length ? `<div class="section-head" style="margin-top:46px"><div><span class="eyebrow">The daily read</span><h2>New on <em>Off-Script</em></h2></div><a class="btn btn-ghost btn-sm" href="/blog/">Read Off-Script</a></div><div class="grid-3">${posts.slice(0, 3).map(postCard).join("")}</div>` : ""}
 </div></section>
 
 <section class="band-sage"><div class="wrap product">
@@ -603,12 +603,12 @@ async function main() {
     const og = b.category ? "cat-" + b.category : "guides";
     page(`/blog/${b.slug}/`, {
       title: b.title, seoTitle: b.seoTitle, description: b.metaDescription || b.description, og, type: "article", modified: b.updated || b.date,
-      schema: [crumbSchema([["Home", "/"], ["Blog", "/blog/"], [b.title, `/blog/${b.slug}/`]]),
+      schema: [crumbSchema([["Home", "/"], ["Off-Script", "/blog/"], [b.title, `/blog/${b.slug}/`]]),
         { "@context": "https://schema.org", "@type": "BlogPosting", headline: b.title, description: b.metaDescription || b.description, abstract: answer, datePublished: b.date, dateModified: b.updated || b.date, inLanguage: "en-US", author: orgRef, publisher: orgSchema, mainEntityOfPage: `${C.domain}/blog/${b.slug}/`, image: C.domain + ogFor(og), citation: (b.sources || []).filter((x) => x.u.startsWith("http")).map((x) => ({ "@type": "CreativeWork", name: x.t, url: x.u })) },
         ...(b.faq?.length ? [faqSchema(b.faq)] : [])],
       body: `<header class="article-hero"><div class="wrap"><div class="narrow">
-  ${crumbs([["Home", "/"], ["Blog", "/blog/"], [b.title, ""]])}
-  <span class="eyebrow">${esc(b.eyebrow || "Blog")}</span><h1>${esc(b.title)}</h1>
+  ${crumbs([["Home", "/"], ["Off-Script", "/blog/"], [b.title, ""]])}
+  <span class="eyebrow">${esc(b.eyebrow || "Off-Script")}</span><h1>${esc(b.title)}</h1>
   <div class="meta"><span>By the ${esc(C.siteName)} editors</span><span>Published <time datetime="${b.date}">${fmtDate(b.date)}</time></span>${b.updated ? `<span>Updated <time datetime="${b.updated}">${fmtDate(b.updated)}</time></span>` : ""}<span>${b.readMins} min read</span><span>${(b.sources || []).length} sources · <a href="/about/">how we fact-check</a></span></div>
 </div></div></header>
 <article class="article"><div class="wrap">
@@ -622,11 +622,11 @@ async function main() {
     });
   }
   page("/blog/", {
-    title: "Las Vegas Wedding Blog: Ideas, Dates & Planning Tips", og: "guides", modified: posts[0]?.date || ISO,
+    seoTitle: "Off-Script: Las Vegas Wedding Ideas, Dates & Tips", title: "Off-Script: the Unique Vegas Weddings blog", og: "guides", modified: posts[0]?.date || ISO,
     description: "New Las Vegas wedding ideas, date picks, venue spotlights and planning tips, with every fact linked to its source.",
-    schema: [crumbSchema([["Home", "/"], ["Blog", "/blog/"]]), { "@context": "https://schema.org", "@type": "Blog", name: `${C.siteName} Blog`, url: `${C.domain}/blog/`, publisher: orgRef, blogPost: posts.slice(0, 20).map((b) => ({ "@type": "BlogPosting", headline: b.title, url: `${C.domain}/blog/${b.slug}/`, datePublished: b.date })) }],
-    body: `<section style="padding-top:48px"><div class="wrap">${crumbs([["Home", "/"], ["Blog", ""]])}
-  <span class="eyebrow">Fresh every day</span><h1>The Vegas wedding <em>blog</em></h1><p class="lede narrow">Ideas, dates worth grabbing, venue spotlights and planning tips. Every fact links to its source.</p>
+    schema: [crumbSchema([["Home", "/"], ["Off-Script", "/blog/"]]), { "@context": "https://schema.org", "@type": "Blog", name: `Off-Script by ${C.siteName}`, url: `${C.domain}/blog/`, publisher: orgRef, blogPost: posts.slice(0, 20).map((b) => ({ "@type": "BlogPosting", headline: b.title, url: `${C.domain}/blog/${b.slug}/`, datePublished: b.date })) }],
+    body: `<section style="padding-top:48px"><div class="wrap">${crumbs([["Home", "/"], ["Off-Script", ""]])}
+  <span class="eyebrow">The daily read</span><h1><em>Off-Script</em></h1><p class="lede narrow">A new Las Vegas wedding idea every day: dates worth grabbing, venue spotlights and the planning details nobody tells you. Every fact links to its source.</p>
   <div class="grid-3" style="margin-top:30px">${posts.length ? posts.map(postCard).join("") : `<p>First post coming soon.</p>`}</div>
 </div></section>`,
   });
@@ -815,7 +815,7 @@ async function main() {
     venues: venues.map((v) => ({ name: v.name, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`), cat: catBy[v.category].name, catSlug: v.category, area: v.area, drive: v.drive || "", setting: v.setting || "", price: v.priceFrom ?? null, priceLabel: v.priceLabel || "", guests: v.guestMax ?? null, vibe: v.vibe || [], bestFor: v.bestFor || "", alias: ALIASES[v.slug] || [], checkedText: fmtDate(v.checked), text: [v.description, ...(v.facts || []), ...(v.tips || [])].join(" ") })),
     faqs, sections,
     pages: [
-      ...posts.map((b) => ({ kind: "Blog", title: b.title, url: `/blog/${b.slug}/`, text: b.metaDescription || b.description, kw: (b.tags || []).join(" ") })),
+      ...posts.map((b) => ({ kind: "Off-Script", title: b.title, url: `/blog/${b.slug}/`, text: b.metaDescription || b.description, kw: (b.tags || []).join(" ") })),
       ...guides.map((g) => ({ kind: "Guide", title: g.title, url: `/guides/${g.slug}/`, text: g.metaDescription || g.description, kw: g.nav + " " + g.eyebrow })),
       ...CATEGORIES.map((c) => ({ kind: "Venue category", title: `${c.name} wedding venues`, url: `/venues/category/${c.slug}/`, text: c.blurb })),
       { kind: "Tool", title: "Lucky wedding dates", url: "/lucky-wedding-dates/", text: "Upcoming palindrome, mirror and matching-number wedding dates, recalculated every week.", kw: "lucky special date palindrome numbers calendar" },
@@ -955,7 +955,7 @@ When citing, please link to the specific page and mention the "checked" date, be
 ${keyFacts.map((f) => `- ${f}`).join("\n")}
 
 ## Guides
-${guides.map((g) => `- [${g.title}](${C.domain}/guides/${g.slug}/): ${fillTokens(g.answer || g.description)}`).join("\n")}${posts.length ? `\n\n## Blog (newest first)\n${posts.slice(0, 30).map((b) => `- [${b.title}](${C.domain}/blog/${b.slug}/) (${b.date}): ${fillTokens(b.answer || b.description)}`).join("\n")}` : ""}
+${guides.map((g) => `- [${g.title}](${C.domain}/guides/${g.slug}/): ${fillTokens(g.answer || g.description)}`).join("\n")}${posts.length ? `\n\n## Off-Script blog (newest first)\n${posts.slice(0, 30).map((b) => `- [${b.title}](${C.domain}/blog/${b.slug}/) (${b.date}): ${fillTokens(b.answer || b.description)}`).join("\n")}` : ""}
 
 ## Venues
 ${venues.map((v) => `- [${v.name}](${C.domain}/venues/${v.slug}/): ${venueLine(v)}`).join("\n")}
