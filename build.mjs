@@ -11,6 +11,7 @@ import { config as C } from "./src/data/config.mjs";
 import { venues as baseVenues, CATEGORIES } from "./src/data/venues.mjs";
 import { guides } from "./src/content/guides.mjs";
 import { art, logoSVG, markSVG } from "./scripts/art.mjs";
+import { pathToFileURL } from "node:url";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(ROOT, "public");
@@ -18,6 +19,11 @@ const NOW = new Date(process.env.BUILD_DATE || Date.now());
 const ISO = NOW.toISOString().slice(0, 10);
 const YEAR = NOW.getFullYear();
 const FACTS_CHECKED = "2026-10-04";
+// Blog posts: one file per post in src/content/blog/, named YYYY-MM-DD-slug.mjs.
+// A post whose date is in the future stays hidden until a build runs on or after that date.
+const BLOG_DIR = path.join(ROOT, "src/content/blog");
+const allPosts = fs.existsSync(BLOG_DIR) ? (await Promise.all(fs.readdirSync(BLOG_DIR).filter((f) => /^\d{4}-\d{2}-\d{2}-.+\.mjs$/.test(f)).sort().map((f) => import(pathToFileURL(path.join(BLOG_DIR, f)).href)))).map((m) => m.default) : [];
+const posts = allPosts.filter((p) => p.date <= ISO).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.slug < b.slug ? -1 : 1));
 
 // ---------- lucky engine (shared with browser) ----------
 const luckyCtx = {};
@@ -187,7 +193,7 @@ function picks(slugs, venues) {
 
 // ---------- layout ----------
 const NAV = [
-  ["/venues/", "Venues"], ["/guides/", "Guides"], ["/lucky-wedding-dates/", "Lucky dates"], ["/planner/", "Planner"], ["/for-venues/", "For venues"],
+  ["/venues/", "Venues"], ["/guides/", "Guides"], ["/blog/", "Blog"], ["/lucky-wedding-dates/", "Lucky dates"], ["/planner/", "Planner"], ["/for-venues/", "For venues"],
 ];
 function layout({ path: p, title, seoTitle, description, body, og = "default", schema = [], noindex = false, type = "website", modified, scripts = [] }) {
   const url = C.domain + p;
@@ -294,6 +300,7 @@ async function main() {
 
   const sitemap = [];
   const page = (p, opts) => { const modified = opts.modified || FACTS_CHECKED; write(p === "/" ? "index.html" : p.replace(/^\//, "") + "index.html", layout({ path: p, ...opts, modified })); if (!opts.noindex) sitemap.push([p, modified]); };
+  const postCard = (b) => `<a class="mini" href="/blog/${b.slug}/"><span class="tag sage">${esc(b.eyebrow || "Blog")}</span><strong style="margin-top:10px">${esc(b.title)}</strong><span>${esc(b.metaDescription || b.description)}</span><span class="small" style="margin-top:8px"><time datetime="${b.date}">${fmtDate(b.date)}</time></span></a>`;
   const maxChecked = (list) => list.reduce((m, v) => (v.checked > m ? v.checked : m), FACTS_CHECKED);
   const priced = venues.filter((v) => v.priceFrom);
   const priceMin = Math.min(...priced.map((v) => v.priceFrom)), priceMax = Math.max(...priced.map((v) => v.priceFrom));
@@ -359,7 +366,7 @@ async function main() {
 
 <section><div class="wrap">
   <div class="section-head"><div><span class="eyebrow">Plan it right</span><h2>Straight answers, <em>sourced</em></h2><p>Every fact comes from the Clark County Clerk, NOAA, the park agencies or the venue itself, and we link to the source.</p></div><a class="btn btn-ghost btn-sm" href="/guides/">All guides</a></div>
-  <div class="grid-3">${guides.slice(0, 6).map((g) => `<a class="mini" href="/guides/${g.slug}/"><span class="tag sage">${esc(g.eyebrow)}</span><strong style="margin-top:10px">${esc(g.title)}</strong><span>${esc(g.description)}</span></a>`).join("")}</div>
+  <div class="grid-3">${guides.slice(0, 6).map((g) => `<a class="mini" href="/guides/${g.slug}/"><span class="tag sage">${esc(g.eyebrow)}</span><strong style="margin-top:10px">${esc(g.title)}</strong><span>${esc(g.description)}</span></a>`).join("")}</div>${posts.length ? `<div class="section-head" style="margin-top:46px"><div><span class="eyebrow">From the blog</span><h2>New this <em>week</em></h2></div><a class="btn btn-ghost btn-sm" href="/blog/">All posts</a></div><div class="grid-3">${posts.slice(0, 3).map(postCard).join("")}</div>` : ""}
 </div></section>
 
 <section class="band-sage"><div class="wrap product">
@@ -583,6 +590,47 @@ async function main() {
 </div></section>`,
   });
 
+
+  // ================= BLOG =================
+  for (const b of posts) {
+    const body = fillTokens(b.body);
+    let n = 0; const toc = [];
+    const withIds = body.replace(/<h2>(.*?)<\/h2>/g, (_, t) => { const id = "s" + ++n; toc.push([id, t.replace(/<[^>]+>/g, "")]); return `<h2 id="${id}">${t}</h2>`; });
+    const answer = fillTokens(b.answer || "");
+    const bi = posts.indexOf(b);
+    const more = posts.filter((x) => x.slug !== b.slug).slice(0, 3);
+    const relGuides = (b.guides || []).map((sl) => guides.find((g) => g.slug === sl)).filter(Boolean);
+    const og = b.category ? "cat-" + b.category : "guides";
+    page(`/blog/${b.slug}/`, {
+      title: b.title, seoTitle: b.seoTitle, description: b.metaDescription || b.description, og, type: "article", modified: b.updated || b.date,
+      schema: [crumbSchema([["Home", "/"], ["Blog", "/blog/"], [b.title, `/blog/${b.slug}/`]]),
+        { "@context": "https://schema.org", "@type": "BlogPosting", headline: b.title, description: b.metaDescription || b.description, abstract: answer, datePublished: b.date, dateModified: b.updated || b.date, inLanguage: "en-US", author: orgRef, publisher: orgSchema, mainEntityOfPage: `${C.domain}/blog/${b.slug}/`, image: C.domain + ogFor(og), citation: (b.sources || []).filter((x) => x.u.startsWith("http")).map((x) => ({ "@type": "CreativeWork", name: x.t, url: x.u })) },
+        ...(b.faq?.length ? [faqSchema(b.faq)] : [])],
+      body: `<header class="article-hero"><div class="wrap"><div class="narrow">
+  ${crumbs([["Home", "/"], ["Blog", "/blog/"], [b.title, ""]])}
+  <span class="eyebrow">${esc(b.eyebrow || "Blog")}</span><h1>${esc(b.title)}</h1>
+  <div class="meta"><span>By the ${esc(C.siteName)} editors</span><span>Published <time datetime="${b.date}">${fmtDate(b.date)}</time></span>${b.updated ? `<span>Updated <time datetime="${b.updated}">${fmtDate(b.updated)}</time></span>` : ""}<span>${b.readMins} min read</span><span>${(b.sources || []).length} sources · <a href="/about/">how we fact-check</a></span></div>
+</div></div></header>
+<article class="article"><div class="wrap">
+  <div class="prose">${answer ? `<div class="answer"><strong>Quick answer</strong><p>${esc(answer)}</p></div>` : ""}${withIds}
+    ${b.faq?.length ? `<h2 id="faq">Frequently asked questions</h2>${faqHtml(b.faq)}` : ""}
+    <h2>Keep planning</h2><ul class="checklist">${relGuides.map((r) => `<li><a href="/guides/${r.slug}/">${esc(r.title)}</a></li>`).join("")}${more.map((r) => `<li><a href="/blog/${r.slug}/">${esc(r.title)}</a></li>`).join("")}<li><a href="/venues/">Browse all ${venues.length} unique venues</a></li></ul>
+    ${(b.sources || []).length ? `<div class="sources"><strong>Sources</strong><ol>${b.sources.map((x) => `<li><a href="${x.u}" ${x.u.startsWith("http") ? 'rel="nofollow noopener" target="_blank"' : ""}>${esc(x.t)}</a></li>`).join("")}</ol></div>` : ""}
+  </div>
+  <aside class="toc"><nav aria-label="On this page"><strong style="display:block;margin-bottom:6px;color:var(--charcoal)">On this page</strong>${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join("")}</nav>${newsletterForm({ title: "Free checklist", sub: "The whole license and paperwork process on one printable page." })}</aside>
+</div></article>`,
+    });
+  }
+  page("/blog/", {
+    title: "Las Vegas Wedding Blog: Ideas, Dates & Planning Tips", og: "guides", modified: posts[0]?.date || ISO,
+    description: "New Las Vegas wedding ideas, date picks, venue spotlights and planning tips, with every fact linked to its source.",
+    schema: [crumbSchema([["Home", "/"], ["Blog", "/blog/"]]), { "@context": "https://schema.org", "@type": "Blog", name: `${C.siteName} Blog`, url: `${C.domain}/blog/`, publisher: orgRef, blogPost: posts.slice(0, 20).map((b) => ({ "@type": "BlogPosting", headline: b.title, url: `${C.domain}/blog/${b.slug}/`, datePublished: b.date })) }],
+    body: `<section style="padding-top:48px"><div class="wrap">${crumbs([["Home", "/"], ["Blog", ""]])}
+  <span class="eyebrow">Fresh every day</span><h1>The Vegas wedding <em>blog</em></h1><p class="lede narrow">Ideas, dates worth grabbing, venue spotlights and planning tips. Every fact links to its source.</p>
+  <div class="grid-3" style="margin-top:30px">${posts.length ? posts.map(postCard).join("") : `<p>First post coming soon.</p>`}</div>
+</div></section>`,
+  });
+
   // ================= LUCKY DATES =================
   const luckyItem = (a) => `<li class="lucky-item"><div class="lucky-date">${a.short}</div><div><strong>${a.long}</strong><div class="tags">${a.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div></div><div class="lucky-when"></div></li>`;
   const luckyHow = `<h2>How we pick them</h2>
@@ -767,6 +815,7 @@ async function main() {
     venues: venues.map((v) => ({ name: v.name, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`), cat: catBy[v.category].name, catSlug: v.category, area: v.area, drive: v.drive || "", setting: v.setting || "", price: v.priceFrom ?? null, priceLabel: v.priceLabel || "", guests: v.guestMax ?? null, vibe: v.vibe || [], bestFor: v.bestFor || "", alias: ALIASES[v.slug] || [], checkedText: fmtDate(v.checked), text: [v.description, ...(v.facts || []), ...(v.tips || [])].join(" ") })),
     faqs, sections,
     pages: [
+      ...posts.map((b) => ({ kind: "Blog", title: b.title, url: `/blog/${b.slug}/`, text: b.metaDescription || b.description, kw: (b.tags || []).join(" ") })),
       ...guides.map((g) => ({ kind: "Guide", title: g.title, url: `/guides/${g.slug}/`, text: g.metaDescription || g.description, kw: g.nav + " " + g.eyebrow })),
       ...CATEGORIES.map((c) => ({ kind: "Venue category", title: `${c.name} wedding venues`, url: `/venues/category/${c.slug}/`, text: c.blurb })),
       { kind: "Tool", title: "Lucky wedding dates", url: "/lucky-wedding-dates/", text: "Upcoming palindrome, mirror and matching-number wedding dates, recalculated every week.", kw: "lucky special date palindrome numbers calendar" },
@@ -906,7 +955,7 @@ When citing, please link to the specific page and mention the "checked" date, be
 ${keyFacts.map((f) => `- ${f}`).join("\n")}
 
 ## Guides
-${guides.map((g) => `- [${g.title}](${C.domain}/guides/${g.slug}/): ${fillTokens(g.answer || g.description)}`).join("\n")}
+${guides.map((g) => `- [${g.title}](${C.domain}/guides/${g.slug}/): ${fillTokens(g.answer || g.description)}`).join("\n")}${posts.length ? `\n\n## Blog (newest first)\n${posts.slice(0, 30).map((b) => `- [${b.title}](${C.domain}/blog/${b.slug}/) (${b.date}): ${fillTokens(b.answer || b.description)}`).join("\n")}` : ""}
 
 ## Venues
 ${venues.map((v) => `- [${v.name}](${C.domain}/venues/${v.slug}/): ${venueLine(v)}`).join("\n")}
@@ -944,6 +993,7 @@ ${CATEGORIES.map((c) => `- [${c.name}](${C.domain}/venues/category/${c.slug}/): 
     write(rel, `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved</title><link rel="canonical" href="${C.domain}${to}"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0; url=${to}"></head><body><p>This page has moved to <a href="${to}">${C.domain}${to}</a>.</p></body></html>`);
   }
   const feedItems = [
+    ...posts.map((b) => ({ t: b.title, u: `/blog/${b.slug}/`, d: b.metaDescription || b.description, date: b.date })),
     ...guides.map((g) => ({ t: g.title, u: `/guides/${g.slug}/`, d: g.metaDescription || g.description, date: g.updated || FACTS_CHECKED })),
     ...venues.map((v) => ({ t: `${v.name}: wedding venue guide`, u: `/venues/${v.slug}/`, d: v.bestFor, date: v.checked })),
     { t: `Lucky wedding dates ${YEAR + 1}`, u: `/lucky-wedding-dates/${YEAR + 1}/`, d: `Every special wedding date in ${YEAR + 1}.`, date: ISO },
