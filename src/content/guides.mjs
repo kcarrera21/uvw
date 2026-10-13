@@ -155,7 +155,7 @@ export const guides = [
 
 <h2>Is a civil ceremony right for you?</h2>
 <p>It's ideal if you want to be legally married quickly and affordably, and plan to celebrate somewhere more personal. Many couples do the civil ceremony for the legal part, then hold a <a href="/guides/legal-vs-symbolic-ceremony/">symbolic ceremony</a> at a venue that would be complicated or expensive to make "official," like a canyon floor, a ghost town or the top of a tower.</p>
-<p>Want something with more atmosphere for not much more money? Several <a href="/venues/category/classic-chapels/">classic chapels</a> publish ceremony prices from about $150.</p>
+<p>Want something with more atmosphere for not much more money? Several <a href="/venues/category/classic-chapels/">classic chapels</a> publish ceremony specials from $99, though officiant fees can be extra.</p>
 
 {{planner-cta}}
 `,
@@ -174,12 +174,12 @@ export const guides = [
   {
     slug: "las-vegas-wedding-cost",
     seoTitle: "Las Vegas Wedding Cost: Real Published Venue Prices",
-    metaDescription: "Published Las Vegas wedding prices by venue, from $150 chapel ceremonies to $15,500+ receptions, plus the license fee and the costs couples forget.",
+    metaDescription: "Published Las Vegas wedding prices by venue, from $99 chapel specials to $15,500+ receptions, plus the license fee and the costs couples forget.",
     answer: "Published starting prices at Las Vegas wedding venues in our directory range from {{price-min}} for a chapel ceremony to {{price-max}} or more for a full-production reception. Every couple also pays the $102 Clark County marriage license, and a county civil ceremony costs $77.75.",
     title: "How Much Does a Las Vegas Wedding Cost? Real Published Prices",
     nav: "Wedding cost",
     eyebrow: "Budget",
-    description: "Published prices from Las Vegas wedding venues, from $150 chapel ceremonies to $15,500+ immersive receptions, plus the fees couples forget to budget for.",
+    description: "Published prices from Las Vegas wedding venues, from $99 chapel specials to $15,500+ immersive receptions, plus the fees couples forget to budget for.",
     readMins: 6,
     hero: "cost",
     body: `
@@ -221,7 +221,7 @@ export const guides = [
 <p class="small">Prices change. Every venue page shows the date we last checked, and you should always confirm directly with the venue before booking.</p>
 `,
     faq: [
-      { q: "What is the cheapest way to get married in Las Vegas?", a: "A Clark County civil ceremony ($77.75 including the card fee) plus the $102 license. Several chapels publish ceremonies from about $150." },
+      { q: "What is the cheapest way to get married in Las Vegas?", a: "A Clark County civil ceremony ($77.75 including the card fee) plus the $102 license. Several chapels publish ceremony specials from $99, though officiant fees can be extra." },
       { q: "How much does a Neon Museum wedding cost?", a: "The Neon Museum publishes its daytime Sweetheart Wedding at $2,500 and the nighttime Stardust Wedding at $3,500 (checked October 2026)." },
     ],
     sources: [
@@ -323,7 +323,7 @@ export const guides = [
 <h2>Day 2: The wedding</h2>
 <p>Choose your adventure:</p>
 <div class="grid-3 mini-cards">
-  <a href="/venues/category/classic-chapels/" class="mini"><strong>Classic</strong><span>A chapel ceremony from about $150. In and out in an hour, Elvis optional.</span></a>
+  <a href="/venues/category/classic-chapels/" class="mini"><strong>Classic</strong><span>A chapel ceremony from about $99. In and out in an hour, Elvis optional.</span></a>
   <a href="/venues/category/desert-outdoors/" class="mini"><strong>Wild</strong><span>Red rock at Valley of Fire or Red Rock Canyon with a permitted planner.</span></a>
   <a href="/venues/category/sky-high/" class="mini"><strong>Sky high</strong><span>The STRAT, the High Roller or a helicopter over the Strip.</span></a>
 </div>

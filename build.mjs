@@ -809,6 +809,10 @@ async function main() {
     "venetian-gondola-weddings": ["venetian", "gondola"], "caesars-palace-weddings": ["caesars", "caesar's"], "spring-mountain-ranch-state-park": ["spring mountain"],
     "floyd-lamb-park": ["floyd lamb", "tule springs"], "lake-mead-cruises-desert-princess": ["lake mead", "desert princess", "paddle wheeler", "boat"], "welcome-to-fabulous-las-vegas-sign": ["welcome sign", "vegas sign", "las vegas sign"],
     "sahara-las-vegas": ["sahara", "azilo", "alexandria pool", "retro pool", "blanca penthouse", "casbar"],
+    "big-apple-coaster-wedding": ["roller coaster", "coaster", "new york new york", "new york-new york"], "punk-rock-museum": ["punk", "punk rock", "music museum"],
+    "lucky-little-wedding-chapel": ["lucky little"], "the-little-vegas-chapel": ["little vegas chapel"], "circa-legacy-club": ["circa", "rooftop", "legacy club"],
+    "vegas-balloon-rides": ["hot air balloon", "balloon"], "hilton-lake-las-vegas-chapel": ["lake las vegas", "over water", "hilton"],
+    "spillway-house-hoover-dam": ["hoover dam", "spillway"], "retreat-on-charleston-peak": ["mount charleston", "mt charleston", "mountain", "forest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];

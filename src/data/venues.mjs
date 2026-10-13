@@ -658,4 +658,209 @@ Ceremonies here run through chapel operators, since it's a public landmark with 
     ],
     url: "https://littlechurchofthewest.com/las-vegas-sign-wedding/", checked: "2026-10-04", status: "listed", featured: false,
   },
+  {
+    name: "The Big Apple Coaster at New York-New York", slug: "big-apple-coaster-wedding", category: "quirky-pop-culture",
+    area: "The Strip (south)", drive: "On the Strip", setting: "Indoor & outdoor",
+    vibe: ["Thrill ride", "Adrenaline", "Quirky", "Only in Vegas"],
+    priceFrom: null, priceLabel: null, guestMax: null,
+    facts: [
+      "New York-New York offers wedding ceremonies on The Big Apple Coaster. Coaster weddings are booked by phone at 702.740.6616.",
+      "The coaster tops 67 mph, with a 180-degree \"heartline\" twist and a 203-foot drop.",
+      "Riders must be at least 54 inches tall.",
+      "No wedding price is published. A standard ride ticket is $25.",
+    ],
+    bestFor: "Couples who'd rather scream their vows than whisper them.",
+    description: `Most couples hold hands down the aisle. Here you hold on for dear life. The Big Apple Coaster loops around the New York-New York skyline on the Strip, and the resort will build a ceremony around it.
+
+It's the most literal version of "ride or die" in Las Vegas. Expect a short, high-energy ceremony and a lot of photos of your faces mid-drop. Guests can watch from the ground, which is honestly the better seat.`,
+    tips: [
+      "Book by phone (702.740.6616). There's no online booking or published wedding price.",
+      "Everyone riding must be at least 54 inches tall, so check with any young ring bearers first.",
+      "Secure veils, hats and phones. The coaster tops 67 mph.",
+      "Plan the photos on the ground before or after. Mid-ride photos are a bonus, not the plan.",
+    ],
+    url: "https://newyorknewyork.mgmresorts.com/en/entertainment/the-big-apple-coaster-and-arcade.html", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "The Punk Rock Museum", slug: "punk-rock-museum", category: "quirky-pop-culture",
+    area: "Arts District edge (Western Ave.)", drive: "About 10 min from the Strip", setting: "Indoor",
+    vibe: ["Punk", "Music history", "Irreverent", "Elopement"],
+    priceFrom: 500, priceLabel: "Partners in Crime elopement", guestMax: 30,
+    facts: [
+      "The $500 Partners in Crime package is a quick, no-frills elopement in the museum's Gallery.",
+      "Till Death Do Us Punk ($2,700) includes one hour of private access to the museum's Chapel and Bar for up to 25 guests, with up to 5 more at $75 each.",
+      "Packages don't include an officiant, marriage license filing or a photographer.",
+      "For $1,000, couples can pick a punk from the museum's list to be their witness.",
+    ],
+    bestFor: "Couples whose first dance is a mosh pit.",
+    description: `The Punk Rock Museum is a love letter to a genre that never asked permission, and it'll marry you on the same terms. Elope in the Gallery for a few hundred dollars, or take over the museum's own Chapel and Bar for an hour with your crew.
+
+The best detail: you can pay for an actual punk from the museum's list to sign as your witness. That's a wedding story nobody else at brunch will have.`,
+    tips: [
+      "Bring your own officiant and photographer. Neither is included.",
+      "The Chapel package caps at 25 guests plus 5 add-ons, so trim the list early.",
+      "Ask which punks are on the witness list for your date before you pay for that add-on.",
+      "File your marriage license yourself after the ceremony. The museum doesn't do it.",
+    ],
+    url: "https://www.thepunkrockmuseum.com/get-married-at-the-museum", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "Lucky Little Wedding Chapel", slug: "lucky-little-wedding-chapel", category: "classic-chapels",
+    area: "Downtown / Fremont", drive: "10–15 min from the Strip", setting: "Indoor",
+    vibe: ["Budget", "Quick", "Classic chapel", "Downtown"],
+    priceFrom: 99, priceLabel: "Lucky Mini (couple only)", guestMax: 26,
+    facts: [
+      "The Lucky Mini package is listed at $99 for the couple only on the packages page. The homepage shows it at $129, so confirm the price when you book.",
+      "Packages work for legal weddings, vow renewals and commitment ceremonies.",
+      "The larger packages allow up to 26 guests.",
+      "The officiant's donation is a minimum of $60 and isn't included in package prices.",
+    ],
+    bestFor: "Couples who want a real chapel wedding for less than a nice dinner on the Strip.",
+    description: `Lucky Little is the downtown chapel for couples who want the classic Vegas chapel moment without the classic Vegas bill. The entry package is just the two of you, and the bigger packages fit a small crowd.
+
+It handles legal weddings, vow renewals and commitment ceremonies, so it works whether you're here to make it official or just to make it memorable.`,
+    tips: [
+      "Budget the officiant's donation separately. It's at least $60 on top of any package.",
+      "The site lists two different prices for the Lucky Mini ($99 and $129). Ask which applies before you pay.",
+      "Bringing guests? Check which package allows your headcount. The top tier holds 26.",
+    ],
+    url: "https://www.luckylittlechapel.com/packages/", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "The Little Vegas Chapel", slug: "the-little-vegas-chapel", category: "classic-chapels",
+    area: "Downtown / Arts District", drive: "About 10 min from the Strip", setting: "Indoor",
+    vibe: ["Elvis", "Themed rooms", "Budget", "Fun"],
+    priceFrom: 99, priceLabel: "Short & Sweet special (legal ceremony, up to 2 guests)", guestMax: 24,
+    facts: [
+      "Its Elvis weddings are officially licensed by Elvis Presley Enterprises.",
+      "The $99 Short & Sweet special covers a legal ceremony with a maximum of 2 guests.",
+      "Imperial Chapel packages allow up to 24 guests.",
+      "It offers legal weddings, vow renewals and pretend weddings.",
+      "A Halloween-themed special, Ghoulishly Ever After ($189), takes place in a Halloween-themed Sweetheart room.",
+    ],
+    bestFor: "Couples who want Elvis, a theme, or both, on a chapel budget.",
+    description: `The Little Vegas Chapel leans all the way into the fun side of a Vegas wedding. Its Elvis ceremonies are officially licensed by Elvis Presley Enterprises, and its themed rooms change the mood from classic chapel to something closer to a costume party.
+
+There's a budget special for a quick legal ceremony and bigger chapel packages for up to 24 guests. It also does pretend weddings, which is exactly what it sounds like and more popular than you'd think.`,
+    tips: [
+      "The $99 special is legal ceremonies only, with 2 guests at most. Bring more people? Look at the Imperial Chapel packages.",
+      "Want Elvis? Ask for the licensed Elvis package specifically.",
+      "Getting married around Halloween? Ask about the Ghoulishly Ever After special.",
+    ],
+    url: "https://www.thelittlevegaschapel.com/wedding-specials/", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "Circa Resort & Casino (Legacy Club)", slug: "circa-legacy-club", category: "sky-high",
+    area: "Downtown / Fremont", drive: "10–15 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Rooftop", "Skyline views", "Adults only", "Downtown"],
+    priceFrom: null, priceLabel: null, guestMax: null,
+    facts: [
+      "Circa lists the Legacy Club, its rooftop lounge on the 60th floor, among its wedding spaces.",
+      "Wedding spaces also include ballrooms and bridal suites. The Galaxy Terrace is 1,677 sq ft and sits next to the largest ballroom.",
+      "Everyone in the wedding group must be 21 or older.",
+      "No wedding prices are published. Pricing is by inquiry.",
+    ],
+    bestFor: "Adults-only crowds who want downtown's skyline from 60 floors up.",
+    description: `Circa is the newer, taller face of downtown Las Vegas, and its Legacy Club rooftop looks out over the whole city from the 60th floor. For a wedding, that means a skyline backdrop without the Strip's crowds at street level.
+
+Circa is adults-only, and that applies to your guests too. If your list is 21-and-up, it's a polished downtown alternative to the big Strip resorts, with ballrooms and a terrace for the reception.`,
+    tips: [
+      "Check your guest list first: every guest must be 21 or older.",
+      "Ask specifically about using the Legacy Club for the ceremony. It's listed as a wedding space, but availability depends on the lounge's schedule.",
+      "Pricing is by inquiry. Ask for the space fee, food and beverage minimum and room-block terms together.",
+    ],
+    url: "https://www.circalasvegas.com/weddings-receptions/", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "Vegas Balloon Rides (Private Sunrise Flight)", slug: "vegas-balloon-rides", category: "sky-high",
+    area: "Mojave Desert, west of Las Vegas", drive: "About 1 hr west of the Strip (transport included)", setting: "Airborne",
+    vibe: ["Hot air balloon", "Sunrise", "Intimate", "Adventure"],
+    priceFrom: 1999, priceLabel: "per person, VIP Private Sunrise Flight (up to 5 passengers)", guestMax: 5,
+    facts: [
+      "The operator promotes its private sunrise flight for proposals and weddings.",
+      "The VIP Private Sunrise Flight costs $1,999 per person for up to 5 passengers and includes limo pickup and French champagne.",
+      "Bigger parties need a custom quote from the office.",
+      "Flights need stable winds under 10 knots and are canceled in unsafe weather.",
+      "Passengers must be at least 6 years old and no more than 280 lbs. Pregnant passengers can't fly.",
+    ],
+    bestFor: "Couples who want sunrise over the Mojave and nobody else in the basket.",
+    description: `A hot air balloon at sunrise is about as quiet as Las Vegas ever gets. The private flight takes off west of the city and drifts over the Mojave as the light comes up, with room for the two of you and a few others.
+
+It's a small, early, weather-dependent kind of wedding: a few passengers, a dawn pickup, and champagne included. Have a backup date in mind, because the wind gets the final vote.`,
+    tips: [
+      "The price is per person. Multiply by everyone in the basket.",
+      "Keep a backup date. Flights are canceled when winds aren't under 10 knots.",
+      "Check the passenger rules before you invite anyone: 6 or older, under 280 lbs, and no pregnant passengers.",
+      "Bring your own officiant if you want a legal ceremony aloft, and confirm the plan with the operator.",
+    ],
+    url: "https://www.vegasballoonrides.com/hot-air-balloon-rides/", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "Hilton Lake Las Vegas (Over-Water Chapel)", slug: "hilton-lake-las-vegas-chapel", category: "desert-outdoors",
+    area: "Henderson (Lake Las Vegas)", drive: "About 30 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Lakeside", "Over-water chapel", "Resort", "Garden"],
+    priceFrom: null, priceLabel: null, guestMax: 220,
+    facts: [
+      "The resort says it has the only over-water wedding chapel in Las Vegas.",
+      "The Wedding Chapel is 1,558 sq ft and seats up to 220 guests theater-style.",
+      "Indoor spaces, outdoor spaces and landscaped gardens are available for weddings.",
+      "For receptions, the Grand Ballroom seats up to 840 at a banquet. No wedding prices are published.",
+    ],
+    bestFor: "Couples who want water views and a resort weekend without the Strip.",
+    description: `Lake Las Vegas feels like a different city: a man-made lake ringed by hills in Henderson, half an hour from the Strip. The Hilton there has a wedding chapel built over the water, which it bills as the only one in Las Vegas.
+
+It's a full resort, so the ceremony, reception and guest rooms can all sit on one property, and nobody has to cross a casino floor in formalwear.`,
+    tips: [
+      "Pricing is by inquiry. Ask for chapel-only and ceremony-plus-reception quotes side by side.",
+      "The chapel seats 220, so it handles a big guest list that a downtown chapel can't.",
+      "Book a room block early if guests are flying in. Lake Las Vegas has fewer hotels than the Strip.",
+    ],
+    url: "https://www.hilton.com/en/hotels/laslkhf-hilton-lake-las-vegas-resort-and-spa/events/weddings/", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "Spillway House at Hoover Dam", slug: "spillway-house-hoover-dam", category: "historic-iconic",
+    area: "Hoover Dam (Nevada–Arizona line)", drive: "About 45 min from the Strip", setting: "Indoor",
+    vibe: ["Landmark", "Lake Mead views", "Engineering marvel", "Permit required"],
+    priceFrom: null, priceLabel: null, guestMax: 200,
+    facts: [
+      "The Bureau of Reclamation lists weddings among the activities that need a Commercial Use Authorization at Hoover Dam.",
+      "The Spillway House holds up to 200 guests in nearly 6,000 sq ft, with views of Lake Mead and the dam.",
+      "Every event needs an approved permit with a minimum 4-week lead time. Reclamation recommends booking the Spillway House at least 3 months ahead.",
+      "The use application fee is $100 and non-refundable. Recovered labor costs are extra.",
+      "Organizers need a certificate of insurance for at least $1,000,000 in general liability naming the government as additional insured.",
+    ],
+    bestFor: "Couples who want a national landmark in the background and don't mind paperwork.",
+    description: `Hoover Dam is one of the most recognizable structures in the country, and the Bureau of Reclamation rents out the Spillway House right next to it for events, weddings included. The building looks out over Lake Mead and the dam itself.
+
+This is a federal facility, so it runs on permits, insurance certificates and lead times. Plan it like a project: a few months ahead, with a coordinator who has done federal permits before.`,
+    tips: [
+      "Start at least 3 months out. The permit alone needs 4 weeks minimum.",
+      "Line up event insurance early. You'll need a $1,000,000 general liability certificate naming the government.",
+      "Ask for an estimate of recovered labor costs. They're on top of the $100 application fee.",
+      "Most guests will also want to see the dam, so build in time for photos outside.",
+    ],
+    url: "https://www.usbr.gov/lc/hooverdam/spillwayhouse.html", checked: "2026-10-13", status: "listed", featured: false,
+  },
+  {
+    name: "The Retreat on Charleston Peak", slug: "retreat-on-charleston-peak", category: "desert-outdoors",
+    area: "Mount Charleston (Kyle Canyon)", drive: "About 45 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Mountain", "Pine forest", "Cool weather", "Lodge"],
+    priceFrom: null, priceLabel: null, guestMax: null,
+    facts: [
+      "The lodge markets itself as a setting for weddings, retreats and celebrations.",
+      "It sits at 6,700 feet in Kyle Canyon, in the Spring Mountains National Forest.",
+      "It has three event spaces.",
+      "Pricing and capacity are by quote through the lodge's request form.",
+    ],
+    bestFor: "Couples who want pine trees and cool air instead of neon and desert heat.",
+    description: `Forty-five minutes from the Strip, the road climbs into the Spring Mountains and the desert turns into pine forest. The Retreat on Charleston Peak sits at 6,700 feet in Kyle Canyon, which makes it the easiest way to give a Las Vegas wedding a mountain-lodge feel.
+
+The altitude also means cooler temperatures than the valley floor, which matters for a summer wedding. Everything is by quote, so start with your date and headcount.`,
+    tips: [
+      "It's noticeably cooler at 6,700 feet. Tell guests to bring a layer, even in summer.",
+      "Ask how many guests each of the three event spaces holds. The site doesn't list capacity.",
+      "Mountain roads can be affected by winter weather. Ask the lodge about access for a winter date.",
+    ],
+    url: "https://www.larkindependent.com/hotels/retreat-on-charleston-peak/groups-events", checked: "2026-10-13", status: "listed", featured: false,
+  },
 ];
