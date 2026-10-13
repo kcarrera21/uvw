@@ -53,12 +53,12 @@ export const config = {
   allowAiTraining: false,
   // Old URLs from the previous version of the site → where they should go now.
   // [Assumption] These are guesses at the v1 file names. Edit to match the real ones.
+  // Never add "/<folder>.html" for a folder the site already has (venues, blog, guides...):
+  // GitHub Pages serves /<folder>.html for the address without a trailing slash, which hides the real page.
   redirects: {
-    "/venues.html": "/venues/",
     "/venue.html": "/venues/",
     "/pricing.html": "/for-venues/",
     "/resources.html": "/guides/",
-    "/blog.html": "/guides/",
     "/partners.html": "/for-venues/",
     "/partner.html": "/for-venues/",
     "/thank-you.html": "/thanks/",
