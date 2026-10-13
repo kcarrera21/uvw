@@ -120,6 +120,11 @@ pin("unique-venues", { kicker: `${venues.length} unique venues`, title: "Vegas w
 pin("drive-thru", { kicker: "Only in Vegas", title: "Yes, the <em>drive-thru</em> wedding is real", list: ["Ceremonies from $150", "Cars, motorcycles, walk-ups", "Cherub-painted tunnel"], slug: "pin-drive", cat: "quirky-pop-culture" });
 pin("neon-museum", { kicker: "Venue spotlight", title: "Getting married at the <em>Neon Museum</em>", list: ["Daytime from $2,500", "Stardust (night) $3,500", "Up to 90 guests with add-ons"], slug: "the-neon-museum", cat: "historic-iconic" });
 pin("helicopter", { kicker: "Sky-high weddings", title: "Helicopter weddings <em>over Vegas</em>", list: ["Over the Strip from $1,249", "Grand Canyon floor from $4,399"], slug: "pin-heli", cat: "sky-high" });
+// One pin per venue, for Pinterest (see scripts/pinterest-csv.mjs)
+for (const v of venues) {
+  const list = [v.priceFrom ? `From ${money(v.priceFrom)}${v.priceLabel ? "" : ""}` : "Custom quote", v.guestMax ? `Up to ${v.guestMax.toLocaleString("en-US")} guests` : null, v.area.replace(/\s*\(.*\)$/, ""), v.setting].filter(Boolean).slice(0, 4);
+  pin("venue-" + v.slug, { kicker: catBy[v.category].name, title: esc(v.name).replace(/^(.*?)(\S+)$/, "$1<em>$2</em>"), list, slug: v.slug, cat: v.category });
+}
 for (let y = 2026; y <= 2028; y++) {
   const top = L.top(y, 4);
   pin("lucky-" + y, { kicker: "Lucky wedding dates", title: `The luckiest dates of <em>${y}</em>`, list: top.map((a) => `${a.short} · ${a.tags[0]}`), slug: "pin-lucky-" + y, cat: "quirky-pop-culture" });
@@ -131,6 +136,8 @@ job("icon-32", iconHtml(32, "transparent"), "src/static/favicon-32.png", 32, 32)
 job("icon-180", iconHtml(180, "#FFFBF8"), "src/static/apple-touch-icon.png", 180, 180);
 job("icon-192", iconHtml(192, "#FFFBF8"), "src/assets/img/mark-192.png", 192, 192);
 job("icon-512", iconHtml(512, "#FFFBF8"), "src/assets/img/mark-512.png", 512, 512);
+// "Listed on" badge venues can put on their sites (shown at 220×88, rendered at 2x)
+job("badge-listed", `<div style="width:440px;height:176px;background:#FFFBF8;border:3px solid #EBDCD8;border-radius:24px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px"><div style="font:600 17px IN;letter-spacing:.28em;text-transform:uppercase;color:#5E7356">Listed on</div><div style="width:340px">${logo({ width: 340 })}</div></div>`, "src/assets/img/badge-listed.png", 440, 176);
 job("logo-png", `<div style="width:1040px;height:192px;background:transparent">${logo({ width: 1040 })}</div>`, "brand/logo-primary.png", 1040, 192);
 job("logo-light-png", `<div style="width:1040px;height:192px;background:#2B2B2E">${logo({ width: 1040, color: "#FFFFFF", accent: "#E8A0A8", sub: "#9CAF88" })}</div>`, "brand/logo-on-charcoal.png", 1040, 192);
 
