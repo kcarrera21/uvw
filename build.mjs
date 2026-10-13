@@ -916,6 +916,8 @@ async function main() {
 
   // ================= FEEDS, SITEMAP, ROBOTS, MANIFEST =================
   write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map(([p, mod]) => `<url><loc>${C.domain}${p}</loc><lastmod>${mod}</lastmod></url>`).join("\n")}\n</urlset>\n`);
+  // The domain's old site submitted /sitemap_index.xml to Google; answer it with an index that points at the real sitemap.
+  write("sitemap_index.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>${C.domain}/sitemap.xml</loc><lastmod>${ISO}</lastmod></sitemap></sitemapindex>\n`);
 
   // ---------- robots.txt: search engines + AI assistants ----------
   const RULES = "Allow: /\nDisallow: /thanks/\nDisallow: /shortlist/";
