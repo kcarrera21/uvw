@@ -7,7 +7,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Día de los Muertos–inspired wedding ideas in Las Vegas (early Nov). Published 2026-10-12
 - [x] Getting married over Veterans Day weekend in Las Vegas. Published 2026-10-13
 - [x] Valley of Fire's Dec 1–14 closure: what desert couples should book instead. Published 2026-10-14
-- [ ] A Thanksgiving week elopement in Las Vegas: what's open, what to book
+- [x] A Thanksgiving week elopement in Las Vegas: what's open, what to book. Published 2026-10-15
 - [ ] Winter weddings in Las Vegas: what December and January actually feel like
 - [ ] Christmas and holiday-light wedding photo spots around Las Vegas
 - [ ] New Year's Eve weddings in Las Vegas: planning around the Strip closures
