@@ -6,6 +6,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 import { art, logoSVG, markSVG, PALETTES } from "./art.mjs";
+import { sealSVG, barHTML } from "./badges.mjs";
 import { venues, CATEGORIES } from "../src/data/venues.mjs";
 import { guides } from "../src/content/guides.mjs";
 import { config as C } from "../src/data/config.mjs";
@@ -136,8 +137,13 @@ job("icon-32", iconHtml(32, "transparent"), "src/static/favicon-32.png", 32, 32)
 job("icon-180", iconHtml(180, "#FFFBF8"), "src/static/apple-touch-icon.png", 180, 180);
 job("icon-192", iconHtml(192, "#FFFBF8"), "src/assets/img/mark-192.png", 192, 192);
 job("icon-512", iconHtml(512, "#FFFBF8"), "src/assets/img/mark-512.png", 512, 512);
-// "Listed on" badge venues can put on their sites (shown at 220×88, rendered at 2x)
-job("badge-listed", `<div style="width:440px;height:176px;background:#FFFBF8;border:3px solid #EBDCD8;border-radius:24px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px"><div style="font:600 17px IN;letter-spacing:.28em;text-transform:uppercase;color:#5E7356">Listed on</div><div style="width:340px">${logo({ width: 340 })}</div></div>`, "src/assets/img/badge-listed.png", 440, 176);
+// "Officially listed" badges venues can put on their own sites (see /for-venues/#badge).
+// Stable file names (no year) so re-rendering in January updates every embed automatically.
+const BADGE_YEAR = new Date().getFullYear();
+const sealJob = (slug, name) => job("badge-seal-" + slug, `<div style="width:400px;height:400px">${sealSVG({ name, year: BADGE_YEAR, size: 400, id: "s" })}</div>`, `src/assets/badges/${slug}-seal.png`, 400, 400);
+const barJobs = (slug, name) => ["light", "dark"].forEach((t) => job(`badge-bar-${t}-${slug}`, barHTML({ name, year: BADGE_YEAR, theme: t }), `src/assets/badges/${slug}-bar-${t}.png`, 600, 200));
+sealJob("generic", ""); barJobs("generic", "");
+for (const v of venues) { sealJob(v.slug, v.name); barJobs(v.slug, v.name); }
 job("logo-png", `<div style="width:1040px;height:192px;background:transparent">${logo({ width: 1040 })}</div>`, "brand/logo-primary.png", 1040, 192);
 job("logo-light-png", `<div style="width:1040px;height:192px;background:#2B2B2E">${logo({ width: 1040, color: "#FFFFFF", accent: "#E8A0A8", sub: "#9CAF88" })}</div>`, "brand/logo-on-charcoal.png", 1040, 192);
 

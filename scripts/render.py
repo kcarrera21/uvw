@@ -20,7 +20,10 @@ with sync_playwright() as p:
         if j["type"] == "pdf":
             pg.pdf(path=j["out"], format="Letter", print_background=True, margin={"top": "0", "bottom": "0", "left": "0", "right": "0"})
         else:
-            pg.screenshot(path=j["out"], clip={"x": 0, "y": 0, "width": j["w"], "height": j["h"]}, omit_background=("icon-32" in j["html"]))
+            pg.screenshot(path=j["out"], clip={"x": 0, "y": 0, "width": j["w"], "height": j["h"]}, omit_background=("icon-32" in j["html"] or "/badges/" in j["out"]))
+            if "/badges/" in j["out"]:  # venue-embeddable badges: palette PNG keeps them small for other people's sites
+                from PIL import Image
+                im = Image.open(j["out"]); im.quantize(colors=256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.FLOYDSTEINBERG).save(j["out"], optimize=True)
         pg.close()
     b.close()
 print("rendered", len(jobs) if not only else "subset")

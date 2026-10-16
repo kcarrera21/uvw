@@ -143,3 +143,9 @@ Changed a venue or the planner? `npm run creatives` regenerates OG images, pins,
 - Click-to-play: only the thumbnail loads until someone presses play; the player then loads from youtube-nocookie.com. Plays are logged in GA4 as `video_play` (when analytics consent allows).
 - Every build asks YouTube whether each video still exists. A deleted, private or locked video disappears from the page automatically, and the Monday build opens a GitHub issue ("Venue video unavailable") listing it.
 - To add one: find the video on the venue's official channel, then add a line to `src/data/videos.mjs` with `kind: "wedding"` (shows weddings there) or `"venue"` (a look at the place; the caption says "not a wedding").
+
+## Venue badges
+- Every venue has a free "Officially listed" badge with its own name, in three styles (seal, light bar, dark bar): `src/assets/badges/<slug>-seal.png`, `-bar-light.png`, `-bar-dark.png`, plus `generic-*` versions. Picker and copy-paste code: /for-venues/#badge (link straight to a venue's version with `/for-venues/?badge=<slug>#badge`).
+- The badge shows the year. **Each January:** run `node scripts/creatives.mjs && python3 scripts/render.py /badges/` and push. The file addresses don't change, so every venue's embedded badge updates to the new year by itself. Good excuse for a "your 2027 badge is live" email to listed venues.
+- New venue added? Re-run the same two commands so it gets its badge.
+- Badge clicks show in GA4 as `utm_source=venue-badge`, with `utm_content` = the style.

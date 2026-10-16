@@ -555,7 +555,7 @@ async function main() {
     ${v.disclosure ? `<div class="note"><strong>Disclosure.</strong> ${esc(v.disclosure)}</div>` : ""}
     <div class="note"><strong>Getting married here legally?</strong> You'll still need a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step.</a></div>
     ${plannerCta()}
-    ${v.status !== "partner" ? `<div class="panel" style="box-shadow:none"><h3 class="mt0">Is this your venue?</h3><p class="small">Claim this listing to add your own photos and copy, correct anything we got wrong, and receive inquiries directly.</p><a class="btn btn-ghost btn-sm" href="/for-venues/?venue=${encodeURIComponent(v.name)}">Claim ${esc(v.name)}</a> <a class="btn btn-ghost btn-sm" href="/for-venues/#badge">Get the "Listed on" badge</a></div>` : ""}
+    ${v.status !== "partner" ? `<div class="panel" style="box-shadow:none"><h3 class="mt0">Is this your venue?</h3><p class="small">Claim this listing to add your own photos and copy, correct anything we got wrong, and receive inquiries directly.</p><a class="btn btn-ghost btn-sm" href="/for-venues/?venue=${encodeURIComponent(v.name)}">Claim ${esc(v.name)}</a> <a class="btn btn-ghost btn-sm" href="/for-venues/?badge=${v.slug}#badge">Get your free badge</a></div>` : ""}
     <h2>${esc(v.name)} wedding FAQ</h2>${faqHtml(vFaq)}
     <h2>Plan the rest</h2><ul class="checklist">${vGuides.map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.title)}</a></li>`).join("")}<li><a href="/lucky-wedding-dates/">Lucky wedding dates</a></li></ul>
     ${related.length ? `<h2>More ${esc(c.name.toLowerCase())} venues</h2><div class="grid-3">${related.map(venueCard).join("")}</div>` : ""}
@@ -794,17 +794,29 @@ async function main() {
   </form></div>
 </div></section>
 <section id="badge"><div class="wrap grid-2" style="align-items:center">
-  <div><span class="eyebrow">Free for every listed venue</span><h2 class="mt0">Show couples you're <em>listed</em></h2>
-  <p>Add our badge to your website and it links straight to your page here, with your published details and your official booking link.</p>
-  <ul class="checklist"><li>Pick your venue, copy the code, paste it into your site's footer or weddings page</li><li>No tracking, no script: it's a plain image and a link</li><li>Questions? <a href="/contact/">Get in touch</a></li></ul></div>
-  <form class="panel" onsubmit="return false">
-    <p style="margin-top:0"><img src="/assets/img/badge-listed.png" alt="Listed on Unique Vegas Weddings" width="220" height="88" style="border-radius:12px"></p>
-    <div class="field"><label for="bv">Your venue</label><select id="bv">${venues.map((v) => `<option value="${v.slug}">${esc(v.name)}</option>`).join("")}</select></div>
-    <div class="field"><label for="bc">Copy this code</label><textarea id="bc" readonly rows="4" style="font:13px/1.45 ui-monospace,monospace"></textarea></div>
-    <button class="btn btn-ghost btn-sm" type="button" id="bcopy">Copy code</button>
+  <div><span class="eyebrow">Free for every listed venue</span><h2 class="mt0">Show couples you're <em>officially listed</em></h2>
+  <p>Every venue on Unique Vegas Weddings gets a free badge with its own name on it. Put it on your weddings page or in your footer. It links to your listing, where couples see your checked details and your official booking link.</p>
+  <ul class="checklist"><li>Three styles: a round seal, a light bar and a dark bar</li><li>One image and one link: no script, nothing that slows your site</li><li>It updates itself each January with the new year, at the same address</li><li>Questions? <a href="/contact/">Get in touch</a></li></ul></div>
+  <form class="panel badge-picker" onsubmit="return false">
+    <div class="badge-preview" id="bprev"><img id="bimg" src="/assets/badges/${venues[0].slug}-seal.png" alt="" width="160" height="160"></div>
+    <div class="field"><label for="bv">Your venue</label><select id="bv">${venues.map((v) => `<option value="${v.slug}" data-name="${esc(v.name)}">${esc(v.name)}</option>`).join("")}</select></div>
+    <fieldset class="field badge-styles"><legend>Style</legend>
+      <label><input type="radio" name="bs" value="seal" checked> Seal</label>
+      <label><input type="radio" name="bs" value="bar-light"> Light bar</label>
+      <label><input type="radio" name="bs" value="bar-dark"> Dark bar</label>
+    </fieldset>
+    <div class="field"><label for="bc">Copy this code</label><textarea id="bc" readonly rows="5" style="font:13px/1.45 ui-monospace,monospace"></textarea></div>
+    <button class="btn btn-primary btn-sm" type="button" id="bcopy">Copy code</button> <a class="btn btn-ghost btn-sm" id="bdl" href="/assets/badges/${venues[0].slug}-seal.png" download>Download image</a>
   </form>
 </div></section>
-<script>(function(){var s=document.getElementById("bv"),t=document.getElementById("bc"),b=document.getElementById("bcopy");if(!s)return;function u(){t.value='<a href="${C.domain}/venues/'+s.value+'/?utm_source=venue-badge&utm_medium=referral&utm_campaign=badge"><img src="${C.domain}/assets/img/badge-listed.png" alt="Listed on Unique Vegas Weddings" width="220" height="88"></a>';}s.addEventListener("change",u);u();b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeText(t.value);b.textContent="Copied";}catch(e){}});})();</script>
+<script>(function(){var s=document.getElementById("bv"),t=document.getElementById("bc"),b=document.getElementById("bcopy"),im=document.getElementById("bimg"),pv=document.getElementById("bprev"),dl=document.getElementById("bdl");if(!s)return;
+var q=new URLSearchParams(location.search).get("badge");if(q&&s.querySelector('option[value="'+q.replace(/[^a-z0-9-]/g,"")+'"]'))s.value=q;
+function st(){var r=document.querySelector('input[name="bs"]:checked');return r?r.value:"seal";}
+function u(){var o=s.options[s.selectedIndex],n=o.getAttribute("data-name").replace(/"/g,"&quot;"),k=st(),src="/assets/badges/"+s.value+"-"+k+".png",w=k==="seal"?160:300,h=k==="seal"?160:100;
+im.src=src;im.width=w;im.height=h;im.alt=n+" is officially listed on Unique Vegas Weddings";pv.className="badge-preview"+(k==="bar-dark"?" is-dark":"");dl.href=src;b.textContent="Copy code";
+t.value='<a href="${C.domain}/venues/'+s.value+'/?utm_source=venue-badge&utm_medium=referral&utm_campaign=badge&utm_content='+k+'" title="Officially listed on Unique Vegas Weddings"><img src="${C.domain}'+src+'" alt="'+n+' is officially listed on Unique Vegas Weddings" width="'+w+'" height="'+h+'" loading="lazy"></a>';}
+s.addEventListener("change",u);[].forEach.call(document.querySelectorAll('input[name="bs"]'),function(r){r.addEventListener("change",u);});u();
+b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeText(t.value);}catch(e){}b.textContent="Copied";});})();</script>
 <script>(function(){var v=new URLSearchParams(location.search).get("venue");if(v){var i=document.getElementById("pv");if(i)i.value=v;}})();</script>`,
   });
 
