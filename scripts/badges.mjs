@@ -29,14 +29,14 @@ export function sealSVG({ name = "", year, size = 400, id = "s" } = {}) {
   const maxLine = nm.length <= 14 ? 14 : nm.length <= 26 ? 14 : 16;
   const lines = [];
   for (const w of words) { const l = lines[lines.length - 1]; if (l && (l + " " + w).length <= maxLine) lines[lines.length - 1] = l + " " + w; else lines.push(w); }
-  const fs = !nm ? 0 : lines.length === 1 ? (nm.length <= 9 ? 42 : nm.length <= 12 ? 36 : 31) : lines.length === 2 ? 29 : 24;
+  const fs = !nm ? 0 : lines.length === 1 ? (nm.length <= 9 ? 42 : nm.length <= 12 ? 34 : 28) : lines.length === 2 ? 29 : 24;
   const lh = fs * 1.12;
   const nameTop = cy + 6 - ((lines.length - 1) * lh) / 2;
   const nameSvg = lines.map((l, i) => `<text x="${cx}" y="${(nameTop + i * lh).toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-family="PF, serif" font-weight="500" font-size="${fs}" fill="${C.cream}">${esc(l)}</text>`).join("");
   const rt = 156, rb = 173; // top text baseline radius / bottom text baseline radius
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="${size}" height="${size}">
 <defs>
-  <radialGradient id="${id}g" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#4A3340"/><stop offset="1" stop-color="${C.ink}"/></radialGradient>
+  <radialGradient id="${id}g" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#3A2A33"/><stop offset="1" stop-color="${C.ink}"/></radialGradient>
   <path id="${id}t" d="M ${cx - rt} ${cy} A ${rt} ${rt} 0 0 1 ${cx + rt} ${cy}"/>
   <path id="${id}b" d="M ${cx - rb} ${cy} A ${rb} ${rb} 0 0 0 ${cx + rb} ${cy}"/>
 </defs>
@@ -60,7 +60,7 @@ ${nm ? nameSvg : `<text x="${cx}" y="${cy + 10}" text-anchor="middle" dominant-b
 export function miniSealSVG({ year, size = 168, id = "m" } = {}) {
   const cx = 200, cy = 200;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="${size}" height="${size}">
-<defs><radialGradient id="${id}g" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#4A3340"/><stop offset="1" stop-color="${C.ink}"/></radialGradient></defs>
+<defs><radialGradient id="${id}g" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#3A2A33"/><stop offset="1" stop-color="${C.ink}"/></radialGradient></defs>
 <path d="${rosette(cx, cy, 198, 48, 7)}" fill="${C.champ}"/>
 <circle cx="${cx}" cy="${cy}" r="186" fill="url(#${id}g)"/>
 <circle cx="${cx}" cy="${cy}" r="170" fill="none" stroke="${C.champ}" stroke-width="3"/>
