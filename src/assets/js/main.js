@@ -265,4 +265,18 @@
       $$("[data-months]").forEach(function (el) { el.hidden = true; });
     }
   }
+  // ---------- venue videos: click to play (YouTube loads only after a press) ----------
+  $$("[data-yt]").forEach(function (box) {
+    var btn = $(".yt-play", box); if (!btn) return;
+    btn.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(box.getAttribute("data-yt")) + "?autoplay=1&rel=0&playsinline=1";
+      f.title = box.getAttribute("data-yt-title") || "Video";
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true; f.loading = "eager";
+      f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      box.innerHTML = ""; box.appendChild(f); box.classList.add("is-playing");
+      if (window.gtag) window.gtag("event", "video_play", { video_id: box.getAttribute("data-yt"), page: location.pathname });
+    });
+  });
 })();

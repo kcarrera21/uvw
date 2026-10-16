@@ -12,6 +12,7 @@ import { venues as baseVenues, CATEGORIES } from "./src/data/venues.mjs";
 import { guides } from "./src/content/guides.mjs";
 import { art, logoSVG, markSVG } from "./scripts/art.mjs";
 import { pathToFileURL } from "node:url";
+import { VIDEOS as VIDEO_DATA } from "./src/data/videos.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(ROOT, "public");
@@ -61,6 +62,35 @@ const outUrl = (url, slug) => {
 };
 // ---------- photos (free-license, credited; see src/data/photo-credits.json) ----------
 const PHOTOS = fs.existsSync(path.join(ROOT, "src/data/photo-credits.json")) ? JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/photo-credits.json"), "utf8")) : {};
+
+// Official venue videos. Each build asks YouTube (oEmbed) whether the video still exists and can be embedded;
+// a deleted, private or locked video is dropped from the page and listed in video-report.md.
+// If YouTube can't be reached at all, videos are kept as-is so a network blip never strips the site.
+const VIDEOS = {};
+const deadVideos = [];
+{
+  const all = Object.entries(VIDEO_DATA);
+  const check = async ([slug, vid]) => {
+    if (process.env.UVW_SKIP_VIDEO_CHECK) return [slug, vid, true];
+    try {
+      const r = await fetch(`https://www.youtube.com/oembed?format=json&url=${encodeURIComponent("https://www.youtube.com/watch?v=" + vid.id)}`, { signal: AbortSignal.timeout(8000) });
+      if ([400, 401, 403, 404].includes(r.status)) return [slug, vid, false];
+      return [slug, vid, true];
+    } catch { return [slug, vid, true]; }
+  };
+  for (const [slug, vid, ok] of await Promise.all(all.map(check))) {
+    if (ok) VIDEOS[slug] = vid; else deadVideos.push({ slug, ...vid });
+  }
+  if (deadVideos.length) console.warn(`Video check: hid ${deadVideos.length} video(s) YouTube no longer serves: ${deadVideos.map((d) => d.slug).join(", ")}`);
+}
+const ytBlock = (v) => {
+  const vid = VIDEOS[v.slug];
+  if (!vid) return "";
+  const what = vid.kind === "wedding" ? "" : "A look at the place, not a wedding. ";
+  return `<h2>See it on video</h2>
+    <div class="yt" data-yt="${vid.id}" data-yt-title="${esc(vid.title)}"><button type="button" class="yt-play" aria-label="Play video: ${esc(vid.title)}"><img src="https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-btn" aria-hidden="true"></span></button></div>
+    <p class="photo-credit">${what}“${esc(vid.title)},” from the official YouTube channel of <a href="${vid.channelUrl}" rel="nofollow noopener" target="_blank">${esc(vid.channel)}</a>. The video only loads when you press play.</p>`;
+};
 const photoSm = (key, fallback) => (PHOTOS[key] ? `/assets/photos/${key}-sm.webp` : fallback);
 // <img> for a photo key, falling back to the generated illustration when no photo exists.
 const pic = (key, fallback, { alt = "", eager = false, sizes = "(max-width: 620px) 100vw, 33vw", attrs = "" } = {}) => {
@@ -518,6 +548,7 @@ async function main() {
 <section style="padding-top:40px"><div class="wrap vlayout">
   <div class="prose">
     <h2 class="mt0">Why couples choose it</h2>${paras}
+    ${ytBlock(v)}
     <h2>Verified details</h2><ul class="checklist">${(v.facts || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     <h2>Good to know</h2><ul class="checklist">${(v.tips || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     <p><a href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">Official weddings page ↗</a></p>
@@ -1026,6 +1057,7 @@ ${CATEGORIES.map((c) => `- [${c.name}](${C.domain}/venues/category/${c.slug}/): 
 
   // stale-price report (used by the weekly GitHub Action)
   const stale = venues.filter((v) => (NOW - new Date(v.checked + "T12:00:00")) / 864e5 > 180);
+  fs.writeFileSync(path.join(ROOT, "video-report.md"), deadVideos.length ? `YouTube no longer serves these venue videos (deleted, made private, or embedding turned off). They're already hidden from the site. Find a replacement on the venue's official channel or delete the entry in src/data/videos.mjs:\n\n${deadVideos.map((d) => `- [ ] **${d.slug}**: "${d.title}" (${d.channel}) https://www.youtube.com/watch?v=${d.id}`).join("\n")}\n` : "");
   fs.writeFileSync(path.join(ROOT, "stale-report.md"), stale.length ? `These venues haven't been re-checked in 180+ days. Open each official page, confirm prices and facts, then update \`checked\` in src/data/venues.mjs:\n\n${stale.map((v) => `- [ ] **${v.name}**: last checked ${v.checked}: ${v.url}`).join("\n")}\n` : "");
 
   console.log(`Built ${sitemap.length} indexable pages, ${venues.length} venues, ${guides.length} guides → /public  (venue of the week: ${votw.name})`);

@@ -44,6 +44,17 @@ jobs:
               gh issue create --title "Venue fact check due" --body-file stale-report.md
             fi
           fi
+      - name: Tell me if a venue video went dead
+        if: github.event_name != 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s video-report.md ]; then
+            open=$(gh issue list --state open --search "in:title Venue video unavailable" --json number --jq length)
+            if [ "$open" = "0" ]; then
+              gh issue create --title "Venue video unavailable" --body-file video-report.md
+            fi
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

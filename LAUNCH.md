@@ -136,3 +136,10 @@ Changed a venue or the planner? `npm run creatives` regenerates OG images, pins,
 ---
 
 *Legal and permit facts were checked against official sources on 2026-10-04 (see `docs/sources.md`). The privacy policy and terms are plain-language templates. Have them reviewed before you take payments.*
+
+## Venue videos
+- 15 venue pages show an official YouTube video under "Why couples choose it" (list: `src/data/videos.mjs`, checked 2026-10-16).
+- Rule: only videos uploaded by the venue's own channel (or the public agency that runs the place), with embedding allowed. Never a videographer's or fan's upload.
+- Click-to-play: only the thumbnail loads until someone presses play; the player then loads from youtube-nocookie.com. Plays are logged in GA4 as `video_play` (when analytics consent allows).
+- Every build asks YouTube whether each video still exists. A deleted, private or locked video disappears from the page automatically, and the Monday build opens a GitHub issue ("Venue video unavailable") listing it.
+- To add one: find the video on the venue's official channel, then add a line to `src/data/videos.mjs` with `kind: "wedding"` (shows weddings there) or `"venue"` (a look at the place; the caption says "not a wedding").
