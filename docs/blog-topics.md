@@ -9,7 +9,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Valley of Fire's Dec 1–14 closure: what desert couples should book instead. Published 2026-10-14
 - [x] A Thanksgiving week elopement in Las Vegas: what's open, what to book. Published 2026-10-15
 - [x] Winter weddings in Las Vegas: what December and January actually feel like. Published 2026-10-16
-- [ ] Christmas and holiday-light wedding photo spots around Las Vegas
+- [x] Christmas and holiday-light wedding photo spots around Las Vegas. Published 2026-10-17
 - [ ] New Year's Eve weddings in Las Vegas: planning around the Strip closures
 - [ ] Lucky wedding dates in 2027 worth booking now
 - [ ] Valentine's Day 2027 in Las Vegas: how to beat the rush
