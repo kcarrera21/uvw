@@ -1261,4 +1261,78 @@ The altitude also means cooler temperatures than the valley floor, which matters
     status: "listed",
     featured: false
   },
+  {
+    name: "Las Vegas Ballpark",
+    slug: "las-vegas-ballpark",
+    category: "quirky-pop-culture",
+    area: "Downtown Summerlin",
+    setting: "Indoor & outdoor",
+    vibe: [
+      "Baseball",
+      "Stadium",
+      "Skyline views",
+      "Big groups"
+    ],
+    priceFrom: null,
+    priceLabel: "Custom quote",
+    guestMax: null,
+    facts: [
+      "Home of the Triple-A Las Vegas Aviators. The ballpark's event page lists weddings and receptions among the events it hosts.",
+      "Two open-air Party Decks on the first- and third-base sides hold 400 guests each and face the Strip skyline and Red Rock Canyon. The ballpark names them as a fit for weddings.",
+      "The field itself can be rented for up to 500 guests (120,000 sq ft), with on-field dinners available.",
+      "The Club, a climate-controlled club-level space with glass walls and a private elevator, holds 400 (6,761 sq ft).",
+      "Smaller spaces: suites for 20 to 60, the Aviators Clubhouse for 50, and a pool area for 54.",
+      "Full-service catering is in-house. No prices are published.",
+      "Book through Special Events: (702) 943-7224 or specialevents@aviatorslv.com. Address: 1650 South Pavilion Center Drive, Las Vegas, NV 89135."
+    ],
+    bestFor: "Couples who met in the cheap seats and want a wedding with a scoreboard.",
+    description: "Las Vegas Ballpark is the Aviators' home in Summerlin, and when the team is away it rents out nearly every corner of the place. Weddings are on the official menu, and the Party Decks along the baselines are the obvious pick for a ceremony, with the Strip on one horizon and Red Rock Canyon on the other.\n\nIf you want the full fantasy, the field is available too, with dinner served on the grass. Smaller groups can use a suite or the players' clubhouse instead. Nothing is priced online, so expect a conversation with the events team about dates, space and catering.",
+    tips: [
+      "Ask which dates the Aviators are on the road. Game days limit what's available.",
+      "Pick a Party Deck for the ceremony and The Club for dinner if you want shade and air conditioning in the same plan.",
+      "Ask about scoreboard and video-screen messages. The ballpark lists screen use for events.",
+      "Summer evenings are still hot on an open-air deck. Plan the ceremony close to sunset."
+    ],
+    url: "https://www.milb.com/las-vegas/ballpark/spaces",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Las Vegas Paiute Golf Resort",
+    slug: "las-vegas-paiute-golf-resort",
+    category: "desert-outdoors",
+    area: "Northwest Las Vegas (Snow Mountain)",
+    drive: "About 25 min from the Strip",
+    setting: "Indoor & outdoor",
+    vibe: [
+      "Golf course",
+      "Mountain views",
+      "All-inclusive",
+      "Classic reception"
+    ],
+    priceFrom: null,
+    priceLabel: "Custom quote",
+    guestMax: null,
+    facts: [
+      "Events by Paiute runs weddings at the resort, which has three Pete Dye championship courses: Snow Mountain, Sun Mountain and The Wolf.",
+      "The Signature Wedding Amenities Package includes an outdoor ceremony (weather permitting), an officiant, white garden chairs, a decorated arch and ceremony music.",
+      "The same package covers a 4.5-hour reception with Chiavari chairs, colored linens, an ice sculpture, a dance floor, a champagne toast for the room and a 4.5-hour MC/DJ.",
+      "Day-of coordination, including the rehearsal, is part of the package.",
+      "Catering packages pair a dining selection with a beverage and cocktail selection. Food and drink carry a 20% gratuity.",
+      "Package prices aren't published. Call the Events by Paiute team at (702) 395-1700. Resort address: 10325 Nu-Wav Kaiv Blvd, Las Vegas, NV 89124."
+    ],
+    bestFor: "Couples who want a traditional reception with the Spring Mountains as the backdrop.",
+    description: "The Paiute resort sits northwest of town with three Pete Dye courses and a lot of open sky. Its events team sells a full wedding package, so the ceremony arch, the officiant, the DJ, the champagne toast and the rehearsal all come from one place.\n\nThis is the most conventional venue in the sports corner of the list, which is the point. You get fairways and mountains instead of a casino carpet, and one team handles the whole day.",
+    tips: [
+      "Ask for the catering menu and current package prices together. Neither is posted online.",
+      "Budget the 20% gratuity on food and drink from the start.",
+      "The outdoor ceremony depends on weather. Ask what the indoor backup looks like.",
+      "Book a property tour. The team offers them before you commit."
+    ],
+    url: "https://www.lvpaiutegolf.com/weddings.html",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
 ];
