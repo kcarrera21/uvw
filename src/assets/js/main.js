@@ -60,6 +60,15 @@
     navBtn.setAttribute("aria-expanded", open ? "true" : "false");
   });
 
+  // ---------- trust strip: "Updated today / yesterday / 3 days ago" ----------
+  $$("time[data-ago]").forEach(function (t) {
+    var d = t.getAttribute("datetime").split("-").map(Number);
+    var days = Math.round((new Date(now.getFullYear(), now.getMonth(), now.getDate()) - new Date(d[0], d[1] - 1, d[2])) / 864e5);
+    if (days === 0) t.textContent = "today";
+    else if (days === 1) t.textContent = "yesterday";
+    else if (days > 1 && days < 7) t.textContent = days + " days ago";
+  });
+
   // ---------- season-aware blocks: <div data-months="6,7,8"> ----------
   var mo = now.getMonth() + 1, dayOfMonth = now.getDate();
   $$("[data-months]").forEach(function (el) {

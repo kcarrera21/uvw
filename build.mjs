@@ -243,6 +243,14 @@ function picks(slugs, venues) {
 const NAV = [
   ["/venues/", "Venues"], ["/guides/", "Guides"], ["/blog/", "Off-Script"], ["/lucky-wedding-dates/", "Lucky dates"], ["/planner/", "Planner"], ["/for-venues/", "For venues"],
 ];
+let TRUST = null; // set in main() once venues load
+const CHECK = `<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const trustStrip = () => (TRUST ? `<div class="trust-strip"><div class="wrap">
+  <span class="ts-live"><span class="ts-dot" aria-hidden="true"></span><span>Updated <time datetime="${TRUST.updated}" data-ago>${fmtDate(TRUST.updated)}</time></span></span>
+  ${TRUST.post ? `<a class="ts-item ts-new" href="/blog/${TRUST.post.slug}/">New on Off-Script: ${esc(TRUST.post.title)}</a>` : ""}
+  <a class="ts-item" href="/about/">${CHECK}<span class="ts-long">${TRUST.venues} venues checked against official sources</span><span class="ts-short">${TRUST.venues} venues fact-checked</span></a>
+  <a class="ts-item ts-ind" href="/disclosure/">${CHECK}<span>Independent<span class="ts-long">, paid spots always labeled</span></span></a>
+</div></div>` : "");
 function layout({ path: p, title, seoTitle, description, body, og = "default", image, schema = [], noindex = false, type = "website", modified, scripts = [] }) {
   const url = C.domain + p;
   const base = seoTitle || title;
@@ -279,6 +287,7 @@ ${C.adsenseClient ? `<script async src="https://pagead2.googlesyndication.com/pa
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+${trustStrip()}
 <div class="notice" data-lucky-banner hidden></div>
 <div class="notice" data-months="11" hidden>&#10022; Heads up: Valley of Fire closes to all visitors <strong>December 1–14</strong>, and no weddings are allowed. <a href="/guides/desert-wedding-permits/">Desert permit guide</a></div>
 <div class="notice" data-months="12" data-until-day="12-14" hidden>&#10022; Valley of Fire is closed through <strong>December 14</strong>. Red Rock, Lake Mead and the chapels are open. <a href="/venues/category/desert-outdoors/">Other desert venues</a></div>
@@ -326,6 +335,9 @@ const crumbs = (items) => `<nav class="crumbs" aria-label="Breadcrumb">${items.m
 // =====================================================================
 async function main() {
   const venues = await loadVenues();
+  // Trust strip: "updated" = newest real content change (post, venue check or guide update), never just the build date.
+  const lastUpdated = [posts[0]?.date, ...venues.map((v) => v.checked), ...guides.map((g) => g.updated)].filter((d) => d && d <= ISO).sort().pop() || FACTS_CHECKED;
+  TRUST = { updated: lastUpdated, venues: venues.length, guides: guides.length, post: posts[0] };
   fs.rmSync(OUT, { recursive: true, force: true });
   fs.mkdirSync(OUT, { recursive: true });
   copyDir(path.join(ROOT, "src/assets"), path.join(OUT, "assets"));
