@@ -2,6 +2,7 @@
 export default {
   slug: "thanksgiving-week-elopement-las-vegas-2026",
   date: "2026-10-15",
+  photo: "valley-of-fire-state-park",
   category: "desert-outdoors",
   eyebrow: "Date idea",
   tags: ["thanksgiving", "family day", "november", "elopement", "marriage license", "red rock canyon", "springs preserve"],

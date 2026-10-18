@@ -2,6 +2,7 @@
 export default {
   slug: "veterans-day-wedding-las-vegas-2026",
   date: "2026-10-13",
+  photo: "red-rock-canyon",
   category: "desert-outdoors",
   eyebrow: "Date idea",
   tags: ["veterans day", "november", "11/11", "military wedding", "fee-free day", "red rock canyon", "lake mead"],

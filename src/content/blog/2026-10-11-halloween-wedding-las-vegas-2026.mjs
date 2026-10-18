@@ -2,6 +2,7 @@
 export default {
   slug: "halloween-wedding-las-vegas-2026",
   date: "2026-10-11",
+  photo: "the-mob-museum",
   category: "quirky-pop-culture",
   eyebrow: "Date idea",
   tags: ["halloween", "october", "themed wedding", "gothic", "night wedding", "10/31/26"],

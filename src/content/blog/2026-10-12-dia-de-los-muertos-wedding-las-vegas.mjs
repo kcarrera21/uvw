@@ -2,6 +2,7 @@
 export default {
   slug: "dia-de-los-muertos-wedding-las-vegas",
   date: "2026-10-12",
+  photo: "springs-preserve",
   category: "desert-outdoors",
   eyebrow: "Date idea",
   tags: ["dia de los muertos", "day of the dead", "november", "themed wedding", "night wedding", "springs preserve"],

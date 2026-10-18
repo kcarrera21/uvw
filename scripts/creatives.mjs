@@ -91,7 +91,7 @@ for (let y = 2026; y <= 2031; y++) {
   const t = L.top(y, 3).map((a) => a.short).join(" · ");
   og("lucky-" + y, { eyebrow: "Lucky wedding dates", title: `The special dates of <em>${y}</em>`, sub: t, slug: "lucky-" + y, cat: "quirky-pop-culture" });
 }
-for (const c of CATEGORIES) og("cat-" + c.slug, { eyebrow: "Las Vegas wedding venues", title: `${esc(c.name.replace("&", "&amp;"))} <em>weddings</em>`, sub: c.blurb, slug: "cat-" + c.slug, cat: c.slug });
+for (const c of CATEGORIES) og("cat-" + c.slug, { eyebrow: "Las Vegas wedding venues", title: `${esc(c.name)} <em>weddings</em>`, sub: c.blurb, slug: "cat-" + c.slug, cat: c.slug });
 for (const v of venues) og("v-" + v.slug, { eyebrow: catBy[v.category].name, title: esc(v.name), sub: v.priceFrom ? `Weddings from ${money(v.priceFrom)} · ${v.area}` : v.area, slug: v.slug, cat: v.category });
 const guideCat = { license: "classic-chapels", cost: "strip-luxury", season: "desert-outdoors", elope: "historic-iconic", desert: "desert-outdoors", renewal: "quirky-pop-culture", weekend: "sky-high", pack: "desert-outdoors" };
 for (const g of guides) og("g-" + g.slug, { eyebrow: g.eyebrow, title: esc(g.title.replace(/:.*$/, "")), sub: "", slug: "g-" + g.slug, cat: guideCat[g.hero] || "classic-chapels" });

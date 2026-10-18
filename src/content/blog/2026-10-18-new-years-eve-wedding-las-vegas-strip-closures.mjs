@@ -2,6 +2,7 @@
 export default {
   slug: "new-years-eve-wedding-las-vegas-strip-closures",
   date: "2026-10-18",
+  photo: "big-apple-coaster-wedding",
   category: "classic-chapels",
   eyebrow: "Holiday guide",
   tags: ["new year's eve", "december", "road closures", "marriage license", "chapels", "the strat", "little church of the west", "transit"],

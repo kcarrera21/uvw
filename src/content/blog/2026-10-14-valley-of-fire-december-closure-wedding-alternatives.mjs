@@ -2,6 +2,7 @@
 export default {
   slug: "valley-of-fire-december-closure-wedding-alternatives",
   date: "2026-10-14",
+  photo: "nelson-ghost-town",
   category: "desert-outdoors",
   eyebrow: "Heads up",
   tags: ["valley of fire", "december", "park closure", "desert wedding", "red rock canyon", "nelson ghost town", "elopement"],

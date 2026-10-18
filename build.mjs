@@ -105,6 +105,24 @@ const photoCredit = (key) => {
   return `${esc(p.alt)}. ${p.note ? esc(PHOTO_NOTES[p.note]) + " " : ""}Photo: <a href="${esc(p.source)}" rel="nofollow noopener" target="_blank">${esc(p.creator || "unknown")}</a>, <a href="${esc(p.licenseUrl)}" rel="license nofollow noopener" target="_blank">${esc(p.license)}</a>.`;
 };
 const ogFor = (name) => (fs.existsSync(path.join(ROOT, "src/assets/og", name + ".png")) ? `/assets/og/${name}.png` : "/assets/og/default.png");
+// ---------- Google Discover: full-bleed 1200px photos made by scripts/discover-images.py ----------
+// Discover favors large photo-led images and says not to use a logo, so articles (posts + guides)
+// point og:image and their schema at these instead of the text-and-logo share cards.
+const DISCOVER_SIZES = [["16x9", 1200, 675], ["4x3", 1200, 900], ["1x1", 1200, 1200]];
+const discoverImgs = (key) => (key && PHOTOS[key] ? DISCOVER_SIZES.filter(([t]) => fs.existsSync(path.join(ROOT, "src/assets/discover", `${key}-${t}.jpg`))).map(([t, w, h]) => ({ path: `/assets/discover/${key}-${t}.jpg`, w, h, alt: PHOTOS[key].alt })) : []);
+const GUIDE_PHOTO = { license: "little-church-of-the-west", cost: "bellagio", season: "hero-2", elope: "hero-1", desert: "valley-of-fire-state-park", renewal: "cat-quirky-pop-culture", weekend: "cat-sky-high", pack: "cat-desert-outdoors" };
+const GUIDE_PHOTO_BY_SLUG = { "las-vegas-courthouse-wedding": "welcome-to-fabulous-las-vegas-sign", "legal-vs-symbolic-ceremony": "cat-classic-chapels" };
+// Lead photo for an article: its own `photo` field, else the first pictured venue it recommends, else its category photo.
+const articlePhoto = (a, cat) => {
+  if (a.photo && PHOTOS[a.photo]) return a.photo;
+  if (a.photo) seoWarnings.push(`Photo "${a.photo}" not found in src/data/photo-credits.json: ${a.slug}`);
+  for (const m of String(a.body || "").matchAll(/\{\{venue-picks:([^}]+)\}\}/g)) {
+    const k = m[1].split(",").map((s) => s.trim()).find((s) => PHOTOS[s]);
+    if (k) return k;
+  }
+  return cat && PHOTOS["cat-" + cat] ? "cat-" + cat : null;
+};
+const articleFigure = (key) => (key ? `<figure class="article-photo">${pic(key, "", { eager: true, sizes: "(max-width: 800px) 100vw, 760px" })}<figcaption class="photo-credit">${photoCredit(key)}</figcaption></figure>` : "");
 const budgetBand = (n) => (n == null ? "quote" : n < 1000 ? "1" : n < 3000 ? "2" : n < 10000 ? "3" : "4");
 const BAND_LABEL = { 1: "Under $1,000", 2: "$1,000–$2,999", 3: "$3,000–$9,999", 4: "$10,000+", quote: "Custom quote" };
 const warnings = [];
@@ -225,14 +243,15 @@ function picks(slugs, venues) {
 const NAV = [
   ["/venues/", "Venues"], ["/guides/", "Guides"], ["/blog/", "Off-Script"], ["/lucky-wedding-dates/", "Lucky dates"], ["/planner/", "Planner"], ["/for-venues/", "For venues"],
 ];
-function layout({ path: p, title, seoTitle, description, body, og = "default", schema = [], noindex = false, type = "website", modified, scripts = [] }) {
+function layout({ path: p, title, seoTitle, description, body, og = "default", image, schema = [], noindex = false, type = "website", modified, scripts = [] }) {
   const url = C.domain + p;
   const base = seoTitle || title;
   const fullTitle = p === "/" || (base + " | " + C.siteName).length > 60 ? base : `${base} | ${C.siteName}`;
   description = clip(description);
   if (!noindex && fullTitle.length > 60) seoWarnings.push(`Title over 60 chars (${fullTitle.length}): ${p}`);
   if (!noindex && description.length < 70) seoWarnings.push(`Meta description under 70 chars: ${p}`);
-  const ogImg = C.domain + ogFor(og);
+  const ogImg = C.domain + (image ? image.path : ogFor(og));
+  const ogW = image ? image.w : 1200, ogH = image ? image.h : 630;
   return `<!doctype html>
 <html lang="en"${C.ga4Id ? ` data-ga="${esc(C.ga4Id)}" data-consent="${esc(C.consentMode || "eu")}"` : ""}>
 <head>
@@ -246,7 +265,7 @@ ${C.googleSiteVerification ? `<meta name="google-site-verification" content="${e
 <meta property="og:type" content="${type}"><meta property="og:locale" content="en_US">${type === "article" && modified ? `<meta property="article:modified_time" content="${modified}">` : ""}<meta property="og:site_name" content="${esc(C.siteName)}">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${ogImg}">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:width" content="${ogW}"><meta property="og:image:height" content="${ogH}">${image?.alt ? `<meta property="og:image:alt" content="${esc(image.alt)}">` : ""}
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${ogImg}">
 <meta name="theme-color" content="#FFFBF8">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" sizes="32x32">
@@ -591,15 +610,18 @@ async function main() {
     const answer = fillTokens(g.answer || "");
     const gi = guides.indexOf(g);
     const relatedGuides = [1, 2, 3].map((k) => guides[(gi + k) % guides.length]);
+    const gPhoto = articlePhoto({ ...g, photo: g.photo || GUIDE_PHOTO_BY_SLUG[g.slug] || GUIDE_PHOTO[g.hero] }, null);
+    const gImgs = discoverImgs(gPhoto);
     page(`/guides/${g.slug}/`, {
-      title: g.title, seoTitle: g.seoTitle, description: g.metaDescription || g.description, og: "g-" + g.slug, type: "article", modified: g.updated || FACTS_CHECKED,
+      title: g.title, seoTitle: g.seoTitle, description: g.metaDescription || g.description, og: "g-" + g.slug, image: gImgs[0], type: "article", modified: g.updated || FACTS_CHECKED,
       schema: [crumbSchema([["Home", "/"], ["Guides", "/guides/"], [g.nav, `/guides/${g.slug}/`]]),
-        { "@context": "https://schema.org", "@type": "Article", headline: g.title, description: g.metaDescription || g.description, abstract: answer, datePublished: g.published || FACTS_CHECKED, dateModified: g.updated || FACTS_CHECKED, inLanguage: "en-US", author: orgRef, publisher: orgSchema, mainEntityOfPage: `${C.domain}/guides/${g.slug}/`, image: C.domain + ogFor("g-" + g.slug), citation: g.sources.filter((x) => x.u.startsWith("http")).map((x) => ({ "@type": "CreativeWork", name: x.t, url: x.u })) },
+        { "@context": "https://schema.org", "@type": "Article", headline: g.title, description: g.metaDescription || g.description, abstract: answer, datePublished: g.published || FACTS_CHECKED, dateModified: g.updated || FACTS_CHECKED, inLanguage: "en-US", author: orgRef, publisher: orgSchema, mainEntityOfPage: `${C.domain}/guides/${g.slug}/`, image: gImgs.length ? gImgs.map((i) => C.domain + i.path) : C.domain + ogFor("g-" + g.slug), citation: g.sources.filter((x) => x.u.startsWith("http")).map((x) => ({ "@type": "CreativeWork", name: x.t, url: x.u })) },
         ...(g.faq?.length ? [faqSchema(g.faq)] : [])],
       body: `<header class="article-hero"><div class="wrap"><div class="narrow">
   ${crumbs([["Home", "/"], ["Guides", "/guides/"], [g.nav, ""]])}
   <span class="eyebrow">${esc(g.eyebrow)}</span><h1>${esc(g.title)}</h1>
   <div class="meta"><span>By the ${esc(C.siteName)} editors</span><span>${g.readMins} min read</span><span>Facts checked <time datetime="${g.updated || FACTS_CHECKED}">${fmtDate(g.updated || FACTS_CHECKED)}</time></span><span>${g.sources.length} sources · <a href="/about/">how we fact-check</a></span></div>
+  ${articleFigure(gPhoto)}
 </div></div></header>
 <article class="article"><div class="wrap">
   <div class="prose">${answer ? `<div class="answer"><strong>Quick answer</strong><p>${esc(answer)}</p></div>` : ""}${withIds}
@@ -634,15 +656,18 @@ async function main() {
     const more = posts.filter((x) => x.slug !== b.slug).slice(0, 3);
     const relGuides = (b.guides || []).map((sl) => guides.find((g) => g.slug === sl)).filter(Boolean);
     const og = b.category ? "cat-" + b.category : "guides";
+    const bPhoto = articlePhoto(b, b.category);
+    const bImgs = discoverImgs(bPhoto);
     page(`/blog/${b.slug}/`, {
-      title: b.title, seoTitle: b.seoTitle, description: b.metaDescription || b.description, og, type: "article", modified: b.updated || b.date,
+      title: b.title, seoTitle: b.seoTitle, description: b.metaDescription || b.description, og, image: bImgs[0], type: "article", modified: b.updated || b.date,
       schema: [crumbSchema([["Home", "/"], ["Off-Script", "/blog/"], [b.title, `/blog/${b.slug}/`]]),
-        { "@context": "https://schema.org", "@type": "BlogPosting", headline: b.title, description: b.metaDescription || b.description, abstract: answer, datePublished: b.date, dateModified: b.updated || b.date, inLanguage: "en-US", author: orgRef, publisher: orgSchema, mainEntityOfPage: `${C.domain}/blog/${b.slug}/`, image: C.domain + ogFor(og), citation: (b.sources || []).filter((x) => x.u.startsWith("http")).map((x) => ({ "@type": "CreativeWork", name: x.t, url: x.u })) },
+        { "@context": "https://schema.org", "@type": "BlogPosting", headline: b.title, description: b.metaDescription || b.description, abstract: answer, datePublished: b.date, dateModified: b.updated || b.date, inLanguage: "en-US", author: orgRef, publisher: orgSchema, mainEntityOfPage: `${C.domain}/blog/${b.slug}/`, image: bImgs.length ? bImgs.map((i) => C.domain + i.path) : C.domain + ogFor(og), citation: (b.sources || []).filter((x) => x.u.startsWith("http")).map((x) => ({ "@type": "CreativeWork", name: x.t, url: x.u })) },
         ...(b.faq?.length ? [faqSchema(b.faq)] : [])],
       body: `<header class="article-hero"><div class="wrap"><div class="narrow">
   ${crumbs([["Home", "/"], ["Off-Script", "/blog/"], [b.title, ""]])}
   <span class="eyebrow">${esc(b.eyebrow || "Off-Script")}</span><h1>${esc(b.title)}</h1>
   <div class="meta"><span>By the ${esc(C.siteName)} editors</span><span>Published <time datetime="${b.date}">${fmtDate(b.date)}</time></span>${b.updated ? `<span>Updated <time datetime="${b.updated}">${fmtDate(b.updated)}</time></span>` : ""}<span>${b.readMins} min read</span><span>${(b.sources || []).length} sources · <a href="/about/">how we fact-check</a></span></div>
+  ${articleFigure(bPhoto)}
 </div></div></header>
 <article class="article"><div class="wrap">
   <div class="prose">${answer ? `<div class="answer"><strong>Quick answer</strong><p>${esc(answer)}</p></div>` : ""}${withIds}
@@ -1056,12 +1081,12 @@ ${CATEGORIES.map((c) => `- [${c.name}](${C.domain}/venues/category/${c.slug}/): 
     write(rel, `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved</title><link rel="canonical" href="${C.domain}${to}"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0; url=${to}"></head><body><p>This page has moved to <a href="${to}">${C.domain}${to}</a>.</p></body></html>`);
   }
   const feedItems = [
-    ...posts.map((b) => ({ t: b.title, u: `/blog/${b.slug}/`, d: b.metaDescription || b.description, date: b.date })),
-    ...guides.map((g) => ({ t: g.title, u: `/guides/${g.slug}/`, d: g.metaDescription || g.description, date: g.updated || FACTS_CHECKED })),
+    ...posts.map((b) => ({ t: b.title, u: `/blog/${b.slug}/`, d: b.metaDescription || b.description, date: b.date, img: discoverImgs(articlePhoto(b, b.category))[0] })),
+    ...guides.map((g) => ({ t: g.title, u: `/guides/${g.slug}/`, d: g.metaDescription || g.description, date: g.updated || FACTS_CHECKED, img: discoverImgs(articlePhoto({ ...g, photo: g.photo || GUIDE_PHOTO_BY_SLUG[g.slug] || GUIDE_PHOTO[g.hero] }, null))[0] })),
     ...venues.map((v) => ({ t: `${v.name}: wedding venue guide`, u: `/venues/${v.slug}/`, d: v.bestFor, date: v.checked })),
     { t: `Lucky wedding dates ${YEAR + 1}`, u: `/lucky-wedding-dates/${YEAR + 1}/`, d: `Every special wedding date in ${YEAR + 1}.`, date: ISO },
   ].sort((a, b) => (a.date < b.date ? 1 : -1));
-  write("feed.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${esc(C.siteName)}</title><link>${C.domain}</link><description>${esc(C.description)}</description><lastBuildDate>${NOW.toUTCString()}</lastBuildDate>\n${feedItems.map((i) => `<item><title>${esc(i.t)}</title><link>${C.domain}${i.u}</link><guid>${C.domain}${i.u}</guid><description>${esc(i.d)}</description><pubDate>${new Date(i.date + "T12:00:00Z").toUTCString()}</pubDate></item>`).join("\n")}\n</channel></rss>\n`);
+  write("feed.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>${esc(C.siteName)}</title><link>${C.domain}</link><description>${esc(C.description)}</description><lastBuildDate>${NOW.toUTCString()}</lastBuildDate>\n${feedItems.map((i) => `<item><title>${esc(i.t)}</title><link>${C.domain}${i.u}</link><guid>${C.domain}${i.u}</guid><description>${esc(i.d)}</description><pubDate>${new Date(i.date + "T12:00:00Z").toUTCString()}</pubDate>${i.img ? `<media:content url="${C.domain}${i.img.path}" medium="image" type="image/jpeg" width="${i.img.w}" height="${i.img.h}"/>` : ""}</item>`).join("\n")}\n</channel></rss>\n`);
   write("site.webmanifest", JSON.stringify({ name: C.siteName, short_name: C.shortName, start_url: "/", display: "browser", background_color: "#FFFBF8", theme_color: "#FFFBF8", icons: [{ src: "/assets/img/mark-192.png", sizes: "192x192", type: "image/png" }, { src: "/assets/img/mark-512.png", sizes: "512x512", type: "image/png" }] }, null, 2));
   write("CNAME", C.domain.replace(/^https?:\/\//, "") + "\n");
   if (C.adsenseClient) write("ads.txt", `google.com, ${C.adsenseClient.replace("ca-", "")}, DIRECT, f08c47fec0942fa0\n`);

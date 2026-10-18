@@ -2,6 +2,7 @@
 export default {
   slug: "christmas-holiday-lights-wedding-photos-las-vegas",
   date: "2026-10-17",
+  photo: "bellagio",
   category: "historic-iconic",
   eyebrow: "Holiday guide",
   tags: ["christmas", "holiday lights", "december", "photos", "ethel m cactus garden", "neon museum", "springs preserve", "henderson"],

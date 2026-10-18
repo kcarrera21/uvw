@@ -2,6 +2,7 @@
 export default {
   slug: "winter-wedding-las-vegas-december-january",
   date: "2026-10-16",
+  photo: "the-neon-museum",
   category: "desert-outdoors",
   eyebrow: "Season guide",
   tags: ["winter", "december", "january", "weather", "sunset", "red rock canyon", "neon museum", "valley of fire"],

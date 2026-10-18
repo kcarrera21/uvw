@@ -357,6 +357,8 @@ table.data td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .art-fig { margin: 0; }
 .photo-credit { font-size: .74rem; line-height: 1.45; color: var(--ink-soft); margin: 8px 0 0; }
 .photo-credit a { color: var(--ink-soft); }
+.article-photo { margin: 26px 0 0; }
+.article-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); background: var(--line); }
 .credits { list-style: none; padding: 0; display: grid; gap: 14px; }
 .credits li { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 
