@@ -5,6 +5,11 @@
 //  so they stay in sync with venues.mjs automatically.
 // =====================================================================
 
+import certificateCopies from "./guides/las-vegas-marriage-certificate-copies.mjs";
+import nameChange from "./guides/name-change-after-las-vegas-wedding.mjs";
+import lgbtqWeddings from "./guides/lgbtq-wedding-las-vegas.mjs";
+import photoPermits from "./guides/las-vegas-wedding-photo-permits.mjs";
+
 const CLERK = "https://www.clarkcountynv.gov/government/elected_officials/county_clerk";
 
 export const guides = [
@@ -624,4 +629,5 @@ export const guides = [
       { t: "Clark County Clerk: Marriage License Requirements", u: `${CLERK}/marriage-license-requirements` },
     ],
   },
+  certificateCopies, nameChange, lgbtqWeddings, photoPermits,
 ];

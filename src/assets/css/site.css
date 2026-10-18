@@ -387,3 +387,6 @@ table.data td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .field.badge-styles label { display: inline-flex; width: auto; flex: 0 0 auto; margin: 0; }
 .field.badge-styles input[type="radio"] { width: auto; height: auto; padding: 0; border: 0; box-shadow: none; background: none; }
 form .field.badge-styles { flex-direction: row; align-items: center; }
+
+@media (max-width: 620px) { table.data { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
+.prose { overflow-wrap: break-word; }

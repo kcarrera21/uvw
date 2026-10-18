@@ -19,8 +19,8 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [ ] How far ahead to book a Las Vegas wedding chapel (by venue type)
 - [ ] What a Las Vegas elopement package usually includes, and what it doesn't
 - [ ] Do you need a witness in Las Vegas? Who can be one
-- [ ] Getting a certified copy of your Clark County marriage certificate
-- [ ] Changing your name after a Las Vegas wedding: the order to do it in
+- [x] Getting a certified copy of your Clark County marriage certificate. Covered by guide 2026-10-18
+- [x] Changing your name after a Las Vegas wedding: the order to do it in. Covered by guide 2026-10-18
 - [ ] International couples marrying in Las Vegas: documents and apostilles
 - [ ] Vow renewals in Las Vegas: what's different from a legal wedding
 - [ ] Commitment ceremonies vs. legal weddings in Las Vegas
@@ -43,7 +43,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [ ] Immersive art weddings: AREA15 and Omega Mart
 - [ ] Classic Strip resort weddings: Bellagio, Venetian and Caesars compared
 - [ ] Small wedding under $500 in Las Vegas: real published options
-- [ ] Las Vegas wedding photo spots that don't need a permit (and ones that do)
+- [x] Las Vegas wedding photo spots that don't need a permit (and ones that do). Covered by guide 2026-10-18
 - [ ] The Welcome to Fabulous Las Vegas sign: wedding photos without the line
 - [ ] Courthouse wedding vs. chapel wedding in Las Vegas: cost and feel
 - [ ] Rainy-day backup plans for outdoor Las Vegas weddings
