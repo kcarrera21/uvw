@@ -490,5 +490,53 @@
   "source": "https://unsplash.com/photos/a-full-moon-is-seen-over-a-small-town-TU8OoEOhIco",
   "w": 1600,
   "h": 919
+ },
+ "guide-certificate": {
+  "alt": "A marriage certificate on a table after the signing",
+  "note": "",
+  "title": "A marriage certificate on a table after the signing",
+  "creator": "Fotógrafo Samuel Cruz",
+  "creatorUrl": "https://unsplash.com/@fotografosamuelcruz",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/person-pointing-at-a-marriage-certificate-on-a-wooden-table-uNMCWU0zjso",
+  "w": 1600,
+  "h": 1067
+ },
+ "guide-name-change": {
+  "alt": "A U.S. passport on top of a boarding pass",
+  "note": "",
+  "title": "A U.S. passport on top of a boarding pass",
+  "creator": "Nicole Geri",
+  "creatorUrl": "https://unsplash.com/@nicolegeri",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/passport-booklet-on-top-of-white-paper-gMJ3tFOLvnA",
+  "w": 1600,
+  "h": 928
+ },
+ "guide-lgbtq": {
+  "alt": "Two grooms signing their wedding documents",
+  "note": "",
+  "title": "Two grooms signing their wedding documents",
+  "creator": "Fotógrafo Samuel Cruz",
+  "creatorUrl": "https://unsplash.com/@fotografosamuelcruz",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/two-grooms-signing-wedding-documents-on-a-beach-eycZmDDisBI",
+  "w": 1600,
+  "h": 1068
+ },
+ "guide-photo-permits": {
+  "alt": "The Welcome to Fabulous Las Vegas sign on a sunny day",
+  "note": "",
+  "title": "The Welcome to Fabulous Las Vegas sign on a sunny day",
+  "creator": "Grant Cai",
+  "creatorUrl": "https://unsplash.com/@grantcaiphoto",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/welcome-to-fabulous-las-vegas-nevada-signage-9xjdQ8-zLKI",
+  "w": 1600,
+  "h": 1063
  }
 }

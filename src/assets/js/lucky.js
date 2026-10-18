@@ -36,6 +36,8 @@
     if (consecutive(us, 1) || consecutive(us, -1)) { tags.push("Sequential"); score += 7; }
     var s7 = sevens(us);
     if (s7 >= 3) { tags.push("Lucky sevens"); score += 2 + s7; }
+    var s8 = (us.match(/8/g) || []).length;       // eight stands for prosperity in Chinese tradition
+    if (s8 >= 3) { tags.push("Lucky eights"); score += 2 + s8; }
     if (m === 2 && d === 14) { tags.push("Valentine's Day"); score += 5; }
     if (m === 2 && d === 29) { tags.push("Leap Day"); score += 7; }
     if (m === 12 && d === 31) { tags.push("New Year's Eve"); score += 4; }

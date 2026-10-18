@@ -692,13 +692,14 @@ async function main() {
   // ================= LUCKY DATES =================
   const luckyItem = (a) => `<li class="lucky-item"><div class="lucky-date">${a.short}</div><div><strong>${a.long}</strong><div class="tags">${a.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div></div><div class="lucky-when"></div></li>`;
   const luckyHow = `<h2>How we pick them</h2>
-  <ul class="checklist"><li><strong>Palindromes</strong> read the same backward and forward (7/2/27 → 7227).</li><li><strong>Mirror dates</strong> have a matching month and day (10/10).</li><li><strong>Day matches year</strong> dates repeat the year (7/27/27).</li><li><strong>Lucky sevens</strong> have three or more 7s (7/7/27).</li><li>Plus Valentine's Day, Leap Day, Halloween, New Year's Eve and Friday the 13th for the bold.</li></ul>
+  <ul class="checklist"><li><strong>Palindromes</strong> read the same backward and forward (7/2/27 → 7227).</li><li><strong>Mirror dates</strong> have a matching month and day (10/10).</li><li><strong>Day matches year</strong> dates repeat the year (7/27/27).</li><li><strong>Lucky sevens</strong> have three or more 7s (7/7/27).</li><li><strong>Lucky eights</strong> have three or more 8s (8/8/28). Eight stands for prosperity in Chinese tradition, which is why so many couples in Beijing married on 8/8/08.</li><li>Plus Valentine's Day, Leap Day, Halloween, New Year's Eve and Friday the 13th for the bold.</li></ul>
   <p class="small">"Lucky" here means a memorable number pattern or holiday. It's tradition and fun, not a prediction.</p>`;
   const luckyCheck = `<h2>Check any date</h2>
   <p><label for="date-check" class="small">Pick a date to see if it's special:</label><br><input type="date" id="date-check" style="font:1rem var(--sans);padding:10px;border:1px solid var(--line);border-radius:10px;margin-top:6px"></p>
   <p id="date-check-out" aria-live="polite"></p>`;
-  const luckyNote = `<div class="note"><strong>Why book early?</strong> On 6/26/26, one Las Vegas chapel group alone scheduled about 130 weddings (News 3 Las Vegas, June 26, 2026). Pattern dates are the Super Bowl of the chapel calendar.</div>`;
-  const bookFaq = { q: "Do lucky wedding dates book up in Las Vegas?", a: "Yes. On 6/26/26, one Las Vegas chapel group scheduled about 130 weddings, according to News 3 Las Vegas. Book as early as your venue allows." };
+  const luckyNote = `<div class="note"><strong>Why book early?</strong> Pattern dates are the busiest days on the Las Vegas wedding calendar. The single-day record is 7/7/07, with 4,492 marriages, and 11/11/11 is second with 3,125 couples, according to Clark County's marriage bureau as reported by the AP. Book your venue as soon as it takes the date, and <a href="/guides/las-vegas-marriage-license/">pre-apply for your license online</a> so you skip the longest line.</div>`;
+  const luckySources = `<div class="sources"><strong>Sources</strong><ul><li><a href="https://www.ksat.com/business/2023/12/27/1-2-3-and-counting-las-vegas-weddings-could-hit-record-on-new-years-eve-thanks-to-dates-pattern/" rel="nofollow noopener" target="_blank">Associated Press via KSAT: Las Vegas weddings could hit record on New Year's Eve (Dec. 26, 2023)</a>, Clark County marriage bureau figures for 7/7/07 and 11/11/11</li><li><a href="https://www.csmonitor.com/World/Asia-Pacific/2008/0808/china-welcomes-the-olympics-with-fireworks-and-wedding-bells" rel="nofollow noopener" target="_blank">Christian Science Monitor: China welcomes the Olympics with fireworks, and wedding bells (Aug. 8, 2008)</a>, eight as a lucky number and 8/8/08 weddings</li><li>Dates and patterns are calculated from the calendar by our date engine.</li></ul></div>`;
+  const bookFaq = { q: "Do lucky wedding dates book up in Las Vegas?", a: "Yes. The county's single-day record is 7/7/07, with 4,492 marriages, and 11/11/11 drew 3,125 couples, per Clark County's marriage bureau as reported by the AP. Book as early as your venue allows." };
   const describe = (a) => `${a.short} (${a.weekday}; ${a.tags.join(", ")})`;
   const yearChips = (skip) => `<div class="chips">${[0, 1, 2, 3].map((k) => YEAR + k).filter((y) => y !== skip).map((y) => `<a class="chip" href="/lucky-wedding-dates/${y}/">Lucky dates ${y}: ${L.top(y, 2).map((a) => a.short).join(", ")}</a>`).join("")}</div>`;
 
@@ -707,12 +708,13 @@ async function main() {
   const nextBig = L.upcoming(NOW, 3, 6);
   const hubFaq = [
     { q: "What is the next lucky wedding date?", a: `As of ${fmtDate(ISO)}, the next major pattern dates are ${nextBig.map(describe).join(", ")}.` },
+    { q: `What are the biggest wedding dates of ${YEAR + 1}?`, a: `The standout pattern dates of ${YEAR + 1} are ${L.top(YEAR + 1, 4).map(describe).join(", ")}.` },
     bookFaq,
-    { q: "What makes a wedding date lucky?", a: "Couples favor dates with memorable number patterns: palindromes that read the same both ways, mirror dates where the month and day match, dates that repeat the year, and dates with several sevens. Holidays such as Valentine's Day are popular too." },
+    { q: "What makes a wedding date lucky?", a: "Couples favor dates with memorable number patterns: palindromes that read the same both ways, mirror dates where the month and day match, dates that repeat the year, and dates with several sevens (or eights, a prosperity number in Chinese tradition). Holidays such as Valentine's Day are popular too." },
   ];
   page("/lucky-wedding-dates/", {
     title: `Lucky Wedding Dates ${YEAR}–${YEAR + 3}`, seoTitle: `Lucky Wedding Dates ${YEAR}–${YEAR + 3}: Upcoming Special Dates`, og: "lucky", modified: ISO,
-    description: `The next lucky and special wedding dates for ${YEAR}–${YEAR + 3}: palindromes, mirror dates, matching numbers and lucky sevens. Updated every week.`,
+    description: `The next lucky and special wedding dates for ${YEAR}–${YEAR + 3}: palindromes, mirror dates, matching numbers, lucky sevens and eights. Updated every week.`,
     schema: [crumbSchema([["Home", "/"], ["Lucky dates", "/lucky-wedding-dates/"]]), faqSchema(hubFaq)],
     body: `<section style="padding-top:48px"><div class="wrap narrow" style="margin:0 auto">
   ${crumbs([["Home", "/"], ["Lucky dates", ""]])}
@@ -727,6 +729,7 @@ async function main() {
   ${luckyCheck}
   ${luckyHow}
   <h2>Lucky date FAQ</h2>${faqHtml(hubFaq)}
+  ${luckySources}
   ${newsletterForm({ title: "Get lucky-date alerts", sub: "We'll email you before big pattern dates open up, plus the free Vegas wedding checklist." })}
   <p style="margin-top:28px">Found your date? <a href="/venues/">Find a venue →</a></p>
 </div></section>`,
@@ -756,6 +759,7 @@ async function main() {
   ${luckyCheck}
   ${luckyHow}
   <h2>${y} lucky date FAQ</h2>${faqHtml(yFaq)}
+  ${luckySources}
   ${newsletterForm({ title: "Get lucky-date alerts", sub: "We'll email you before big pattern dates open up, plus the free Vegas wedding checklist." })}
   <p style="margin-top:28px">Found your date? <a href="/venues/">Find a venue →</a></p>
 </div></section>`,
