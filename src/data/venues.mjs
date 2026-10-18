@@ -1335,4 +1335,117 @@ The altitude also means cooler temperatures than the valley floor, which matters
     status: "listed",
     featured: false
   },
+  {
+    name: "Machine Guns Vegas (Shotgun Wedding)",
+    slug: "machine-guns-vegas-shotgun-wedding",
+    category: "quirky-pop-culture",
+    area: "West of the Strip (Aldebaran Ave.)",
+    drive: "About 15 min from the Strip",
+    setting: "Indoor",
+    vibe: [
+      "Shooting range",
+      "Adrenaline",
+      "Irreverent",
+      "Elopement"
+    ],
+    priceFrom: 719,
+    priceLabel: "Shotgun Wedding combo",
+    guestMax: null,
+    facts: [
+      "The Shotgun Wedding package lists a $719 combo price ($180 off $899). The booking button showed $598 on our check date, so confirm at checkout.",
+      "Included: a minister, flowers for the couple, 15 digital photos and a video of the ceremony.",
+      "The couple each fire two guns: a pink M4 and pink Glock 17 for one, a black MP5 and black Glock 17 for the other.",
+      "Only the couple's shooting is included. Other guests can shoot for $110 per person.",
+      "The package page says the party starts at A Wedding Chapel in Las Vegas, and also that Machine Guns Vegas hosts the ceremony. Ask where the vows happen.",
+      "Shooters must be 18+, sober, not pregnant, carry valid government ID, and have no felony or domestic-violence convictions.",
+      "Reservations are non-refundable but can be moved within 12 months. Book online or call (800) 757-4668 or (702) 539-5016.",
+      "Range: 3501 Aldebaran Ave, Las Vegas, NV 89102, about 6 miles from the Strip. Open daily 10am to 6pm, with free round-trip shuttles from Strip hotels."
+    ],
+    bestFor: "Couples who think a shotgun wedding should involve an actual gun. Several, ideally.",
+    description: "The joke writes itself, and Machine Guns Vegas is happy to let it. The package bundles a minister, flowers, photos and a ceremony video with a shooting session for the two of you, so the first thing you do as a married couple is empty a magazine downrange.\n\nIt's priced and booked like any other range package, which keeps it simple. The rules are strict, though: everyone shooting has to be sober, over 18 and carrying ID. Save the champagne for after.",
+    tips: [
+      "Get your marriage license from Clark County before the day. The package page doesn't say the range handles it.",
+      "Confirm by phone whether the ceremony happens at the chapel or the range before you plan photos.",
+      "No drinking beforehand, for anyone who's shooting. Plan the toast for after.",
+      "Guests who want to shoot pay $110 each, so budget for the friends who will absolutely want to."
+    ],
+    url: "https://machinegunsvegas.com/shooting-experience/the-shotgun-wedding/",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "The Gun Store (Range Weddings)",
+    slug: "the-gun-store-range-weddings",
+    category: "quirky-pop-culture",
+    area: "East Tropicana Ave.",
+    setting: "Indoor",
+    vibe: [
+      "Shooting range",
+      "Adrenaline",
+      "Old Vegas",
+      "Small group"
+    ],
+    priceFrom: null,
+    priceLabel: "Book online or request a quote",
+    guestMax: null,
+    facts: [
+      "The Gun Store has been a Las Vegas range since 1988 and offers a published Range Wedding package.",
+      "The package covers up to 6 shooters and includes 2 hours of private range access with dedicated lanes.",
+      "A licensed officiant performs the ceremony at the lanes, followed by a guided shooting session with commemorative targets.",
+      "Also included: one-on-one Range Safety Officers, unlimited targets, safety gear, souvenir t-shirts and 1 hour in a private lounge afterward.",
+      "Complimentary round-trip shuttle from major Strip hotels is part of the package.",
+      "Photography, catering and an open bar are custom add-ons. Weddings with 10+ guests need a custom quote.",
+      "No alcohol before or during shooting. Toasts are allowed in the lounge only after firearms are secured.",
+      "Events line on the wedding page: (702) 494-1110 (the store's main line is (702) 454-1110). Address: 2900 E Tropicana Ave, Las Vegas, NV 89121."
+    ],
+    bestFor: "Small wedding parties who'd rather hit a target than a dance floor.",
+    description: "The Gun Store is one of the older ranges in town, and its wedding package is built for a tight group: up to six shooters, two hours with the range to yourselves, and an officiant who marries you right at the lanes. Then everyone gets a turn with a safety officer at their elbow.\n\nThe shuttle from the Strip is included, so nobody needs to drive. Afterward you move to a private lounge for the toast, which is the only point in the day when a drink is allowed.",
+    tips: [
+      "No price is published. Use the Book Now link or the quote form, and expect a reply within one business day.",
+      "Bring your marriage license with you. Get it from Clark County ahead of time.",
+      "Over six shooters or 10+ guests? Ask for the custom quote from the start.",
+      "Add photography when you book if you want more than phone pictures. It isn't included."
+    ],
+    url: "https://www.thegunstorelasvegas.net/tgs-events",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Battlefield Vegas",
+    slug: "battlefield-vegas",
+    category: "quirky-pop-culture",
+    area: "Sammy Davis Jr. Drive",
+    setting: "Indoor & outdoor",
+    vibe: [
+      "Military",
+      "Shooting range",
+      "Tanks",
+      "After hours"
+    ],
+    priceFrom: null,
+    priceLabel: "Custom quote",
+    guestMax: null,
+    facts: [
+      "Battlefield Vegas lists weddings among the private events it hosts.",
+      "Event services include banquet seating, a full liquor bar, DJs and catering.",
+      "Groups can be shuttled to and from the Strip in military Humvees.",
+      "After-hours events start at 7:30 p.m. and include a private range and dedicated staff.",
+      "Add-on finale: drive an Abrams tank over a real car (one driver and one rider).",
+      "No event prices are published. Contact (702) 566-1000 or info@battlefieldvegas.com. Address: 2771 Sammy Davis Jr Drive, Las Vegas, NV 89109."
+    ],
+    bestFor: "Couples who want the reception to end with a tank flattening a sedan.",
+    description: "Battlefield Vegas is a military-themed range with a fleet of armored vehicles, and it rents the whole operation out after hours. Weddings are on its list of private events, with catering, a bar and a DJ handled in-house.\n\nThe detail nobody else in town can match: your guests can ride in by Humvee, and you can close the night by crushing a car with a tank. There's no published wedding package, so this is a custom build with the events team.",
+    tips: [
+      "Book an after-hours slot (from 7:30 p.m.) if you want the range to yourselves.",
+      "Ask whether the tank car crush can be scheduled as the send-off. It's priced separately.",
+      "Keep shooting and drinking in separate parts of the night. Ask the team how they sequence the two.",
+      "Get a written quote that covers catering, bar, DJ and transport together."
+    ],
+    url: "https://www.battlefieldvegas.com/special-events/",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
 ];

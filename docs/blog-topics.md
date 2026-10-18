@@ -3,6 +3,8 @@
 Tick a topic with its publish date when used. Timely topics first; see `blog-playbook.md` for the rules.
 
 ## Timely (next few months)
+- [ ] NEXT UP (Kat, 2026-10-18): Can you get married at Allegiant Stadium (or T-Mobile Arena, or Sphere)? Honest answer: the official private-event pages rent the field, clubs and suites but never mention weddings; explain the private-event route, then point to sports venues that do list weddings (/venues/las-vegas-ballpark/, /venues/las-vegas-paiute-golf-resort/). Start from visit.allegiantstadium.com/private-events, allegiantstadium.com/events/private-events, t-mobilearena.com/book-the-arena, thesphere.com/group-events. Re-check each live.
+- [ ] NEXT UP (Kat, 2026-10-18): Skydiving weddings in Las Vegas: what's actually possible. No operator near Vegas publishes a wedding package (Skydive Las Vegas, GoJump, iFLY checked; Skydive Fyrosity sells a proposal package only; Vegas Indoor Skydiving appears closed). Vows happen on the ground, then the jump. Point to sky-high venues that do weddings (/venues/category/sky-high/). Re-check each operator live.
 - [x] Halloween 2026 wedding in Las Vegas (10/31/26 is a Saturday). Published 2026-10-11
 - [x] Día de los Muertos–inspired wedding ideas in Las Vegas (early Nov). Published 2026-10-12
 - [x] Getting married over Veterans Day weekend in Las Vegas. Published 2026-10-13
