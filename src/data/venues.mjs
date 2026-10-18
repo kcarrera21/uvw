@@ -863,4 +863,402 @@ The altitude also means cooler temperatures than the valley floor, which matters
     ],
     url: "https://www.larkindependent.com/hotels/retreat-on-charleston-peak/groups-events", checked: "2026-10-13", status: "listed", featured: false,
   },
+  {
+    name: "Old Las Vegas Mormon Fort State Historic Park",
+    slug: "old-las-vegas-mormon-fort",
+    category: "historic-iconic",
+    area: "Downtown Las Vegas (500 E. Washington Ave.)",
+    setting: "Outdoor",
+    vibe: [
+      "Pioneer history",
+      "Adobe",
+      "Downtown",
+      "Small & simple"
+    ],
+    priceFrom: 125,
+    priceLabel: "Special use permit ($100 base fee + $25 processing fee; $5 user fee extra)",
+    guestMax: null,
+    facts: [
+      "Mormon missionaries built an adobe fort here in 1855. It was the first permanent non-native settlement in the Las Vegas Valley.",
+      "The spring-fed creek drew Paiute people and travelers on the Old Spanish Trail long before the city existed.",
+      "Nevada State Parks policy lists weddings as a special use. You apply to the park with the Special Use Permit form and a non-refundable $25 processing fee.",
+      "Apply at least 60 days before the event. All permits need liability insurance that names the State of Nevada as an additional insured.",
+      "Published fort fees: special use base fee $100 plus a $5 user fee. Group use area: $100 for 6–100 people, $200 for 101 or more.",
+      "State Parks policy counts a catered wedding as commercial use.",
+      "Open Tuesday–Saturday, 8 a.m.–4:30 p.m. Museum admission is $3 (12 and under free).",
+      "Park rules: no drones, no dogs except service animals, and no music unless park staff authorize it."
+    ],
+    bestFor: "History lovers who want to marry where Las Vegas started, not where it ended up.",
+    description: "Long before the neon, there was a creek, a meadow and a small adobe fort. Mormon missionaries built it in 1855 beside the spring that fed the valley, and a remnant of the original fort still stands in what is now Downtown. Spanish travelers called the spot las vegas, \"the meadows,\" and today the site gives you a ceremony setting with more history than any chapel on the Strip.\n\nThis is a permit wedding, not a package. You apply to Nevada State Parks, carry insurance, and bring your own officiant, chairs and plan. In return the fees are low, and you get a quiet corner of Downtown with adobe walls in the background.",
+    tips: [
+      "Start 60 days out at the latest. The permit needs a park supervisor's and a regional manager's sign-off, plus proof of insurance.",
+      "The park is open Tuesday–Saturday only. Sunday and Monday weddings aren't on the table.",
+      "Want music? Ask in your application. Instruments and music need staff approval during park hours.",
+      "Hiring a caterer changes the permit type to commercial, so say so up front."
+    ],
+    url: "https://parks.nv.gov/fees/group-use-special-commercial-use",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Ice Age Fossils State Park",
+    slug: "ice-age-fossils-state-park",
+    category: "desert-outdoors",
+    area: "North Las Vegas (8660 N. Decatur Blvd.)",
+    setting: "Outdoor",
+    vibe: [
+      "Ice Age",
+      "Desert wash",
+      "Mammoths",
+      "Offbeat"
+    ],
+    priceFrom: 50,
+    priceLabel: "Special use permit ($25 base fee + $25 processing fee; $5 user fee extra)",
+    guestMax: null,
+    facts: [
+      "A 315-acre state park along the upper Las Vegas Wash, where fossils of Columbian mammoths, camels, dire wolves and ground sloths have been found.",
+      "There's a group area with a large shade structure and picnic tables near the visitor center.",
+      "Nevada State Parks policy lists weddings as a special use. You apply to the park with the Special Use Permit form and a non-refundable $25 processing fee.",
+      "Apply at least 60 days before the event. All permits need liability insurance that names the State of Nevada as an additional insured.",
+      "Published special use fees for this park: $25 base fee plus a $5 user fee.",
+      "Open Wednesday–Sunday, 8 a.m.–4:30 p.m. Day-use entry is $3 (12 and under free).",
+      "Life-size megafauna sculptures line the 0.3-mile Megafauna Trail behind the visitor center.",
+      "Rules: no drones, no camping or campfires. Leashed pets are welcome."
+    ],
+    bestFor: "Couples who'd like a life-size mammoth in their wedding photos.",
+    description: "Mammoths, camels, dire wolves and ground sloths once lived in this corner of the valley, and the fossils they left behind are why it's protected. Now it's a quiet desert wash at the north edge of town with a modern visitor center and a trail of life-size Ice Age sculptures. It's one of the more unexpected places to say vows in Clark County.\n\nAs at other Nevada state parks, a wedding here runs through a special use permit. The published fees are among the lowest you'll find. Plan a small ceremony under the shade structure, take photos with the megafauna, and keep the reception somewhere with air conditioning.",
+    tips: [
+      "The park is closed Monday and Tuesday, so pick a Wednesday–Sunday date.",
+      "There's not much shade beyond the group structure. Aim for morning or the cooler months.",
+      "Budget for liability insurance. Every Nevada State Parks permit requires it.",
+      "Bring your own officiant and setup. The park issues the permit, not a package."
+    ],
+    url: "https://parks.nv.gov/fees/group-use-special-commercial-use",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Lake Mead National Recreation Area",
+    slug: "lake-mead-national-recreation-area",
+    category: "desert-outdoors",
+    area: "Lake Mead / Boulder City area",
+    setting: "Outdoor",
+    vibe: [
+      "Lake views",
+      "Desert canyons",
+      "National park",
+      "Elopement"
+    ],
+    priceFrom: 150,
+    priceLabel: "Special use permit ($150 application fee)",
+    guestMax: null,
+    facts: [
+      "1.5 million acres of mountains, canyons, valleys and two reservoirs, managed by the National Park Service.",
+      "The NPS lists weddings among the activities that need a Special Use Permit.",
+      "The application fee is $150, non-refundable even if the permit is denied, and is paid by credit card only. Cost recovery charges may be added.",
+      "Apply at least 45 business days ahead. Applications are accepted up to one year in advance.",
+      "Permit holders still pay park entry: $25 per private vehicle, valid 1–7 days.",
+      "The park may require proof of liability insurance.",
+      "Photos with eight or fewer people and hand-carried gear usually need no film permit.",
+      "The park's Commercial Use Authorization directory lists an authorized small-wedding event company."
+    ],
+    bestFor: "Couples who want blue water and desert mountains without leaving the county.",
+    description: "Lake Mead is the surprise in the Las Vegas desert: blue water against bare brown mountains, with a long shoreline and enough room to find a quiet spot. It's a national recreation area, which means the scenery is protected and a wedding needs a federal permit.\n\nThe permit process is clear and published. Pay the $150 application fee, give the park office about nine weeks, and expect to pay entry for each car. Couples who would rather not handle the paperwork can look at the park's directory of authorized wedding operators.",
+    tips: [
+      "45 business days is closer to nine calendar weeks. Count weekends and holidays out when you plan.",
+      "Every guest car pays entry. Carpools or a shuttle keep costs down.",
+      "Not sure you need a permit? Email the Special Park Use Office (LAKE_SPU@nps.gov) before you book anything else.",
+      "Summer shoreline heat is serious. Plan around sunrise or the cooler months."
+    ],
+    url: "https://www.nps.gov/lake/planyourvisit/special-use-permit.htm",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Mount Charleston (Spring Mountains)",
+    slug: "spring-mountains-national-recreation-area",
+    category: "desert-outdoors",
+    area: "Mount Charleston (Kyle & Lee Canyons)",
+    setting: "Outdoor",
+    vibe: [
+      "Mountain",
+      "Pine forest",
+      "Cool weather",
+      "Elopement"
+    ],
+    priceFrom: null,
+    priceLabel: "Noncommercial group use permit (groups of 75+)",
+    guestMax: null,
+    facts: [
+      "Managed by the Humboldt-Toiyabe National Forest (U.S. Forest Service). The SMNRA office is at 4701 N. Torrey Pines Dr., Las Vegas (702-872-5486).",
+      "Forest Service rules name weddings as a noncommercial group use. A permit is required when the group, guests included, is 75 people or more.",
+      "Apply at least 72 hours ahead. The Forest Service evaluates applications within 48 hours, and an application it doesn't evaluate in time is treated as granted.",
+      "The noncommercial group use permit doesn't require insurance or a bond.",
+      "Picnic sites in upper Kyle Canyon sit around 7,600 feet, among ponderosa pine and mountain mahogany.",
+      "The Spring Mountains Visitor Gateway's Pinion and Ponderosa group picnic sites need reservations May 1–September 30."
+    ],
+    bestFor: "Couples who'd trade the desert heat for pine trees and mountain air.",
+    description: "Drive northwest out of the valley and the road climbs into a different climate. The Spring Mountains rise to pine forest, limestone cliffs and air that runs far cooler than the Strip. For a summer wedding, that alone makes the drive worth it.\n\nThis is national forest, so the rules are federal and fairly light. Big groups (75 or more, guests included) file a noncommercial group use permit at least 72 hours ahead. A permit doesn't reserve a spot, though, so the real work is picking a location that fits your crowd and confirming it with the SMNRA office.",
+    tips: [
+      "Call the SMNRA office before you lock in a spot. The 75-person rule covers noncommercial groups, so ask what applies if you hire vendors.",
+      "A group use permit doesn't give you exclusive use of a site. If you need a guaranteed space, ask the office whether a reservable group picnic site can host your ceremony.",
+      "Check fire restrictions (702-872-5486). Stage 1 restrictions ban fires outside developed recreation sites, so ask before planning anything with a flame.",
+      "Mountain weather changes fast, and the mountain roads can get winter weather. Bring layers and a backup plan."
+    ],
+    url: "https://www.fs.usda.gov/managing-land/lands-minerals-geology/special-uses/applying-for-permit/non-commercial",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Lion Habitat Ranch",
+    slug: "lion-habitat-ranch",
+    category: "quirky-pop-culture",
+    area: "Henderson (near the M Resort, off St. Rose Pkwy & Bermuda Rd)",
+    setting: "Outdoor",
+    vibe: [
+      "Lions",
+      "Sanctuary",
+      "Outdoor courtyard",
+      "Offbeat"
+    ],
+    priceFrom: 1200,
+    priceLabel: "Courtyard rental, 2 hours",
+    guestMax: 150,
+    facts: [
+      "The ranch's FAQ lists weddings and receptions among the events it hosts, and it also offers full property rentals.",
+      "Courtyard rental: $1,200 for 2 hours, $600 per extra hour. Includes 30 adults and up to 30 children; extra guests $20 each; 150 people max.",
+      "A 30×30 tent, tables and chairs for up to 100, and disposable tablecloths are included at no extra charge.",
+      "Feast with the Beasts is a private, glass-enclosed dining area surrounded by the lions: up to 20 guests, $300 per hour.",
+      "Bookings go through a request form only (not by phone). A 50% non-refundable deposit holds the date.",
+      "Helium balloons and glassware are prohibited. There's one restroom, so the ranch recommends renting porta-potties; they're required for after-hours events.",
+      "Address: 382 Bruner Ave, Henderson, NV 89044."
+    ],
+    bestFor: "Couples who'd like a pride of lions on the guest list.",
+    description: "Lion Habitat Ranch is a nonprofit sanctuary in Henderson, and it rents its courtyard for weddings and receptions. Rent during regular hours and your guests get the animal viewing loop too, which beats a photo booth as a way to keep people busy between the ceremony and the cake.\n\nFor a smaller group, the Feast with the Beasts room puts up to 20 people at a table inside glass walls with lions on the other side. It's an outdoor, bring-your-own-everything kind of venue: the ranch supplies a tent, tables and chairs, and you supply the caterer, the DJ and the extra restrooms.",
+    tips: [
+      "Budget for porta-potties. There's one restroom on site, and they're required after hours.",
+      "Hire your own caterer and bring plates, napkins and utensils. The ranch doesn't provide them or cold storage.",
+      "Skip the champagne flutes and balloons. Glassware and helium balloons aren't allowed.",
+      "Give the ranch 72 hours to answer your request form, and have a rain plan. It's fully outdoors."
+    ],
+    url: "https://lionhabitatranch.org/product/reserve-your-event/",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Atomic Museum",
+    slug: "atomic-museum",
+    category: "historic-iconic",
+    area: "East of the Strip (Flamingo Rd.)",
+    setting: "Indoor",
+    vibe: [
+      "Atomic Age",
+      "Museum",
+      "Retro science",
+      "Nerdy"
+    ],
+    priceFrom: null,
+    priceLabel: "Custom quote",
+    guestMax: null,
+    facts: [
+      "The museum's private events page lists weddings and receptions, covering ceremonies, receptions and rehearsal dinners.",
+      "Events take place among the exhibits and artifacts. Options range from small gatherings to full museum buyouts.",
+      "No prices or capacities are published. You submit a request form with your date, times and guest count, and the events team follows up.",
+      "Address: 755 E. Flamingo Rd., Las Vegas, NV 89119."
+    ],
+    bestFor: "Science-minded couples who think a mushroom cloud is a reasonable wedding motif.",
+    description: "The Atomic Museum tells the story of the atomic age in the Las Vegas area, one of the stranger chapters in the city's history. It hosts weddings among its exhibits, from the ceremony itself to the reception and the rehearsal dinner.\n\nIt's a good fit for couples who met in a lab, a classroom or a very long argument about physics. Everything is quoted per event, and a full buyout is on the table if you want the whole museum to yourselves.",
+    tips: [
+      "Ask which galleries can host a seated ceremony versus a standing reception.",
+      "Ask about a full buyout if you want guests to wander the exhibits during cocktail hour.",
+      "Pricing is by request. Send your date, start and end times, and guest count with your first inquiry to get a usable quote."
+    ],
+    url: "https://www.atomicmuseum.vegas/private-events/",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Sandy Valley Ranch",
+    slug: "sandy-valley-ranch",
+    category: "desert-outdoors",
+    area: "Sandy Valley, NV (about 22 miles past Jean via Hwy 161 and Sandy Valley Rd)",
+    setting: "Indoor & outdoor",
+    vibe: [
+      "Western",
+      "Horses",
+      "Rustic ranch",
+      "Fire pit"
+    ],
+    priceFrom: 3000,
+    priceLabel: "Basic Wedding Package",
+    guestMax: 125,
+    facts: [
+      "The $3,000 Basic Wedding Package includes exclusive use of the ceremony and reception spaces, tables and chairs for up to 125 guests, the kitchen and bar areas, a bride's room and the outdoor fire pit.",
+      "Ceremonies are held on a grass area with a ceremony arch and hay bale seating. Receptions are in the Main Ranch House, which seats up to 125.",
+      "Horse add-ons: horseback entrance to the ceremony $150; post-ceremony photo ride for two $275; private sunset ride for two $350.",
+      "Bar service from $20 per person and meal service from $25 per person, plus gratuity.",
+      "Each wedding gets a dedicated ranch wedding planner. Bring your own officiant or arrange a Justice of the Peace.",
+      "The FAQ says larger setups can reach about 200 guests, depending on layout.",
+      "Address: 1411 Kingston Rd, Sandy Valley, NV 89019."
+    ],
+    bestFor: "Couples who want to ride in on horseback and mean it.",
+    description: "Sandy Valley Ranch sits over a mountain pass from Jean, far enough out that the Strip disappears and the mesquite takes over. The ceremony happens on a patch of grass with hay bale seating, and the reception moves into a ranch house with farm tables, a bar and a dance floor.\n\nThe add-ons are the reason to come: arrive at the aisle on horseback, slip away for a photo ride after the vows, or end the night riding into the sunset, literally. The base package is one of the clearer prices in the area, and a ranch planner comes with it.",
+    tips: [
+      "Confirm your headcount limit early. The package says 125, the FAQ says about 200, and the inquiry form caps at 100.",
+      "The bar gratuity is listed as both 18% and 20% on the same page. Ask which applies.",
+      "Send guests the ranch's directions. Its own advice: if you're on a dirt road, you've made a wrong turn.",
+      "Book the sunset ride for after dinner, and tell guests to bring a layer for the fire pit."
+    ],
+    url: "https://sandyvalleyranch.com/horseback-riding/western-weddings/",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Madame Tussauds Las Vegas (Wax Wedding)",
+    slug: "madame-tussauds-wax-wedding",
+    category: "quirky-pop-culture",
+    area: "The Strip (3377 S. Las Vegas Blvd)",
+    drive: "On the Strip",
+    setting: "Indoor",
+    vibe: [
+      "Celebrity",
+      "Wax figures",
+      "Chapel",
+      "Kitschy"
+    ],
+    priceFrom: 199.99,
+    priceLabel: "Walk-Up Wax Wedding",
+    guestMax: null,
+    facts: [
+      "The $199.99 Walk-Up Wax Wedding includes a ceremony in the museum's little white chapel with an ordained officiant, wedding music, \"Just Married\" sashes, a mini bottle of champagne and digital photos.",
+      "The $224.99 VIP Wax Wedding adds a celebrity wax figure of your choice from a provided list, one framed print and a wax cast of the couple's hands.",
+      "Add-ons on the ticketing page: an extra celebrity figure $25; an extra guest ticket $29.99.",
+      "The package is valid for the couple. Champagne requires guests 21+ with ID, and the wax hand experience requires age 5+.",
+      "The museum's pages don't say whether the ceremony is legally binding.",
+      "Address: 3377 S. Las Vegas Blvd, Ste. 2001, Las Vegas, NV 89109."
+    ],
+    bestFor: "Couples who want a celebrity witness who won't upstage them.",
+    description: "Madame Tussauds runs a little white chapel inside the museum, and for about the price of a nice dinner it will marry you in front of a wax celebrity. Pick a figure from the list, stand at the altar, and walk out with sashes, champagne and photos.\n\nIt's light, fast and very Las Vegas. Treat it as the fun ceremony rather than the paperwork unless the museum confirms otherwise, and ask about licensing before you book.",
+    tips: [
+      "Ask whether your ceremony can be legal. The pages don't say, so you may need a separate legal ceremony.",
+      "Each guest needs a ticket ($29.99 add-on), so count heads before checkout.",
+      "Book the VIP tier if you care about the celebrity. The base package doesn't include a chosen figure."
+    ],
+    url: "https://www.madametussauds.com/las-vegas/tickets/ways-to-visit/wax-weddings/",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Bugsy & Meyer's Speakeasy Count Room at Flamingo",
+    slug: "flamingo-count-room-speakeasy",
+    category: "quirky-pop-culture",
+    area: "The Strip (Flamingo Las Vegas)",
+    drive: "On the Strip",
+    setting: "Indoor",
+    vibe: [
+      "Speakeasy",
+      "Mob history",
+      "Hidden room",
+      "Adults only"
+    ],
+    priceFrom: 7000,
+    priceLabel: "Speakeasy Count Room Wedding (plus tax)",
+    guestMax: 25,
+    facts: [
+      "The Count Room is a speakeasy behind Bugsy & Meyer's Steakhouse. Guests enter through a bakery front.",
+      "The package is $7,000 plus 8.375% tax, with a $5,000 food and beverage minimum for the reception right after the ceremony. A 24% gratuity applies to food and beverage.",
+      "Included: a wedding planner and day-of coordinator, a ceremony officiated by Meyer Lansky II, an 18-rose bouquet, a boutonniere, one hour with a photographer, an HD ceremony video, a five-day webcast and two hours of private use of the room.",
+      "Maximum 25 guests, and every guest must be 21 or older.",
+      "Address: 3555 Las Vegas Blvd South, Las Vegas, NV 89109."
+    ],
+    bestFor: "Small, grown-up crowds who like their vows with a side of mob history.",
+    description: "Flamingo Las Vegas hides a speakeasy behind its Bugsy & Meyer's Steakhouse, and you can get married in it. Your guests walk through a fake bakery front into a private room that feels a long way from the casino floor.\n\nThe package covers the ceremony, a planner, photos and video, plus two hours in the room. Once you add the reception food and drink minimum, it lands as one of the pricier small weddings on the Strip, but it's also one of the better stories.",
+    tips: [
+      "Plan the real budget as package plus the $5,000 food and beverage minimum, tax and gratuity.",
+      "Check your guest list. It's 21 and over only, with a hard cap of 25.",
+      "Use the included webcast for relatives who can't make the trip.",
+      "Ask Flamingo's wedding team to confirm the package is current. The flyer isn't dated."
+    ],
+    url: "https://www.caesars.com/flamingo-las-vegas/things-to-do/weddings",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Sanders Family Winery",
+    slug: "sanders-family-winery",
+    category: "desert-outdoors",
+    area: "Pahrump, NV (south side of town)",
+    drive: "About 45 min from the Strip",
+    setting: "Indoor & outdoor",
+    vibe: [
+      "Vineyard",
+      "Tuscan-style",
+      "Mountain views",
+      "Small town"
+    ],
+    priceFrom: null,
+    priceLabel: "Custom quote",
+    guestMax: 100,
+    facts: [
+      "The winery hosts wedding ceremonies and receptions for up to 100 guests.",
+      "Settings listed on its weddings page: a gazebo, a walk-in vineyard and a wedding in the vineyard.",
+      "Two production vineyards flank the main entrance of a Tuscan-style villa, with Mount Charleston in the background.",
+      "To book, call (775) 727-1776 and the winery emails a Wedding Event Application with a two-page planning checklist.",
+      "No prices are published.",
+      "Address: 3780 E Kellogg Road, Pahrump, NV 89061."
+    ],
+    bestFor: "Couples who want vineyard rows in the Mojave and a wine list to match.",
+    description: "Vineyards aren't what most people picture an hour outside Las Vegas, which is part of the appeal. Sanders Family Winery grows grapes in Pahrump on the other side of the Spring Mountains, and it hosts ceremonies and receptions among the vines and at a gazebo, with Mount Charleston behind you.\n\nThere's no package menu online, so expect to plan by phone and paperwork. That suits couples who want a relaxed, wine-country day without flying to Napa.",
+    tips: [
+      "Call first. The winery starts every wedding with an emailed application and checklist.",
+      "Ask about prices, deposits and vendor rules on that first call. None are published.",
+      "Book guest rooms in Pahrump or arrange a shuttle, since the drive back to the Strip is around 45 minutes."
+    ],
+    url: "https://sanderswinery.com/weddings/",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Spanish Trail Country Club",
+    slug: "spanish-trail-country-club",
+    category: "strip-luxury",
+    area: "Southwest Las Vegas (5050 Spanish Trail Ln.)",
+    setting: "Indoor & outdoor",
+    vibe: [
+      "Golf course",
+      "Country club",
+      "Gated community",
+      "Classic"
+    ],
+    priceFrom: null,
+    priceLabel: "Custom quote",
+    guestMax: null,
+    facts: [
+      "The clubhouse hosts weddings and private events, with dining and meeting rooms that can be set up to suit the event.",
+      "The clubhouse sits inside a gated community, surrounded by a 27-hole golf course.",
+      "No prices, packages or capacities are published. Inquiries go through an online form or the Private Events/Weddings Office at 702.678.1001.",
+      "Address: 5050 Spanish Trail Ln., Las Vegas, NV 89113."
+    ],
+    bestFor: "Couples who want fairway views and a country-club polish without a casino in sight.",
+    description: "Spanish Trail is one of the older private golf communities in Las Vegas, named for the historic trade route that once ran through the valley. Its clubhouse hosts weddings, and the setting is green fairways and mountain views instead of slot machines.\n\nThe club doesn't publish packages or prices, so this is a call-and-ask venue. That suits couples who want a traditional reception with a planner on the other end of the phone, and who'd rather their guests park at a clubhouse than in a casino garage.",
+    tips: [
+      "Ask first whether you need a member sponsor. The club's page doesn't say whether non-members can book.",
+      "It's a gated community, so get gate and parking instructions to send your guests.",
+      "Ask whether the ceremony can be outdoors on the course or patio, and what the heat plan is for summer dates."
+    ],
+    url: "https://www.spanishtrailcc.com/Inquiries/Weddings",
+    checked: "2026-10-18",
+    status: "listed",
+    featured: false
+  },
 ];

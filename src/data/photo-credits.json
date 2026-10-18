@@ -538,5 +538,53 @@
   "source": "https://unsplash.com/photos/welcome-to-fabulous-las-vegas-nevada-signage-9xjdQ8-zLKI",
   "w": 1600,
   "h": 1063
+ },
+ "lake-mead-national-recreation-area": {
+  "alt": "Lake Mead from Sunset Point in Lake Mead National Recreation Area",
+  "note": "",
+  "title": "Lake Mead from Sunset Point in Lake Mead National Recreation Area",
+  "creator": "Art of Adventure",
+  "creatorUrl": "https://unsplash.com/@artofadventure",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-6_AHM60jhUk",
+  "w": 1600,
+  "h": 1158
+ },
+ "flamingo-count-room-speakeasy": {
+  "alt": "The Flamingo Las Vegas sign at night",
+  "note": "area",
+  "title": "The Flamingo Las Vegas sign at night",
+  "creator": "Jakob Owens",
+  "creatorUrl": "https://unsplash.com/@jakobowens1",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/flamingo-building-with-turned-on-lights-at-night-in-high-angle-photography-lNvCUPLK8AI",
+  "w": 1600,
+  "h": 1067
+ },
+ "spring-mountains-national-recreation-area": {
+  "alt": "Pines and the peaks of Mount Charleston",
+  "note": "",
+  "title": "Pines and the peaks of Mount Charleston",
+  "creator": "Keely Klenke",
+  "creatorUrl": "https://unsplash.com/@_bad_llama_",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/green-pine-trees-near-mountain-under-blue-sky-during-daytime-5o15AuDknRc",
+  "w": 1600,
+  "h": 1200
+ },
+ "guide-backyard": {
+  "alt": "String lights over a backyard at dusk",
+  "note": "",
+  "title": "String lights over a backyard at dusk",
+  "creator": "Giorgio Trovato",
+  "creatorUrl": "https://unsplash.com/@giorgiotrovato",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/string-lights-in-tilt-shift-lens-hsRG0sJevwA",
+  "w": 1600,
+  "h": 1067
  }
 }
