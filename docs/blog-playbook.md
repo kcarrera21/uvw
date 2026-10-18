@@ -7,7 +7,7 @@ The blog is called **Off-Script** (from the site tagline, "Vegas weddings, off-s
 - `date` is the publish date (Pacific time). A future date stays hidden until a build runs on or after it.
 - `category` is one of the six venue category slugs.
 - `photo` is the post's lead image: a key from `src/data/photo-credits.json` (a venue slug with a real photo, or a `cat-…`/`hero-…` photo). It shows under the headline and is what Google Discover, Facebook and the RSS feed use. Pick a photo of a place the post actually covers, and don't reuse the photo of either of the last 3 posts. If you leave it out, the build uses the first pictured venue in the post's `{{venue-picks}}`, then the category photo. Never point it at an illustration-only venue.
-- Adding a new photo to `photo-credits.json`? Run `python3 scripts/discover-images.py` before building so its 1200px Discover crops exist.
+- New photos come from Unsplash (Unsplash License) through the Unsplash connector: search, check the photo really shows the place (or set `note: "area"` if it shows the surroundings), then record the download with the connector before using it. Save `src/assets/photos/<key>.webp` at 1600px wide and `<key>-sm.webp` at 720px wide, add the credit to `photo-credits.json`, and run `python3 scripts/discover-images.py` before building so its 1200px Discover crops exist.
 - `guides` lists 1–3 related guide slugs from `src/content/guides.mjs`.
 - Body is HTML using the same pieces as the guides: `<p class="lede">`, `<h2>`, `<div class="quickfacts">`, `<ul class="checklist">`, `<div class="note">`, and the tokens `{{venue-picks:slug,slug}}`, `{{planner-cta}}`, `{{season-now}}`, `{{price-table}}`, `{{climate-table}}`.
 

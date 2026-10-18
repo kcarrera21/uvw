@@ -116,8 +116,8 @@
   "license": "Unsplash License",
   "licenseUrl": "https://unsplash.com/license",
   "source": "https://unsplash.com/photos/the-strat-tower-illuminated-at-night-against-dark-sky-3J3rvNmePpk",
-  "w": 1069,
-  "h": 1600
+  "w": 1600,
+  "h": 2395
  },
  "high-roller-wheel": {
   "alt": "High Roller cabins against a blue sky",
@@ -164,8 +164,8 @@
   "license": "Unsplash License",
   "licenseUrl": "https://unsplash.com/license",
   "source": "https://unsplash.com/photos/a-large-metal-object-sitting-on-top-of-a-sidewalk-zWTc-McsXqs",
-  "w": 1067,
-  "h": 1600
+  "w": 1600,
+  "h": 2400
  },
  "omega-mart-meow-wolf": {
   "alt": "The Omega Mart storefront inside AREA15",
@@ -204,16 +204,16 @@
   "h": 1201
  },
  "caesars-palace-weddings": {
-  "alt": "Caesars Palace at dusk",
+  "alt": "Caesars Palace's tower on the Strip",
   "note": "",
-  "title": "Caesars Palace Las Vegas.",
-  "creator": "Bernard Spragg",
-  "creatorUrl": "https://www.flickr.com/photos/88123769@N02",
-  "license": "CC0",
-  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-  "source": "https://www.flickr.com/photos/88123769@N02/39229935724",
-  "w": 1023,
-  "h": 644
+  "title": "Caesars Palace's tower on the Strip",
+  "creator": "Paul Cariou",
+  "creatorUrl": "https://unsplash.com/@paulcariou",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-tall-building-with-columns-NBSBsOfmE2U",
+  "w": 1600,
+  "h": 1067
  },
  "spring-mountain-ranch-state-park": {
   "alt": "The ranch meadow below the Spring Mountains",
@@ -296,8 +296,8 @@
   "license": "Unsplash License",
   "licenseUrl": "https://unsplash.com/license",
   "source": "https://unsplash.com/photos/the-strat-tower-illuminated-at-night-against-dark-sky-3J3rvNmePpk",
-  "w": 1069,
-  "h": 1600
+  "w": 1600,
+  "h": 2395
  },
  "cat-strip-luxury": {
   "alt": "The Bellagio fountains at night",
@@ -320,8 +320,8 @@
   "license": "Unsplash License",
   "licenseUrl": "https://unsplash.com/license",
   "source": "https://unsplash.com/photos/fremont-street-experience-with-colorful-light-canopy-8d6c03lGWY0",
-  "w": 1069,
-  "h": 1600
+  "w": 1600,
+  "h": 2395
  },
  "cat-classic-chapels": {
   "alt": "Graceland Wedding Chapel",
@@ -344,8 +344,8 @@
   "license": "Unsplash License",
   "licenseUrl": "https://unsplash.com/license",
   "source": "https://unsplash.com/photos/top-view-of-road-between-rock-formations-yk--ajIjp3Y",
-  "w": 1067,
-  "h": 1600
+  "w": 1600,
+  "h": 2400
  },
  "hero-2": {
   "alt": "The Bellagio fountains and the Strip at night",
@@ -396,16 +396,16 @@
   "h": 683
  },
  "circa-legacy-club": {
-  "alt": "Circa's entrance on the Fremont Street Experience",
+  "alt": "Circa's neon sign over its Fremont Street entrance",
   "note": "",
-  "title": "Circa, Las Vegas",
-  "creator": "Sergiy Galyonkin",
-  "creatorUrl": "https://www.flickr.com/photos/22974618@N00",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "source": "https://www.flickr.com/photos/22974618@N00/54342478386",
-  "w": 1024,
-  "h": 850
+  "title": "Circa's neon sign over its Fremont Street entrance",
+  "creator": "Erik Mclean",
+  "creatorUrl": "https://unsplash.com/@introspectivedsgn",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/circa-resort-sign-with-neon-lights-at-night--G9Abshkezg",
+  "w": 1600,
+  "h": 2395
  },
  "spillway-house-hoover-dam": {
   "alt": "The Spillway House above Lake Mead at Hoover Dam",
@@ -442,5 +442,53 @@
   "source": "https://unsplash.com/photos/brown-concrete-building-during-daytime-DA32W3Cd_9k",
   "w": 1600,
   "h": 994
+ },
+ "maverick-helicopters-weddings": {
+  "alt": "The canyon at Grand Canyon West",
+  "note": "area",
+  "title": "The canyon at Grand Canyon West",
+  "creator": "Filipe Freitas",
+  "creatorUrl": "https://unsplash.com/@filipephotographs",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/vast-canyon-landscape-with-layered-rock-formations-78xadFGRQL8",
+  "w": 1600,
+  "h": 1067
+ },
+ "papillon-helicopter-weddings": {
+  "alt": "The Colorado River from Grand Canyon West",
+  "note": "area",
+  "title": "The Colorado River from Grand Canyon West",
+  "creator": "Eric R.",
+  "creatorUrl": "https://unsplash.com/@fynephoqus",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-scenic-view-of-the-grand-canyon-of-the-grand-canyon-g3g5nsl20K0",
+  "w": 1600,
+  "h": 1113
+ },
+ "retreat-on-charleston-peak": {
+  "alt": "Pines and the peaks of Mount Charleston",
+  "note": "area",
+  "title": "Pines and the peaks of Mount Charleston",
+  "creator": "Keely Klenke",
+  "creatorUrl": "https://unsplash.com/@_bad_llama_",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/green-pine-trees-near-mountain-under-blue-sky-during-daytime-5o15AuDknRc",
+  "w": 1600,
+  "h": 1200
+ },
+ "hilton-lake-las-vegas-chapel": {
+  "alt": "Moonrise over Lake Las Vegas in Henderson",
+  "note": "area",
+  "title": "Moonrise over Lake Las Vegas in Henderson",
+  "creator": "Ryne Anderson",
+  "creatorUrl": "https://unsplash.com/@rywyattand",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-full-moon-is-seen-over-a-small-town-TU8OoEOhIco",
+  "w": 1600,
+  "h": 919
  }
 }
