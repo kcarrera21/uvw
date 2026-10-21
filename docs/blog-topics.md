@@ -16,6 +16,16 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Lucky wedding dates in 2027 worth booking now. Covered by the lucky dates 2027 page (skipped 2026-10-21)
 - [x] Valentine's Day 2027 in Las Vegas: how to beat the rush. Published 2026-10-21
 - [ ] Spring desert weddings: wildflower season and permit lead times
+- [ ] St. Patrick's Day 2027 wedding in Las Vegas (3/17/27 is a Wednesday)
+- [ ] March Madness weekends in Las Vegas: booking a wedding around the basketball crowds
+- [ ] Easter weekend 2027 wedding in Las Vegas (Easter is Sunday, March 28)
+- [ ] Spring break in Las Vegas: when hotel rates and chapel calendars get tight
+- [ ] Cinco de Mayo 2027 wedding ideas in Las Vegas (5/5/27 is a Wednesday)
+- [ ] Mother's Day weekend 2027: vow renewals and family weddings in Las Vegas (May 9 is a Sunday)
+- [ ] Memorial Day weekend 2027 weddings in Las Vegas (Sat. May 29 to Mon. May 31)
+- [ ] When the heat arrives: the last good weeks for outdoor desert ceremonies in late spring
+- [ ] Juneteenth and Father's Day weekend 2027 in Las Vegas (June 18 to 20)
+- [ ] Summer 2027 weddings in Las Vegas: indoor and after-dark venues that beat the heat
 
 ## Evergreen: planning
 - [ ] How far ahead to book a Las Vegas wedding chapel (by venue type)
