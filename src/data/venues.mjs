@@ -1448,4 +1448,168 @@ The altitude also means cooler temperatures than the valley floor, which matters
     status: "listed",
     featured: false
   },
+  {
+    name: "Liberace Garage & Hollywood Cars Museum",
+    slug: "liberace-garage-hollywood-cars-museum",
+    category: "quirky-pop-culture",
+    area: "West of the Strip (Dean Martin Dr.)",
+    drive: "About 5–10 min from the Strip",
+    setting: "Indoor",
+    vibe: ["Liberace", "Movie cars", "Rhinestones", "Old Vegas glam"],
+    priceFrom: 1500,
+    priceLabel: "3-hour venue booking",
+    guestMax: null,
+    facts: [
+      "Venue bookings on the museum's own store start at $1,500 for 3 hours and run to $6,000 for 7.5 hours.",
+      "The space combines the Liberace Garage of rhinestone stage cars, the Hollywood Cars Museum with nearly 100 cars from TV and film, and a separate 3,500 sq ft theater.",
+      "Security and curators come with every booking, and parking is free.",
+      "The venue says it has packages for groups under 50, down to elopements of just two.",
+      "Drinks or a buffet can be served from Liberace's original 40-foot bar, taken from his former restaurant.",
+    ],
+    bestFor: "Couples who think more is more and rhinestones count as a personality.",
+    description: `Liberace never met a surface he couldn't cover in rhinestones, and his stage cars are parked here under chandeliers. Next door, the Hollywood Cars Museum adds nearly 100 cars from film and TV, so your guests get a car show with their cocktail hour.
+
+There's a separate backstage theater for the ceremony or the dancing, and the bar is the one Liberace had in his own restaurant. It's a small, very Las Vegas way to get married that nobody back home will have seen before.`,
+    tips: [
+      "Wedding inquiries go through a partner elopement service linked from the venue page, while general event bookings go to the museum. Ask which one fits your plan.",
+      "The online booking listing showed as sold out when we checked, so contact the venue for dates.",
+      "Ask whether your hours include setup and teardown. The published prices are for the booked block only.",
+      "Food trucks can pull up and roll-up doors make catering load-in easy, so ask about your caterer early.",
+    ],
+    url: "https://liberace.org/event-venues-in-las-vegas/liberace-garage-events-venue-2/",
+    checked: "2026-10-21",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Las Vegas Natural History Museum",
+    slug: "las-vegas-natural-history-museum",
+    category: "quirky-pop-culture",
+    area: "Downtown (Las Vegas Blvd. N.)",
+    drive: "About 15 min from the Strip",
+    setting: "Indoor",
+    vibe: ["Dinosaurs", "Science", "After hours", "Family-friendly"],
+    priceFrom: null,
+    priceLabel: "Custom quote",
+    guestMax: null,
+    facts: [
+      "You can rent a single gallery, the top floor or the entire museum. Pricing depends on headcount, space and hours.",
+      "Every rental carries a $250 refundable cleaning deposit.",
+      "There's no kitchen on site, open flames are limited to chafing-dish burners, and red wine isn't allowed.",
+      "Your date isn't confirmed until you sign the museum's Facility Rental Agreement.",
+      "A guided tour of the museum can be added for an extra cost.",
+    ],
+    bestFor: "Couples who want a T. rex in the background of the first kiss.",
+    description: `The Las Vegas Natural History Museum rents out its galleries after hours, and that means dinosaurs, a lot of them, standing over your reception. You can take one gallery for an intimate dinner, the top floor, or the whole building.
+
+The museum's rental page is written for private events in general, not weddings specifically, so treat it as a reception or party venue and confirm a ceremony fits when you inquire. Bring a caterer, skip the red wine, and let the animatronics do the entertaining.`,
+    tips: [
+      "The rental page doesn't mention weddings by name. Say it's a wedding on the request form and confirm the ceremony works in the space you pick.",
+      "There's no kitchen, so book a caterer who can work from chafing dishes and drop-off setups.",
+      "Serve white, rosé or sparkling wine. Red wine isn't allowed in the museum.",
+      "Add the guided tour if you want guests to see the galleries properly before dinner.",
+    ],
+    url: "https://www.lvnhm.org/museum-rental",
+    checked: "2026-10-21",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Historic Fifth Street School",
+    slug: "historic-fifth-street-school",
+    category: "historic-iconic",
+    area: "Downtown (Fourth St.)",
+    drive: "About 10–15 min from the Strip",
+    setting: "Indoor & outdoor",
+    vibe: ["Historic school", "Arched walkways", "Courtyard", "City-run"],
+    priceFrom: 75,
+    priceLabel: "Courtyard, per hour",
+    guestMax: 400,
+    facts: [
+      "The city's 2026 rental brochure lists the Frank Wright Memorial Courtyard at $75 an hour (up to 150 for a reception or 80 for a banquet) and the auditorium at $200 an hour (up to 400 for a reception or 240 for a banquet).",
+      "Centennial Plaza rents for $150 an hour and holds up to 400 for a reception, but has no electricity.",
+      "A refundable deposit of 20% of the facility rate holds a date, and final payment is due 14 days before the event.",
+      "Indoor rentals include 400 chairs and 50 tables. Linens aren't provided.",
+      "The City of Las Vegas names it one of its most popular city venues for weddings.",
+    ],
+    bestFor: "Couples who want a downtown landmark at city-park prices.",
+    description: `The Historic Fifth Street School, once the Las Vegas Grammar School, is a downtown landmark run by the City of Las Vegas and rented out for events. Arched walkways, a leafy courtyard and a big auditorium with a real stage give you a ceremony and reception on one campus.
+
+It's one of the best values in town for a full-size wedding. You pay by the hour for the space, bring a city-licensed caterer, and keep the budget for the things guests actually remember.`,
+    tips: [
+      "Only City of Las Vegas licensed caterers can serve, and alcohol needs approval before the event.",
+      "Security is required after 6:30 p.m., on weekends and whenever alcohol is served, so budget for it.",
+      "Bring or rent linens. Tables and chairs are included for indoor use only.",
+      "The rental office is open Tuesday to Friday. Call 702-229-3515 or send the online rental request.",
+    ],
+    url: "https://www.lasvegasnevada.gov/Residents/Parks-Facilities/Historic-Fifth-Street-School",
+    checked: "2026-10-21",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "The Smith Center for the Performing Arts",
+    slug: "smith-center-performing-arts",
+    category: "historic-iconic",
+    area: "Downtown (Symphony Park)",
+    drive: "About 10 min from the Strip",
+    setting: "Indoor & outdoor",
+    vibe: ["Art Deco", "Theater", "Grand staircase", "Black tie"],
+    priceFrom: null,
+    priceLabel: "Room fee + $500 wedding fee",
+    guestMax: null,
+    facts: [
+      "Ceremony and reception spaces include the Grand Lobby and Upper Lobby of Reynolds Hall, Myron's Cabaret Jazz, the Troesh Studio Theater and the courtyard.",
+      "Room fees are in the center's rental packet. A $500 wedding administrative fee is added to the room fee.",
+      "The room fee covers the space for up to 10 hours, plus tables, chairs, utilities, housekeeping and building security.",
+      "Levy Restaurant Group is the exclusive food and drink provider. Outside caterers and alcohol aren't allowed.",
+      "Each hour past the agreed end time costs $500.",
+    ],
+    bestFor: "Couples who want a black-tie wedding with a grand staircase and a theater's sense of occasion.",
+    description: `The Smith Center is downtown's grand performing arts campus, with Art Deco lobbies, chandeliers and a carillon bell tower. On nights the stages aren't in use, it hosts weddings in its lobbies, its jazz club, a flexible studio theater and the courtyard.
+
+It's the closest Las Vegas gets to marrying in a classic theater. The trade-off is a performing arts schedule: weekends are limited, the ceremony and reception have to be in two different spaces, and the in-house caterer handles all food and drink.`,
+    tips: [
+      "Weekend dates are limited because shows come first, so ask about availability before anything else.",
+      "Plan on two spaces. The center doesn't flip a room from ceremony to reception.",
+      "Two rooms can usually serve as getting-ready suites for indoor events.",
+      "Call Event Sales at 702-749-2222 for the rental packet with room fees.",
+    ],
+    url: "https://thesmithcenter.com/book-your-event/weddings/",
+    checked: "2026-10-21",
+    status: "listed",
+    featured: false
+  },
+  {
+    name: "Marjorie Barrick Museum of Art (UNLV)",
+    slug: "barrick-museum-of-art",
+    category: "quirky-pop-culture",
+    area: "UNLV campus (University District)",
+    drive: "About 10 min from the Strip",
+    setting: "Indoor & outdoor",
+    vibe: ["Art museum", "Campus", "Garden patio", "Modern"],
+    priceFrom: 350,
+    priceLabel: "Patio/garden, half day",
+    guestMax: 200,
+    facts: [
+      "The museum's rental page names wedding receptions as a use.",
+      "Off-campus rates: the patio and garden are $350 for a half day or $550 for a full day, and the Exhibition Hall is $2,500.",
+      "The Lobby and the Patio each hold up to 200 guests. The Exhibition Hall holds 200 for a cocktail reception or 100 seated.",
+      "Rentals run Tuesday to Saturday, 10 a.m. to 5 p.m. Mondays and holidays cost $100 an hour.",
+    ],
+    bestFor: "Art-loving couples who want a gallery reception on a budget.",
+    description: `The Barrick is UNLV's art museum, a contemporary gallery with a garden patio in the middle of campus. It rents its lobby, patio and exhibition hall to the public, and lists wedding receptions among the events it hosts.
+
+The rates are some of the most transparent in the city, which makes it easy to budget. The catch is the paperwork: alcohol needs a UNLV staff sponsor, and the gallery's rules are written to protect the art.`,
+    tips: [
+      "Serving alcohol requires a UNLV \"responsible person\" for the permit, and that person must be full-time UNLV faculty or staff. Sort this out first.",
+      "Additional staff at $30 an hour is required for Exhibition Hall rentals.",
+      "Food isn't allowed in the auditorium. Plan meals for the lobby or patio.",
+      "Standard hours end at 5 p.m., so ask early about an evening event.",
+    ],
+    url: "https://unlv.edu/barrickmuseum/rent",
+    checked: "2026-10-21",
+    status: "listed",
+    featured: false
+  },
 ];

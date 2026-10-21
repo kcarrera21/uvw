@@ -586,5 +586,65 @@
   "source": "https://unsplash.com/photos/string-lights-in-tilt-shift-lens-hsRG0sJevwA",
   "w": 1600,
   "h": 1067
+ },
+ "atomic-museum": {
+  "alt": "The National Atomic Testing Museum's entrance on Flamingo Road",
+  "note": "",
+  "title": "National Atomic Testing Museum",
+  "creator": "Ypsilon from Finland",
+  "creatorUrl": "https://commons.wikimedia.org/w/index.php?curid=25584230",
+  "license": "CC0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=25584230",
+  "w": 1600,
+  "h": 1200
+ },
+ "liberace-garage-hollywood-cars-museum": {
+  "alt": "Liberace's rhinestone cars under chandeliers at Liberace Garage",
+  "note": "",
+  "title": "Liberace Garage Las Vegas",
+  "creator": "eshtersilvaphotography",
+  "creatorUrl": "https://www.flickr.com/photos/197962251@N03",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "https://www.flickr.com/photos/197962251@N03/53655586318",
+  "w": 1024,
+  "h": 683
+ },
+ "las-vegas-natural-history-museum": {
+  "alt": "Dinosaur models in a gallery at the Las Vegas Natural History Museum",
+  "note": "",
+  "title": "Las Vegas Natural History Museum",
+  "creator": "kennejima",
+  "creatorUrl": "https://www.flickr.com/photos/17152247@N00",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "https://www.flickr.com/photos/17152247@N00/14479990133",
+  "w": 1024,
+  "h": 683
+ },
+ "historic-fifth-street-school": {
+  "alt": "The arched entrance of the Historic Fifth Street School",
+  "note": "",
+  "title": "Historic Fifth Street School, September 2018",
+  "creator": "Ron Mader",
+  "creatorUrl": "https://commons.wikimedia.org/w/index.php?curid=73164915",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=73164915",
+  "w": 1600,
+  "h": 1200
+ },
+ "smith-center-performing-arts": {
+  "alt": "A lit stage set inside The Smith Center",
+  "note": "",
+  "title": "The Smith Center, Las Vegas, United States",
+  "creator": "NeONBRAND",
+  "creatorUrl": "https://unsplash.com/@neonbrand",
+  "license": "CC0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=61757838",
+  "w": 1600,
+  "h": 1067
  }
 }

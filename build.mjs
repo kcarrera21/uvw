@@ -897,6 +897,10 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
     "lucky-little-wedding-chapel": ["lucky little"], "the-little-vegas-chapel": ["little vegas chapel"], "circa-legacy-club": ["circa", "rooftop", "legacy club"],
     "vegas-balloon-rides": ["hot air balloon", "balloon"], "hilton-lake-las-vegas-chapel": ["lake las vegas", "over water", "hilton"],
     "spillway-house-hoover-dam": ["hoover dam", "spillway"], "retreat-on-charleston-peak": ["mount charleston", "mt charleston", "mountain", "forest"],
+    "atomic-museum": ["atomic", "nuclear", "cold war", "atomic testing museum"], "madame-tussauds-wax-wedding": ["madame tussauds", "wax museum", "wax figures"],
+    "liberace-garage-hollywood-cars-museum": ["liberace", "hollywood cars", "movie cars", "car museum"], "las-vegas-natural-history-museum": ["natural history", "dinosaur", "dinosaurs", "t rex"],
+    "historic-fifth-street-school": ["fifth street school", "5th street school", "school", "grammar school"], "smith-center-performing-arts": ["smith center", "theater", "theatre", "performing arts", "reynolds hall", "cabaret jazz"],
+    "barrick-museum-of-art": ["barrick", "unlv", "art museum", "university", "college", "campus"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];
