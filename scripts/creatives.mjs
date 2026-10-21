@@ -86,6 +86,7 @@ og("guides", { eyebrow: "Plan it right", title: "Las Vegas wedding <em>guides</e
 og("lucky", { eyebrow: "Updates itself", title: "Lucky wedding <em>dates</em>", sub: "Palindromes, mirror dates and lucky sevens.", slug: "lucky", cat: "quirky-pop-culture" });
 og("planner", { eyebrow: "Printable PDF · 25 pages", title: "The Unique Vegas <em>Wedding Planner</em>", sub: "Built for Las Vegas logistics.", slug: "planner", cat: "strip-luxury" });
 og("for-venues", { eyebrow: "For venues & planners", title: "Get found by couples who want <em>different</em>", sub: "", slug: "cat-sky-high", cat: "sky-high" });
+og("countdown", { eyebrow: "Free tool", title: "Your Vegas wedding <em>countdown</em>", sub: "Share it, post it, put it on your wedding site.", slug: "hero-2", cat: "strip-luxury" });
 og("budget", { eyebrow: "Free tool", title: "Vegas wedding <em>budget planner</em>", sub: "", slug: "budget", cat: "classic-chapels" });
 for (let y = 2026; y <= 2031; y++) {
   const t = L.top(y, 3).map((a) => a.short).join(" · ");

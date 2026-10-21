@@ -107,7 +107,7 @@
     var days = Math.round((new Date(a.y, a.m - 1, a.d) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
     var when = a.iso < todayIso ? "Passed" : (days === 0 ? "Today!" : days === 1 ? "Tomorrow" : "In " + days + " days");
     return '<li class="lucky-item' + (a.iso < todayIso ? " past" : "") + '"><div class="lucky-date">' + a.short + '</div><div><strong>' + a.long + '</strong><div class="tags">' +
-      a.tags.map(function (t) { return '<span class="tag">' + t + "</span>"; }).join("") + '</div></div><div class="lucky-when">' + when + "</div></li>";
+      a.tags.map(function (t) { return '<span class="tag">' + t + "</span>"; }).join("") + '</div></div><div class="lucky-when">' + when + (a.iso >= todayIso ? '<a class="lucky-cd" href="/tools/wedding-countdown/?d=' + a.iso + '">Count down</a>' : "") + "</div></li>";
   }
   var todayIso = now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2);
   if (L) {
@@ -216,6 +216,29 @@
     var pre = new URLSearchParams(location.search).get("category");
     if (pre) { var s = $('[data-filter="cat"]'); if (s) { s.value = pre; state.cat = pre; } }
     apply();
+
+    // sort (the venues page): reorder cards in place; venues without a number always go last
+    var sortSel = $("[data-sort]");
+    if (sortSel) {
+      cards.forEach(function (c, i) { c.setAttribute("data-idx", i); });
+      var num = function (c, k) { var v = c.getAttribute(k); return v === "" || v == null ? null : +v; };
+      var by = {
+        "recommended": function (a, b) { return a.getAttribute("data-idx") - b.getAttribute("data-idx"); },
+        "price-asc": function (a, b) { var x = num(a, "data-price"), y = num(b, "data-price"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : x - y; },
+        "price-desc": function (a, b) { var x = num(a, "data-price"), y = num(b, "data-price"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : y - x; },
+        "guests-desc": function (a, b) { var x = num(a, "data-guests"), y = num(b, "data-guests"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : y - x; },
+        "name": function (a, b) { return a.getAttribute("data-name") < b.getAttribute("data-name") ? -1 : 1; },
+        "checked": function (a, b) { return a.getAttribute("data-checked") < b.getAttribute("data-checked") ? 1 : a.getAttribute("data-checked") > b.getAttribute("data-checked") ? -1 : 0; }
+      };
+      var doSort = function (key, push) {
+        var f = by[key] || by.recommended;
+        cards.slice().sort(function (a, b) { return f(a, b) || a.getAttribute("data-idx") - b.getAttribute("data-idx"); }).forEach(function (c) { grid.appendChild(c); });
+        if (push) { try { var u = new URL(location.href); if (key === "recommended") u.searchParams.delete("sort"); else u.searchParams.set("sort", key); history.replaceState(null, "", u); } catch (e) {} }
+      };
+      var preSort = new URLSearchParams(location.search).get("sort");
+      if (preSort && by[preSort]) { sortSel.value = preSort; doSort(preSort, false); }
+      sortSel.addEventListener("change", function () { doSort(sortSel.value, true); });
+    }
   }
 
   // ---------- budget planner ----------

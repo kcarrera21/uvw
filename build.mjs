@@ -222,7 +222,7 @@ function venueCard(v) {
   const c = catBy[v.category];
   const price = v.priceFrom ? `<span>From</span><strong>${money(v.priceFrom)}</strong>` : `<span>Pricing</span><strong>Custom quote</strong>`;
   const search = [v.name, v.area, c.name, ...(v.vibe || [])].join(" ").toLowerCase();
-  return `<article class="vcard" data-venue data-cat="${v.category}" data-setting="${esc((v.setting || "").toLowerCase())}" data-budget="${budgetBand(v.priceFrom)}" data-search="${esc(search)}">
+  return `<article class="vcard" data-venue data-cat="${v.category}" data-setting="${esc((v.setting || "").toLowerCase())}" data-budget="${budgetBand(v.priceFrom)}" data-search="${esc(search)}" data-price="${v.priceFrom ?? ""}" data-guests="${v.guestMax ?? ""}" data-name="${esc(v.name.replace(/^The\s+/i, "").toLowerCase())}" data-checked="${v.checked || ""}">
   ${v.status === "partner" ? `<span class="badge">Partner</span>` : v.featured ? `<span class="badge">Featured</span>` : ""}
   ${saveBtn(v)}
   <div class="img">${pic(v.slug, `/assets/art/${v.slug}.svg`)}</div>
@@ -311,7 +311,7 @@ ${body}
       ${[["pinterest", "Pinterest"], ["instagram", "Instagram"], ["tiktok", "TikTok"]].filter(([k]) => C.social[k]).map(([k, t]) => `<a href="${C.social[k]}" rel="me noopener" target="_blank">${t}</a>`).join(" · ")}
     </div>
     <div><h2 class="foot-h">Venues</h2><ul>${CATEGORIES.map((c) => `<li><a href="/venues/category/${c.slug}/">${esc(c.name)}</a></li>`).join("")}</ul></div>
-    <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li></ul></div>
+    <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li><li><a href="/tools/wedding-countdown/">Wedding countdown</a></li></ul></div>
     <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li><li><a href="/photo-credits/">Photo credits</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent. Not owned by any venue.</span><span>Some links earn us a commission at no cost to you.</span></div>
@@ -464,6 +464,7 @@ async function main() {
     <label>Category<select data-filter="cat"><option value="all">All categories</option>${CATEGORIES.map((c) => `<option value="${c.slug}">${esc(c.name)}</option>`).join("")}</select></label>
     <label>Setting<select data-filter="setting"><option value="all">Any setting</option><option value="indoor">Indoor</option><option value="outdoor">Outdoor</option><option value="airborne">Airborne</option></select></label>
     <label>Starting price<select data-filter="budget"><option value="all">Any budget</option>${["1", "2", "3", "4", "quote"].map((b) => `<option value="${b}">${BAND_LABEL[b]}</option>`).join("")}</select></label>
+    <label>Sort by<select data-sort><option value="recommended">Recommended</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="guests-desc">Most guests</option><option value="name">Name (A–Z)</option><option value="checked">Recently verified</option></select></label>
   </div><p class="filter-count" data-filter-count>${venues.length} venues</p>`;
   page("/venues/", {
     title: "Unique Las Vegas Wedding Venues", seoTitle: `${venues.length} Unique Las Vegas Wedding Venues, With Prices`, og: "venues", modified: maxChecked(venues),
@@ -535,7 +536,8 @@ async function main() {
       : `<div class="panel"><h3>Plan it</h3>
         <p class="small">Check dates and packages on the venue's official site, and save it to compare later.</p>
         <div class="stack"><a class="btn btn-primary" style="width:100%" href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">Check dates on the official site ↗</a>
-        <button class="btn btn-ghost" style="width:100%" type="button" data-save="${v.slug}" data-name="${esc(v.name)}" data-url="/venues/${v.slug}/"><span class="save-label">Save</span> to shortlist</button></div>
+        <button class="btn btn-ghost" style="width:100%" type="button" data-save="${v.slug}" data-name="${esc(v.name)}" data-url="/venues/${v.slug}/"><span class="save-label">Save</span> to shortlist</button>
+        <a class="btn btn-ghost" style="width:100%" href="/tools/wedding-countdown/?v=${v.slug}">Start your countdown</a></div>
         <hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
         ${newsletterForm({ title: "Free Vegas wedding checklist", sub: "License steps, documents, witness rules and certified copies on one printable page." }).replace('<div class="panel">', "<div>")}
       </div>`;
@@ -653,7 +655,8 @@ async function main() {
   <span class="eyebrow">Plan it right</span><h1>Las Vegas wedding <em>guides</em></h1><p class="lede narrow">Plain-English answers, with every fact linked to the official source.</p>
   <div class="grid-3" style="margin-top:30px">${guides.map((g) => `<a class="mini" href="/guides/${g.slug}/"><span class="tag sage">${esc(g.eyebrow)}</span><strong style="margin-top:10px">${esc(g.title)}</strong><span>${esc(g.metaDescription || g.description)}</span></a>`).join("")}
   <a class="mini" href="/lucky-wedding-dates/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Lucky & special wedding dates</strong><span>Palindromes, mirror dates and lucky sevens, calculated for any year.</span></a>
-  <a class="mini" href="/tools/budget-planner/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Vegas wedding budget planner</strong><span>Set your total and split it across venue, photos, attire and the rest.</span></a></div>
+  <a class="mini" href="/tools/budget-planner/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Vegas wedding budget planner</strong><span>Set your total and split it across venue, photos, attire and the rest.</span></a>
+  <a class="mini" href="/tools/wedding-countdown/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Wedding countdown</strong><span>A live countdown to share, post to your story or add to your wedding website.</span></a></div>
 </div></section>`,
   });
 
@@ -881,6 +884,108 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
 </div></section>`,
   });
 
+  // ================= WEDDING COUNTDOWN (shareable tool) =================
+  {
+    const sortedV = venues.slice().sort((a, b) => a.name.replace(/^The /, "").localeCompare(b.name.replace(/^The /, "")));
+    const cdFaq = [
+      { q: "Is the wedding countdown free?", a: "Yes. Make as many countdowns as you like, download the images and add the countdown to your own wedding website at no cost." },
+      { q: "Do you store my names or wedding date?", a: "No. Your details live in the link you share and in your own browser. Nothing is sent to us, and you don't need an account." },
+      { q: "Can I put the countdown on my wedding website?", a: "Yes. Press Add to your website, copy the code and paste it into any site builder that accepts an HTML or embed block. It updates by itself every second." },
+      { q: "What time zone does the countdown use?", a: "Las Vegas time. If you add a ceremony time, the clock counts down to that exact moment in Pacific time, wherever your guests are." },
+      { q: "What happens after the wedding?", a: "The same link becomes a counter of how long you've been married, so it's worth keeping for anniversaries." },
+    ];
+    page("/tools/wedding-countdown/", {
+      title: "Las Vegas Wedding Countdown", seoTitle: "Las Vegas Wedding Countdown: Free Timer You Can Share", og: "countdown",
+      description: "Free Las Vegas wedding countdown: add your date and venue, share a live link, download story images, save to your calendar and embed it on your wedding site.",
+      scripts: ["/assets/js/countdown.js"],
+      schema: [crumbSchema([["Home", "/"], ["Tools", "/tools/wedding-countdown/"], ["Wedding countdown", "/tools/wedding-countdown/"]]),
+        { "@context": "https://schema.org", "@type": "WebApplication", name: "Las Vegas Wedding Countdown", url: `${C.domain}/tools/wedding-countdown/`, applicationCategory: "LifestyleApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, publisher: orgRef },
+        faqSchema(cdFaq)],
+      body: `<section style="padding-top:48px"><div class="wrap" data-countdown data-site="${C.domain}">
+  ${crumbs([["Home", "/"], ["Wedding countdown", ""]])}
+  <span class="eyebrow">Free tool</span><h1>Your Las Vegas wedding <em>countdown</em></h1>
+  <p class="lede narrow">Add your date and venue for a live countdown you can share, post to your story, save to your calendar or put on your wedding website. No sign-up, and nothing is stored on our side.</p>
+  <div class="cd-grid">
+    <form class="panel cd-form" onsubmit="return false" aria-label="Countdown details">
+      <div class="field"><label for="cd-n">Your names <span class="small">(optional)</span></label><input id="cd-n" maxlength="48" placeholder="Kat &amp; Alex" autocomplete="off"></div>
+      <div class="row2"><div class="field"><label for="cd-d">Wedding date</label><input id="cd-d" type="date" required></div>
+      <div class="field"><label for="cd-t">Ceremony time <span class="small">(optional)</span></label><input id="cd-t" type="time" step="300"></div></div>
+      <div class="field"><label for="cd-v">Venue <span class="small">(optional)</span></label><select id="cd-v"><option value="">Somewhere in Las Vegas</option>${sortedV.map((v) => `<option value="${v.slug}">${esc(v.name)}</option>`).join("")}</select></div>
+      <p class="small" style="margin:6px 0 0">Haven't picked a date? <a href="/lucky-wedding-dates/">See the lucky dates</a>. No venue yet? <a href="/venues/">Browse ${venues.length} unique venues</a>.</p>
+    </form>
+    <div class="cd-card" aria-live="off">
+      <div class="cd-mark" aria-hidden="true">${markSVG(34, "#B76E79", "#B76E79")}</div>
+      <p class="cd-kicker">Wedding countdown</p>
+      <p class="cd-names" data-cd-names>Our wedding</p>
+      <div class="cd-units" data-cd-units hidden>
+        <div><strong data-cd-days>0</strong><span>days</span></div><div><strong data-cd-hrs>00</strong><span>hours</span></div><div><strong data-cd-min>00</strong><span>min</span></div><div><strong data-cd-sec>00</strong><span>sec</span></div>
+      </div>
+      <p class="cd-empty" data-cd-empty>Add your wedding date to start the clock.</p>
+      <p class="cd-lead" data-cd-lead></p>
+      <p class="cd-date" data-cd-date></p>
+      <p class="cd-venue" data-cd-venue hidden></p>
+      <p class="cd-lucky" data-cd-lucky hidden></p>
+    </div>
+  </div>
+  <div class="cd-actions" data-cd-actions hidden>
+    <div class="cd-btns">
+      <button class="btn btn-primary" type="button" data-cd="share">Share countdown</button>
+      <button class="btn btn-ghost" type="button" data-cd="copy">Copy link</button>
+      <button class="btn btn-ghost" type="button" data-cd="story">Story image</button>
+      <button class="btn btn-ghost" type="button" data-cd="square">Square image</button>
+      <button class="btn btn-ghost" type="button" data-cd="ics">Add to calendar</button>
+      <button class="btn btn-ghost" type="button" data-cd="embed">Add to your website</button>
+    </div>
+    <label class="sr-only" for="cd-link">Your countdown link</label><input id="cd-link" class="cd-linkbox" readonly>
+    <div class="panel cd-embedbox" data-cd-embedbox hidden>
+      <h3 class="mt0">Put it on your wedding website</h3>
+      <p class="small">Paste this into any HTML or embed block (Squarespace, Wix, WordPress and most wedding-site builders that allow custom code). It updates by itself.</p>
+      <label class="sr-only" for="cd-embed">Embed code</label><textarea id="cd-embed" rows="5" readonly style="font:13px/1.45 ui-monospace,monospace;width:100%"></textarea>
+      <button class="btn btn-primary btn-sm" type="button" data-cd="copy-embed">Copy code</button>
+    </div>
+    <h2>Your countdown checklist</h2>
+    <p class="small" style="margin-top:-6px">Dates are worked out from your wedding day. The license details are Clark County's; see the guides for the full rules.</p>
+    <ol class="cd-list" data-cd-list></ol>
+  </div>
+  <div class="narrow" style="margin-top:40px">
+    <h2>Questions</h2>${faqHtml(cdFaq)}
+    ${plannerCta()}
+  </div>
+  <script type="application/json" id="cd-venues">${JSON.stringify(sortedV.map((v) => ({ s: v.slug, n: v.name }))).replace(/</g, "\\u003c")}</script>
+</div></section>`,
+    });
+
+    // Embeddable widget for couples' own wedding sites (noindex, no site chrome)
+    write("tools/wedding-countdown/embed/index.html", `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Wedding countdown</title>
+<link rel="canonical" href="${C.domain}/tools/wedding-countdown/">
+<style>
+@font-face{font-family:"Playfair Display";src:url(/assets/fonts/playfair-display-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Playfair Display";src:url(/assets/fonts/playfair-display-latin-500-italic.woff2) format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:Inter;src:url(/assets/fonts/inter-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Inter;src:url(/assets/fonts/inter-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+*{box-sizing:border-box;margin:0}html,body{background:transparent}
+.w{font-family:Inter,system-ui,sans-serif;color:#2B2B2E;background:linear-gradient(180deg,#FFFBF8,#F6E4E1);border:1px solid #EBDCD8;border-radius:20px;padding:18px 16px 14px;text-align:center;max-width:520px;margin:0 auto}
+.k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#5E7356}
+.n{font:500 24px/1.15 "Playfair Display",Georgia,serif;margin:6px 0 10px;overflow-wrap:anywhere}
+.u{display:flex;justify-content:center;gap:8px}.u div{background:#fff;border:1px solid #EBDCD8;border-radius:12px;min-width:62px;padding:8px 6px}
+.u b{display:block;font:500 28px/1 "Playfair Display",Georgia,serif;color:#8E4F5A}.u span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#5B5558}
+.d{font-size:13px;color:#5B5558;margin-top:10px}.f{font-size:11px;margin-top:8px}.f a{color:#8E4F5A}
+</style></head><body>
+<div class="w"><div class="k">Wedding countdown</div><div class="n" id="n">Our wedding</div>
+<div class="u"><div><b id="dd">0</b><span>days</span></div><div><b id="hh">00</b><span>hours</span></div><div><b id="mm">00</b><span>min</span></div><div><b id="ss">00</b><span>sec</span></div></div>
+<div class="d" id="d"></div><div class="f"><a id="cta" href="${C.domain}/tools/wedding-countdown/" target="_blank" rel="noopener">Make your own Las Vegas wedding countdown</a></div></div>
+<script>(function(){var q=new URLSearchParams(location.search),n=(q.get("n")||"").replace(/[<>]/g,"").slice(0,48),d=q.get("d")||"",t=q.get("t")||"",V=${JSON.stringify(Object.fromEntries(venues.map((v) => [v.slug, v.name]))).replace(/</g, "\\u003c")},v=V[q.get("v")]||"";
+var M=["January","February","March","April","May","June","July","August","September","October","November","December"],D=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+document.getElementById("n").textContent=n||"Our wedding";if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(d))return;var a=d.split("-").map(Number),tm=(/^\\d{2}:\\d{2}$/.test(t)?t:"00:00").split(":").map(Number);
+var want=Date.UTC(a[0],a[1]-1,a[2],tm[0],tm[1]),g=want+288e5;try{var F=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"});for(var i=0;i<3;i++){var p={};F.formatToParts(new Date(g)).forEach(function(x){p[x.type]=+x.value});g+=want-Date.UTC(p.year,p.month-1,p.day,p.hour%24,p.minute)}}catch(e){}
+document.getElementById("d").textContent=D[new Date(a[0],a[1]-1,a[2]).getDay()]+", "+M[a[1]-1]+" "+a[2]+", "+a[0]+(v?" · "+v:" · Las Vegas");
+var c=document.getElementById("cta");c.href="${C.domain}/tools/wedding-countdown/?utm_source=countdown-embed&utm_medium=referral&utm_campaign=countdown";
+function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());document.getElementById("dd").textContent=Math.floor(df/864e5).toLocaleString("en-US");document.getElementById("hh").textContent=P(Math.floor(df%864e5/36e5));document.getElementById("mm").textContent=P(Math.floor(df%36e5/6e4));document.getElementById("ss").textContent=P(Math.floor(df%6e4/1e3))}T();setInterval(T,1000)})();</script>
+</body></html>`);
+    // Short address printed on the share images: /countdown/ (keeps any ?n=&d= parameters)
+    write("countdown/index.html", `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Wedding countdown</title><link rel="canonical" href="${C.domain}/tools/wedding-countdown/"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0; url=/tools/wedding-countdown/"><script>location.replace("/tools/wedding-countdown/"+location.search)</script></head><body><p><a href="/tools/wedding-countdown/">Open the wedding countdown</a></p></body></html>`);
+  }
+
   // ================= SEARCH (plain language, runs in the browser) =================
   const ALIASES = {
     "the-neon-museum": ["neon museum", "neon boneyard", "boneyard"], "springs-preserve": ["springs preserve"], "nelson-ghost-town": ["nelson", "ghost town", "eldorado canyon"],
@@ -926,6 +1031,7 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
       ...CATEGORIES.map((c) => ({ kind: "Venue category", title: `${c.name} wedding venues`, url: `/venues/category/${c.slug}/`, text: c.blurb })),
       { kind: "Tool", title: "Lucky wedding dates", url: "/lucky-wedding-dates/", text: "Upcoming palindrome, mirror and matching-number wedding dates, recalculated every week.", kw: "lucky special date palindrome numbers calendar" },
       { kind: "Tool", title: "Vegas wedding budget planner", url: "/tools/budget-planner/", text: "Enter your total and split it across venue, photos, attire, reception, travel and fees.", kw: "budget calculator money split" },
+      { kind: "Tool", title: "Las Vegas wedding countdown", url: "/tools/wedding-countdown/", text: "A live countdown to your wedding day you can share, download as a story image, add to your calendar or embed on your wedding site.", kw: "countdown timer days until wedding date clock" },
       { kind: "Planner", title: "The Unique Vegas Wedding Planner", url: "/planner/", text: "A 25-page printable planner with timelines, license checklists, a budget worksheet and venue comparison sheets.", kw: "planner printable pdf checklist timeline download" },
       { kind: "Free download", title: "Free Vegas wedding checklist", url: "/#checklist", text: "One printable page: license steps, documents, witness rules and certified copies.", kw: "free checklist download pdf" },
       { kind: "For venues", title: "List your venue", url: "/for-venues/", text: "Claim your free listing or upgrade to Featured or Spotlight placement.", kw: "advertise list claim partner vendor business owner listing" },
@@ -1074,6 +1180,7 @@ ${CATEGORIES.map((c) => `- [${c.name}](${C.domain}/venues/category/${c.slug}/): 
 ## Tools
 - [Lucky wedding dates](${C.domain}/lucky-wedding-dates/): upcoming palindrome, mirror and matching-number dates, recalculated every week
 - [Budget planner](${C.domain}/tools/budget-planner/): split a Las Vegas wedding budget by category
+- [Wedding countdown](${C.domain}/tools/wedding-countdown/): free shareable countdown with story images, calendar file and embed code
 - [Site search](${C.domain}/search/): plain-language search of venues and guides; pass the query as ${C.domain}/search/?q=your+words
 
 ## Optional

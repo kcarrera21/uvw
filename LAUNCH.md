@@ -149,3 +149,11 @@ Changed a venue or the planner? `npm run creatives` regenerates OG images, pins,
 - The badge shows the year. **Each January:** run `node scripts/creatives.mjs && python3 scripts/render.py /badges/` and push. The file addresses don't change, so every venue's embedded badge updates to the new year by itself. Good excuse for a "your 2027 badge is live" email to listed venues.
 - New venue added? Re-run the same two commands so it gets its badge.
 - Badge clicks show in GA4 as `utm_source=venue-badge`, with `utm_content` = the style.
+
+## Wedding countdown tool
+- Page: /tools/wedding-countdown/ (short address /countdown/, printed on every share image). Couples add names, date, optional ceremony time and venue.
+- Outputs: share link, story (1080×1920) and square (1080×1350) images branded with the site address, a calendar file with a license reminder the day before, and embed code for their own wedding site (iframe plus a plain text link back to us).
+- Nothing is stored server-side: details live in the link and the visitor's browser.
+- Entry points: venue pages ("Start your countdown", venue preselected), lucky-date cards ("Count down"), guides tools grid, footer, site search.
+- GA4 events: countdown_create, countdown_share, countdown_download, countdown_embed_copy, countdown_view_shared. Referral tags: utm_source=countdown-share / countdown-embed.
+- Venues directory now sorts by price, guests, name and recently verified (?sort= in the URL keeps the choice).
