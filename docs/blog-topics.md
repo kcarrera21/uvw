@@ -13,8 +13,8 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Winter weddings in Las Vegas: what December and January actually feel like. Published 2026-10-16
 - [x] Christmas and holiday-light wedding photo spots around Las Vegas. Published 2026-10-17
 - [x] New Year's Eve weddings in Las Vegas: planning around the Strip closures. Published 2026-10-18
-- [ ] Lucky wedding dates in 2027 worth booking now
-- [ ] Valentine's Day 2027 in Las Vegas: how to beat the rush
+- [x] Lucky wedding dates in 2027 worth booking now. Covered by the lucky dates 2027 page (skipped 2026-10-21)
+- [x] Valentine's Day 2027 in Las Vegas: how to beat the rush. Published 2026-10-21
 - [ ] Spring desert weddings: wildflower season and permit lead times
 
 ## Evergreen: planning
