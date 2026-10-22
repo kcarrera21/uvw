@@ -1990,4 +1990,96 @@ You'll handle more yourself here, from the officiant to the chairs. In return, y
     ],
     url: "https://www.lasvegasnevada.gov/News/Blog/Detail/city-venues-perfect-for-weddings", checked: "2026-10-22", status: "listed", featured: false,
   },
+  {
+    name: "Silverton Casino (Mermaid Aquarium)", slug: "silverton-casino-mermaids", category: "quirky-pop-culture",
+    area: "South of the Strip (3333 Blue Diamond Rd.)", drive: "About 15 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Live mermaids", "Aquarium", "Off-Strip", "Family-friendly"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: null,
+    facts: [
+      "Silverton's free 117,000-gallon saltwater aquarium has thousands of tropical fish, three species each of stingrays and sharks, and live mermaids.",
+      "Mermaids swim every half hour, Thursday to Saturday from noon to 8 p.m. and Sunday from 10:30 a.m. to 6:30 p.m., with a break from 3:45 to 5 p.m. and none during stingray feedings.",
+      "The casino's wedding and event spaces include The Green, an outdoor lawn at Silverton Village, and the 11,000 sq. ft. Veil Pavilion.",
+      "Smaller receptions can book the Twin Creeks private dining room or Mi Casa Grill Cantina.",
+      "Event tours: 702-575-6209 or info@silvertoncasino.com.",
+    ],
+    bestFor: "Couples who want mermaids in the wedding photos and a casino that isn't on the Strip.",
+    description: `Silverton is the casino with the mermaids. Its giant saltwater aquarium sits right on the casino floor, and on show days performers in tails swim past the sharks and stingrays every half hour. Seeing it is free, so it's the best photo stop in town that costs nothing.
+
+The weddings themselves happen in Silverton's event spaces: The Green outside for a lawn ceremony, or the Veil Pavilion for a big indoor reception. Plan your timing right and you can walk the wedding party over to the tank between the ceremony and dinner.`,
+    tips: [
+      "Silverton doesn't list ceremonies at the aquarium itself. Ask whether a photo session or a small vow moment by the tank is possible.",
+      "Line up photos with the mermaid schedule. There are no shows Monday to Wednesday.",
+      "Pricing isn't published, so request a quote and a sample banquet menu when you tour.",
+      "For a scuba moment, Silverton's Dive Ventures program lets guests dive in the aquarium for $300.",
+    ],
+    url: "https://silvertoncasino.com/venues/", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Hofbräuhaus Las Vegas", slug: "hofbrauhaus-las-vegas", category: "quirky-pop-culture",
+    area: "East of the Strip (Paradise Rd.)", drive: "About 10 min from the center Strip", setting: "Indoor & outdoor",
+    vibe: ["Bavarian beer hall", "Biergarten", "Big parties", "Oktoberfest"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 430,
+    facts: [
+      "Modeled on Munich's famous beer hall, it books weddings and anniversaries for groups of 10 to 1,000.",
+      "The Bier Hall (Schwemme) seats up to 380, and the Biergarten seats up to 430.",
+      "Group sales: 702-740-7888 or Sales@HofbrauhausLasVegas.com.",
+      "Open daily for lunch and dinner, until 10 p.m. Sunday to Thursday and 11 p.m. Friday and Saturday.",
+    ],
+    bestFor: "Couples whose dream reception involves a liter of beer and a polka.",
+    description: `Hofbräuhaus Las Vegas is a full-size Bavarian beer hall a few minutes off the Strip, modeled on the Munich original, with a Bier Hall and a Biergarten that each seat hundreds. It's not subtle, and that's the point.
+
+It's built for big, loud, happy groups, which also describes most wedding receptions. Book the Biergarten or the Bier Hall for a crowd, or a smaller group for a rehearsal dinner that nobody will forget.`,
+    tips: [
+      "Prices and menus for groups aren't published, so ask group sales for a quote and food options.",
+      "The hall runs its own Oktoberfest events, so ask early if you want a September or October date.",
+      "Ask whether you can hold a ceremony on site, or plan to marry elsewhere and bring the party here.",
+    ],
+    url: "https://www.hofbrauhauslasvegas.com/group-sales/", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Lotus House", slug: "lotus-house", category: "desert-outdoors",
+    area: "Northwest Las Vegas (Farm Rd., Centennial Hills area)", drive: "About 30 min from the Strip (per Cactus Collective)", setting: "Indoor & outdoor",
+    vibe: ["Private mansion", "Garden", "Waterfall", "Exclusive use"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 50,
+    facts: [
+      "A private mansion venue in the northwest valley, rented to one wedding at a time.",
+      "Cactus Collective Weddings offers packages there for up to 50 guests, covering the venue, photography, officiant, bouquet and boutonniere, and the wedding permit.",
+      "Ceremony spots include a pergola, a waterfall and a great lawn, with the reception in a large modern indoor event space.",
+      "Two getting-ready rooms are included.",
+    ],
+    bestFor: "Couples who want a whole private estate for a small wedding.",
+    description: `Lotus House is a private mansion out on Farm Road in the northwest valley, the kind of place you'd assume belonged to a headliner. It's rented to one couple at a time, so you get the gardens, the waterfall and the house to yourselves.
+
+The simplest way in is a Cactus Collective package, which bundles the venue, photographer, officiant and flowers for up to 50 guests. Bigger weddings book the venue directly.`,
+    tips: [
+      "The venue was finishing an interior renovation in September 2026. Schedule a walkthrough to see the finished space.",
+      "Packages through Cactus Collective cap at 50 guests. Ask the venue directly about larger events.",
+      "Pricing isn't published on the package page, so check your date and request a quote.",
+    ],
+    url: "https://cactus-collective.com/venue/lotus-house", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Camelot Hall at Opportunity Village", slug: "opportunity-village-camelot-hall", category: "quirky-pop-culture",
+    area: "West Las Vegas (6300 W. Oakey Blvd.)", drive: "About 15 min from the Strip", setting: "Indoor",
+    vibe: ["Gives back", "Big receptions", "Magical Forest campus", "In-house catering"],
+    priceFrom: 5000, priceLabel: "8-hour venue rental", guestMax: 350,
+    facts: [
+      "Camelot Hall is a 7,000 sq. ft. event hall on Opportunity Village's campus, home of the Magical Forest holiday lights. It holds up to 350 guests depending on layout.",
+      "Venue rental starts at $5,000 for 8 hours, with an event lead, cleaning, security, up to 30 tables and 300 chairs, limited linens and free parking.",
+      "An A/V package starts at $1,500: a riser stage, wireless mic and sound, basic lighting and five screens.",
+      "Catering is in-house only, from the hall's banquet chef and full kitchen.",
+      "Part of every booking supports Opportunity Village's programs for adults with disabilities.",
+    ],
+    bestFor: "Couples who want a big reception that also does some good.",
+    description: `Opportunity Village is the Las Vegas nonprofit behind the Magical Forest holiday lights. Its Camelot Hall is a big, flexible event space on the same campus, and renting it helps fund job training and programs for adults with disabilities.
+
+It's a blank-canvas hall rather than a themed venue, so you bring the decor. In exchange, you get room for up to 350 guests, a banquet chef on site, and a reception your guests will feel good about.`,
+    tips: [
+      "Opportunity Village markets the hall for special occasions and corporate events. Confirm it will host your ceremony as well as the reception.",
+      "Decor isn't included, so budget for florals and styling.",
+      "Outside caterers aren't allowed. Ask for menu and beverage pricing early.",
+      "Sales: 702-880-4030 or sales@opportunityvillage.org.",
+    ],
+    url: "https://www.opportunityvillage.org/business-services/opportunity-village-events", checked: "2026-10-22", status: "listed", featured: false,
+  },
 ];

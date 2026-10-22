@@ -1019,6 +1019,10 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "flamingo-count-room-speakeasy": ["count room", "speakeasy", "bugsy", "hidden bar", "prohibition", "1920s"],
     "spring-mountains-national-recreation-area": ["spring mountains", "mountain", "mountains", "mount charleston", "mt charleston", "forest", "pine", "cathedral rock", "kyle canyon"],
     "lorenzi-park-rose-garden": ["lorenzi", "rose garden", "roses", "park", "city park", "garden"],
+    "silverton-casino-mermaids": ["silverton", "mermaid", "mermaids", "aquarium", "fish tank", "sharks", "stingrays", "under the sea"],
+    "hofbrauhaus-las-vegas": ["hofbrauhaus", "hofbräuhaus", "hofbrau", "beer hall", "beer garden", "biergarten", "german", "bavarian", "oktoberfest", "restaurant"],
+    "lotus-house": ["lotus house", "mansion", "estate", "private estate", "centennial hills", "farm road", "waterfall", "garden"],
+    "opportunity-village-camelot-hall": ["opportunity village", "camelot", "magical forest", "charity", "nonprofit", "gives back", "banquet hall"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
