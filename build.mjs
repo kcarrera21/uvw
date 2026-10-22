@@ -1018,6 +1018,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "lee-canyon-mount-charleston": ["lee canyon", "mount charleston", "mt charleston", "mountain", "mountains", "snow", "ski", "winter", "aspens", "alpine"],
     "flamingo-count-room-speakeasy": ["count room", "speakeasy", "bugsy", "hidden bar", "prohibition", "1920s"],
     "spring-mountains-national-recreation-area": ["spring mountains", "mountain", "mountains", "mount charleston", "mt charleston", "forest", "pine", "cathedral rock", "kyle canyon"],
+    "lorenzi-park-rose-garden": ["lorenzi", "rose garden", "roses", "park", "city park", "garden"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();

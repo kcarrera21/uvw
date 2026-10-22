@@ -1966,4 +1966,28 @@ Cactus Collective Weddings handles the permit, photographer and officiant, so yo
     ],
     url: "https://cactus-collective.com/venue/lee-canyon/", checked: "2026-10-21", status: "listed", featured: false,
   },
+  {
+    name: "Lorenzi Park Rose Garden", slug: "lorenzi-park-rose-garden", category: "desert-outdoors",
+    area: "Central Las Vegas (Lorenzi Park)", drive: "About 15 min from the Strip", setting: "Outdoor",
+    vibe: ["Rose garden", "City park", "Budget", "Garden"],
+    priceFrom: null, priceLabel: "City permit, fee by quote", guestMax: null,
+    facts: [
+      "The City of Las Vegas recommends Lorenzi Park's Rose Garden for garden weddings.",
+      "Private weddings and receptions on city property need a Park Special Event permit from the city.",
+      "The city asks for applications at least 30 days before the event, and 90 days for major public events.",
+      "Amplified sound, tents or stages can add permit requirements.",
+      "The city's Parks Special Events team handles bookings at 702-229-1087.",
+    ],
+    bestFor: "Couples who want roses, shade trees and a city-park price.",
+    description: `Lorenzi Park is one of the city's older neighborhood parks, and its Rose Garden is the spot the City of Las Vegas itself points couples to for a garden wedding. Nobody will mistake it for a resort, which is part of the appeal: it's green, it's real, and it costs a city permit instead of a chapel package.
+
+You'll handle more yourself here, from the officiant to the chairs. In return, you get roses in bloom and a ceremony your guests can walk to from the parking lot.`,
+    tips: [
+      "Book early. The city says peak seasons can fill about a year ahead.",
+      "Ask the Parks Special Events team what the permit covers, including chairs, sound and how long you can hold the space.",
+      "Roses look their best in spring and fall. Midsummer afternoons are hot, so aim for morning or evening.",
+      "Bring your own officiant and witness. A park permit doesn't include either.",
+    ],
+    url: "https://www.lasvegasnevada.gov/News/Blog/Detail/city-venues-perfect-for-weddings", checked: "2026-10-22", status: "listed", featured: false,
+  },
 ];
