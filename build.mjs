@@ -33,6 +33,7 @@ const L = luckyCtx.UVWLucky;
 
 // ---------- helpers ----------
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const flatLabel = (l) => String(l).replace(/\s*\(([^)]*)\)/g, ", $1");
 const money = (n) => "$" + Number(n).toLocaleString("en-US");
 const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 const catBy = Object.fromEntries(CATEGORIES.map((c) => [c.slug, c]));
@@ -545,7 +546,7 @@ async function main() {
     const vBase = hasW ? v.name : `${v.name} Weddings`;
     const vTitle = (v.priceFrom ? ["Prices, Details & Tips", "Prices & Tips"] : ["Venue Details & Tips", "Details & Tips"]).map((t) => `${vBase}: ${t}`).find((t) => t.length <= 60) || vBase;
     const approx = /min|hr/.test(v.drive || "") ? " (approximate)" : "";
-    const glance = `${v.priceFrom ? `At ${v.name}, published wedding pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` (${v.priceLabel})` : ""}.` : `${v.name} doesn't publish wedding prices, so pricing is by custom quote.`}${v.guestMax ? ` The largest published option holds up to ${v.guestMax.toLocaleString("en-US")} guests.` : ""} Location: ${v.area}. Details checked ${fmtDate(v.checked)} against the venue's official site.`;
+    const glance = `${v.priceFrom ? `At ${v.name}, published wedding pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` (${flatLabel(v.priceLabel)})` : ""}.` : `${v.name} doesn't publish wedding prices, so pricing is by custom quote.`}${v.guestMax ? ` The largest published option holds up to ${v.guestMax.toLocaleString("en-US")} guests.` : ""} Location: ${v.area}. Details checked ${fmtDate(v.checked)} against the venue's official site.`;
     const vFaq = [
       { q: `How much does a wedding at ${v.name} cost?`, a: v.priceFrom ? `Published pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` for the ${v.priceLabel}` : ""}, as checked ${fmtDate(v.checked)}. Confirm current pricing with the venue.` : `${v.name} doesn't publish wedding prices. Request a quote for your date and guest count through its official weddings page.` },
       ...(v.guestMax ? [{ q: `How many guests can ${v.name} hold?`, a: `Up to ${v.guestMax.toLocaleString("en-US")} guests in its largest published option. Smaller spaces and packages have lower limits.` }] : []),
@@ -1153,7 +1154,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     .replace(/\{\{venue-picks:([^}]+)\}\}/g, (_, sl) => sl.split(",").map((x) => venues.find((v) => v.slug === x)).filter(Boolean).map((v) => `<li><a href="/venues/${v.slug}/">${v.name}</a></li>`).join(""))
     .replace(/\{\{price-min\}\}/g, money(priceMin)).replace(/\{\{price-max\}\}/g, money(priceMax))
     .replace(/\{\{[^}]+\}\}/g, "");
-  const venueLine = (v) => `${catBy[v.category].name}; ${v.area}; ${v.priceFrom ? `from ${money(v.priceFrom)}${v.priceLabel ? ` (${v.priceLabel})` : ""}` : "custom quote"}${v.guestMax ? `; up to ${v.guestMax.toLocaleString("en-US")} guests` : ""}; checked ${v.checked}`;
+  const venueLine = (v) => `${catBy[v.category].name}; ${v.area}; ${v.priceFrom ? `from ${money(v.priceFrom)}${v.priceLabel ? ` (${flatLabel(v.priceLabel)})` : ""}` : "custom quote"}${v.guestMax ? `; up to ${v.guestMax.toLocaleString("en-US")} guests` : ""}; checked ${v.checked}`;
   const keyFacts = [
     "Clark County marriage license: $102; both partners must appear in person with original photo ID; no waiting period, blood test or residency requirement; valid for 1 year.",
     "Marriage License Bureau: 201 E. Clark Ave., Las Vegas, NV 89101; open 8 a.m. to midnight every day, including holidays; walk-in only.",

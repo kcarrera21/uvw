@@ -203,13 +203,13 @@
     var wantsCost = qt.indexOf("cost") > -1 || qt.indexOf("cheap") > -1 || /\bcheaper\b/.test(lower);
     if (named.length > 1 && wantsCost) {
       var byPrice = named.slice().sort(function (a, b) { return (a.price == null ? 1e9 : a.price) - (b.price == null ? 1e9 : b.price); });
-      answer = { text: byPrice.map(function (v) { return v.price != null ? v.name + ": published pricing starts at " + money(v.price) + (v.priceLabel ? " (" + v.priceLabel + ")" : "") + "." : v.name + ": quote-only, no published price."; }).join(" ") + " Packages include different things, so compare what each one covers.", url: "/guides/las-vegas-wedding-cost/", src: "Published venue prices (checked " + byPrice[0].checkedText + ")" };
+      answer = { text: byPrice.map(function (v) { return v.price != null ? v.name + ": published pricing starts at " + money(v.price) + (v.priceLabel ? " (" + v.priceLabel.replace(/\s*\(([^)]*)\)/g, ", $1") + ")" : "") + "." : v.name + ": quote-only, no published price."; }).join(" ") + " Packages include different things, so compare what each one covers.", url: "/guides/las-vegas-wedding-cost/", src: "Published venue prices (checked " + byPrice[0].checkedText + ")" };
     } else if (v0 && (p.question || wantsCost)) {
       var bits = [];
       var wantsGuests = /\b(guest|many|capacity|hold|fit|big|large)\b/.test(qt.join(" "));
       var wantsWhere = /\b(where|located|location|far|drive|address)\b/.test(lower);
       var wantsSetting = /\b(indoor|outdoor|inside|outside)\b/.test(lower);
-      if (wantsCost || (!wantsGuests && !wantsWhere && !wantsSetting)) bits.push(v0.price != null ? "At " + v0.name + ", published wedding pricing starts at " + money(v0.price) + (v0.priceLabel ? " (" + v0.priceLabel + ")" : "") + "." : v0.name + " doesn't publish wedding prices, so pricing is by custom quote.");
+      if (wantsCost || (!wantsGuests && !wantsWhere && !wantsSetting)) bits.push(v0.price != null ? "At " + v0.name + ", published wedding pricing starts at " + money(v0.price) + (v0.priceLabel ? " (" + v0.priceLabel.replace(/\s*\(([^)]*)\)/g, ", $1") + ")" : "") + "." : v0.name + " doesn't publish wedding prices, so pricing is by custom quote.");
       if (wantsGuests) bits.push(v0.guests != null ? "The largest published option at " + v0.name + " holds up to " + v0.guests + " guests." : v0.name + " doesn't publish a maximum guest count.");
       if (wantsWhere) bits.push("Location: " + v0.area + ". " + v0.drive + ".");
       if (wantsSetting) bits.push("Setting: " + v0.setting + ".");
