@@ -12,6 +12,7 @@ import photoPermits from "./guides/las-vegas-wedding-photo-permits.mjs";
 import backyardWedding from "./guides/backyard-wedding-las-vegas.mjs";
 import religiousWeddings from "./guides/religious-wedding-las-vegas.mjs";
 import gothicWeddings from "./guides/gothic-halloween-wedding-las-vegas.mjs";
+import christmasWeddings from "./guides/christmas-wedding-las-vegas.mjs";
 
 const CLERK = "https://www.clarkcountynv.gov/government/elected_officials/county_clerk";
 
@@ -632,5 +633,5 @@ export const guides = [
       { t: "Clark County Clerk: Marriage License Requirements", u: `${CLERK}/marriage-license-requirements` },
     ],
   },
-  certificateCopies, nameChange, lgbtqWeddings, photoPermits, backyardWedding, religiousWeddings, gothicWeddings,
+  certificateCopies, nameChange, lgbtqWeddings, photoPermits, backyardWedding, religiousWeddings, gothicWeddings, christmasWeddings,
 ];
