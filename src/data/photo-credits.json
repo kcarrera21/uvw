@@ -754,5 +754,29 @@
   "source": "https://commons.wikimedia.org/w/index.php?curid=64032384",
   "w": 1600,
   "h": 1065
+ },
+ "grand-canyon-west-skywalk": {
+  "alt": "Visitors on the glass Skywalk over the Grand Canyon at Grand Canyon West",
+  "note": "",
+  "title": "Grand Canyon Skywalk 7",
+  "creator": "frankpierson",
+  "creatorUrl": "https://www.flickr.com/photos/40041799@N08/",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "https://www.flickr.com/photos/40041799@N08/4567099848",
+  "w": 1024,
+  "h": 683
+ },
+ "lee-canyon-mount-charleston": {
+  "alt": "Pine forest, fall color and a dusting of snow on the slopes at Lee Canyon near Mount Charleston",
+  "note": "",
+  "title": "Las Vegas Ski and Snowboard Resort (now Lee Canyon), near Mount Charleston",
+  "creator": "Ken Lund",
+  "creatorUrl": "https://www.flickr.com/photos/75683070@N00/",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+  "source": "https://www.flickr.com/photos/75683070@N00/2903300493",
+  "w": 1024,
+  "h": 768
  }
 }

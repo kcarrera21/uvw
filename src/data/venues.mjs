@@ -429,6 +429,7 @@ It's also federally protected land, which keeps it beautiful and keeps wedding p
       "The ceremony and reception happen in the historic Courtroom. The Vintage Vegas and Champagne packages allow up to 120 guests.",
       "Wedding packages start at $700 for up to 10 people.",
       "Nevada Magazine named it \"Best Place to Get Married\" in Best of Nevada 2019.",
+      "The Underground, the museum's basement speakeasy and working moonshine distillery, books private events: the Speakeasy holds 90 reception-style (50 seated), the Distillery 30, and a hidden VIP room called the Fitting Room 10.",
     ],
     bestFor: "Couples who want a historic, dramatic room with a wink. \"You may now sentence the groom.\"",
     description: `You'll say your vows in a real federal courtroom, the same restored room where history happened, inside one of downtown's grandest old buildings. Dark wood, tall windows and a judge's bench make it formal and theatrical at once.
@@ -437,6 +438,7 @@ The museum leans into the joke just enough. The puns write themselves, and so do
     tips: [
       "Ask about after-hours museum access for guests. It turns the reception into an activity.",
       "Downtown pairs well with a Neon Museum photo session nearby.",
+      "Want the after-party underground? The Underground's private events team quotes separately at 702-724-8622.",
       "The courtroom's natural light is limited. Plan for an evening, candlelit look.",
     ],
     url: "https://themobmuseum.org/events/private-events/weddings/", checked: "2026-10-04", status: "listed", featured: false,
@@ -1916,5 +1918,52 @@ The package turns the day into a road trip: a private SUV from your hotel, the f
       "Phone service can be spotty, so make sure everyone knows the plan before you set off.",
     ],
     url: "https://lvwc.com/wedding-at-area-51", checked: "2026-10-21", status: "listed", featured: false,
+  },
+  {
+    name: "Grand Canyon West (Skywalk)", slug: "grand-canyon-west-skywalk", category: "sky-high",
+    area: "Grand Canyon West, Arizona (Hualapai Reservation)", drive: "About 2.5 hours from Las Vegas", setting: "Outdoor",
+    vibe: ["Grand Canyon", "Glass Skywalk", "Tribal-owned", "Bucket list"],
+    priceFrom: 2000, priceLabel: "Wedding Land Package, 10 passes included", guestMax: null,
+    facts: [
+      "Grand Canyon West is owned and operated by the Hualapai Tribe, through Grand Canyon Resort Corporation in Peach Springs, Arizona.",
+      "The $2,000 Land Package covers a ceremony at Eagle Point (with Skywalk access), Guano Point or Hualapai Point, 10 Premium Access Passes, VIP seating at Sky View Restaurant, VIP transport to your spot, a photographer for 2 hours, and swag and photos.",
+      "The Air Package is $5,500 and is billed for its aerial views. Extra guests are $154 each on any package.",
+      "Planning to propose first? The Proposal Package is $600 for two, with a photographer for 2 hours.",
+      "Packages include 20% off cabin bookings at the resort.",
+    ],
+    bestFor: "Couples who want the Grand Canyon in the background and a glass bridge in the story.",
+    description: `Grand Canyon West is the Hualapai Tribe's side of the canyon, home of the Skywalk, the glass horseshoe that sticks out over the edge. The tribe runs its own wedding packages, so you can get married at Eagle Point, next to the Skywalk, or out at Guano Point.
+
+The Land Package is a good deal for what it is: ten passes, transport out to the point, lunch reservations and two hours of photos. It's a day trip from Las Vegas, and the scenery is the whole decor budget.`,
+    tips: [
+      "Grand Canyon West is in Arizona, so a Clark County, Nevada license won't cover the ceremony. Ask the wedding team how to get an Arizona license before you book.",
+      "Packages don't list an officiant, so confirm who performs the ceremony.",
+      "Email weddings@grandcanyonresort.com for custom events or larger groups.",
+      "Papillon and Maverick also fly couples to weddings on the canyon floor below Grand Canyon West, if you'd rather arrive by helicopter.",
+    ],
+    url: "https://grandcanyonwest.com/groups-events/las-vegas-proposals-weddings/", checked: "2026-10-21", status: "listed", featured: false,
+  },
+  {
+    name: "Lee Canyon (Mount Charleston)", slug: "lee-canyon-mount-charleston", category: "desert-outdoors",
+    area: "Lee Canyon, Spring Mountains", drive: "About 1 hour from the Strip", setting: "Outdoor",
+    vibe: ["Mountain", "Snow", "Aspens", "Elopement"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: null,
+    facts: [
+      "Cactus Collective Weddings runs intimate weddings at Lee Canyon, above 8,600 feet, and says it holds a permit with the Spring Mountains National Recreation Area.",
+      "Packages cover the photographer, officiant, bouquet and boutonniere, the wedding permit and the location.",
+      "Lee Canyon gets about 160 inches of snow a year, so winter elopements can happen in real snow.",
+      "Summer brings wildflower meadows and aspen groves.",
+    ],
+    bestFor: "Couples who want a snowy or alpine wedding without leaving Las Vegas.",
+    description: `Most people don't know Las Vegas has a ski area. Lee Canyon sits above 8,600 feet in the Spring Mountains, about an hour from the Strip, and it gets real snow every winter.
+
+Cactus Collective Weddings handles the permit, photographer and officiant, so you just pick a season: snow in winter, wildflowers and aspens in summer. At that elevation it's noticeably cooler than the valley, which makes a summer wedding a lot more bearable.`,
+    tips: [
+      "Pricing isn't published, so check your date and ask for a quote through Cactus Collective's form.",
+      "Check road conditions before a winter wedding. Snow on the mountain means snow on the road up.",
+      "Bring layers. Mountain weather changes fast, even in summer.",
+      "Doing it yourself instead? Our Spring Mountains listing covers the Forest Service permit route.",
+    ],
+    url: "https://cactus-collective.com/venue/lee-canyon/", checked: "2026-10-21", status: "listed", featured: false,
   },
 ];
