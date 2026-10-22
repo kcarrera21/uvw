@@ -15,7 +15,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] New Year's Eve weddings in Las Vegas: planning around the Strip closures. Published 2026-10-18
 - [x] Lucky wedding dates in 2027 worth booking now. Covered by the lucky dates 2027 page (skipped 2026-10-21)
 - [x] Valentine's Day 2027 in Las Vegas: how to beat the rush. Published 2026-10-21
-- [ ] Spring desert weddings: wildflower season and permit lead times
+- [x] Spring desert weddings: wildflower season and permit lead times. Published 2026-10-22
 - [ ] St. Patrick's Day 2027 wedding in Las Vegas (3/17/27 is a Wednesday)
 - [ ] March Madness weekends in Las Vegas: booking a wedding around the basketball crowds
 - [ ] Easter weekend 2027 wedding in Las Vegas (Easter is Sunday, March 28)
