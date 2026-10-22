@@ -989,10 +989,10 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 
   // ================= SEARCH (plain language, runs in the browser) =================
   const ALIASES = {
-    "the-neon-museum": ["neon museum", "neon boneyard", "boneyard"], "springs-preserve": ["springs preserve"], "nelson-ghost-town": ["nelson", "ghost town", "eldorado canyon"],
+    "the-neon-museum": ["neon museum", "neon boneyard", "boneyard"], "springs-preserve": ["springs preserve"], "nelson-ghost-town": ["nelson", "ghost town", "eldorado canyon", "spooky", "haunted"],
     "waldorf-astoria-las-vegas": ["waldorf"], "shark-reef-aquarium": ["shark reef", "mandalay bay", "aquarium", "sharks"], "little-church-of-the-west": ["little church"],
     "little-white-wedding-chapel": ["little white", "white chapel", "pink cadillac"], "tunnel-of-love-drive-thru": ["drive thru", "drive-thru", "drive through", "tunnel of love"],
-    "graceland-wedding-chapel": ["graceland"], "chapel-of-the-flowers": ["chapel of the flowers"], "viva-las-vegas-wedding-chapel": ["viva las vegas"],
+    "graceland-wedding-chapel": ["graceland"], "chapel-of-the-flowers": ["chapel of the flowers"], "viva-las-vegas-wedding-chapel": ["viva las vegas", "gothic", "goth", "horror", "halloween", "haunted", "haunted house", "vampire", "zombie", "spooky"],
     "strat-chapel-in-the-clouds": ["strat", "stratosphere", "chapel in the clouds"], "high-roller-wheel": ["high roller", "ferris wheel", "linq"], "eiffel-tower-paris-las-vegas": ["eiffel tower", "paris las vegas", "paris hotel"],
     "maverick-helicopters-weddings": ["maverick"], "papillon-helicopter-weddings": ["papillon"], "valley-of-fire-state-park": ["valley of fire"], "red-rock-canyon": ["red rock"],
     "the-mob-museum": ["mob museum", "courtroom"], "area15": ["area15", "area 15"], "omega-mart-meow-wolf": ["omega mart", "meow wolf"], "bellagio": ["bellagio"],
@@ -1000,7 +1000,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "floyd-lamb-park": ["floyd lamb", "tule springs"], "lake-mead-cruises-desert-princess": ["lake mead", "desert princess", "paddle wheeler", "boat"], "welcome-to-fabulous-las-vegas-sign": ["welcome sign", "vegas sign", "las vegas sign"],
     "sahara-las-vegas": ["sahara", "azilo", "alexandria pool", "retro pool", "blanca penthouse", "casbar"],
     "big-apple-coaster-wedding": ["roller coaster", "coaster", "new york new york", "new york-new york"], "punk-rock-museum": ["punk", "punk rock", "music museum"],
-    "lucky-little-wedding-chapel": ["lucky little"], "the-little-vegas-chapel": ["little vegas chapel"], "circa-legacy-club": ["circa", "rooftop", "legacy club"],
+    "lucky-little-wedding-chapel": ["lucky little"], "the-little-vegas-chapel": ["little vegas chapel", "halloween", "spooky"], "circa-legacy-club": ["circa", "rooftop", "legacy club"],
     "vegas-balloon-rides": ["hot air balloon", "balloon"], "hilton-lake-las-vegas-chapel": ["lake las vegas", "over water", "hilton"],
     "spillway-house-hoover-dam": ["hoover dam", "spillway"], "retreat-on-charleston-peak": ["mount charleston", "mt charleston", "mountain", "forest"],
     "atomic-museum": ["atomic", "nuclear", "cold war", "atomic testing museum"], "madame-tussauds-wax-wedding": ["madame tussauds", "wax museum", "wax figures"],
@@ -1009,7 +1009,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "barrick-museum-of-art": ["barrick", "unlv", "art museum", "university", "college", "campus"],
     "greengale-farms": ["greengale", "farm", "olive grove", "orchard", "barn", "rustic"], "oasis-at-death-valley": ["death valley", "furnace creek", "national park", "stargazing"],
     "pioneer-saloon-goodsprings": ["pioneer saloon", "saloon", "goodsprings", "old west", "western", "bar"], "westin-lake-las-vegas": ["westin", "lake las vegas", "lake", "henderson"],
-    "golden-nugget-las-vegas": ["golden nugget", "nugget", "fremont"], "flamingo-garden-chapels": ["flamingo", "flamingos", "garden chapel", "gazebo"],
+    "golden-nugget-las-vegas": ["golden nugget", "nugget", "fremont"], "flamingo-garden-chapels": ["flamingo", "flamingos", "garden chapel", "gazebo", "birds", "bird", "wildlife habitat"],
     "downtown-container-park": ["container park", "mantis", "fremont east", "treehouse"], "oasis-at-gold-spike": ["gold spike", "backyard", "oasis"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };

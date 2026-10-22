@@ -254,6 +254,7 @@ What makes it unusual is how far it reaches. The same team will take you to Vall
       "Calls itself the first LGBTQ+ wedding venue in Las Vegas, since 1999.",
       "Every wedding or vow renewal includes the couple's names on the chapel's Strip marquee.",
       "Ceremonies are livestreamed, and the chapel is also on EarthCam.",
+      "Its Gothic & Horror line runs twelve packages, from vampire and zombie to haunted and cursed. The Halloween Theme is $750 for up to 80 guests and runs year-round.",
     ],
     bestFor: "Theme-wedding dreamers, LGBTQ+ couples, and anyone who wants their names in lights.",
     description: `Want a gothic wedding? A 1920s speakeasy wedding? A wedding in space? Viva Las Vegas has been building theme ceremonies longer than anyone, and it commits to the bit with costumes, sets and characters.
