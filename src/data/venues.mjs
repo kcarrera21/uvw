@@ -64,6 +64,7 @@ Book daytime and you get sun-bleached color and long shadows across rusted lette
 
 It's a strong pick for couples who want a garden ceremony that couldn't be mistaken for anywhere else. Think agave instead of roses, and a skyline you can barely see over the cactus.`,
     tips: [
+      "The Nevada State Museum, Las Vegas is on the same campus, and its admission runs through the Springs Preserve. It's an easy add-on for guests the day before.",
       "Ceremony-only slots run on Thursdays and Sundays, which is the budget move.",
       "Build a licensed coordinator into your budget. The Preserve requires one.",
       "Booking windows are published, so check the calendar before you fall in love with a date.",
@@ -2081,5 +2082,29 @@ It's a blank-canvas hall rather than a themed venue, so you bring the decor. In 
       "Sales: 702-880-4030 or sales@opportunityvillage.org.",
     ],
     url: "https://www.opportunityvillage.org/business-services/opportunity-village-events", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Beer Park at Paris Las Vegas", slug: "beer-park-paris-las-vegas", category: "sky-high",
+    area: "Paris Las Vegas rooftop (center Strip)", drive: "On the Strip", setting: "Indoor & outdoor",
+    vibe: ["Rooftop", "Beer garden", "Fountain views", "Big receptions"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 1000,
+    facts: [
+      "A 17,000 sq. ft. rooftop venue directly under the Eiffel Tower replica at Paris Las Vegas, with indoor and outdoor space.",
+      "It overlooks the Bellagio Fountains, and lists weddings and receptions among the private events it hosts.",
+      "Receptions hold up to 1,000 guests, or 265 for a seated dinner.",
+      "Adjacent venues can be combined for up to 4,000 guests.",
+      "Events team: (702) 979-1246 or events@savorhospitality.com.",
+    ],
+    bestFor: "Couples who want a beer-garden reception with the Bellagio Fountains going off next door.",
+    description: `Beer Park is the rooftop beer garden tucked under the Eiffel Tower at Paris Las Vegas, looking straight across the Strip at the Bellagio Fountains. It's casual by design, with a big patio, an indoor bar and room for a crowd.
+
+That makes it a fun reception for couples who married somewhere small and want to throw a real party after. You get one of the best fountain views on the Strip without a ballroom dress code.`,
+    tips: [
+      "Pricing and minimums aren't published. Ask the events team for a quote for your date and headcount.",
+      "Time your toasts to the fountain shows across the street.",
+      "Ask whether you can hold the ceremony on the rooftop, or plan to marry nearby and walk over.",
+      "It's an open-air rooftop for part of the space, so plan around summer heat and winter evenings.",
+    ],
+    url: "https://www.beerpark.com/private-events", checked: "2026-10-22", status: "listed", featured: false,
   },
 ];
