@@ -74,23 +74,24 @@ It's a strong pick for couples who want a garden ceremony that couldn't be mista
     name: "Nelson Ghost Town", slug: "nelson-ghost-town", category: "historic-iconic",
     area: "Eldorado Canyon (Nelson, NV)", drive: "About 1 hr from the Strip", setting: "Indoor & outdoor",
     vibe: ["Wild West", "Rustic", "Ghost town", "Desert"],
-    priceFrom: 1999, priceLabel: "1-hour all-inclusive package", guestMax: null,
+    priceFrom: 1499, priceLabel: "1-hour base package", guestMax: null,
     facts: [
       "Site of the Techatticup Mine, where mining started in 1861. Weathered buildings, vintage vehicles and antiques throughout.",
       "Has an on-site wedding chapel. Weddings are booked through Scenic Las Vegas Weddings, which handles permits.",
       "All-inclusive packages: 1 hr $1,999; 2 hr $2,499; 3 hr $2,999 (officiant, photography, transportation and video included).",
+      "Base packages: 1 hr $1,499; 2 hr $1,999; 3 hr $2,499. They leave out the 12-rose bouquet and boutonniere, the wedding video and limo transport.",
       "Address: 16880 State Highway 165, Nelson, NV 89046.",
     ],
     bestFor: "Western, rustic or offbeat elopements with photos nobody back home will have seen.",
     description: `An hour from the Strip, the pavement gives way to Eldorado Canyon and a mining town that never quite left. Rusted trucks, sun-faded storefronts and a little chapel sit at the edge of a canyon carved toward the Colorado River.
 
-Nelson is the antidote to the Vegas you've seen on TV. There's no neon, no casino crowds, no dress code. It's just you, a lot of history and light that does most of the photographer's work. The packages bundle transportation and photo/video, which is handy when your venue is a canyon an hour away.`,
+Nelson is the antidote to the Vegas you've seen on TV. There's no neon, no casino crowds, no dress code. It's just you, a lot of history and light that does most of the photographer's work. The all-inclusive packages bundle transportation and photo/video, which is handy when your venue is a canyon an hour away.`,
     tips: [
-      "Packages include transport, so you don't need to figure out the drive yourselves.",
+      "All-inclusive packages include limo transport. Base packages don't, so plan the hour-long drive yourselves.",
       "Dress for dust and uneven ground. Boots photograph beautifully here.",
       "It's a working attraction, so ask how much privacy your time slot includes.",
     ],
-    url: "https://nelsonghosttown.com/weddings", checked: "2026-10-04", status: "listed", featured: false,
+    url: "https://nelsonghosttown.com/weddings", checked: "2026-10-21", status: "listed", featured: false,
   },
   {
     name: "Waldorf Astoria Las Vegas", slug: "waldorf-astoria-las-vegas", category: "strip-luxury",
@@ -254,7 +255,7 @@ What makes it unusual is how far it reaches. The same team will take you to Vall
       "Calls itself the first LGBTQ+ wedding venue in Las Vegas, since 1999.",
       "Every wedding or vow renewal includes the couple's names on the chapel's Strip marquee.",
       "Ceremonies are livestreamed, and the chapel is also on EarthCam.",
-      "Its Gothic & Horror line runs twelve packages, from vampire and zombie to haunted and cursed. The Halloween Theme is $750 for up to 80 guests and runs year-round.",
+      "Its Gothic & Horror line runs about a dozen packages, from Dracula's Tomb to a Cursed Hearse. Most are $750 for up to 80 guests, and they run year-round.",
     ],
     bestFor: "Theme-wedding dreamers, LGBTQ+ couples, and anyone who wants their names in lights.",
     description: `Want a gothic wedding? A 1920s speakeasy wedding? A wedding in space? Viva Las Vegas has been building theme ceremonies longer than anyone, and it commits to the bit with costumes, sets and characters.
