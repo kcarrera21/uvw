@@ -1845,4 +1845,76 @@ It's a full event venue now, not a museum, so you can take over one room for a d
     ],
     url: "https://theliberacemansion.com/weddings/", checked: "2026-10-21", status: "listed", featured: false,
   },
+  {
+    name: "Taco Bell Cantina Chapel", slug: "taco-bell-cantina-chapel", category: "quirky-pop-culture",
+    area: "Center Strip (3717 S. Las Vegas Blvd.)", drive: "On the Strip", setting: "Indoor",
+    vibe: ["Fast food", "Pop culture", "Budget", "Party"],
+    priceFrom: 777, priceLabel: "The Wedding Package, up to 25 guests", guestMax: 25,
+    facts: [
+      "Taco Bell's flagship Las Vegas Cantina has its own wedding chapel upstairs.",
+      "The $777 Wedding Package covers a half-hour ceremony with an ordained officiant and an event coordinator, plus a private area in the restaurant for your reception.",
+      "It includes a sauce-packet garter and bow tie, \"Just Married\" T-shirts, champagne flutes, a Cinnabon Delights cake and a Taco Party Pack.",
+      "You can borrow a bouquet made of Taco Bell sauce packets to walk down the aisle.",
+      "Taco Bell says ceremonies can happen in as little as four hours from booking.",
+    ],
+    bestFor: "Couples who met over a Crunchwrap and aren't embarrassed about it.",
+    description: `Yes, it's real. Taco Bell's flagship Cantina on the Strip has a wedding chapel, and the package is exactly as committed to the bit as you'd hope: a sauce-packet bouquet, a sauce-packet garter, and a Cinnabon Delights cake instead of a tiered one.
+
+It's also one of the better deals on the Strip. For $777 you get the ceremony, an officiant, a coordinator and a private reception area for up to 25 people, with tacos. Nobody leaves hungry.`,
+    tips: [
+      "Book through Taco Bell's wedding site, which shows open dates and times.",
+      "The package page says up to 25 guests, but other parts of the site mention 15. Confirm your headcount when you book.",
+      "Get your marriage license from the Clark County Marriage License Bureau before the ceremony.",
+      "The Cantina serves alcohol, so ask what's included for your reception and what's pay-as-you-go.",
+    ],
+    url: "https://www.tacobellwedding.com/products/wedding-package", checked: "2026-10-21", status: "listed", featured: false,
+  },
+  {
+    name: "Eiffel Tower Restaurant", slug: "eiffel-tower-restaurant", category: "sky-high",
+    area: "Paris Las Vegas (center Strip)", drive: "On the Strip", setting: "Indoor",
+    vibe: ["French", "Fountain views", "Dinner for two", "Romantic"],
+    priceFrom: 1250, priceLabel: "Ceremony and dinner for two, tax and tip included", guestMax: 50,
+    facts: [
+      "The $1,250 Ceremony and Dinner for Two includes an officiant, a dozen red roses and boutonniere, a window table facing the Strip and the Bellagio fountains, a custom dinner, sparkling wine, four 5x7 prints with digital images, and a signed cookbook. Tax and gratuity are included.",
+      "The ceremony package is $1,650 Monday to Thursday and $1,850 Friday to Sunday, for 45 minutes in the Salon Privé with a coordinator, officiant, guitarist, flowers and photography. It takes up to 50 guests.",
+      "Left Bank ceremonies add $1,000.",
+      "Ceremonies run daily between 11 a.m. and 3 p.m.",
+      "A champagne toast and wedding cake reception is $45 per person, 10 guests minimum.",
+    ],
+    bestFor: "Couples who'd rather spend the budget on a great dinner than a big party.",
+    description: `The Eiffel Tower Restaurant sits partway up the half-scale tower at Paris Las Vegas, with windows looking straight across the Strip at the Bellagio fountains. It's the restaurant, not the observation deck, and it runs its own wedding packages.
+
+The dinner-for-two package is the one to know about: you get married at your table, then eat. The officiant, roses, photos and wine are included, and so are tax and tip, which almost never happens in this town.`,
+    tips: [
+      "The dinner-for-two package isn't offered on New Year's Eve or Valentine's Day.",
+      "Ceremonies only run from 11 a.m. to 3 p.m., so plan a lunch wedding or an early start.",
+      "Pay attention to the deposit: it's 50% and nonrefundable.",
+      "Want the ceremony up on the tower's observation deck instead? That's booked separately through Paris Las Vegas.",
+    ],
+    url: "https://www.eiffeltowerrestaurant.com/weddings/", checked: "2026-10-21", status: "listed", featured: false,
+  },
+  {
+    name: "Area 51 Wedding at the Little A'Le'Inn", slug: "area-51-little-a-le-inn", category: "quirky-pop-culture",
+    area: "Rachel, NV (Extraterrestrial Highway)", drive: "About 2.5 hours each way (per the planner)", setting: "Indoor & outdoor",
+    vibe: ["Aliens", "Road trip", "Desert", "Elopement"],
+    priceFrom: 2699, priceLabel: "All-inclusive Area 51 elopement", guestMax: null,
+    facts: [
+      "Las Vegas Weddings (LVWC.com) runs an all-inclusive elopement at the Little A'Le'Inn in Rachel, about 150 miles north of the Strip on the Extraterrestrial Highway.",
+      "The $2,699 package includes private round-trip SUV transport from your hotel, an officiant, ceremony and scenic photography, a galaxy-themed bouquet and boutonniere, and a meal at the Little A'Le'Inn restaurant.",
+      "The day doubles as a UFO tour, with stops at the Janet Airlines terminal, Alien Jerky, the Extraterrestrial Highway sign, the Alien Research Center and the Area 51 perimeter gate.",
+      "Transport covers up to 6 people; larger groups can add vehicles.",
+      "Plan on about 8 hours door to door. A $300 deposit holds the date, and the balance is due 3 weeks before.",
+    ],
+    bestFor: "Couples who believe the truth is out there, and want their wedding photos taken near it.",
+    description: `You can't get married inside Area 51. You can get married in the closest town to it, at the Little A'Le'Inn, the alien-themed motel and restaurant in Rachel, Nevada.
+
+The package turns the day into a road trip: a private SUV from your hotel, the famous Extraterrestrial Highway sign, a photo stop at the perimeter gate, the ceremony, and lunch at the inn. It's a long day and a very empty drive, which is exactly the point.`,
+    tips: [
+      "The license isn't included. The planner says to pick it up at the Clark County Marriage License Bureau in Las Vegas before the trip.",
+      "At the base's perimeter gate, photos are from the public side only. Crossing is a federal offense, and the guide will keep you on the right side.",
+      "Bring water, snacks and a jacket. It's remote high desert, and services are few and far between.",
+      "Phone service can be spotty, so make sure everyone knows the plan before you set off.",
+    ],
+    url: "https://lvwc.com/wedding-at-area-51", checked: "2026-10-21", status: "listed", featured: false,
+  },
 ];

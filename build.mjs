@@ -992,7 +992,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "the-neon-museum": ["neon museum", "neon boneyard", "boneyard"], "springs-preserve": ["springs preserve"], "nelson-ghost-town": ["nelson", "ghost town", "eldorado canyon", "spooky", "haunted"],
     "waldorf-astoria-las-vegas": ["waldorf"], "shark-reef-aquarium": ["shark reef", "mandalay bay", "aquarium", "sharks"], "little-church-of-the-west": ["little church"],
     "little-white-wedding-chapel": ["little white", "white chapel", "pink cadillac"], "tunnel-of-love-drive-thru": ["drive thru", "drive-thru", "drive through", "tunnel of love"],
-    "graceland-wedding-chapel": ["graceland"], "chapel-of-the-flowers": ["chapel of the flowers"], "viva-las-vegas-wedding-chapel": ["viva las vegas", "gothic", "goth", "horror", "halloween", "haunted", "haunted house", "vampire", "zombie", "spooky"],
+    "graceland-wedding-chapel": ["graceland"], "chapel-of-the-flowers": ["chapel of the flowers"], "viva-las-vegas-wedding-chapel": ["viva las vegas", "gothic", "goth", "horror", "halloween", "haunted", "haunted house", "vampire", "zombie", "spooky", "sci-fi", "space", "intergalactic", "star wars"],
     "strat-chapel-in-the-clouds": ["strat", "stratosphere", "chapel in the clouds"], "high-roller-wheel": ["high roller", "ferris wheel", "linq"], "eiffel-tower-paris-las-vegas": ["eiffel tower", "paris las vegas", "paris hotel"],
     "maverick-helicopters-weddings": ["maverick"], "papillon-helicopter-weddings": ["papillon"], "valley-of-fire-state-park": ["valley of fire"], "red-rock-canyon": ["red rock"],
     "the-mob-museum": ["mob museum", "courtroom"], "area15": ["area15", "area 15"], "omega-mart-meow-wolf": ["omega mart", "meow wolf"], "bellagio": ["bellagio"],
@@ -1012,6 +1012,8 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "golden-nugget-las-vegas": ["golden nugget", "nugget", "fremont"], "flamingo-garden-chapels": ["flamingo", "flamingos", "garden chapel", "gazebo", "birds", "bird", "wildlife habitat"],
     "downtown-container-park": ["container park", "mantis", "fremont east", "treehouse"], "oasis-at-gold-spike": ["gold spike", "backyard", "oasis"],
     "liberace-mansion": ["liberace mansion", "liberace house", "liberace home", "mansion", "historic home", "historic house", "candelabra", "mirrors"],
+    "taco-bell-cantina-chapel": ["taco bell", "tacos", "cantina", "fast food", "restaurant", "cheap"], "eiffel-tower-restaurant": ["eiffel tower restaurant", "restaurant", "dinner", "french", "fine dining", "fountain view", "dinner for two"],
+    "area-51-little-a-le-inn": ["area 51", "alien", "aliens", "ufo", "extraterrestrial", "rachel", "little a'le'inn", "little ale inn", "sci-fi"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
