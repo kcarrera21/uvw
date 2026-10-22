@@ -1011,6 +1011,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "pioneer-saloon-goodsprings": ["pioneer saloon", "saloon", "goodsprings", "old west", "western", "bar"], "westin-lake-las-vegas": ["westin", "lake las vegas", "lake", "henderson"],
     "golden-nugget-las-vegas": ["golden nugget", "nugget", "fremont"], "flamingo-garden-chapels": ["flamingo", "flamingos", "garden chapel", "gazebo"],
     "downtown-container-park": ["container park", "mantis", "fremont east", "treehouse"], "oasis-at-gold-spike": ["gold spike", "backyard", "oasis"],
+    "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];

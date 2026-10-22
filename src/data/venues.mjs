@@ -1798,4 +1798,25 @@ The best trick is the buyout. Take every room in the hotel, and your guests can 
     ],
     url: "https://oasisatgoldspike.com/groups/", checked: "2026-10-22", status: "listed", featured: false,
   },
+  {
+    name: "The Las Vegas Farm", slug: "the-las-vegas-farm", category: "desert-outdoors",
+    area: "Northwest Las Vegas (7222 W. Grand Teton Dr.)", drive: "Northwest valley, ZIP 89131", setting: "Outdoor",
+    vibe: ["Farm", "Animals", "Family-run", "Northwest Vegas"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: null,
+    facts: [
+      "The farm says it hosts weddings, formal events and large events, booked through its Special Event Questionnaire.",
+      "The family behind it has farmed and cared for animals in the valley for 50 years, and has lived in Las Vegas since the 1920s.",
+      "It's open to the public on Saturdays and Sundays from 9 a.m. to 4 p.m. and closed on weekdays.",
+    ],
+    bestFor: "Couples who want farm animals and a family-run farm in the northwest corner of the valley.",
+    description: `The Las Vegas Farm is a working family farm in the northwest part of the valley, the kind of place local kids visit on field trips and weekend outings. The family has run it for 50 years, and it's about as far from a casino ballroom as you can get inside city limits.
+
+The farm doesn't publish wedding packages or prices. You start with its Special Event Questionnaire and get a quote for your date and guest count.`,
+    tips: [
+      "Visit on a Saturday or Sunday, when the farm is open to the public, to see the grounds before you send the questionnaire.",
+      "The farm's dedicated weddings site was down for maintenance when we checked, so start from the events section of the main site.",
+      "Ask which spaces you can use, what the guest limit is, and whether you can bring your own caterer and alcohol.",
+    ],
+    url: "https://thelasvegasfarm.com/", checked: "2026-10-21", status: "listed", featured: false,
+  },
 ];
