@@ -646,5 +646,65 @@
   "source": "https://commons.wikimedia.org/w/index.php?curid=61757838",
   "w": 1600,
   "h": 1067
+ },
+ "pioneer-saloon-goodsprings": {
+  "alt": "The Pioneer Saloon's pressed-tin front in Goodsprings, Nevada",
+  "note": "",
+  "title": "Pioneer Saloon, Goodsprings",
+  "creator": "Stan Shebs",
+  "creatorUrl": "https://commons.wikimedia.org/wiki/User:Stan_Shebs",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=5768274",
+  "w": 1600,
+  "h": 1067
+ },
+ "flamingo-garden-chapels": {
+  "alt": "Flamingos in the garden habitat at the Flamingo Las Vegas",
+  "note": "",
+  "title": "The Flamingo's Wildlife Habitat",
+  "creator": "Farragutful",
+  "creatorUrl": "https://commons.wikimedia.org/wiki/User:Farragutful",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=83122653",
+  "w": 1600,
+  "h": 1200
+ },
+ "golden-nugget-las-vegas": {
+  "alt": "The Golden Nugget's lit gold sign on Fremont Street",
+  "note": "",
+  "title": "Main sign of the Golden Nugget on Fremont Street",
+  "creator": "Julian Lupyan",
+  "creatorUrl": "https://commons.wikimedia.org/w/index.php?curid=173402041",
+  "license": "CC0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=173402041",
+  "w": 1600,
+  "h": 1201
+ },
+ "oasis-at-death-valley": {
+  "alt": "The Inn at the Oasis at Death Valley among palms and desert hills",
+  "note": "",
+  "title": "Furnace Creek Inn, Death Valley",
+  "creator": "Jerrye and Roy Klotz MD",
+  "creatorUrl": "https://commons.wikimedia.org/wiki/User:Jerrye_and_Roy_Klotz_MD",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=24849604",
+  "w": 1600,
+  "h": 1068
+ },
+ "downtown-container-park": {
+  "alt": "The fire-breathing praying mantis outside Downtown Container Park at night",
+  "note": "",
+  "title": "Downtown Container Park",
+  "creator": "Tomás Del Coro",
+  "creatorUrl": "https://www.flickr.com/photos/tomasdelcoro/",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+  "source": "https://commons.wikimedia.org/w/index.php?curid=58160409",
+  "w": 1600,
+  "h": 1040
  }
 }

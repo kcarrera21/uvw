@@ -569,7 +569,7 @@ async function main() {
     <p class="glance">${esc(glance)}</p>
     <div class="tags">${(v.vibe || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
     <div class="facts-row">
-      <div><span>Starting price</span><strong>${v.priceFrom ? money(v.priceFrom) : "Custom quote"}</strong>${v.priceLabel ? `<div class="small">${esc(v.priceLabel)}</div>` : ""}</div>
+      <div><span>Starting price</span><strong>${v.priceFrom ? money(v.priceFrom) : "Custom quote"}</strong>${v.priceLabel && !(!v.priceFrom && /^custom quote$/i.test(v.priceLabel)) ? `<div class="small">${esc(v.priceLabel)}</div>` : ""}</div>
       <div><span>Area</span><strong>${esc(v.area)}</strong></div>
       <div><span>Setting</span><strong>${esc(v.setting || "-")}</strong></div>
       <div><span>${v.guestMax ? "Max guests (largest option)" : "Getting there"}</span><strong>${v.guestMax ? v.guestMax.toLocaleString("en-US") : esc(v.drive || "-")}</strong></div>
@@ -1006,6 +1006,10 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "liberace-garage-hollywood-cars-museum": ["liberace", "hollywood cars", "movie cars", "car museum"], "las-vegas-natural-history-museum": ["natural history", "dinosaur", "dinosaurs", "t rex"],
     "historic-fifth-street-school": ["fifth street school", "5th street school", "school", "grammar school"], "smith-center-performing-arts": ["smith center", "theater", "theatre", "performing arts", "reynolds hall", "cabaret jazz"],
     "barrick-museum-of-art": ["barrick", "unlv", "art museum", "university", "college", "campus"],
+    "greengale-farms": ["greengale", "farm", "olive grove", "orchard", "barn", "rustic"], "oasis-at-death-valley": ["death valley", "furnace creek", "national park", "stargazing"],
+    "pioneer-saloon-goodsprings": ["pioneer saloon", "saloon", "goodsprings", "old west", "western", "bar"], "westin-lake-las-vegas": ["westin", "lake las vegas", "lake", "henderson"],
+    "golden-nugget-las-vegas": ["golden nugget", "nugget", "fremont"], "flamingo-garden-chapels": ["flamingo", "flamingos", "garden chapel", "gazebo"],
+    "downtown-container-park": ["container park", "mantis", "fremont east", "treehouse"], "oasis-at-gold-spike": ["gold spike", "backyard", "oasis"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];

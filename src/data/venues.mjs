@@ -1612,4 +1612,190 @@ The rates are some of the most transparent in the city, which makes it easy to b
     status: "listed",
     featured: false
   },
+
+  {
+    name: "GreenGale Farms", slug: "greengale-farms", category: "desert-outdoors",
+    area: "North Las Vegas (off US-95 at Ann Rd.)", drive: "About 25 min from the Strip (per the farm)", setting: "Outdoor",
+    vibe: ["Olive grove", "Farm", "Animal rescue", "Garden"],
+    priceFrom: 2700, priceLabel: "All-inclusive elopement or micro wedding", guestMax: 75,
+    facts: [
+      "The elopement and micro wedding package starts at $2,700, varies by guest count and covers up to 75 guests.",
+      "It includes planning, an on-site host, 1 hour of photography, a licensed officiant who submits your marriage license, and a witness.",
+      "You choose the ceremony spot: the Palm Tree Oasis or the Olive Grove, both set with a gold arch and candle lanterns.",
+      "A dinner reception adds a venue fee from $1,950 and a $1,500 food minimum, plus catering fees and tax.",
+      "GreenGale is a private 40-acre family farm and animal rescue.",
+    ],
+    bestFor: "Couples who want an olive grove and a garden party without leaving Las Vegas.",
+    description: `GreenGale Farms is a private family farm and animal rescue on the north edge of the valley, with an olive grove, a palm oasis and open meadow. It feels like a winery in wine country, about half an hour from the casinos.
+
+The micro wedding package is one of the simplest in town: the officiant, license filing, a witness and an hour of photos are all in the price. Add the reception if you want the whole day there, or keep it small and head back to the Strip for dinner.`,
+    tips: [
+      "The farm isn't open to the public, so book a tour by appointment before you commit.",
+      "Ask which trees will be in leaf or fruit on your date. The orchard goes dormant from mid to late October.",
+      "Food for receptions comes from the farm's partner caterers and food trucks, so ask for the current list.",
+      "Larger weddings and full-property buyouts are quoted separately from the micro wedding package.",
+    ],
+    url: "https://greengalefarms.com/wedding-venue-las-vegas/", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "The Oasis at Death Valley", slug: "oasis-at-death-valley", category: "desert-outdoors",
+    area: "Furnace Creek, Death Valley National Park (CA)", drive: "About 2 hours from Las Vegas (per the resort)", setting: "Indoor & outdoor",
+    vibe: ["National park", "Historic inn", "Stargazing", "Elopement"],
+    priceFrom: 2995, priceLabel: "Elopement package, 2–8 guests", guestMax: 150,
+    facts: [
+      "The $2,995 elopement package includes a garden ceremony, an officiant, a night in a casita suite and a private five-course dinner with paired wines for two. It takes 2 to 8 guests.",
+      "Full weddings start at $200 per person for 2 to 150 guests, with a buffet dinner, champagne toast and a backup indoor space.",
+      "Ceremony and reception spaces include Mission Gardens ($1,500++, up to 150), the Casita Lawn ($2,500++, ceremonies only, up to 150) and Stargazer's Terrace ($1,000++, up to 40).",
+      "All prices carry a 24% service charge and 7.75% sales tax.",
+    ],
+    bestFor: "Couples who'd rather drive two hours for silence, palm gardens and a sky full of stars.",
+    description: `The Oasis at Death Valley is a historic resort inside the national park, with spring-fed gardens and palms in the middle of one of the driest places on earth. It's a long drive from the Strip, which is exactly why it works: no crowds, no neon, just desert and stars.
+
+The elopement package is built for two, with a private dinner and an overnight stay included. Bigger weddings get a garden, a lawn or a rooftop terrace with views across the valley.`,
+    tips: [
+      "Ceremonies on national park land outside the resort need a National Park Service special use permit, so ask the resort team which spots it covers.",
+      "Stargazer's Terrace requires a two-night booking of Room 435, the night before and the night of the wedding.",
+      "Summer in Death Valley is extreme. Fall through spring is the comfortable season for outdoor ceremonies.",
+      "Add the 24% service charge and 7.75% tax to every price when you budget.",
+    ],
+    url: "https://www.oasisatdeathvalley.com/meetings-events/weddings/", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Pioneer Saloon", slug: "pioneer-saloon-goodsprings", category: "historic-iconic",
+    area: "Goodsprings, NV", drive: "About 40–45 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Old West", "Historic saloon", "Small town", "Dog-friendly"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: null,
+    facts: [
+      "The saloon dates to 1913 and sits in the old mining town of Goodsprings.",
+      "It hosts both the ceremony and the reception on site, on its patio and inside the saloon.",
+      "It describes itself as a full-service wedding provider and quotes each wedding individually.",
+      "Parties of 15 or more need a reservation.",
+    ],
+    bestFor: "Couples who want a real Old West saloon, not a themed one.",
+    description: `The Pioneer Saloon has been part of Goodsprings since 1913, an Old West bar in a tiny former mining town with a patio under string lights. It's about 40 minutes from the Strip, far enough to feel like a road trip.
+
+It handles weddings start to finish, from the ceremony on the patio to the party at the bar. Bring boots, and plan a slow walk around the tiny historic town for photos.`,
+    tips: [
+      "Ask about private hire. Tour groups pass through Goodsprings, so confirm whether your booking closes the saloon.",
+      "Arrange transport back to Las Vegas for guests. It's a 40-minute drive on dark roads.",
+      "The patio is dog-friendly, so your dog can be in the wedding.",
+      "Pick up a copy of the town walking tour for photo spots around Goodsprings.",
+    ],
+    url: "https://pioneersaloonnv.com/services", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Westin Lake Las Vegas", slug: "westin-lake-las-vegas", category: "strip-luxury",
+    area: "Lake Las Vegas (Henderson)", drive: "About 30 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Lakefront", "Yacht", "Rose gardens", "Resort"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 1200,
+    facts: [
+      "Ceremony settings include the lakefront gazebo in the Andalusian Gardens and the La Menzah Lawn, which is available year-round.",
+      "The resort's 80-foot yacht, La Contessa, takes up to 100 guests for a cruise on the lake.",
+      "The Casablanca Ballroom holds up to 1,200 guests for a banquet.",
+      "A dedicated wedding specialist handles planning: 702-567-6136.",
+    ],
+    bestFor: "Couples who want a lake, a yacht and a big-resort team, without the Strip.",
+    description: `The Westin sits on the shore of Lake Las Vegas, a Mediterranean-style resort community about half an hour from the Strip. You can say your vows at a gazebo by the water, then take everyone out on the resort's 80-foot yacht.
+
+It's a full-service resort, so the ceremony, reception and room block all happen in one place. If the Strip feels like too much, this is the calm, lakeside version of a Vegas wedding.`,
+    tips: [
+      "Book the yacht early if you want it. It's the detail that sets this venue apart.",
+      "Ask for a lake-view room block so guests can stay on site.",
+      "Pricing is by quote, so send your date, guest count and the spaces you want in one request.",
+      "Plan sunset timing for the gardens. The lake reflects the evening light.",
+    ],
+    url: "https://www.marriott.com/en-us/hotels/laswi-the-westin-lake-las-vegas-resort-and-spa/events/weddings-at-the-westin-lake-las-vegas-resort-and-spa/", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Golden Nugget Las Vegas", slug: "golden-nugget-las-vegas", category: "classic-chapels",
+    area: "Downtown (Fremont Street)", drive: "About 15 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Fremont Street", "Chapel", "Pool ceremony", "Classic Vegas"],
+    priceFrom: 399, priceLabel: "Midweek Value chapel package (Mon–Thu)", guestMax: null,
+    facts: [
+      "The Midweek Value package is $399 Monday to Thursday, and the Weekend Value package is $549. Both are 30-minute chapel ceremonies with a bouquet, boutonniere, music and eight 4x6 prints.",
+      "The Vintage Vegas package is $2,250 for a ceremony on Troy's Balcony, with two nights in a Rush Tower suite.",
+      "The Poolside Paradise package is $2,850 for a ceremony at The Hideout pool, also with two nights in a Rush Tower suite.",
+      "Package prices don't include the minister fee, taxes or service charge, and holiday dates cost extra.",
+    ],
+    bestFor: "Couples who want a downtown casino chapel with a pool-wedding upgrade.",
+    description: `The Golden Nugget is one of Fremont Street's landmark casinos, and it runs its own wedding chapel with some of the clearest pricing downtown. Midweek chapel weddings start under $400, and the packages climb from there to balcony and poolside ceremonies with suites included.
+
+It's an easy pick for a classic Vegas wedding with a party right outside the door: walk out of the chapel and onto Fremont Street.`,
+    tips: [
+      "Book Monday to Thursday for the lowest price. Weekends start at $549.",
+      "Budget separately for the minister fee, taxes and service charge.",
+      "The Premium Select packages include a room night, which can work out cheaper than booking separately.",
+      "Ask about capacity for your guest count. The chapel's size isn't published.",
+    ],
+    url: "https://www.goldennugget.com/las-vegas/meet/weddings/packages/", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Flamingo Garden Chapels", slug: "flamingo-garden-chapels", category: "strip-luxury",
+    area: "Center Strip (Flamingo Las Vegas)", drive: "On the Strip", setting: "Indoor & outdoor",
+    vibe: ["Gardens", "Waterfalls", "Flamingos", "Classic Strip"],
+    priceFrom: 749, priceLabel: "Happily Ever After package", guestMax: 80,
+    facts: [
+      "The Flamingo has five ceremony spots in its 15-acre gardens: the Garden Chapel (seats 60), the Gazebo (up to 80), the West Lawn (up to 80), the Crescendo Pool (up to 50) and Paradise Falls (15 or fewer, standing only).",
+      "Packages start at $749 and include coordination, a bouquet and boutonniere, music, photography and prints, and champagne. It can also be booked without photography.",
+      "Wedding couples get 20% off their room for up to 3 nights.",
+      "A specials flyer on the wedding page offers 10% off Monday to Thursday ceremonies between 10 a.m. and 3 p.m.",
+    ],
+    bestFor: "Couples who want a garden wedding with waterfalls and pink flamingos, steps from the Strip.",
+    description: `The Flamingo's gardens are one of the Strip's best-kept secrets: waterfalls, palms, ponds and the hotel's famous pink flamingos, all tucked behind the casino. The hotel runs five ceremony spots back there, from an indoor chapel to a gazebo and a tiny waterfall nook.
+
+It's old Vegas in the best way, with resort convenience. Get married in the garden, then have dinner and a room upstairs without ever getting in a car.`,
+    tips: [
+      "Use the live wedding page for current prices and capacities. An older brochure still shows up in search with different numbers.",
+      "Midweek daytime ceremonies qualify for the 10% specials discount. Mention the flyer when you book.",
+      "Restaurant receptions for 13 or more book separately at 866-733-5827.",
+      "The Bugsy & Meyer's Count Room speakeasy is also at the Flamingo if you want a ceremony with more mob-era drama.",
+    ],
+    url: "https://www.caesars.com/flamingo-las-vegas/things-to-do/weddings", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Downtown Container Park", slug: "downtown-container-park", category: "quirky-pop-culture",
+    area: "Fremont East (707 Fremont St.)", drive: "About 15 min from the Strip", setting: "Outdoor",
+    vibe: ["Shipping containers", "Fire-breathing mantis", "Open-air", "Downtown"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 300,
+    facts: [
+      "The park's lawn holds up to 300 guests.",
+      "The lawn has a 40-by-20-foot stage with a canopy, lighting and sound.",
+      "The whole park can be bought out for late-night private events.",
+      "Guests enter past the park's giant fire-breathing praying mantis sculpture.",
+    ],
+    bestFor: "Couples who want a downtown block party with a fire-breathing mantis as the ring bearer.",
+    description: `Downtown Container Park is an open-air shopping and entertainment park built from shipping containers, with a lawn, a stage and a giant metal praying mantis that breathes fire at the entrance. It rents out its spaces for private events, weddings included.
+
+It's a good fit for couples who want a festival feel downtown: a ceremony on the lawn, a party on the stage, and the rest of Fremont East a short walk away.`,
+    tips: [
+      "Use the online booking form and choose Wedding as the event type.",
+      "Ask about a late-night buyout if you want the park to yourselves.",
+      "It's fully outdoors, so avoid summer afternoons and plan for evening heat.",
+      "Ask whether the mantis's fire show can be timed to your entrance.",
+    ],
+    url: "https://downtowncontainerpark.com/book-an-event/", checked: "2026-10-22", status: "listed", featured: false,
+  },
+  {
+    name: "Oasis at Gold Spike", slug: "oasis-at-gold-spike", category: "quirky-pop-culture",
+    area: "Downtown (one block from Fremont)", drive: "About 15 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Backyard", "Lawn games", "Boutique hotel", "Buyout"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 100,
+    facts: [
+      "The Backyard, a string-lit lawn with a stage and oversized games, hosts ceremonies, dinners and dancing.",
+      "The 5,000 sq ft Penthouse Suite holds up to 100 guests, and the 2,500 sq ft pool deck holds 75.",
+      "A full buyout includes all 128 rooms, which sleep 358 guests.",
+      "The property has 45,000 sq ft of indoor and outdoor event space.",
+    ],
+    bestFor: "Couples who want to take over a whole downtown hotel and throw a backyard party.",
+    description: `Oasis at Gold Spike is a small downtown hotel with a big backyard: string lights, a stage, lawn games and a bar, a block from Fremont Street. Weddings can use the Backyard, the pool deck or a 5,000-square-foot penthouse.
+
+The best trick is the buyout. Take every room in the hotel, and your guests can walk from the reception to bed without a cab.`,
+    tips: [
+      "Ask for the Backyard's capacity for your layout. It isn't published.",
+      "Pair the event with a room block, or the full buyout for bigger groups.",
+      "The penthouse suits a smaller reception or the after-party.",
+      "Plan a walk to Fremont Street for night photos under the canopy.",
+    ],
+    url: "https://oasisatgoldspike.com/groups/", checked: "2026-10-22", status: "listed", featured: false,
+  },
 ];
