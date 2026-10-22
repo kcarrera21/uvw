@@ -995,8 +995,8 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "graceland-wedding-chapel": ["graceland"], "chapel-of-the-flowers": ["chapel of the flowers"], "viva-las-vegas-wedding-chapel": ["viva las vegas", "gothic", "goth", "horror", "halloween", "haunted", "haunted house", "vampire", "zombie", "spooky", "sci-fi", "space", "intergalactic", "star wars"],
     "strat-chapel-in-the-clouds": ["strat", "stratosphere", "chapel in the clouds"], "high-roller-wheel": ["high roller", "ferris wheel", "linq"], "eiffel-tower-paris-las-vegas": ["eiffel tower", "paris las vegas", "paris hotel"],
     "maverick-helicopters-weddings": ["maverick", "grand canyon", "colorado river", "helicopter"], "papillon-helicopter-weddings": ["papillon", "grand canyon", "canyon floor", "helicopter"], "valley-of-fire-state-park": ["valley of fire"], "red-rock-canyon": ["red rock"],
-    "the-mob-museum": ["mob museum", "courtroom", "underground", "speakeasy", "basement", "moonshine", "distillery"], "area15": ["area15", "area 15"], "omega-mart-meow-wolf": ["omega mart", "meow wolf"], "bellagio": ["bellagio"],
-    "venetian-gondola-weddings": ["venetian", "gondola"], "caesars-palace-weddings": ["caesars", "caesar's"], "spring-mountain-ranch-state-park": ["spring mountain"],
+    "the-mob-museum": ["mob museum", "courtroom", "underground", "speakeasy", "basement", "moonshine", "distillery"], "area15": ["area15", "area 15"], "omega-mart-meow-wolf": ["omega mart", "meow wolf"], "bellagio": ["bellagio", "bellagio fountains", "fountains", "fountain show", "conservatory"],
+    "venetian-gondola-weddings": ["venetian", "gondola", "canal", "italy", "italian"], "caesars-palace-weddings": ["caesars", "caesar's"], "spring-mountain-ranch-state-park": ["spring mountain"],
     "floyd-lamb-park": ["floyd lamb", "tule springs"], "lake-mead-cruises-desert-princess": ["lake mead", "desert princess", "paddle wheeler", "boat"], "welcome-to-fabulous-las-vegas-sign": ["welcome sign", "vegas sign", "las vegas sign", "landmark"],
     "sahara-las-vegas": ["sahara", "azilo", "alexandria pool", "retro pool", "blanca penthouse", "casbar"],
     "big-apple-coaster-wedding": ["roller coaster", "coaster", "new york new york", "new york-new york"], "punk-rock-museum": ["punk", "punk rock", "music museum"],
@@ -1022,7 +1022,8 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "silverton-casino-mermaids": ["silverton", "mermaid", "mermaids", "aquarium", "fish tank", "sharks", "stingrays", "under the sea"],
     "hofbrauhaus-las-vegas": ["hofbrauhaus", "hofbräuhaus", "hofbrau", "beer hall", "beer garden", "biergarten", "german", "bavarian", "oktoberfest", "restaurant"],
     "lotus-house": ["lotus house", "mansion", "estate", "private estate", "centennial hills", "farm road", "waterfall", "garden"],
-    "opportunity-village-camelot-hall": ["opportunity village", "camelot", "magical forest", "charity", "nonprofit", "gives back", "banquet hall"],
+    "opportunity-village-camelot-hall": ["opportunity village", "camelot", "magical forest", "charity", "nonprofit", "gives back", "banquet hall", "enchanted forest", "christmas lights", "holiday lights"],
+    "las-vegas-ballpark": ["ballpark", "baseball", "aviators", "las vegas ballpark", "enchant", "christmas light maze"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
