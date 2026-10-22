@@ -1821,4 +1821,28 @@ The farm doesn't publish wedding packages or prices. You start with its Special 
     ],
     url: "https://thelasvegasfarm.com/", checked: "2026-10-21", status: "listed", featured: false,
   },
+  {
+    name: "The Liberace Mansion", slug: "liberace-mansion", category: "historic-iconic",
+    area: "East of the Strip (Shirley St.)", drive: "About 10 min from the center Strip", setting: "Indoor",
+    vibe: ["Mr. Showmanship", "Mirrors", "Over the top", "Exclusive use"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 250,
+    facts: [
+      "Liberace's own Las Vegas home, designed around a mirror theme with etched and mosaic mirrors. It now hosts weddings, events and private tours by appointment.",
+      "The Crystal Ballroom, about 5,000 sq. ft. and built over the site of Liberace's old pool, seats up to 250 and has a stage and main bar.",
+      "Book the whole Mansion and guests get the ballroom, the Moroccan Room, the living and dining rooms, the master suite and the hall of mirrors. It holds up to 250.",
+      "The Moroccan Room, a tiled solarium that was Liberace's favorite after-show hangout, takes up to 50 guests.",
+      "The venue says your event has exclusive use of the space and comes with an in-house planning team.",
+    ],
+    bestFor: "Couples who think a candelabra is a reasonable centerpiece and want the whole house to themselves.",
+    description: `This is the house Liberace came home to after his shows, and he decorated it exactly the way you'd hope: mirrors on mirrors, a ballroom where the pool used to be, and a Moroccan-tiled room for entertaining friends late into the night.
+
+It's a full event venue now, not a museum, so you can take over one room for a dinner of 50 or the entire house for 250. Nothing in Las Vegas does more sparkle per square foot.`,
+    tips: [
+      "Pricing isn't published. Ask for a quote for the room you want, and whether food and drink are included.",
+      "Visiting first? Private tours are by appointment only.",
+      "The ballroom can be split for smaller groups, so ask about a partial booking if you're under 100 guests.",
+      "Want more Liberace? His rhinestone stage cars are parked at the Liberace Garage, west of the Strip, which also hosts weddings.",
+    ],
+    url: "https://theliberacemansion.com/weddings/", checked: "2026-10-21", status: "listed", featured: false,
+  },
 ];
