@@ -778,5 +778,65 @@
   "source": "https://www.flickr.com/photos/75683070@N00/2903300493",
   "w": 1024,
   "h": 768
+ },
+ "hofbrauhaus-las-vegas": {
+  "alt": "Hofbräuhaus Las Vegas, a cream Bavarian-style building with a red roof, on Paradise Road",
+  "note": "",
+  "title": "Hofbräuhaus Las Vegas",
+  "creator": "Kurt Hänel",
+  "creatorUrl": "https://unsplash.com/@collori",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-large-sign-for-a-restaurant-in-front-of-a-building-MxE7nljSFrQ",
+  "w": 768,
+  "h": 675
+ },
+ "madame-tussauds-wax-wedding": {
+  "alt": "The Venetian's entrance sign with the red Madame Tussauds sign behind it",
+  "note": "",
+  "title": "The Venetian Resort entrance with Madame Tussauds sign",
+  "creator": "Erik Mclean",
+  "creatorUrl": "https://unsplash.com/@introspectivedsgn",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/the-venetian-resort-hotel-casino-entrance-with-grand-canal-shoppes-LA0innJne8M",
+  "w": 1069,
+  "h": 1600
+ },
+ "westin-lake-las-vegas": {
+  "alt": "A full moon rising over Lake Las Vegas at dusk, with desert mountains behind",
+  "note": "area",
+  "title": "Full moon over Lake Las Vegas",
+  "creator": "Ryne Anderson",
+  "creatorUrl": "https://unsplash.com/@rywyattand",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-full-moon-is-seen-over-a-small-town-TU8OoEOhIco",
+  "w": 1600,
+  "h": 919
+ },
+ "vegas-balloon-rides": {
+  "alt": "A red and orange hot air balloon over the desert foothills west of the Las Vegas Strip",
+  "note": "operator",
+  "title": "Hot air balloon west of Las Vegas",
+  "creator": "Kevin Cloney",
+  "creatorUrl": "https://unsplash.com/@kevincloney",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/BUFyW8ZNygo",
+  "w": 1600,
+  "h": 1067
+ },
+ "beer-park-paris-las-vegas": {
+  "alt": "Paris Las Vegas at night, with the lit Eiffel Tower replica and the neon Paris sign above Strip traffic",
+  "note": "area",
+  "title": "Eiffel Tower replica in Las Vegas",
+  "creator": "Brayden Law",
+  "creatorUrl": "https://unsplash.com/@braydenlaw",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/eiffel-tower-replica-in-las-vegas-Wxucoa0TV0U",
+  "w": 1067,
+  "h": 1600
  }
 }
