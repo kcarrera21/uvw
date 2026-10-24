@@ -17,7 +17,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Valentine's Day 2027 in Las Vegas: how to beat the rush. Published 2026-10-21
 - [x] Spring desert weddings: wildflower season and permit lead times. Published 2026-10-22
 - [x] St. Patrick's Day 2027 wedding in Las Vegas (3/17/27 is a Wednesday). Published 2026-10-23
-- [ ] March Madness weekends in Las Vegas: booking a wedding around the basketball crowds
+- [x] March Madness weekends in Las Vegas: booking a wedding around the basketball crowds. Published 2026-10-24
 - [ ] Easter weekend 2027 wedding in Las Vegas (Easter is Sunday, March 28)
 - [ ] Spring break in Las Vegas: when hotel rates and chapel calendars get tight
 - [ ] Cinco de Mayo 2027 wedding ideas in Las Vegas (5/5/27 is a Wednesday)
