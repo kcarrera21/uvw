@@ -405,20 +405,23 @@ Getting married here takes a permit or a planner who handles one, plus a willing
     priceFrom: 3899, priceLabel: "Red Rock package via Chapel of the Flowers (+$900 venue fee)", guestMax: null,
     facts: [
       "Designated in 1990 as Nevada's first National Conservation Area. It has a 13-mile scenic drive.",
-      "Weddings need a BLM Special Recreation Permit. The limits are 10 commercial wedding permittees (currently full) and 100 noncommercial wedding permits.",
-      "Scenic Drive timed-entry reservations are required October 1–May 31.",
+      "Every wedding needs a BLM Special Recreation Permit. Apply 30 to 180 days ahead; permits are first come, first served.",
+      "Permit fees: noncommercial groups pay the greater of $115 or $6 per person. With a paid officiant or photographer it's a one-time commercial permit, $345 minimum. Scenic Drive gate fees are included.",
+      "Four wedding sites: the Visitor Center Amphitheater (up to 200), the Red Rock Overlook on SR 159 and the Red Spring Boardwalk Platform (50 each), and the Ash Spring Overlook (12).",
+      "Scenic Drive timed-entry reservations are required October 1–May 31 for entry between 8 a.m. and 5 p.m.",
       "Chapel of the Flowers' Red Rock package is $3,899 plus a $900 venue fee, and includes a helicopter ride for the couple plus 2 guests.",
     ],
     bestFor: "Nature lovers who want big desert scenery 30 minutes from their hotel.",
     description: `Red Rock is where Las Vegas goes to breathe. Its striped sandstone cliffs rise straight out of the desert at the city's western edge. It's close enough for a morning ceremony and an afternoon pool party.
 
-It's also federally protected land, which keeps it beautiful and keeps wedding permits limited. The simplest path is a permitted commercial operator, which is the job of the 10 commercial wedding permittees. Couples who'd rather do it themselves can apply for one of the noncommercial permits through the BLM.`,
+It's also federally protected land, so every ceremony needs a BLM permit. A chapel's off-site package handles the paperwork for you. Couples who'd rather do it themselves can apply directly, as long as they're 30 to 180 days out.`,
     tips: [
-      "From October to May, everyone in your party needs a timed-entry reservation for the Scenic Drive.",
+      "Permits don't give you a site to yourself, so expect hikers in the background at the overlooks.",
+      "The amphitheater runs 9 a.m. to 4:30 p.m. (last ceremony 3:30 p.m.). For sunrise, pick one of the outdoor sites.",
       "Wedding portraits by a pro photographer need a separate film permit, which can take up to 60 days.",
       "Pack water and shade. Even spring ceremonies get warm on the rocks.",
     ],
-    url: "https://www.blm.gov/programs/national-conservation-lands/nevada/red-rock-canyon", checked: "2026-10-04", status: "listed", featured: false,
+    url: "https://www.blm.gov/programs/national-conservation-lands/nevada/red-rock-canyon-national-conservation-area/planning-your-visit", checked: "2026-10-25", status: "listed", featured: false,
   },
   {
     name: "The Mob Museum", slug: "the-mob-museum", category: "historic-iconic",
@@ -2152,5 +2155,51 @@ The packages are built for elopements and small groups, and they bundle in an up
       "Prices are \"starting at,\" so ask what changes on weekends and holidays.",
     ],
     url: "https://www.palms.com/weddings", checked: "2026-10-25", status: "listed", featured: false,
+  },
+  {
+    name: "Nevada Southern Railway Train Charter", slug: "nevada-southern-railway-train-charter", category: "historic-iconic",
+    area: "Boulder City", drive: "About 35 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Vintage train", "Railroad history", "Desert views", "Private charter"],
+    priceFrom: null, priceLabel: "Charter rates by quote", guestMax: 200,
+    facts: [
+      "The museum's excursion line is the historic Boulder Branch Line, built in 1931 to serve Hoover Dam construction.",
+      "You can charter the whole train for a wedding. It holds up to 200 people and runs about 4 miles west from the Boulder City station.",
+      "Charters run Wednesday through Friday, with a two-hour minimum and extra charges for each added hour.",
+      "The dining car seats up to 48 and can be rented for private parties on regular weekend runs.",
+      "Cars include refurbished, air-conditioned Pullman coaches, an open-air coach and a wheelchair-accessible car and restroom.",
+    ],
+    bestFor: "Couples who want to say their vows on a moving vintage train, with the whole party aboard.",
+    description: `The Nevada State Railroad Museum in Boulder City runs real trains on the line that once hauled supplies for Hoover Dam. Charter the whole thing and it's yours: vintage Pullman coaches, an open-air car, and a dining car with prep counters for a caterer, rolling out into the Eldorado Valley with the River Mountains and the McCullough Range in view.
+
+It's one of the few places near Las Vegas where the venue moves. A two-hour charter covers a ceremony, a toast and a slow ride back, and with room for 200, nobody gets left on the platform.`,
+    tips: [
+      "Charters are Wednesday to Friday only. On a weekend, ask about renting the dining car on a regular run instead.",
+      "Rates aren't published. Call 702-486-5952 or email info@NevadaSouthern.com for a quote and open dates.",
+      "Ask about catering and alcohol rules before you book. The charter page doesn't cover them.",
+      "Boulder City is on the way to Hoover Dam, so it pairs well with a dam photo stop.",
+    ],
+    url: "https://nevadasouthern.com/charter-the-train", checked: "2026-10-25", status: "listed", featured: false,
+  },
+  {
+    name: "Bob Taylor's Ranch House", slug: "bob-taylors-ranch-house", category: "historic-iconic",
+    area: "Northwest Las Vegas (Rio Vista St.)", drive: "About 30 min from the Strip", setting: "Indoor",
+    vibe: ["Old Vegas", "Steakhouse", "Western", "Rehearsal dinner"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: null,
+    facts: [
+      "Opened in 1955 as the Ranch House Supper Club, and a 2026 James Beard America's Classics winner.",
+      "Steaks are cooked on an exhibition mesquite grill, and smoked prime rib is a longtime favorite.",
+      "Its site welcomes large parties, including rehearsal dinners, reception parties and anniversaries.",
+      "Open daily from 11 a.m., until 10 p.m. Sunday to Thursday and 11 p.m. Friday and Saturday. 6250 Rio Vista St.; 702-645-1399.",
+    ],
+    bestFor: "A rehearsal dinner or small reception with old-Vegas character and a serious steak.",
+    description: `Bob Taylor's has been grilling steaks in Las Vegas since 1955. It's a Western-themed steakhouse with memorabilia covering the bar, a mesquite grill you can watch, and the kind of history the Strip tore down years ago. The James Beard Foundation named it one of America's Classics in 2026.
+
+It isn't a ceremony venue. It's where you take everyone afterward, or the night before. Marry at a chapel or out at Red Rock, then bring the party here for prime rib.`,
+    tips: [
+      "There's no published private-dining page or capacity, so call to ask about group sizes and menus.",
+      "Finish the 32-ounce New York cut and dessert is on the house. Plan the toasts accordingly.",
+      "It's about 30 minutes from the Strip, so book rideshares or a shuttle for out-of-town guests.",
+    ],
+    url: "https://bobtaylorsranchhouse.com/", checked: "2026-10-25", status: "listed", featured: false,
   },
 ];

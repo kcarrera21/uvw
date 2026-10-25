@@ -25,7 +25,7 @@
 Each venue's official URL is the `url` field in `src/data/venues.mjs`.
 
 ## Dropped (not listed, and why)
-Mount Charleston Lodge (rebuilding, no reopening date); Seven Magic Mountains (no permitted weddings); hot air balloon weddings (no current operator with a wedding package found); Lake Las Vegas/Hilton (couldn't verify); Hoover Dam (no evidence it allows ceremonies); Gilcrease Orchard, Ethel M, Clark County Wetlands Park, Container Park, Pinball Hall of Fame, Sky Combat Ace (no wedding offering found).
+Mount Charleston Lodge (rebuilding, no reopening date); Seven Magic Mountains (no permitted weddings); hot air balloon weddings (no current operator with a wedding package found); Lake Las Vegas/Hilton (couldn't verify); Hoover Dam (no evidence it allows ceremonies); Gilcrease Orchard, Ethel M, Clark County Wetlands Park, Container Park, Pinball Hall of Fame, Sky Combat Ace (no wedding offering found). Checked 2026-10-25: escape rooms (Mind Twist Escapes and others sell party and bachelor/bachelorette packages, but none advertise weddings); gypsum mine venues (none found; Adrenaline Mountain's "Extreme Wedding Packages" are at the Yellow Pine Mine, not gypsum, and only appear on The Knot, with no official page found).
 
 ## Deliberately left off the site
 - Under-18 marriage rules (2025 bills, outcome unverified)
