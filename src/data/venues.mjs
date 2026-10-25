@@ -2107,4 +2107,50 @@ That makes it a fun reception for couples who married somewhere small and want t
     ],
     url: "https://www.beerpark.com/private-events", checked: "2026-10-22", status: "listed", featured: false,
   },
+  {
+    name: "The Grove", slug: "the-grove-las-vegas", category: "desert-outdoors",
+    area: "Northwest Las Vegas (8080 Al Carrison St.)", drive: "About 30 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Almond orchard", "Garden chapel", "Gazebo", "All-inclusive"],
+    priceFrom: 5175, priceLabel: "Garden Terrace package, up to 50 guests (Mon–Thu)", guestMax: 200,
+    facts: [
+      "A garden wedding venue in the northwest valley since 1991, with a private garden chapel set among mature almond trees, an old-fashioned gazebo and wedding gardens.",
+      "Ceremony sites include the Gazebo, the Almond Orchard and an Arbor by the Water.",
+      "Garden Terrace packages start at $5,175 for up to 50 guests, Monday to Thursday, with the ceremony, a minister, a four-hour reception, DJ, buffet, cake and bar. Extra guests are $100 each, up to 60.",
+      "The Grand Garden Room seats up to 200, with all-inclusive sunset packages for 75 or more guests and brunch packages for 65 or fewer.",
+      "A $1,000 nonrefundable deposit holds the date, and the venue takes $300 off for weddings booked within 90 days or paid in full.",
+    ],
+    bestFor: "Couples who want an orchard wedding with the whole reception handled in one place.",
+    description: `The Grove has been doing garden weddings in the northwest valley since 1991, long enough for its almond trees to grow into a real orchard. You get married in a small garden chapel under the trees or at an old-fashioned gazebo, then walk inside for the reception.
+
+The packages are the appeal: ceremony, minister, buffet, bar, DJ and cake in one price, which is rare outside the big resorts. It's a classic, green, unhurried wedding about half an hour from the Strip.`,
+    tips: [
+      "The published Garden Terrace prices are for Monday to Thursday. Ask for weekend pricing.",
+      "The site lists two prices for the Package B open bar ($5,800 and $5,175). Confirm the figure in writing.",
+      "Overtime is $700 an hour, so build the timeline carefully.",
+      "Wedding specialists give tours seven days a week, 9 a.m. to 5 p.m. Call (702) 645-5818.",
+    ],
+    url: "https://www.the-grove.com/outdoor-chapel-packages.html", checked: "2026-10-25", status: "listed", featured: false,
+  },
+  {
+    name: "Palms Chapel", slug: "palms-chapel", category: "quirky-pop-culture",
+    area: "West of the Strip (Palms, W. Flamingo Rd.)", drive: "About 10 min from the center Strip", setting: "Indoor",
+    vibe: ["Black and white", "Instagram-famous", "Elopement", "Off-Strip resort"],
+    priceFrom: 750, priceLabel: "Just the Two of Us (couple only)", guestMax: 25,
+    facts: [
+      "An 800 sq. ft. black-and-white immersive chapel at Palms Casino Resort, which debuted in 2019.",
+      "Just the Two of Us starts at $750 for the couple, with private chapel access, VIP check-in, an upgraded room, a dining credit and a wedding manager.",
+      "The Micro Elopement starts at $2,500 for up to 25 guests, with bubbly at Unknown Bar, a sound system and an upgraded room.",
+      "An Exclusive Photo Experience starts at $1,000: an hour in the chapel plus another signature photo spot, for portraits, engagements or vow renewals.",
+    ],
+    bestFor: "Couples who want a graphic, high-contrast chapel that photographs like a magazine spread.",
+    description: `The Palms chapel is the one you've probably seen on Instagram: a stark black-and-white room that looks like it was drawn in ink. It's small, around 800 square feet, and that's the point. Every photo comes out graphic and clean.
+
+The packages are built for elopements and small groups, and they bundle in an upgraded room and a dining credit, so the night after is covered too. Palms is a few minutes west of the Strip, which keeps it calmer than the big resorts.`,
+    tips: [
+      "Just the Two of Us is couple-only. Bringing anyone? Book the Micro Elopement, which takes up to 25.",
+      "Already married? The photo experience works for vow renewals and anniversary portraits.",
+      "Prices are \"starting at,\" so ask what changes on weekends and holidays.",
+    ],
+    url: "https://www.palms.com/weddings", checked: "2026-10-25", status: "listed", featured: false,
+  },
 ];

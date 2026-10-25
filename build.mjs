@@ -1025,6 +1025,8 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "opportunity-village-camelot-hall": ["opportunity village", "camelot", "magical forest", "charity", "nonprofit", "gives back", "banquet hall", "enchanted forest", "christmas lights", "holiday lights"],
     "las-vegas-ballpark": ["ballpark", "baseball", "aviators", "las vegas ballpark", "enchant", "christmas light maze"],
     "beer-park-paris-las-vegas": ["beer park", "beer garden", "rooftop", "paris las vegas", "bellagio fountains", "fountain view", "brewery", "beer"],
+    "the-grove-las-vegas": ["the grove", "grove", "almond", "orchard", "garden chapel", "gazebo", "all inclusive", "northwest"],
+    "palms-chapel": ["palms", "black and white", "black & white", "instagram", "monochrome", "unknown bar"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
