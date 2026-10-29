@@ -23,7 +23,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Cinco de Mayo 2027 wedding ideas in Las Vegas (5/5/27 is a Wednesday). Published 2026-10-26
 - [x] Mother's Day weekend 2027: vow renewals and family weddings in Las Vegas (May 9 is a Sunday). Published 2026-10-27
 - [x] Memorial Day weekend 2027 weddings in Las Vegas (Sat. May 29 to Mon. May 31). Published 2026-10-28
-- [ ] When the heat arrives: the last good weeks for outdoor desert ceremonies in late spring
+- [x] When the heat arrives: the last good weeks for outdoor desert ceremonies in late spring. Published 2026-10-29
 - [ ] Juneteenth and Father's Day weekend 2027 in Las Vegas (June 18 to 20)
 - [ ] Summer 2027 weddings in Las Vegas: indoor and after-dark venues that beat the heat
 
