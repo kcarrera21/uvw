@@ -2202,4 +2202,28 @@ It isn't a ceremony venue. It's where you take everyone afterward, or the night 
     ],
     url: "https://bobtaylorsranchhouse.com/", checked: "2026-10-25", status: "listed", featured: false,
   },
+  {
+    name: "1923 Prohibition Bar", slug: "1923-prohibition-bar", category: "quirky-pop-culture",
+    area: "Mandalay Place and the Venetian (two Strip locations)", drive: "On the Strip", setting: "Indoor",
+    vibe: ["Speakeasy", "Prohibition era", "Burlesque and jazz", "After-party"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 500,
+    facts: [
+      "A Prohibition-themed speakeasy with two Strip locations: The Shoppes at Mandalay Place and the Grand Canal Shoppes at the Venetian.",
+      "The Mandalay Bay location holds up to 300 standing, with the smaller Parlor Room and State Room. The Venetian location holds up to 500 standing and overlooks the Grand Canal.",
+      "Private events can add open bar, catering, burlesque, jazz and blues, magicians and private whiskey tastings.",
+      "At Mandalay Bay, events can pair the speakeasy with the Minus5 Ice Experience next door.",
+      "Private events: info@1923lv.com or (702) 586-8925.",
+    ],
+    bestFor: "Couples who want a 1920s after-party with burlesque, jazz and a whiskey tasting.",
+    description: `1923 Prohibition Bar is a hidden-door speakeasy with two Strip locations, built around the Prohibition era: dim lights, leather booths, live jazz and burlesque. It books private events from a small room to a full buyout.
+
+It markets itself for group celebrations rather than ceremonies, so think of it as the reception or the after-party. Pair it with a speakeasy ceremony at the Flamingo's Count Room or a courtroom wedding at the Mob Museum, then bring everyone here for the band.`,
+    tips: [
+      "The private-events page doesn't mention weddings. Ask whether they'll host a ceremony, or plan it as your reception.",
+      "Packages are custom, so request a proposal with your guest count and entertainment wish list.",
+      "The Venetian location is bigger. The Mandalay Bay one has smaller private rooms for a tighter group.",
+      "Speakeasies serve alcohol, so check whether anyone under 21 can attend before you invite the whole family.",
+    ],
+    url: "https://www.1923lv.com/private-event-space-party-rooms-for-rent-las-vegas/", checked: "2026-10-30", status: "listed", featured: false,
+  },
 ];
