@@ -15,6 +15,10 @@ import gothicWeddings from "./guides/gothic-halloween-wedding-las-vegas.mjs";
 import christmasWeddings from "./guides/christmas-wedding-las-vegas.mjs";
 import speakeasyWeddings from "./guides/speakeasy-wedding-las-vegas.mjs";
 import cannabisWeddings from "./guides/cannabis-wedding-las-vegas.mjs";
+import whereToStay from "./guides/where-to-stay-for-a-las-vegas-wedding.mjs";
+import packagesUnder500 from "./guides/las-vegas-wedding-packages-under-500.mjs";
+import nevadaLicense2027 from "./guides/nevada-marriage-license-2027.mjs";
+import sameDayWedding from "./guides/same-day-las-vegas-wedding.mjs";
 
 const CLERK = "https://www.clarkcountynv.gov/government/elected_officials/county_clerk";
 
@@ -33,6 +37,7 @@ export const guides = [
     hero: "license",
     body: `
 <p class="lede">Las Vegas is famous for fast weddings because the paperwork really is simple. No blood test, no waiting period, no residency requirement. But "simple" isn't "skippable." Here's exactly what Clark County asks for, in the order you'll need it.</p>
+<p>Marrying in 2027? The fee, hours, and holiday rules from the latest check are in <a href="/guides/nevada-marriage-license-2027/">How to get a Nevada marriage license (2027)</a>.</p>
 
 <div class="quickfacts">
   <div><span>Fee</span><strong>$102</strong></div>
@@ -166,6 +171,7 @@ export const guides = [
 
 <h2>Is a civil ceremony right for you?</h2>
 <p>It's ideal if you want to be legally married quickly and affordably, and plan to celebrate somewhere more personal. Many couples do the civil ceremony for the legal part, then hold a <a href="/guides/legal-vs-symbolic-ceremony/">symbolic ceremony</a> at a venue that would be complicated or expensive to make "official," like a canyon floor, a ghost town or the top of a tower.</p>
+<p>The courthouse is appointment-only, so it is a same-day wedding only when a slot is open. Chapels are the walk-in path. See <a href="/guides/same-day-las-vegas-wedding/">same-day weddings</a> and <a href="/guides/las-vegas-wedding-packages-under-500/">packages under $500</a>.</p>
 <p>Want something with more atmosphere for not much more money? Several <a href="/venues/category/classic-chapels/">classic chapels</a> publish ceremony specials from $99, though officiant fees can be extra.</p>
 
 {{planner-cta}}
@@ -212,7 +218,7 @@ export const guides = [
 
 <h2>Price bands, in plain English</h2>
 <ul class="checklist">
-  <li><strong>Under $1,000:</strong> classic chapels, the drive-thru, the courthouse, the STRAT's base-of-tower Minimony, the Venetian gondola (midweek) and park-permit DIY options.</li>
+  <li><strong>Under $1,000:</strong> classic chapels, the drive-thru, the courthouse, the STRAT's base-of-tower Minimony, the Venetian gondola (midweek) and park-permit DIY options. Packages with a published starting price of $500 or less are listed in <a href="/guides/las-vegas-wedding-packages-under-500/">Las Vegas wedding packages under $500</a>.</li>
   <li><strong>$1,000–$3,000:</strong> Neon Museum, Nelson Ghost Town, Springs Preserve ceremonies, Valley of Fire packages, helicopter flights over the Strip.</li>
   <li><strong>$3,000–$10,000:</strong> Grand Canyon helicopter weddings, Red Rock packages, garden receptions.</li>
   <li><strong>$10,000+:</strong> full-production receptions like AREA15. Large Strip-resort weddings are usually quote-only, so ask for a full estimate.</li>
@@ -332,6 +338,7 @@ export const guides = [
 <p>Head downtown to the Marriage License Bureau (201 E. Clark Ave., open 8 a.m. to midnight every day). Both of you need to go, together. Processing usually takes about 15 minutes. Then celebrate being <em>almost</em> married. Fremont Street is right there.</p>
 
 <h2>Day 2: The wedding</h2>
+<p>Doing it all on one calendar day instead? Use the <a href="/guides/same-day-las-vegas-wedding/">same-day wedding plan</a>. On a small budget, start with <a href="/guides/las-vegas-wedding-packages-under-500/">packages under $500</a>.</p>
 <p>Choose your adventure:</p>
 <div class="grid-3 mini-cards">
   <a href="/venues/category/classic-chapels/" class="mini"><strong>Classic</strong><span>A chapel ceremony from about $99. In and out in an hour, Elvis optional.</span></a>
@@ -555,6 +562,7 @@ export const guides = [
 
 <h2>Where should guests stay?</h2>
 <p>Base guests close to your ceremony. A downtown wedding (Neon Museum, Mob Museum, Graceland) suits Fremont-area hotels. A Strip ceremony makes walking to the reception easy. For desert venues, choose a Strip hotel and book one shuttle instead of 20 rideshares.</p>
+<p>Neighborhood by neighborhood, including Lake Las Vegas and the night you land, is <a href="/guides/where-to-stay-for-a-las-vegas-wedding/">where to stay for a Las Vegas wedding</a>.</p>
 {{stay22}}
 
 <h2>Group activities that work</h2>
@@ -636,4 +644,5 @@ export const guides = [
     ],
   },
   certificateCopies, nameChange, lgbtqWeddings, photoPermits, backyardWedding, religiousWeddings, gothicWeddings, christmasWeddings, speakeasyWeddings, cannabisWeddings,
+  whereToStay, packagesUnder500, nevadaLicense2027, sameDayWedding,
 ];
