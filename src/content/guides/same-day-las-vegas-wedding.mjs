@@ -7,10 +7,10 @@ const CLERK = "https://www.clarkcountynv.gov/government/elected_officials/county
 export default {
   slug: "same-day-las-vegas-wedding",
   photo: "tunnel-of-love-drive-thru",
-  seoTitle: "Same-Day Las Vegas Wedding: License to Chapel",
-  metaDescription: "Get a Las Vegas marriage license and marry the same day. The bureau is walk-in until midnight, with no waiting period. The chapel still has to be free.",
-  answer: "Yes. Clark County has no waiting period and no blood test, and the Marriage License Bureau is walk-in only from 8 a.m. to midnight every day. Both partners need original photo ID. You can marry the same day if an authorized officiant and one witness are available. Book the chapel before you count on a holiday or a Saturday night.",
-  title: "A Same-Day Las Vegas Wedding: License, Chapel, and a Place to Sleep",
+  seoTitle: "Same-Day Las Vegas Wedding: Marry the Day You Land",
+  metaDescription: "Marry in Las Vegas the day you land: a walk-in license until midnight, no waiting period, and why the courthouse is not a same-day backup.",
+  answer: "You can marry in Las Vegas the day you land. There is no waiting period, and the Marriage License Bureau is walk-in only from 8 a.m. to midnight. Both partners need original photo ID, an authorized officiant, and one witness, and the chapel has to be free. This is a one-day sequence, not the two-day elopement plan or a guest weekend.",
+  title: "Marry in Las Vegas the Day You Land",
   nav: "Same-day wedding",
   eyebrow: "Elopements",
   description: "A realistic one-day sequence for getting the Clark County license and marrying before midnight, including what has to be arranged before the flight.",
@@ -36,7 +36,7 @@ export default {
   <li><strong>Confirm a witness and an officiant.</strong> Nevada requires at least one witness besides the person performing the ceremony. Ask the chapel whether both are in the package. Some published prices are not.</li>
   <li><strong>Bring a card.</strong> The license is $102, plus a card fee of 2% + $1.25. Checks are not accepted.</li>
 </ul>
-<p>If you have two days, the <a href="/guides/how-to-elope-in-las-vegas/">48-hour elopement plan</a> is calmer. This page is the one-day version.</p>
+<p>If you have two days, the <a href="/guides/how-to-elope-in-las-vegas/">48-hour elopement plan</a> is calmer. This page is only the calendar day you arrive. Guests who are staying through the weekend are a third plan: the <a href="/guides/las-vegas-wedding-weekend-guide/">wedding weekend guide</a>.</p>
 
 <h2>The order that works</h2>
 <ol class="steps">

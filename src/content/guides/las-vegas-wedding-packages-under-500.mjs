@@ -20,6 +20,7 @@ export default {
   updated: "2026-10-31",
   body: `
 <p class="lede">A Las Vegas ceremony can start under $500. That number is the venue's published starting price, not the cost of being legally married. The marriage license is another $102, a certified copy is $20, and a few "under $500" packages leave out the officiant. Here is what is actually published, and what you still have to add.</p>
+<p>The full range, from these chapels through five-figure receptions, is <a href="/guides/las-vegas-wedding-cost/">how much a Las Vegas wedding costs</a>. This page is only the packages with a published starting price of $500 or less.</p>
 
 <div class="quickfacts">
   <div><span>Lowest chapel special</span><strong>$99</strong></div>

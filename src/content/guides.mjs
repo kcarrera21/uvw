@@ -27,15 +27,17 @@ export const guides = [
     slug: "las-vegas-marriage-license",
     seoTitle: "Las Vegas Marriage License: Cost, Hours & Requirements",
     metaDescription: "Clark County marriage license, step by step: the $102 fee, 8 a.m.–midnight hours, ID rules, online pre-application, witness and certified copies.",
-    answer: "A Las Vegas marriage license costs $102 from the Clark County Marriage License Bureau at 201 E. Clark Ave., open 8 a.m. to midnight every day. Both partners must appear together with original photo ID. There is no waiting period, blood test or residency requirement, and the license is valid for one year.",
+    answer: "A Las Vegas marriage license costs $102 from the Clark County Marriage License Bureau at 201 E. Clark Ave., open 8 a.m. to midnight every day, including holidays. Both partners must appear together with original photo ID. There is no waiting period or blood test, adults have no Nevada residency requirement, and the license is valid for one year. Rechecked October 31, 2026: the Clerk has not posted a 2027 fee change.",
     title: "How to Get a Las Vegas Marriage License (Step by Step)",
     nav: "Marriage license",
     eyebrow: "Legal essentials",
     description: "Clark County marriage license requirements: the $102 fee, hours (8 a.m. to midnight, every day), ID rules, the online pre-application, witnesses and certified copies.",
-    readMins: 7,
+    readMins: 8,
     hero: "license",
+    updated: "2026-10-31",
     body: `
-<p class="lede">Las Vegas is famous for fast weddings because the paperwork really is simple. No blood test, no waiting period, no residency requirement. But "simple" isn't "skippable." Here's exactly what Clark County asks for, in the order you'll need it.</p>
+<p class="lede">Las Vegas is famous for fast weddings because the paperwork really is simple. No blood test, no waiting period, and no Nevada residency requirement for adults. But "simple" isn't "skippable." Here's exactly what Clark County asks for, in the order you'll need it.</p>
+<div class="note"><strong>Rechecked October 31, 2026.</strong> The license is still $102, and the Clerk has not posted a different 2027 price. Fees are set by the Legislature or the County Commission and can change without notice, so reopen the fee page before you travel. You must be at least 18, not currently married, and not nearer of kin than second cousins or cousins of the half blood. The requirements page's only residency rule is a 17-year-old who lives in Clark County and has a court order. The office says it does not give legal advice on that exception.</div>
 
 <div class="quickfacts">
   <div><span>Fee</span><strong>$102</strong></div>
@@ -45,7 +47,7 @@ export const guides = [
 </div>
 
 <h2>Step 1: Pre-apply online (10 minutes, saves you an hour)</h2>
-<p>Fill out the <a href="https://clerk.clarkcountynv.gov/AcclaimClerkPreApp/Home/Index" rel="nofollow noopener" target="_blank">Clark County online pre-application</a> before you travel. It stays on file for one year. The pre-application is <em>not</em> your license. You still have to appear in person, but it turns a form-filling session into a quick check-in.</p>
+<p>Fill out the <a href="https://clerk.clarkcountynv.gov/AcclaimClerkPreApp/Home/Index" rel="nofollow noopener" target="_blank">Clark County online pre-application</a> before you travel. It stays on file for one year. The pre-application is <em>not</em> your license. You still have to appear in person, but it turns a form-filling session into a quick check-in. Mistakes can be fixed at the window. Corrections after the ceremony are case by case, and the fee schedule lists a marriage document correction at up to $79.50.</p>
 
 <h2>Step 2: Go to the Marriage License Bureau, together</h2>
 <p>Both of you must appear in person at the same time. There are no appointments; it's walk-in only, and processing typically takes about 15 minutes.</p>
@@ -54,24 +56,32 @@ export const guides = [
   <li><strong>Hours:</strong> 8 a.m. to midnight, seven days a week, including all holidays</li>
   <li><strong>Quietest times:</strong> Sundays and Tuesdays, 8–10 a.m. and 8 p.m.–midnight, per the Clerk's office</li>
 </ul>
-<p>Satellite offices in Henderson, Laughlin and Mesquite also issue licenses on limited weekday schedules. They close for lunch and on legal holidays, and they don't take cash. The Government Center on Grand Central Parkway does <em>not</em> issue marriage licenses.</p>
+<p>The hours page says the downtown bureau is open all holidays, no exceptions. In 2027 that standing rule covers New Year's Day (Friday, January 1), Valentine's Day (Sunday, February 14), Independence Day (Sunday, July 4), and Christmas Day (Saturday, December 25). Henderson, Laughlin, and Mesquite close on legal holidays, so those dates belong at 201 E. Clark Avenue.</p>
+<p>Three satellite offices also issue licenses. They close from noon to 1 p.m. and on legal holidays, they don't take cash, and the hours page posts one-off closures. Call (702) 671-0600 the day you visit Laughlin or Mesquite.</p>
+<ul class="checklist">
+  <li><strong>Henderson:</strong> 240 S. Water Street. Monday–Thursday, 8 a.m.–5 p.m.</li>
+  <li><strong>Laughlin:</strong> 101 Civic Way. Thursday and Friday, 8 a.m.–5 p.m.</li>
+  <li><strong>Mesquite:</strong> 10 E. Mesquite Boulevard. Wednesday and Thursday, 7:30 a.m.–5 p.m.</li>
+</ul>
+<p>The Government Center at 500 S. Grand Central Parkway does <em>not</em> issue marriage licenses. Both of you have to appear together. The only exceptions the Clerk lists are a hospitalized applicant and an incarcerated applicant, each with its own instructions on the requirements page.</p>
 
 <h2>Step 3: Bring the right ID</h2>
 <p>Each of you needs an <strong>original</strong> photo ID. Photocopies and digital IDs aren't accepted. Accepted IDs include:</p>
 <ul class="checklist">
-  <li>Driver's license or U.S. state ID card</li>
+  <li>Driver's license, instruction permit, or U.S. state ID card</li>
   <li>Passport</li>
   <li>Foreign government ID showing date of birth</li>
   <li>Matrícula Consular card</li>
-  <li>U.S. military ID</li>
+  <li>U.S. military ID, or a military dependent ID</li>
   <li>Permanent resident card, or USCIS citizenship or naturalization certificate</li>
 </ul>
-<p>Your name on the license will match your ID exactly, so make sure your IDs are current. U.S. citizens who have a Social Security number will need to provide it.</p>
+<p>Your name on the license will match your ID exactly. If you want a full middle name on the record, the ID has to show the full middle name, not an initial. Parents' names on the application are their full legal names at birth, not a later married name.</p>
+<p>If you are a U.S. citizen and you have been issued a Social Security number, the Clerk says you must provide it. Nevada law also says the clerk cannot require evidence to verify that number, and cannot deny a license because you state that you do not have one.</p>
 
-<div class="note"><strong>Previously married?</strong> You only need to be not currently married. There's no waiting period after a divorce, and you don't need the decree unless it changed your name and your ID doesn't match yet.</div>
+<div class="note"><strong>Previously married?</strong> You only need to be not currently married. There's no waiting period after a divorce, and you don't need the decree unless it changed your name and your ID doesn't match yet. A death certificate is not required if you are widowed.</div>
 
 <h2>Step 4: Pay the $102 fee</h2>
-<p>The license costs <strong>$102</strong>. Credit and debit cards carry a processing fee of 2% + $1.25. Checks and money orders aren't accepted, and the satellite offices don't take cash.</p>
+<p>The license costs <strong>$102</strong>. Credit and debit cards carry a processing fee of 2% + $1.25, and that charge posts from NIC Services, LLC, not the County Clerk. Checks and money orders aren't accepted for a marriage license, and the satellite offices don't take cash.</p>
 
 <h2>Step 5: Have your ceremony (within one year)</h2>
 <p>The license expires one year after it's issued. To make it legal you need:</p>
@@ -79,10 +89,10 @@ export const guides = [
   <li><strong>An authorized officiant.</strong> Most chapel and venue packages include one. If you're planning a DIY ceremony (at a park, say), you'll need to book your own.</li>
   <li><strong>At least one witness</strong> besides the officiant. Eloping with just the two of you? Many chapels can provide a witness. Ask when you book.</li>
 </ul>
-<p>After the ceremony, your officiant files the marriage certificate with the County Clerk within 10 days. You don't have to do anything for that part.</p>
+<p>After the ceremony, your officiant files the marriage certificate with the County Clerk within 10 days. You don't have to do anything for that part. Marrying the day you land is a different clock: see <a href="/guides/same-day-las-vegas-wedding/">marry in Las Vegas the day you land</a>. A name change happens later, with a certified copy, not on the license. That's the <a href="/guides/name-change-after-las-vegas-wedding/">name-change guide</a>.</p>
 
 <h2>Step 6: Order your certified marriage certificate</h2>
-<p>Your license is <em>not</em> proof of marriage. To change your name, update insurance or travel documents, or prove the marriage anywhere, you need a <strong>certified copy</strong> of your marriage certificate from the Clark County Clerk.</p>
+<p>Your license is <em>not</em> proof of marriage. To change your name, update insurance or travel documents, or prove the marriage anywhere, you need a <strong>certified copy</strong> of your marriage certificate from the Clark County Clerk. Ordering steps, including an apostille, are in <a href="/guides/las-vegas-marriage-certificate-copies/">certified copies of a Las Vegas marriage certificate</a>.</p>
 <ul class="checklist">
   <li><strong>Cost:</strong> $20 per certified copy</li>
   <li><strong>How:</strong> order online through the Clerk's records search, in person or at a kiosk, or by mail (money order or cashier's check)</li>
@@ -102,21 +112,23 @@ export const guides = [
   <li><strong>Forgetting a witness.</strong> No witness, no legal wedding.</li>
   <li><strong>Getting married outside Nevada with a Nevada license.</strong> It's a Nevada license. Planning a ceremony across the line at the Grand Canyon? Ask your operator how they handle the legal side.</li>
 </ul>
-<p class="small">This guide summarizes Clark County Clerk information as of the date above. It isn't legal advice. Requirements can change, so confirm with the Clerk before you travel.</p>
+<p class="small">This guide summarizes the Clark County Clerk and Nevada Revised Statutes as of October 31, 2026. It isn't legal advice. Requirements can change, so confirm with the Clerk before you travel.</p>
 `,
     faq: [
-      { q: "How much is a marriage license in Las Vegas?", a: "$102 at the Clark County Marriage License Bureau. Card payments carry a processing fee of 2% + $1.25." },
-      { q: "Can we get a Las Vegas marriage license online?", a: "No. You can pre-apply online, but both partners must appear in person together to receive the license." },
+      { q: "How much is a marriage license in Las Vegas?", a: "$102 at the Clark County Marriage License Bureau, rechecked October 31, 2026. The Clerk has not posted a 2027 change. Card payments carry a processing fee of 2% + $1.25." },
+      { q: "Is the Las Vegas marriage license office open on holidays?", a: "The bureau at 201 E. Clark Avenue is open 8 a.m. to midnight every day, including all holidays. Henderson, Laughlin, and Mesquite close on legal holidays." },
+      { q: "Can we get a Las Vegas marriage license online?", a: "You can submit the application online, and it stays on file for one year, but both partners must appear in person together to receive the license." },
       { q: "Is there a waiting period or blood test in Nevada?", a: "No. There's no waiting period, no blood test and no residency requirement." },
       { q: "How many witnesses do you need to get married in Las Vegas?", a: "At least one witness besides the officiant." },
       { q: "How long is a Nevada marriage license valid?", a: "One year from the date it's issued." },
     ],
     sources: [
-      { t: "Clark County Clerk: Marriage License Requirements", u: `${CLERK}/marriage-license-requirements` },
-      { t: "Clark County Clerk: Fees", u: `${CLERK}/fees` },
-      { t: "Clark County Clerk: Locations and Hours", u: `${CLERK}/location-and-hours` },
+      { t: "Clark County Clerk: Marriage License Requirements (checked 2026-10-31)", u: `${CLERK}/marriage-license-requirements` },
+      { t: "Clark County Clerk: Fees (checked 2026-10-31)", u: `${CLERK}/fees` },
+      { t: "Clark County Clerk: Locations and Hours (checked 2026-10-31)", u: `${CLERK}/location-and-hours` },
+      { t: "Clark County Clerk: Frequently Asked Questions (checked 2026-10-31)", u: `${CLERK}/frequently-asked-questions` },
       { t: "Clark County Clerk: What Is Proof of Marriage", u: `${CLERK}/what-is-proof-of-marriage` },
-      { t: "Nevada Revised Statutes, Chapter 122", u: "https://www.leg.state.nv.us/NRS/NRS-122.html" },
+      { t: "Nevada Revised Statutes 122.040 and 122.110", u: "https://www.leg.state.nv.us/NRS/NRS-122.html" },
     ],
   },
 
@@ -356,7 +368,7 @@ export const guides = [
 {{planner-cta}}
 `,
     faq: [
-      { q: "Can you get married in Las Vegas the same day?", a: "Often, yes. There's no waiting period after you get your license, and many chapels take same-day or same-week bookings. Outdoor permitted sites and helicopter weddings need more notice." },
+      { q: "Can you get married in Las Vegas the same day?", a: "Often, yes, if a chapel can take you. The one-day order, including a late flight, is the same-day wedding guide. This page is the two-day plan: license on day one, ceremony on day two." },
       { q: "Do you need a witness to elope in Las Vegas?", a: "Yes. Nevada requires at least one witness besides the officiant. Many chapels can provide one." },
     ],
     sources: [
@@ -556,7 +568,7 @@ export const guides = [
     readMins: 5,
     hero: "weekend",
     body: `
-<p class="lede">A Vegas wedding is a mini vacation for everyone you invite. Plan the weekend around them, not just the ceremony, and people will still be talking about it at your tenth anniversary.</p>
+<p class="lede">A Vegas wedding is a mini vacation for everyone you invite. Plan the weekend around them, not just the ceremony, and people will still be talking about it at your tenth anniversary. If the two of you are marrying the day you land, your clock is the <a href="/guides/same-day-las-vegas-wedding/">same-day plan</a>. This page is the guest weekend around it.</p>
 
 <h2>Where should guests stay?</h2>
 <p>Base guests close to your ceremony. A downtown wedding (Neon Museum, Mob Museum, Graceland) suits Fremont-area hotels. A Strip ceremony makes walking to the reception easy. For desert venues, choose a Strip hotel and book one shuttle instead of 20 rideshares.</p>
