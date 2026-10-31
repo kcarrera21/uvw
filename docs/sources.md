@@ -1,7 +1,7 @@
 # Sources & fact-check log (checked 2026-10-04)
 
 ## Legal recheck 2026-10-31 (Clark County Clerk)
-Reconfirmed on the live Clerk pages for the 2027 marriage-license guide. No 2027 fee change was posted.
+Reconfirmed on the live Clerk pages for the existing marriage license guide (/guides/las-vegas-marriage-license/). No separate 2027 license page. No 2027 fee change was posted.
 - Marriage license still $102; card fee still 2% + $1.25; checks and money orders not accepted for a license: https://www.clarkcountynv.gov/government/elected_officials/county_clerk/fees
 - Requirements (18+, original photo ID, both parties in person, no waiting period, no blood test, $102): https://www.clarkcountynv.gov/government/elected_officials/county_clerk/marriage-license-requirements
 - Bureau 201 E. Clark Ave., 8 a.m.–midnight, 365 days including holidays. Henderson, Laughlin, and Mesquite are limited weekdays, closed for lunch and legal holidays, no cash. Government Center does not issue licenses: https://www.clarkcountynv.gov/government/elected_officials/county_clerk/location-and-hours

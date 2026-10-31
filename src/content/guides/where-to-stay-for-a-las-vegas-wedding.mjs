@@ -51,7 +51,7 @@ export default {
 {{hotel-rates:Las Vegas Strip|Compare Las Vegas Strip hotel rates}}
 
 <h2>Lake Las Vegas and Henderson</h2>
-<p>Lake Las Vegas is a resort area in Henderson, not a neighborhood of the Strip. If you are marrying at a lake hotel, stay at that hotel so guests are not crossing the valley in formalwear. Henderson also has a marriage-license office at 240 S. Water Street, but it is a weekday office with a lunch closure, and it is closed on legal holidays. It is not a reason to move the whole wedding party off the Strip. License hours are in the <a href="/guides/nevada-marriage-license-2027/">2027 Nevada marriage license guide</a>.</p>
+<p>Lake Las Vegas is a resort area in Henderson, not a neighborhood of the Strip. If you are marrying at a lake hotel, stay at that hotel so guests are not crossing the valley in formalwear. Henderson also has a marriage-license office at 240 S. Water Street, but it is a weekday office with a lunch closure, and it is closed on legal holidays. It is not a reason to move the whole wedding party off the Strip. License hours are in the <a href="/guides/las-vegas-marriage-license/">marriage license guide</a>.</p>
 {{hotel-rates:Lake Las Vegas Henderson|Compare Lake Las Vegas hotel rates}}
 
 <h2>Desert ceremonies</h2>

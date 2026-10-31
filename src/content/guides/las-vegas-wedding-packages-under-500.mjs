@@ -39,7 +39,7 @@ export default {
     <tr><td>Certified marriage certificate</td><td>$20 each</td></tr>
   </tbody>
 </table>
-<p>Checks and money orders are not accepted for the license or the civil ceremony. The civil ceremony is card only. The full license walkthrough is the <a href="/guides/nevada-marriage-license-2027/">2027 Nevada marriage license guide</a>.</p>
+<p>Checks and money orders are not accepted for the license or the civil ceremony. The civil ceremony is card only. The full license walkthrough is the <a href="/guides/las-vegas-marriage-license/">marriage license guide</a>.</p>
 
 <h2>Published packages at $500 or less</h2>
 <p>These are starting prices from each venue's own site, recorded in our directory on the date linked from the venue page. Packages at the same chapel jump once you add guests, Elvis, or a bigger room. Confirm the current price before you pay.</p>

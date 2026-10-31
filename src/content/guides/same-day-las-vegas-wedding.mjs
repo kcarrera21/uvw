@@ -30,7 +30,7 @@ export default {
 
 <h2>Before the wheels are up</h2>
 <ul class="checklist">
-  <li><strong>Submit the online application.</strong> It stays on file for a year and is not the license. Both of you still appear. The form is linked from the <a href="/guides/nevada-marriage-license-2027/">2027 marriage license guide</a>.</li>
+  <li><strong>Submit the online application.</strong> It stays on file for a year and is not the license. Both of you still appear. The form is linked from the <a href="/guides/las-vegas-marriage-license/">marriage license guide</a>.</li>
   <li><strong>Put original photo IDs in a carry-on.</strong> The Clerk does not accept photocopies or digital IDs.</li>
   <li><strong>Book a ceremony that can take you today.</strong> The Clerk's FAQ says many chapels allow walk-ins and also let you book ahead, and that specialty dates and holidays fill early. "Many" is not "the one you want at 7 p.m. on Valentine's Day."</li>
   <li><strong>Confirm a witness and an officiant.</strong> Nevada requires at least one witness besides the person performing the ceremony. Ask the chapel whether both are in the package. Some published prices are not.</li>

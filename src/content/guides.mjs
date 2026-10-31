@@ -17,7 +17,6 @@ import speakeasyWeddings from "./guides/speakeasy-wedding-las-vegas.mjs";
 import cannabisWeddings from "./guides/cannabis-wedding-las-vegas.mjs";
 import whereToStay from "./guides/where-to-stay-for-a-las-vegas-wedding.mjs";
 import packagesUnder500 from "./guides/las-vegas-wedding-packages-under-500.mjs";
-import nevadaLicense2027 from "./guides/nevada-marriage-license-2027.mjs";
 import sameDayWedding from "./guides/same-day-las-vegas-wedding.mjs";
 
 const CLERK = "https://www.clarkcountynv.gov/government/elected_officials/county_clerk";
@@ -37,7 +36,6 @@ export const guides = [
     hero: "license",
     body: `
 <p class="lede">Las Vegas is famous for fast weddings because the paperwork really is simple. No blood test, no waiting period, no residency requirement. But "simple" isn't "skippable." Here's exactly what Clark County asks for, in the order you'll need it.</p>
-<p>Marrying in 2027? The fee, hours, and holiday rules from the latest check are in <a href="/guides/nevada-marriage-license-2027/">How to get a Nevada marriage license (2027)</a>.</p>
 
 <div class="quickfacts">
   <div><span>Fee</span><strong>$102</strong></div>
@@ -644,5 +642,5 @@ export const guides = [
     ],
   },
   certificateCopies, nameChange, lgbtqWeddings, photoPermits, backyardWedding, religiousWeddings, gothicWeddings, christmasWeddings, speakeasyWeddings, cannabisWeddings,
-  whereToStay, packagesUnder500, nevadaLicense2027, sameDayWedding,
+  whereToStay, packagesUnder500, sameDayWedding,
 ];
