@@ -439,3 +439,7 @@ form .field.badge-styles { flex-direction: row; align-items: center; }
 @media (max-width: 860px) { .cd-grid { grid-template-columns: 1fr; } .cd-card { min-height: 0; order: -1; } }
 @media (max-width: 420px) { .cd-units { grid-template-columns: repeat(4, 1fr); gap: 6px; } .cd-form .row2 { grid-template-columns: 1fr; } }
 .lucky-cd { display: block; margin-top: 4px; font-size: .78rem; font-weight: 600; color: var(--rose-deep); }
+
+/* Affiliate disclosure note (injected near the top of pages that contain affiliate links) */
+.aff-note{font-size:.9rem;color:var(--ink-soft);background:var(--blush-soft);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 18px}
+.aff-note a{text-decoration:underline}

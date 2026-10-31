@@ -625,7 +625,7 @@ export const guides = [
 {{amazon:wedding ring box|Ring box for photos}}
 {{amazon:garment bag wedding dress travel|Wedding dress travel garment bag}}
 
-<p class="small">As an Amazon Associate, Unique Vegas Weddings earns from qualifying purchases. It doesn't change our picks.</p>
+{{amazon-disclosure}}
 {{planner-cta}}
 `,
     faq: [

@@ -2,7 +2,10 @@
 //  UNIQUE VEGAS WEDDINGS — SITE CONFIG
 //  This is the ONLY file you need to edit to turn on revenue.
 //  Leave a value as "" and that feature quietly hides itself.
+//  (Affiliate IDs: paste them in src/data/affiliates.mjs instead.)
 // =====================================================================
+
+import { AFFILIATE_IDS } from "./affiliates.mjs";
 
 export const config = {
   siteName: "Unique Vegas Weddings",
@@ -30,10 +33,11 @@ export const config = {
   spotlightPrice: "$199/mo", // must match the Stripe Payment Link
 
   // ---------- AFFILIATES (paste your tracking IDs; links build themselves) ----------
-  amazonTag: "",            // Amazon Associates tag, e.g. "uvw-20"
-  viatorPid: "",            // Viator partner ID (pid), e.g. "P00012345"
-  viatorMcid: "42383",      // Viator default mcid (keep unless your dashboard says otherwise)
-  stay22MapUrl: "",         // Stay22: copy the map "embed URL" from your dashboard (hotel map for guests)
+  // Affiliate IDs live in src/data/affiliates.mjs (single place to paste them). Mirrored here for build.mjs.
+  amazonTag: AFFILIATE_IDS.AMAZON_TAG,
+  viatorPid: AFFILIATE_IDS.VIATOR_PID,
+  viatorMcid: AFFILIATE_IDS.VIATOR_MCID,
+  stay22MapUrl: AFFILIATE_IDS.STAY22_MAP_URL,
 
   // ---------- ADS + ANALYTICS ----------
   adsenseClient: "",        // e.g. "ca-pub-1234567890123456" (ad slots stay hidden until set)
