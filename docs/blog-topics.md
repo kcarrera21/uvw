@@ -25,7 +25,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Memorial Day weekend 2027 weddings in Las Vegas (Sat. May 29 to Mon. May 31). Published 2026-10-28
 - [x] When the heat arrives: the last good weeks for outdoor desert ceremonies in late spring. Published 2026-10-29
 - [x] Juneteenth and Father's Day weekend 2027 in Las Vegas (June 18 to 20). Published 2026-10-30
-- [ ] Summer 2027 weddings in Las Vegas: indoor and after-dark venues that beat the heat
+- [x] Summer 2027 weddings in Las Vegas: indoor and after-dark venues that beat the heat. Published 2026-10-31
 
 ## Evergreen: planning
 - [ ] How far ahead to book a Las Vegas wedding chapel (by venue type)
