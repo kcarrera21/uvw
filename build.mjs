@@ -8,6 +8,8 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { config as C } from "./src/data/config.mjs";
+import { AFFILIATE_IDS } from "./src/data/affiliates.mjs";
+import { createAffiliateEngine } from "./scripts/affiliate-links.mjs";
 import { venues as baseVenues, CATEGORIES } from "./src/data/venues.mjs";
 import { guides } from "./src/content/guides.mjs";
 import { art, logoSVG, markSVG } from "./scripts/art.mjs";
@@ -37,10 +39,14 @@ const flatLabel = (l) => String(l).replace(/\s*\(([^)]*)\)/g, ", $1");
 const money = (n) => "$" + Number(n).toLocaleString("en-US");
 const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 const catBy = Object.fromEntries(CATEGORIES.map((c) => [c.slug, c]));
+// Central affiliate tagging: every generated .html page passes through AFF.processHtml(), which tags
+// Amazon/Viator/hotel links, adds rel="sponsored nofollow noopener" and the on-page disclosure note.
+// It is a byte-for-byte no-op while src/data/affiliates.mjs has no IDs.
+const AFF = createAffiliateEngine(AFFILIATE_IDS);
 const write = (rel, content) => {
   const file = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, content);
+  fs.writeFileSync(file, rel.endsWith(".html") && typeof content === "string" ? AFF.processHtml(content) : content);
 };
 const copyDir = (src, dst) => {
   fs.mkdirSync(dst, { recursive: true });
@@ -190,8 +196,9 @@ const formAttrs = (id) => (id ? `method="POST" data-ajax` : `method="POST" encty
 if (!C.formspreeNewsletter) warnings.push("formspreeNewsletter not set: email signups fall back to mailto.");
 if (!C.plannerCheckoutUrl) warnings.push("plannerCheckoutUrl not set: planner shows a waitlist instead of a Buy button.");
 if (!C.featuredCheckoutUrl) warnings.push("featuredCheckoutUrl/spotlightCheckoutUrl not set: partner page uses the application form only.");
-if (!C.amazonTag) warnings.push("amazonTag not set: Amazon links work but earn nothing.");
-if (!C.viatorPid) warnings.push("viatorPid not set: Viator links work but earn nothing.");
+if (!C.amazonTag) warnings.push("AMAZON_TAG not set (src/data/affiliates.mjs): Amazon links work but earn nothing.");
+if (!C.viatorPid) warnings.push("VIATOR_PID not set (src/data/affiliates.mjs): Viator links work but earn nothing.");
+if (!AFF.hotelProvider) warnings.push("No hotel affiliate set (STAY22_AID / BOOKING_LINK_TEMPLATE / EXPEDIA_LINK_TEMPLATE): hotel-rate buttons stay hidden.");
 
 function newsletterForm({ title = "Get the free Vegas Wedding Checklist", sub = "A printable, one-page checklist: license, documents, witness and certified copies. Plus our lucky-date alerts. Unsubscribe anytime.", dark = false, h = "h3" } = {}) {
   return `<div class="${dark ? "" : "panel"}">
@@ -216,8 +223,9 @@ function plannerCta() {
   <a class="btn btn-primary btn-sm" href="/planner/">Get the planner · ${esc(C.plannerPrice)}</a></div></div>`;
 }
 
-const amazonUrl = (q) => `https://www.amazon.com/s?k=${encodeURIComponent(q)}${C.amazonTag ? "&tag=" + encodeURIComponent(C.amazonTag) : ""}`;
-const viatorUrl = (q) => `https://www.viator.com/searchResults/all?text=${encodeURIComponent(q)}${C.viatorPid ? `&pid=${C.viatorPid}&mcid=${C.viatorMcid}&medium=link` : ""}`;
+// Plain (untagged) URLs; AFF.processHtml() adds the tracking IDs when the page is written.
+const amazonUrl = AFF.amazonSearch;
+const viatorUrl = AFF.viatorSearch;
 
 function venueCard(v) {
   const c = catBy[v.category];
@@ -315,7 +323,7 @@ ${body}
     <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li><li><a href="/tools/wedding-countdown/">Wedding countdown</a></li></ul></div>
     <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li><li><a href="/photo-credits/">Photo credits</a></li></ul></div>
   </div>
-  <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent. Not owned by any venue.</span><span>Some links earn us a commission at no cost to you.</span></div>
+  <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent. Not owned by any venue.</span><span>${AFF.isActive() ? "Some links earn us a commission at no cost to you." : "Paid venue listings are always labeled."}</span></div>
 </div></footer>
 ${C.ga4Id ? `<div class="consent" data-consent-banner role="dialog" aria-label="Cookie choices" hidden>
   <p><strong>Cookies?</strong> We use Google Analytics to see which pages help couples most. No ad tracking. <a href="/privacy/">Privacy policy</a></p>
@@ -616,7 +624,12 @@ async function main() {
     .replace(/\{\{venue-picks:([^}]+)\}\}/g, (_, s) => picks(s.split(","), venues))
     .replace(/\{\{viator:([^|}]+)\|([^}]+)\}\}/g, (_, q, label) => `<a class="aff" href="${viatorUrl(q)}" rel="sponsored nofollow noopener" target="_blank"><span>${esc(label)}</span><span>Browse on Viator ↗</span></a>`)
     .replace(/\{\{amazon:([^|}]+)\|([^}]+)\}\}/g, (_, q, label) => `<a class="aff" href="${amazonUrl(q)}" rel="sponsored nofollow noopener" target="_blank"><span>${esc(label)}</span><span>See options on Amazon ↗</span></a>`)
-    .replace(/\{\{stay22\}\}/g, C.stay22MapUrl ? `<div style="border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:18px 0"><iframe src="${esc(C.stay22MapUrl)}" title="Hotels near the Las Vegas Strip" width="100%" height="460" frameborder="0" loading="lazy"></iframe></div><p class="small">Hotel map powered by Stay22. We may earn a commission on bookings.</p>` : "");
+    // Hotel map: shows only when a Stay22 ID (or a pasted map URL) is configured.
+    .replace(/\{\{stay22(?::([^}]+))?\}\}/g, (_, addr) => { const src = AFF.stay22MapSrc(addr || undefined); return src ? `<div style="border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:18px 0"><iframe src="${esc(src)}" title="Hotels near ${esc(addr || "the Las Vegas Strip")}" width="100%" height="460" frameborder="0" loading="lazy"></iframe></div><p class="small">Hotel map powered by Stay22. We may earn a commission on bookings.</p>` : ""; })
+    // {{hotel-rates:Search text|Button label}}: affiliate "compare rates" button; renders NOTHING until a hotel program is configured.
+    .replace(/\{\{hotel-rates:([^|}]+)\|([^}]+)\}\}/g, (_, q, label) => { const u = AFF.hotelSearchUrl(q, { campaignName: "guide" }); return u ? `<a class="aff" data-aff="1" href="${esc(u)}" rel="sponsored nofollow noopener" target="_blank"><span>${esc(label)}</span><span>Compare rates ↗</span></a>` : ""; })
+    // Amazon requires this exact statement once you're an approved Associate; it appears only when AMAZON_TAG is set.
+    .replace(/\{\{amazon-disclosure\}\}/g, C.amazonTag ? `<p class="small">As an Amazon Associate I earn from qualifying purchases. It doesn't change our picks.</p>` : "");
 
   for (const g of guides) {
     const body = fillTokens(g.body);
@@ -1098,7 +1111,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <p class="lede">Las Vegas is the wedding capital of the world, and most of the internet's advice about it is either a sales page or ten years out of date. We built the guide we wanted to exist.</p>
 <h2>What we do</h2><p>We curate Las Vegas-area wedding venues that are genuinely distinctive, from neon and desert to sky-high and only-in-Vegas. Then we write about them honestly, in our own words.</p>
 <h2>How we keep it accurate</h2><ul class="checklist"><li>Every venue fact is checked against the venue's official site, and every listing shows the date we checked.</li><li>Legal and permit information comes from the Clark County Clerk, Nevada State Parks, the BLM, the National Park Service and the U.S. Forest Service, and we link to them.</li><li>We don't copy venue marketing copy or photos. Our illustrations are original, and venues can add their own photos by claiming their listing.</li><li>Paid placements are labeled "Featured" or "Partner." They never change the facts.</li></ul>
-<h2>Independent</h2><p>Unique Vegas Weddings isn't owned by any venue, chapel or resort. Every venue is listed for free, and we pick what goes on the site. Venues can pay for Featured or Spotlight placement, which is always labeled, but paying never gets a venue listed and never changes the facts we publish. Some links earn us a commission. See our <a href="/disclosure/">disclosure</a>.</p>
+<h2>Independent</h2><p>Unique Vegas Weddings isn't owned by any venue, chapel or resort. Every venue is listed for free, and we pick what goes on the site. Venues can pay for Featured or Spotlight placement, which is always labeled, but paying never gets a venue listed and never changes the facts we publish. Where we use affiliate links or sell something, we say so. See our <a href="/disclosure/">disclosure</a>.</p>
 <p>Spotted something out of date? <a href="/contact/">Tell us</a> and we'll fix it.</p>`);
   simple("/contact/", "Contact", "Contact Unique Vegas Weddings about corrections, partnerships, press or a Las Vegas wedding question we haven't answered yet.", `
 <p class="lede">Corrections, partnerships, press or a question we haven't answered yet: we'd love to hear it.</p>
@@ -1110,13 +1123,26 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <p>All photos were resized and cropped to fit the layout. No other changes were made. Venue logos and names that appear in photos belong to their owners, and their appearance doesn't mean the venue endorses this site.</p>
 <p>Is one of these yours and you'd like it credited differently or removed? <a href="/contact/">Tell us</a> and we'll fix it within a week.</p>
 <ul class="credits">${Object.entries(PHOTOS).filter(([k]) => !/^hero-/.test(k)).map(([k, p]) => `<li><strong>${esc(p.alt)}</strong>${p.note ? ` <span class="small">(${esc(PHOTO_NOTES[p.note])})</span>` : ""}<br><span class="small">“${esc(p.title)}” by ${p.creatorUrl ? `<a href="${esc(p.creatorUrl)}" rel="nofollow noopener" target="_blank">${esc(p.creator)}</a>` : esc(p.creator || "unknown")} · <a href="${esc(p.source)}" rel="nofollow noopener" target="_blank">source</a> · <a href="${esc(p.licenseUrl)}" rel="license nofollow noopener" target="_blank">${esc(p.license)}</a></span></li>`).join("")}</ul>`);
-  simple("/disclosure/", "Affiliate & Advertising Disclosure", "How Unique Vegas Weddings makes money: affiliate links, labeled paid venue listings, our own printable planner and display advertising.", `
-<p>Unique Vegas Weddings is free to use. We earn money in a few ways, and we want you to know exactly how:</p>
-<ul class="checklist"><li><strong>Affiliate links.</strong> Some links (for example Amazon, Viator and hotel booking partners) earn us a commission if you buy, at no extra cost to you. As an Amazon Associate we earn from qualifying purchases.</li><li><strong>Paid listings.</strong> Venues can pay for Featured or Spotlight placement. These are always labeled. Paid status never changes the facts we publish.</li><li><strong>Digital products.</strong> We sell our own printable planner.</li><li><strong>Advertising.</strong> Some pages may show display ads from third-party networks.</li></ul>
-<p>We only recommend things we'd suggest to a friend getting married in Las Vegas.</p>`);
+  const AFF_NAMES = { amazon: "Amazon Associates", viator: "Viator", stay22: "Stay22 (hotel booking partners)", booking: "Booking.com", expedia: "Expedia" };
+  const affStatus = AFF.isActive()
+    ? `<p><strong>Affiliate programs active on this site right now:</strong> ${AFF.active().map((k) => AFF_NAMES[k]).join(", ")}. Pages with affiliate links show a short note near the top.</p>${C.amazonTag ? `<p>As an Amazon Associate I earn from qualifying purchases.</p>` : ""}`
+    : `<p><strong>Right now</strong> we have no active affiliate relationships, so no links on this site earn us a commission. If that changes, this page and the pages with affiliate links will say so.</p>`;
+  simple("/disclosure/", "Affiliate & Advertising Disclosure", "How Unique Vegas Weddings makes money: labeled paid venue listings, affiliate links where we use them, and our own printable planner.", `
+<p>Unique Vegas Weddings is free to use. This page explains how we make money, and what we do and don't take money for.</p>
+<h2>Affiliate links</h2>
+<p>Some links on this site, such as links to products on Amazon, tours and activities on Viator, or hotels on booking sites, may be <strong>affiliate links</strong>. If you click one and then buy or book, the company may pay us a commission. It costs you nothing extra, and the price you pay is the same. Affiliate links are marked <code>rel="sponsored"</code>, and pages that contain them carry a note near the top, in line with the FTC's <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255" rel="nofollow noopener" target="_blank">Endorsement Guides</a>.</p>
+<p>Commissions never decide what we recommend. We choose venues, hotels and gear first, then link where it's useful. We don't accept payment to say something nice about a venue or a hotel.</p>
+${affStatus}
+<h2>Paid venue listings</h2>
+<p>Venues and chapels can pay for Featured or Spotlight placement. These are always labeled, and paying never gets a venue listed, never changes our facts, and never buys a review. Every venue on the site is listed for free first.</p>
+<h2>Our own products</h2>
+<p>We sell our own printable wedding planner.</p>
+${C.adsenseClient ? `<h2>Advertising</h2><p>Some pages show display ads from third-party ad networks. Ads are placed by the network and are not endorsements.</p>` : `<h2>Advertising</h2><p>We don't currently show display ads. If we add them, we'll update this page.</p>`}
+<h2>Questions</h2>
+<p>Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a> if anything here is unclear. Last updated ${fmtDate("2026-10-31")}.</p>`);
   simple("/privacy/", "Privacy Policy", "How Unique Vegas Weddings handles your information: what our forms collect, how the shortlist is stored, analytics, cookies and your choices.", `
 <p class="small">Effective ${fmtDate(FACTS_CHECKED)}</p>
-<h2>What we collect</h2><ul class="checklist"><li><strong>Forms.</strong> When you submit a form (newsletter, shortlist, venue inquiry or partner application), we receive what you enter. Forms are processed by Formspree. Venue inquiries for Partner venues are sent to that venue.</li><li><strong>Your shortlist</strong> is stored only in your own browser (localStorage). We never see it unless you email it to yourself.</li><li><strong>Analytics.</strong> We use Google Analytics to understand which pages are useful. It uses cookies. Visitors in Europe and the UK are asked first, and Analytics stays off unless they accept. Elsewhere it is on by default. Anyone can turn it off at any time with the "Cookie settings" link at the bottom of every page, and we honor the Global Privacy Control browser signal.</li><li><strong>Advertising and affiliates.</strong> Ad networks and affiliate partners may set cookies to measure ads and attribute purchases.</li></ul>
+<h2>What we collect</h2><ul class="checklist"><li><strong>Forms.</strong> When you submit a form (newsletter, shortlist, venue inquiry or partner application), we receive what you enter. Forms are processed by Formspree. Venue inquiries for Partner venues are sent to that venue.</li><li><strong>Your shortlist</strong> is stored only in your own browser (localStorage). We never see it unless you email it to yourself.</li><li><strong>Analytics.</strong> We use Google Analytics to understand which pages are useful. It uses cookies. Visitors in Europe and the UK are asked first, and Analytics stays off unless they accept. Elsewhere it is on by default. Anyone can turn it off at any time with the "Cookie settings" link at the bottom of every page, and we honor the Global Privacy Control browser signal.</li><li><strong>Affiliate partners${C.adsenseClient ? " and ad networks" : ""}.</strong> When you click an affiliate link, the company you land on (for example Amazon, Viator or a hotel site) sets its own cookies to credit us for a purchase${C.adsenseClient ? ", and ad networks may set cookies to measure ads" : ""}. Their privacy policies apply once you leave our site.</li></ul>
 <h2>How we use it</h2><p>To send what you asked for (like the checklist or lucky-date alerts), to pass inquiries to the venue you chose, and to improve the site. We don't sell your personal information.</p>
 <h2>Your choices</h2><p>Every email includes an unsubscribe link. You can clear your shortlist by clearing your browser storage. To ask us to delete your information, email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
 <p class="small">This policy is a plain-language template. Have it reviewed for your specific setup before launch.</p>`);

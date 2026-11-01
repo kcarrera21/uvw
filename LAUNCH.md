@@ -47,11 +47,13 @@ Do these in order. The first three matter most.
 | 2 | **Planner sales** | Gumroad or Lemon Squeezy → new product → upload the planner PDF | `plannerCheckoutUrl` (+ `plannerPrice`) |
 | 3 | **Venue listings** | Stripe → Payment Links → two monthly subscriptions | `featuredCheckoutUrl`, `spotlightCheckoutUrl` (+ prices) |
 | 4 | Partner applications | formspree.io → new form "Partners" | `formspreePartner` |
-| 5 | Amazon affiliate (packing list) | affiliate-program.amazon.com | `amazonTag` |
-| 6 | Viator affiliate (helicopters, tours) | partnerresources.viator.com | `viatorPid` |
-| 7 | Hotel map for guests | Stay22 → copy the map embed URL | `stay22MapUrl` |
+| 5 | Amazon affiliate (packing list) | affiliate-program.amazon.com. Paste the ID only AFTER approval. | `AMAZON_TAG` in `src/data/affiliates.mjs` |
+| 6 | Viator affiliate (helicopters, tours) | partnerresources.viator.com | `VIATOR_PID` in `src/data/affiliates.mjs` |
+| 7 | Hotels (map + "check rates" buttons) | Stay22 (easiest), or Booking.com via CJ, or Expedia. See `docs/affiliate-programs.md` | `STAY22_AID` (or `BOOKING_LINK_TEMPLATE` / `EXPEDIA_LINK_TEMPLATE`) in `src/data/affiliates.mjs` |
 | 8 | Analytics | Google Analytics 4 property | `ga4Id` |
 | 9 | Display ads (later) | Apply to AdSense once traffic is steady | `adsenseClient` |
+
+**Affiliate IDs all live in `src/data/affiliates.mjs`.** Leave one blank and that program is off and the site is byte-for-byte unchanged. Paste an ID and the next build tags every matching link site-wide, adds `rel="sponsored nofollow noopener"`, adds a short disclosure note to pages with affiliate links, and updates `/disclosure/`. Self-test: `node scripts/check-affiliates.mjs`.
 
 The build prints a reminder list of anything still blank. The forms work without config (they fall back to email), but set Formspree before you promote the site.
 
