@@ -62,6 +62,12 @@ export default {
 <p>The officiant has ten calendar days to deliver the certificate to the Clerk. Your job later is a certified copy, $20, which is what a name change, a passport, and an insurance form actually want. That wait, and the apostille path if you need the marriage recognized abroad, is covered in <a href="/guides/las-vegas-marriage-certificate-copies/">certified copies</a>.</p>
 <p>Same-day does not mean you should pick the ceremony in the taxi. If you have even a week, choose the place on purpose. The $99 and $150 chapels are real options. So is something stranger, if it can take a short-notice booking. Start with the <a href="/venues/category/classic-chapels/">classic chapels</a> if the priority is "legal, tonight."</p>
 
+<h2>What to pull out of the carry-on</h2>
+<p>You are wearing the outfit the day you land. A garment bag keeps a dress from living in a suitcase. If there is a veil, clips keep it on.</p>
+{{amazon:wedding dress garment bag travel|Garment bag for travel}}
+{{amazon:wedding veil clips|Veil clips}}
+{{amazon-disclosure}}
+
 {{planner-cta}}
 <p class="small">License rules and hours are from the Clark County Clerk, checked October 31, 2026. Chapel availability changes by the hour. This is not legal advice.</p>
 `,

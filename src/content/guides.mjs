@@ -591,6 +591,10 @@ export const guides = [
   <li>Transport plan: who's riding the shuttle, and when it leaves</li>
   <li>A link to your livestream for anyone who couldn't come</li>
 </ul>
+<p>A guest book at the welcome table is the paper version of the weekend. Small welcome bags are optional. The note matters more than what is in them.</p>
+{{amazon:wedding guest book|Wedding guest book}}
+{{amazon:wedding welcome bags for guests|Welcome bags for guests}}
+{{amazon-disclosure}}
 {{planner-cta}}
 `,
     faq: [
