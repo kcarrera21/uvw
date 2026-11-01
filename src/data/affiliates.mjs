@@ -27,7 +27,7 @@ export const AFFILIATE_IDS = {
   // ---- Hotels: fill in ONE of these. First one set wins (Stay22, then Booking, then Expedia). ----
   // Stay22 affiliate ID ("aid" from hub.stay22.com). Easiest option: one ID covers
   // Booking.com, Expedia, Hotels.com and Vrbo, and also powers the hotel map.
-  STAY22_AID: "",
+  STAY22_AID: "uniquevegasweddings",
   // Booking.com is run through CJ. After approval, build a deep link in CJ's Link Builder,
   // then paste its pattern here with the destination replaced by {urlenc}.
   // e.g. "https://www.anrdoezrs.net/click-1234567-7654321?url={urlenc}"
