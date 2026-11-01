@@ -28,7 +28,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Summer 2027 weddings in Las Vegas: indoor and after-dark venues that beat the heat. Published 2026-10-31
 
 ## Evergreen: planning
-- [ ] How far ahead to book a Las Vegas wedding chapel (by venue type)
+- [x] How far ahead to book a Las Vegas wedding chapel (by venue type). Published 2026-11-01
 - [ ] What a Las Vegas elopement package usually includes, and what it doesn't
 - [ ] Do you need a witness in Las Vegas? Who can be one
 - [x] Getting a certified copy of your Clark County marriage certificate. Covered by guide 2026-10-18
