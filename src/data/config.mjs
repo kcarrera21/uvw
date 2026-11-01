@@ -14,7 +14,7 @@ export const config = {
   tagline: "Vegas weddings, off-script.",
   description:
     "The independent guide to unique Las Vegas wedding venues: neon boneyards, ghost towns, canyon floors and sky-high chapels. Verified facts, honest prices, zero fluff.",
-  contactEmail: "hello@uniquevegasweddings.com", // public inbox (set up a free forward to your Gmail)
+  contactEmail: "hello@uniquevegasweddings.com", // public contact address
 
   // ---------- LEADS + EMAIL (free tier: formspree.io) ----------
   // Create a form at formspree.io → copy the ID after /f/  (e.g. "xyzabcd")

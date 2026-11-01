@@ -321,7 +321,7 @@ ${body}
     </div>
     <div><h2 class="foot-h">Venues</h2><ul>${CATEGORIES.map((c) => `<li><a href="/venues/category/${c.slug}/">${esc(c.name)}</a></li>`).join("")}</ul></div>
     <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li><li><a href="/tools/wedding-countdown/">Wedding countdown</a></li></ul></div>
-    <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li><li><a href="/photo-credits/">Photo credits</a></li></ul></div>
+    <div><h2 class="foot-h">Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/for-venues/">List your venue</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:${C.contactEmail}">${C.contactEmail}</a></li><li><a href="/disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li>${C.ga4Id ? `<li><button type="button" class="link-btn foot-btn" data-cookie-settings>Cookie settings</button></li>` : ""}<li><a href="/terms/">Terms</a></li><li><a href="/photo-credits/">Photo credits</a></li></ul></div>
   </div>
   <div class="foot-legal"><span>© <span data-year>${YEAR}</span> ${esc(C.siteName)}. Independent. Not owned by any venue.</span><span>${AFF.isActive() ? "Some links earn us a commission at no cost to you." : "Paid venue listings are always labeled."}</span></div>
 </div></footer>
@@ -391,7 +391,7 @@ async function main() {
   // ================= HOME =================
   page("/", {
     title: C.siteName, seoTitle: "Unique Las Vegas Wedding Venues | Unique Vegas Weddings", description: C.description, og: "home", modified: ISO,
-    schema: [orgSchema, { "@context": "https://schema.org", "@type": "WebSite", name: C.siteName, url: C.domain, publisher: orgRef, inLanguage: "en-US", potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: C.domain + "/search/?q={search_term_string}" }, "query-input": "required name=search_term_string" } }, faqSchema(homeFaq)],
+    schema: [orgSchema, { "@context": "https://schema.org", "@type": "WebSite", name: C.siteName, url: C.domain, email: C.contactEmail, publisher: orgRef, inLanguage: "en-US", potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: C.domain + "/search/?q={search_term_string}" }, "query-input": "required name=search_term_string" } }, faqSchema(homeFaq)],
     body: `
 <section class="hero"><div class="wrap">
   <div>
@@ -834,7 +834,7 @@ async function main() {
     <div class="tier hot"><span class="tag" style="align-self:flex-start">Most popular</span><h3>Featured</h3><div class="price">${esc(C.featuredPrice)}</div><ul class="checklist"><li>Everything in Listed</li><li>"Featured" badge and top placement in your category</li><li>Inquiry form that sends couples' requests to <strong>your</strong> inbox</li><li>Your own photos and copy</li><li>In the "Venue of the week" rotation</li></ul>${tierBtn(C.featuredCheckoutUrl, "Go Featured")}</div>
     <div class="tier"><h3>Spotlight</h3><div class="price">${esc(C.spotlightPrice)}</div><ul class="checklist"><li>Everything in Featured</li><li>Placement in relevant planning guides</li><li>A dedicated Pinterest pin set for your venue</li><li>Inclusion in our email to couples</li></ul>${tierBtn(C.spotlightCheckoutUrl, "Go Spotlight")}</div>
   </div>
-  <p class="small center" style="margin-top:18px">Monthly, cancel anytime. Paid placements are always labeled. Editorial facts stay accurate whether you pay or not.</p>
+  <p class="small center" style="margin-top:18px">Monthly, cancel anytime. Paid placements are always labeled. Editorial facts stay accurate whether you pay or not. Listing questions: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
 </div></section>
 <section class="band-blush" id="apply"><div class="wrap grid-2">
   <div><h2 class="mt0">Claim or apply</h2><p>Tell us about your venue. We'll verify that you represent it, then set up your listing. Already paid for Featured or Spotlight? Use this form to send your photos, copy and inquiry email.</p>
@@ -1112,11 +1112,15 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <h2>What we do</h2><p>We curate Las Vegas-area wedding venues that are genuinely distinctive, from neon and desert to sky-high and only-in-Vegas. Then we write about them honestly, in our own words.</p>
 <h2>How we keep it accurate</h2><ul class="checklist"><li>Every venue fact is checked against the venue's official site, and every listing shows the date we checked.</li><li>Legal and permit information comes from the Clark County Clerk, Nevada State Parks, the BLM, the National Park Service and the U.S. Forest Service, and we link to them.</li><li>We don't copy venue marketing copy or photos. Our illustrations are original, and venues can add their own photos by claiming their listing.</li><li>Paid placements are labeled "Featured" or "Partner." They never change the facts.</li></ul>
 <h2>Independent</h2><p>Unique Vegas Weddings isn't owned by any venue, chapel or resort. Every venue is listed for free, and we pick what goes on the site. Venues can pay for Featured or Spotlight placement, which is always labeled, but paying never gets a venue listed and never changes the facts we publish. Where we use affiliate links or sell something, we say so. See our <a href="/disclosure/">disclosure</a>.</p>
-<p>Spotted something out of date? <a href="/contact/">Tell us</a> and we'll fix it.</p>`);
-  simple("/contact/", "Contact", "Contact Unique Vegas Weddings about corrections, partnerships, press or a Las Vegas wedding question we haven't answered yet.", `
-<p class="lede">Corrections, partnerships, press or a question we haven't answered yet: we'd love to hear it.</p>
-<p>Email: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a></p>
-<p>Represent a venue? <a href="/for-venues/">Claim your listing here</a>, which is the fastest way to update your details.</p>
+<p>Spotted something out of date? Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a> or <a href="/contact/">use the contact page</a>.</p>`);
+  simple("/contact/", "Contact", "Contact Unique Vegas Weddings at hello@uniquevegasweddings.com for questions, corrections, venue listings, and press.", `
+<p class="lede">Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. That's the address for everything below.</p>
+<h2>Questions and corrections</h2>
+<p>A fee that changed, a venue detail that's wrong, or a question the guides don't answer: write to <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
+<h2>Venue listings</h2>
+<p>To claim a free listing, or to ask about Featured or Spotlight, email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. You can also use the form on <a href="/for-venues/">List your venue</a>. Paid listings are always labeled, and paying never changes the facts we publish.</p>
+<h2>Press</h2>
+<p>Interviews, quotes, and questions about the research: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
 <div class="note">We're a guide, not a booking agency, so we can't book venues or issue marriage licenses. For licenses, contact the Clark County Clerk directly.</div>`);
   simple("/photo-credits/", "Photo Credits", "Credits and licenses for the free-license photos used on Unique Vegas Weddings.", `
 <p>The photos on this site are free-license images: most come from <a href="https://unsplash.com/" rel="nofollow noopener" target="_blank">Unsplash</a> under the Unsplash License, and the rest are shared under Creative Commons licenses or released to the public domain (found through <a href="https://openverse.org/" rel="nofollow noopener" target="_blank">Openverse</a>). Thank you to every photographer below.</p>
