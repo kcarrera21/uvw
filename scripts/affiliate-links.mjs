@@ -9,6 +9,8 @@
 
 const hostIs = (host, ...roots) => roots.some((r) => host === r || host.endsWith("." + r));
 const SPONSORED_REL = ["sponsored", "nofollow", "noopener"];
+// Amazon's required Associate disclosure, word for word.
+export const AMAZON_ASSOCIATE_STATEMENT = "As an Amazon Associate I earn from qualifying purchases.";
 const OTA_ALLEZ = { "booking.com": "booking", "expedia.com": "expedia", "hotels.com": "hotelscom", "vrbo.com": "vrbo" };
 
 export function createAffiliateEngine(ids = {}, { campaign = "uvw" } = {}) {
@@ -50,6 +52,10 @@ export function createAffiliateEngine(ids = {}, { campaign = "uvw" } = {}) {
       if (!u.searchParams.has("tag")) u.searchParams.set("tag", I.AMAZON_TAG);
       return { url: u.toString(), affiliate: u.searchParams.get("tag") === I.AMAZON_TAG };
     }
+    // amzn.to short links bake the destination (and usually a tag) in when they
+    // are created. A tag= query on the short URL is not reliably forwarded, so
+    // leave those hrefs alone.
+    if (host === "amzn.to") return { url: href, affiliate: false };
     if (I.VIATOR_PID && hostIs(host, "viator.com")) {
       if (!u.searchParams.has("pid")) {
         u.searchParams.set("pid", I.VIATOR_PID);
@@ -86,12 +92,17 @@ export function createAffiliateEngine(ids = {}, { campaign = "uvw" } = {}) {
   ].filter(Boolean);
   const isActive = () => active().length > 0;
 
-  const NOTE = `<p class="aff-note"><strong>Heads up:</strong> some links on this page are affiliate links. If you book or buy through them, we may earn a commission at no extra cost to you. It never changes what we recommend. <a href="/disclosure/">How we make money</a></p>`;
+  const noteHtml = (amazonHits, html) => {
+    const needAmazon = amazonHits > 0 && I.AMAZON_TAG && !html.includes(AMAZON_ASSOCIATE_STATEMENT);
+    const amazon = needAmazon ? ` ${AMAZON_ASSOCIATE_STATEMENT}` : "";
+    return `<p class="aff-note"><strong>Heads up:</strong> some links on this page are affiliate links. If you book or buy through them, we may earn a commission at no extra cost to you. It never changes what we recommend.${amazon} <a href="/disclosure/">How we make money</a></p>`;
+  };
 
   // Rewrite every <a href> in a generated page. Idempotent. No-op when nothing is configured.
   function processHtml(html) {
     if (!isActive()) return html;
     let hits = 0;
+    let amazonHits = 0;
     const out = html.replace(/<a\b([^>]*?)>/gi, (tag, attrs) => {
       const m = attrs.match(/\shref="([^"]*)"/i);
       if (!m) return tag;
@@ -100,6 +111,7 @@ export function createAffiliateEngine(ids = {}, { campaign = "uvw" } = {}) {
       const { url, affiliate } = declared ? { url: decodeAmp(m[1]), affiliate: true } : tagUrl(decodeAmp(m[1]));
       if (!affiliate) return tag;
       hits++;
+      if (/amazon\.com/i.test(url)) amazonHits++;
       let a = attrs.replace(m[0], ` href="${encodeAmp(url)}"`);
       const r = a.match(/\srel="([^"]*)"/i);
       a = r ? a.replace(r[0], ` rel="${mergeRel(r[1])}"`) : a + ` rel="${mergeRel("")}"`;
@@ -107,8 +119,9 @@ export function createAffiliateEngine(ids = {}, { campaign = "uvw" } = {}) {
     });
     const hasMap = /<iframe[^>]+src="https:\/\/www\.stay22\.com\/embed/i.test(out);
     if ((hits || hasMap) && !out.includes('class="aff-note"')) {
-      if (out.includes('<div class="prose">')) return out.replace('<div class="prose">', `<div class="prose">${NOTE}`);
-      if (out.includes('<main id="main">')) return out.replace('<main id="main">', `<main id="main"><div class="wrap narrow">${NOTE}</div>`);
+      const note = noteHtml(amazonHits, out);
+      if (out.includes('<div class="prose">')) return out.replace('<div class="prose">', `<div class="prose">${note}`);
+      if (out.includes('<main id="main">')) return out.replace('<main id="main">', `<main id="main"><div class="wrap narrow">${note}</div>`);
     }
     return out;
   }

@@ -9,7 +9,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { config as C } from "./src/data/config.mjs";
 import { AFFILIATE_IDS } from "./src/data/affiliates.mjs";
-import { createAffiliateEngine } from "./scripts/affiliate-links.mjs";
+import { AMAZON_ASSOCIATE_STATEMENT, createAffiliateEngine } from "./scripts/affiliate-links.mjs";
 import { venues as baseVenues, CATEGORIES } from "./src/data/venues.mjs";
 import { guides } from "./src/content/guides.mjs";
 import { art, logoSVG, markSVG } from "./scripts/art.mjs";
@@ -629,7 +629,7 @@ async function main() {
     // {{hotel-rates:Search text|Button label}}: affiliate "compare rates" button; renders NOTHING until a hotel program is configured.
     .replace(/\{\{hotel-rates:([^|}]+)\|([^}]+)\}\}/g, (_, q, label) => { const u = AFF.hotelSearchUrl(q, { campaignName: "guide" }); return u ? `<a class="aff" data-aff="1" href="${esc(u)}" rel="sponsored nofollow noopener" target="_blank"><span>${esc(label)}</span><span>Compare rates ↗</span></a>` : ""; })
     // Amazon requires this exact statement once you're an approved Associate; it appears only when AMAZON_TAG is set.
-    .replace(/\{\{amazon-disclosure\}\}/g, C.amazonTag ? `<p class="small">As an Amazon Associate I earn from qualifying purchases. It doesn't change our picks.</p>` : "");
+    .replace(/\{\{amazon-disclosure\}\}/g, C.amazonTag ? `<p class="small">${AMAZON_ASSOCIATE_STATEMENT}</p>` : "");
 
   for (const g of guides) {
     const body = fillTokens(g.body);
@@ -1125,7 +1125,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <ul class="credits">${Object.entries(PHOTOS).filter(([k]) => !/^hero-/.test(k)).map(([k, p]) => `<li><strong>${esc(p.alt)}</strong>${p.note ? ` <span class="small">(${esc(PHOTO_NOTES[p.note])})</span>` : ""}<br><span class="small">“${esc(p.title)}” by ${p.creatorUrl ? `<a href="${esc(p.creatorUrl)}" rel="nofollow noopener" target="_blank">${esc(p.creator)}</a>` : esc(p.creator || "unknown")} · <a href="${esc(p.source)}" rel="nofollow noopener" target="_blank">source</a> · <a href="${esc(p.licenseUrl)}" rel="license nofollow noopener" target="_blank">${esc(p.license)}</a></span></li>`).join("")}</ul>`);
   const AFF_NAMES = { amazon: "Amazon Associates", viator: "Viator", stay22: "Stay22 (hotel booking partners)", booking: "Booking.com", expedia: "Expedia" };
   const affStatus = AFF.isActive()
-    ? `<p><strong>Affiliate programs active on this site right now:</strong> ${AFF.active().map((k) => AFF_NAMES[k]).join(", ")}. Pages with affiliate links show a short note near the top.</p>${C.amazonTag ? `<p>As an Amazon Associate I earn from qualifying purchases.</p>` : ""}`
+    ? `<p><strong>Affiliate programs active on this site right now:</strong> ${AFF.active().map((k) => AFF_NAMES[k]).join(", ")}. Pages with affiliate links show a short note near the top.</p>${C.amazonTag ? `<p>${AMAZON_ASSOCIATE_STATEMENT}</p>` : ""}`
     : `<p><strong>Right now</strong> we have no active affiliate relationships, so no links on this site earn us a commission. If that changes, this page and the pages with affiliate links will say so.</p>`;
   simple("/disclosure/", "Affiliate & Advertising Disclosure", "How Unique Vegas Weddings makes money: labeled paid venue listings, affiliate links where we use them, and our own printable planner.", `
 <p>Unique Vegas Weddings is free to use. This page explains how we make money, and what we do and don't take money for.</p>

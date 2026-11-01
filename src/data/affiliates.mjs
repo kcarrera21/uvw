@@ -16,8 +16,9 @@
 // =====================================================================
 
 export const AFFILIATE_IDS = {
-  // Amazon Associates US store ID, e.g. "uvw-20". Tags amazon.com links with ?tag=
-  AMAZON_TAG: "",
+  // Amazon Associates US tracking tag. This account's ID is uniquevegaswe-20
+  // (not uniquevegasweddings-20). Tags amazon.com links with ?tag=
+  AMAZON_TAG: "uniquevegaswe-20",
 
   // Viator partner ID (the "pid"), e.g. "P00012345". Tags viator.com links.
   VIATOR_PID: "",

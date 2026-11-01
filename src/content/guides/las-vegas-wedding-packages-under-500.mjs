@@ -86,6 +86,12 @@ export default {
 </ul>
 <p>The wider range, including venues that start in the thousands, is <a href="/guides/las-vegas-wedding-cost/">how much a Las Vegas wedding costs</a>. If you are doing the license and the ceremony on one calendar day, read the <a href="/guides/same-day-las-vegas-wedding/">same-day plan</a> before you book a flight that lands at 9 p.m. Where the two of you sleep that night is the <a href="/guides/where-to-stay-for-a-las-vegas-wedding/">where-to-stay guide</a>.</p>
 
+<h2>If you are flying with the dress</h2>
+<p>The package price does not include the trip. A garment bag is how most people keep a dress hanging on the plane. A ring box is for the photos afterward.</p>
+{{amazon:wedding dress garment bag travel|Garment bag for a wedding dress}}
+{{amazon:wedding ring box|Ring box}}
+{{amazon-disclosure}}
+
 {{planner-cta}}
 <p class="small">Venue prices are each property's published starting price on the date shown on its listing. County fees were checked against the Clark County Clerk on October 31, 2026. This is not legal advice, and it is not a quote.</p>
 `,
