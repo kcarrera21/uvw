@@ -29,8 +29,8 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 
 ## Evergreen: planning
 - [x] How far ahead to book a Las Vegas wedding chapel (by venue type). Published 2026-11-01
-- [ ] What a Las Vegas elopement package usually includes, and what it doesn't
-- [ ] Do you need a witness in Las Vegas? Who can be one
+- [x] What a Las Vegas elopement package usually includes, and what it doesn't. Covered by the packages under $500 guide (skipped 2026-11-02)
+- [x] Do you need a witness in Las Vegas? Who can be one. Published 2026-11-02
 - [x] Getting a certified copy of your Clark County marriage certificate. Covered by guide 2026-10-18
 - [x] Changing your name after a Las Vegas wedding: the order to do it in. Covered by guide 2026-10-18
 - [ ] International couples marrying in Las Vegas: documents and apostilles
