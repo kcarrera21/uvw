@@ -1041,6 +1041,12 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "the-grove-las-vegas": ["the grove", "grove", "almond", "orchard", "garden chapel", "gazebo", "all inclusive", "northwest"],
     "palms-chapel": ["palms", "black and white", "black & white", "instagram", "monochrome", "unknown bar"],
     "1923-prohibition-bar": ["1923", "prohibition", "speakeasy", "burlesque", "jazz", "gatsby", "1920s", "roaring twenties", "whiskey", "after party"],
+    "canyon-gate-country-club": ["canyon gate", "country club", "golf", "red rock views", "lakeview", "ballroom"],
+    "stallion-mountain-wedgewood": ["stallion mountain", "wedgewood", "golf", "golf course", "country club", "sunrise mountain"],
+    "las-vegas-golf-club": ["las vegas golf club", "golf", "golf course", "public course", "country club"],
+    "cascata-golf-club": ["cascata", "waterfall", "golf", "boulder city", "country club", "river"],
+    "spanish-trail-country-club": ["country club", "golf", "spanish trail"],
+    "las-vegas-paiute-golf-resort": ["golf", "golf course", "country club"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();

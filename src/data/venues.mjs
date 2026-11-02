@@ -2226,4 +2226,93 @@ It markets itself for group celebrations rather than ceremonies, so think of it 
     ],
     url: "https://www.1923lv.com/private-event-space-party-rooms-for-rent-las-vegas/", checked: "2026-10-30", status: "listed", featured: false,
   },
+  {
+    name: "Canyon Gate Country Club", slug: "canyon-gate-country-club", category: "strip-luxury",
+    area: "West Las Vegas (2001 Canyon Gate Dr.)", drive: "About 20 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Country club", "Red Rock views", "Lakeside patio", "Ballroom"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 200,
+    facts: [
+      "A private country club that hosts weddings for members and non-members alike. No membership needed.",
+      "Ceremonies can happen on the Lakeview Patio, with receptions in the ballroom for up to 200-plus guests.",
+      "The Red Rock mountains are visible from the Lakeview Patio, the Arch, and through the Grand Ballroom's 25-foot glass windows, per Cactus Collective Weddings, which runs small-wedding packages there.",
+      "Cactus Collective's packages include the officiant, bouquet, boutonniere, photography and permit.",
+      "Capacity and minimums vary by space. Event sales: 702-363-0303.",
+    ],
+    bestFor: "Couples who want a classic country-club wedding with Red Rock in the windows.",
+    description: `Canyon Gate is a private country club on the west side of the valley, and it opens its doors to non-member weddings. The setting is the draw: a lakeside patio for the ceremony and a ballroom with 25-foot windows looking out toward Red Rock.
+
+It's the traditional choice done well. Book the whole thing through the club for a big reception, or go through Cactus Collective for a small package that bundles the officiant and photos.`,
+    tips: [
+      "Members get room fees waived, so if anyone in the family belongs, ask about booking through them.",
+      "Pricing and minimums aren't published. Ask for both by space and date.",
+      "For a sunset ceremony with Red Rock behind you, check the patio's orientation and sunset time for your date.",
+    ],
+    url: "https://www.invitedclubs.com/clubs/canyon-gate-country-club/host-an-event/", checked: "2026-11-01", status: "listed", featured: false,
+  },
+  {
+    name: "Stallion Mountain by Wedgewood Weddings", slug: "stallion-mountain-wedgewood", category: "strip-luxury",
+    area: "East Las Vegas (5500 E. Flamingo Rd.)", drive: "About 20 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Golf club", "Mountain views", "All-inclusive", "Per-guest pricing"],
+    priceFrom: 995, priceLabel: "Ceremony fee; packages $58–$128 per guest", guestMax: 200,
+    facts: [
+      "Inside Stallion Mountain Golf Club, with Sunrise Mountain views and year-round green lawns. Several outdoor ceremony spots offer mountain and Strip view combinations.",
+      "Packages are priced per guest: Build Your Own $58, Classic $73, Premier $103 (adds an enhanced menu and open bar) and Elite $128 (adds extended party time, a photo booth and a top-shelf bar).",
+      "The ceremony starts at $995 per event and the venue at $1,095 per event.",
+      "A 22% administrative fee and taxes are added, and minimums may apply.",
+      "Holds up to 200 guests.",
+    ],
+    bestFor: "Couples who want clear, per-guest pricing and a golf-course lawn with mountain views.",
+    description: `Stallion Mountain is a golf club on the east side of the valley, run for weddings by Wedgewood Weddings. The lawns stay green year-round, and the ceremony spots look out at Sunrise Mountain, with some catching the Strip too.
+
+Its best feature is the pricing: published per-guest packages, from build-your-own to an all-in Elite tier. Few venues in town make the math this easy.`,
+    tips: [
+      "Add the 22% administrative fee and tax to every number when you budget.",
+      "The $995 ceremony and $1,095 venue fees are per event, on top of the per-guest package.",
+      "Ask which ceremony spot frames the Strip if you want it in the background.",
+    ],
+    url: "https://wedgewoodweddings.com/stallionmountain", checked: "2026-11-01", status: "listed", featured: false,
+  },
+  {
+    name: "Las Vegas Golf Club", slug: "las-vegas-golf-club", category: "strip-luxury",
+    area: "Central Las Vegas (4300 W. Washington Ave.)", drive: "About 15 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Public golf course", "Covered patio", "Budget-friendly", "Classic Vegas"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 120,
+    facts: [
+      "A championship golf course with decades of history that hosts weddings with full-service on-site catering.",
+      "Ceremonies happen outdoors in an open-air setting framed by the course and the desert.",
+      "Indoor banquet space holds up to 110 guests, and an adjoining covered patio seats up to 120.",
+      "Contact: 702-646-3003 or the club's general inquiry form.",
+    ],
+    bestFor: "Couples who want a golf-course wedding without country-club formality.",
+    description: `Las Vegas Golf Club is a long-running public course a few miles from downtown, now run by Arcis Golf. It's not a private club, which is part of its charm: no dress code energy, just fairways, desert and a banquet room with a covered patio.
+
+It suits a relaxed wedding of up to about 120, with the ceremony outside and the reception steps away.`,
+    tips: [
+      "Pricing isn't published, so ask for a package quote and the food and beverage minimum.",
+      "The covered patio helps on hot or windy days. Ask whether it can be enclosed or heated in winter.",
+      "Plan photos around tee times, since it's a working public course.",
+    ],
+    url: "https://arcisgolf.com/clubs/las-vegas-golf-club/weddings", checked: "2026-11-01", status: "listed", featured: false,
+  },
+  {
+    name: "Cascata Golf Club", slug: "cascata-golf-club", category: "desert-outdoors",
+    area: "Boulder City (1 Cascata Dr.)", drive: "About 30 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["418-foot waterfall", "River through the clubhouse", "Golf", "Desert mountains"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: null,
+    facts: [
+      "A golf club in the mountains near Boulder City, built around a 418-foot waterfall that cascades from the mountainside.",
+      "The water continues as a river that runs through the clubhouse.",
+      "The club markets itself as a venue for events large or small.",
+    ],
+    bestFor: "Couples who want a waterfall in the desert and don't mind a drive.",
+    description: `Cascata is the golf club with a waterfall: 418 feet of water pouring down the mountainside, then running as a river straight through the clubhouse. In the middle of the Mojave, it looks like a set from a movie.
+
+It's about half an hour from the Strip near Boulder City, and it books private events. It's one of the most dramatic backdrops on this list, as long as the club confirms your wedding.`,
+    tips: [
+      "The club's site lists events, not weddings specifically. Confirm it will host your ceremony and reception before planning around it.",
+      "Ask about capacity and minimums, which aren't published.",
+      "Plan photos by the waterfall and the river inside the clubhouse. Nobody back home will believe it's Nevada.",
+    ],
+    url: "https://cascatagolf.com/", checked: "2026-11-01", status: "listed", featured: false,
+  },
 ];
