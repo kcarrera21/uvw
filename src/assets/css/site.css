@@ -376,6 +376,27 @@ table.data td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .photo-credit a { color: var(--ink-soft); }
 .article-photo { margin: 26px 0 0; }
 .article-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); background: var(--line); }
+.article-photo .pin-save { display: flex; width: fit-content; align-items: center; gap: 6px; margin-top: 8px; font-weight: 600; font-size: .8rem; white-space: nowrap; }
+.article-photo .pin-save svg { width: 14px; height: 14px; flex: 0 0 14px; }
+
+/* ---------- Pinterest follow ---------- */
+.pin-band { padding-top: 12px; }
+.pin-callout { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; max-width: 760px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 28px 32px; box-shadow: var(--shadow); }
+.pin-callout h2 { margin: 0 0 .28em; font-size: clamp(1.45rem, 2.2vw, 1.85rem); }
+.pin-callout p { margin: 0 0 16px; color: var(--ink-soft); }
+.pin-callout .btn { gap: 8px; }
+.pin-callout .btn svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.pin-mark { width: 56px; height: 56px; border-radius: 50%; background: var(--blush); color: var(--rose-deep); display: grid; place-items: center; }
+.pin-mark svg { width: 26px; height: 26px; }
+.social-links { margin-top: 4px; }
+.social-links ul, .foot-grid .social-links ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px 16px; }
+.social-link, .social-links a { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+.social-link svg, .social-links svg { width: 18px; height: 18px; flex: 0 0 18px; }
+.prose .pin-callout { margin-top: 36px; }
+.prose .pin-callout h2 { margin-top: 0; font-size: clamp(1.45rem, 2.2vw, 1.85rem); }
+@media (max-width: 560px) {
+  .pin-callout { grid-template-columns: 1fr; padding: 22px; gap: 14px; }
+}
 .credits { list-style: none; padding: 0; display: grid; gap: 14px; }
 .credits li { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 

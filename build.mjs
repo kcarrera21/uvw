@@ -129,7 +129,52 @@ const articlePhoto = (a, cat) => {
   }
   return cat && PHOTOS["cat-" + cat] ? "cat-" + cat : null;
 };
-const articleFigure = (key) => (key ? `<figure class="article-photo">${pic(key, "", { eager: true, sizes: "(max-width: 800px) 100vw, 760px" })}<figcaption class="photo-credit">${photoCredit(key)}</figcaption></figure>` : "");
+const PINTEREST_ICON = `<svg class="pin-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.2-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>`;
+const pinterestFollowHref = () => {
+  if (!C.social.pinterest) return "";
+  const u = new URL(C.social.pinterest);
+  u.searchParams.set("utm_source", "website");
+  u.searchParams.set("utm_medium", "referral");
+  u.searchParams.set("utm_campaign", "pinterest_follow");
+  return u.toString();
+};
+const pinterestCallout = () => {
+  const href = pinterestFollowHref();
+  if (!href) return "";
+  return `<aside class="pin-callout">
+  <div class="pin-mark" aria-hidden="true">${PINTEREST_ICON}</div>
+  <div>
+    <h2>Follow us on Pinterest</h2>
+    <p>Planning a Vegas wedding? Follow us on Pinterest for venue ideas, checklists and real inspiration.</p>
+    <a class="btn btn-primary" href="${esc(href)}" target="_blank" rel="noopener">${PINTEREST_ICON}<span>Follow on Pinterest</span></a>
+  </div>
+</aside>`;
+};
+const socialLinks = () => {
+  const items = [["pinterest", "Pinterest", PINTEREST_ICON], ["instagram", "Instagram", ""], ["tiktok", "TikTok", ""]].filter(([k]) => C.social[k]);
+  if (!items.length) return "";
+  return `<nav class="social-links" aria-label="Social"><ul>${items.map(([k, label, icon]) => `<li><a href="${esc(C.social[k])}" rel="me noopener" target="_blank">${icon}<span>${label}</span></a></li>`).join("")}</ul></nav>`;
+};
+const pinDescription = (title, description) => {
+  const text = `${title}. ${description || ""}`.replace(/\s+/g, " ").trim();
+  return text.length > 480 ? text.slice(0, 477).replace(/\s+\S*$/, "") + "…" : text;
+};
+const pinCreateHref = (pageUrl, media, description) => {
+  const u = new URL("https://www.pinterest.com/pin/create/button/");
+  u.searchParams.set("url", pageUrl);
+  u.searchParams.set("media", media);
+  u.searchParams.set("description", description);
+  return u.toString();
+};
+const articleFigure = (key, pin = null) => {
+  if (!key) return "";
+  const photo = PHOTOS[key];
+  const media = photo ? `${C.domain}/assets/photos/${key}.webp` : "";
+  const canPin = !!(pin && media && pin.url && pin.description);
+  const attrs = canPin ? ` data-pin-description="${esc(pin.description)}" data-pin-media="${esc(media)}" data-pin-url="${esc(pin.url)}"` : "";
+  const save = canPin ? `<a class="pin-save" href="${esc(pinCreateHref(pin.url, media, pin.description))}" target="_blank" rel="noopener">${PINTEREST_ICON}<span>Save to Pinterest</span></a>` : "";
+  return `<figure class="article-photo">${pic(key, "", { eager: true, sizes: "(max-width: 800px) 100vw, 760px", attrs })}<figcaption class="photo-credit">${photoCredit(key)}${save}</figcaption></figure>`;
+};
 const budgetBand = (n) => (n == null ? "quote" : n < 1000 ? "1" : n < 3000 ? "2" : n < 10000 ? "3" : "4");
 const BAND_LABEL = { 1: "Under $1,000", 2: "$1,000–$2,999", 3: "$3,000–$9,999", 4: "$10,000+", quote: "Custom quote" };
 const warnings = [];
@@ -279,6 +324,7 @@ function layout({ path: p, title, seoTitle, description, body, og = "default", i
 <link rel="canonical" href="${url}">
 <meta name="robots" content="${noindex ? "noindex,follow" : "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"}">
 ${C.googleSiteVerification ? `<meta name="google-site-verification" content="${esc(C.googleSiteVerification)}">` : ""}${C.bingSiteVerification ? `<meta name="msvalidate.01" content="${esc(C.bingSiteVerification)}">` : ""}
+<meta name="p:domain_verify" content="ac279f2166c8bc3e2644cc4d05451c1b"/>
 <meta property="og:type" content="${type}"><meta property="og:locale" content="en_US">${type === "article" && modified ? `<meta property="article:modified_time" content="${modified}">` : ""}<meta property="og:site_name" content="${esc(C.siteName)}">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${ogImg}">
@@ -317,7 +363,7 @@ ${body}
   <div class="foot-grid">
     <div><div style="margin-bottom:16px">${logoSVG({ width: 236, color: "#FFFFFF", accent: "#E8A0A8", sub: "#9CAF88" })}</div>
       <p>The independent guide to Las Vegas weddings that don't look like everyone else's. Verified facts, published prices, no fluff.</p>
-      ${[["pinterest", "Pinterest"], ["instagram", "Instagram"], ["tiktok", "TikTok"]].filter(([k]) => C.social[k]).map(([k, t]) => `<a href="${C.social[k]}" rel="me noopener" target="_blank">${t}</a>`).join(" · ")}
+      ${socialLinks()}
     </div>
     <div><h2 class="foot-h">Venues</h2><ul>${CATEGORIES.map((c) => `<li><a href="/venues/category/${c.slug}/">${esc(c.name)}</a></li>`).join("")}</ul></div>
     <div><h2 class="foot-h">Plan</h2><ul>${guides.slice(0, 6).map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.nav)}</a></li>`).join("")}<li><a href="/tools/budget-planner/">Budget planner</a></li><li><a href="/tools/wedding-countdown/">Wedding countdown</a></li></ul></div>
@@ -458,6 +504,10 @@ async function main() {
   <span class="eyebrow">The basics</span><h2 class="mt0">Las Vegas wedding <em>questions</em>, answered</h2>
   ${faqHtml(homeFaq)}
   <p class="small">Sources: Clark County Clerk and each venue's published pricing, checked ${fmtDate(FACTS_CHECKED)}. <a href="/guides/las-vegas-marriage-license/">Full license guide</a></p>
+</div></section>
+
+<section class="pin-band"><div class="wrap">
+  ${pinterestCallout()}
 </div></section>
 
 <section class="band-blush"><div class="wrap center narrow">
@@ -649,13 +699,14 @@ async function main() {
   ${crumbs([["Home", "/"], ["Guides", "/guides/"], [g.nav, ""]])}
   <span class="eyebrow">${esc(g.eyebrow)}</span><h1>${esc(g.title)}</h1>
   <div class="meta"><span>By the ${esc(C.siteName)} editors</span><span>${g.readMins} min read</span><span>Facts checked <time datetime="${g.updated || FACTS_CHECKED}">${fmtDate(g.updated || FACTS_CHECKED)}</time></span><span>${g.sources.length} sources · <a href="/about/">how we fact-check</a></span></div>
-  ${articleFigure(gPhoto)}
+  ${articleFigure(gPhoto, gPhoto ? { url: `${C.domain}/guides/${g.slug}/`, description: pinDescription(g.title, g.metaDescription || g.description) } : null)}
 </div></div></header>
 <article class="article"><div class="wrap">
   <div class="prose">${answer ? `<div class="answer"><strong>Quick answer</strong><p>${esc(answer)}</p></div>` : ""}${withIds}
     ${g.faq?.length ? `<h2 id="faq">Frequently asked questions</h2>${faqHtml(g.faq)}` : ""}
     <h2>Keep planning</h2><ul class="checklist">${relatedGuides.map((r) => `<li><a href="/guides/${r.slug}/">${esc(r.title)}</a></li>`).join("")}<li><a href="/venues/">Browse all ${venues.length} unique venues</a></li></ul>
     <div class="sources"><strong>Sources</strong><ol>${g.sources.map((s) => `<li><a href="${s.u}" ${s.u.startsWith("http") ? 'rel="nofollow noopener" target="_blank"' : ""}>${esc(s.t)}</a></li>`).join("")}</ol></div>
+    ${pinterestCallout()}
   </div>
   <aside class="toc"><nav aria-label="On this page"><strong style="display:block;margin-bottom:6px;color:var(--charcoal)">On this page</strong>${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join("")}</nav>${newsletterForm({ title: "Free checklist", sub: "The whole license and paperwork process on one printable page." })}</aside>
 </div></article>`,
@@ -696,13 +747,14 @@ async function main() {
   ${crumbs([["Home", "/"], ["Off-Script", "/blog/"], [b.title, ""]])}
   <span class="eyebrow">${esc(b.eyebrow || "Off-Script")}</span><h1>${esc(b.title)}</h1>
   <div class="meta"><span>By the ${esc(C.siteName)} editors</span><span>Published <time datetime="${b.date}">${fmtDate(b.date)}</time></span>${b.updated ? `<span>Updated <time datetime="${b.updated}">${fmtDate(b.updated)}</time></span>` : ""}<span>${b.readMins} min read</span><span>${(b.sources || []).length} sources · <a href="/about/">how we fact-check</a></span></div>
-  ${articleFigure(bPhoto)}
+  ${articleFigure(bPhoto, bPhoto ? { url: `${C.domain}/blog/${b.slug}/`, description: pinDescription(b.title, b.metaDescription || b.description) } : null)}
 </div></div></header>
 <article class="article"><div class="wrap">
   <div class="prose">${answer ? `<div class="answer"><strong>Quick answer</strong><p>${esc(answer)}</p></div>` : ""}${withIds}
     ${b.faq?.length ? `<h2 id="faq">Frequently asked questions</h2>${faqHtml(b.faq)}` : ""}
     <h2>Keep planning</h2><ul class="checklist">${relGuides.map((r) => `<li><a href="/guides/${r.slug}/">${esc(r.title)}</a></li>`).join("")}${more.map((r) => `<li><a href="/blog/${r.slug}/">${esc(r.title)}</a></li>`).join("")}<li><a href="/venues/">Browse all ${venues.length} unique venues</a></li></ul>
     ${(b.sources || []).length ? `<div class="sources"><strong>Sources</strong><ol>${b.sources.map((x) => `<li><a href="${x.u}" ${x.u.startsWith("http") ? 'rel="nofollow noopener" target="_blank"' : ""}>${esc(x.t)}</a></li>`).join("")}</ol></div>` : ""}
+    ${pinterestCallout()}
   </div>
   <aside class="toc"><nav aria-label="On this page"><strong style="display:block;margin-bottom:6px;color:var(--charcoal)">On this page</strong>${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join("")}</nav>${newsletterForm({ title: "Free checklist", sub: "The whole license and paperwork process on one printable page." })}</aside>
 </div></article>`,
@@ -1127,6 +1179,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <p>To claim a free listing, or to ask about Featured or Spotlight, email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. You can also use the form on <a href="/for-venues/">List your venue</a>. Paid listings are always labeled, and paying never changes the facts we publish.</p>
 <h2>Press</h2>
 <p>Interviews, quotes, and questions about the research: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
+${C.social.pinterest ? `<h2>Pinterest</h2><p><a class="social-link" href="${esc(C.social.pinterest)}" rel="me noopener" target="_blank">${PINTEREST_ICON}<span>Follow Unique Vegas Weddings on Pinterest</span></a></p>` : ""}
 <div class="note">We're a guide, not a booking agency, so we can't book venues or issue marriage licenses. For licenses, contact the Clark County Clerk directly.</div>`);
   simple("/photo-credits/", "Photo Credits", "Credits and licenses for the free-license photos used on Unique Vegas Weddings.", `
 <p>The photos on this site are free-license images: most come from <a href="https://unsplash.com/" rel="nofollow noopener" target="_blank">Unsplash</a> under the Unsplash License, and the rest are shared under Creative Commons licenses or released to the public domain (found through <a href="https://openverse.org/" rel="nofollow noopener" target="_blank">Openverse</a>). Thank you to every photographer below.</p>

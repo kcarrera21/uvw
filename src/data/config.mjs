@@ -73,7 +73,7 @@ export const config = {
   venueSheetCsvUrl: "",
 
   social: {
-    pinterest: "", // full URL to your Pinterest profile
+    pinterest: "https://www.pinterest.com/uniquevegasweddings/",
     instagram: "",
     tiktok: "",
   },
