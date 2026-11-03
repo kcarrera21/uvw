@@ -382,7 +382,7 @@ export const guides = [
     slug: "desert-wedding-permits",
     seoTitle: "Las Vegas Desert Wedding Permits: Rules, Fees & Closures",
     metaDescription: "Which parks near Las Vegas allow weddings, which permit you need, published fees, lead times and closures, from the agencies that manage them.",
-    answer: "Most public lands near Las Vegas allow weddings with a permit. Valley of Fire requires a Nevada State Parks Special Use Permit ($25 processing fee, apply 60 days ahead), Red Rock Canyon requires a BLM Special Recreation Permit, and Lake Mead requires a National Park Service Special Use Permit ($150 application fee).",
+    answer: "Most public lands near Las Vegas allow weddings with a permit. Valley of Fire requires a Nevada State Parks Special Use Permit ($25 processing fee, apply 60 days ahead), Red Rock Canyon requires a BLM Special Recreation Permit, Lake Mead requires a National Park Service Special Use Permit ($150 application fee), and Death Valley's permit starts with a $300 application fee, filed at least 30 days ahead.",
     title: "Desert & Outdoor Wedding Permits Near Las Vegas",
     nav: "Desert permits",
     eyebrow: "Outdoor weddings",
@@ -437,6 +437,15 @@ export const guides = [
   <li><strong>Fire restrictions</strong> are posted seasonally, so check before planning candles or anything with a flame.</li>
 </ul>
 
+<h2>Death Valley National Park (NPS)</h2>
+<ul class="checklist">
+  <li><strong>Weddings allowed?</strong> Yes, with a special use permit, at sites including Zabriskie Point, Dante's View, Harmony Borax Works, Breakfast Canyon and the Mesquite Flat dunes.</li>
+  <li><strong>Fee:</strong> a $300 non-refundable application fee, plus monitoring of about $50 an hour (roughly one monitor per 8 people) and $0.55 a mile. Most wedding permits don't need insurance.</li>
+  <li><strong>Lead time:</strong> apply at least 30 days ahead. 60 days is recommended. Email DEVA_Permits@nps.gov.</li>
+  <li><strong>Caps:</strong> under 12 at Badwater and the Mesquite Flat dunes; 20 or fewer at Breakfast Canyon; about 20 at Hell's Gate; about 30 at Harmony Borax; about 40 at Dante's View, Zabriskie Point and Stovepipe Wells.</li>
+  <li><strong>Rules:</strong> no drones, balloons or petals. This is separate from a wedding at the <a href="/venues/oasis-at-death-valley/">Oasis at Death Valley</a> resort. Our <a href="/venues/death-valley-national-park/">Death Valley listing</a> has the site-by-site caps.</li>
+</ul>
+
 <h2>What about Seven Magic Mountains?</h2>
 <p>We couldn't find any official wedding permit process for Seven Magic Mountains, and the artwork's official visitor page says photography there is for private, non-commercial use only. We don't recommend planning a ceremony there.</p>
 
@@ -462,6 +471,7 @@ export const guides = [
       { t: "Nevada State Parks: Spring Mountain Ranch", u: "https://parks.nv.gov/parks/spring-mountain-ranch" },
       { t: "City of Las Vegas: Floyd Lamb Park", u: "https://www.lasvegasnevada.gov/Residents/Parks-Facilities/Floyd-Lamb-Park" },
       { t: "USFS: Noncommercial Group Use", u: "https://www.fs.usda.gov/managing-land/lands-minerals-geology/special-uses/applying-for-permit/non-commercial" },
+      { t: "NPS Death Valley: Special use permits", u: "https://www.nps.gov/deva/learn/management/special-use-permits-sup.htm" },
       { t: "Seven Magic Mountains: Visit", u: "https://sevenmagicmountains.com/visit/" },
     ],
   },
