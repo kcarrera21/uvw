@@ -1048,6 +1048,14 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "spanish-trail-country-club": ["country club", "golf", "spanish trail"],
     "las-vegas-paiute-golf-resort": ["golf", "golf course", "country club"],
     "the-las-vegas-farm": ["las vegas farm", "the farm", "farm", "goats", "animals", "petting zoo", "grand teton", "centennial hills", "northwest"],
+    "sci-fi-wedding-chapel": ["sci-fi", "scifi", "science fiction", "spaceship", "space", "twilight zone", "mini golf", "minigolf", "character minister", "horseshoe", "blacklight"],
+    "cactus-joes-blue-diamond-nursery": ["cactus joe", "cactus joes", "cactus", "nursery", "blue diamond", "red rock view", "desert garden"],
+    "sure-thing-chapel": ["sure thing", "elvis", "lady elvis", "showgirl", "burlesque", "photobooth", "photo booth", "fremont chapel"],
+    "little-neon-and-fremont-wedding-chapel": ["little neon", "neon chapel", "fremont wedding chapel", "tiniest chapel", "sign and go", "sign & go", "neonopolis", "pop art"],
+    "eldorado-dry-lakebed-wedding": ["eldorado", "dry lake", "lakebed", "lake bed", "lvwc", "cracked earth", "mojave"],
+    "renowned-events": ["renowned", "small vegas weddings", "arts district", "industrial", "gallery", "loft"],
+    "the-doyle": ["doyle", "warehouse", "mesquite", "barrel ceiling", "bring your own"],
+    "forge-social-house": ["forge", "boulder city", "agave", "rooftop lounge", "small town"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];
