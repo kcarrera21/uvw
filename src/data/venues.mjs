@@ -19,7 +19,7 @@ export const CATEGORIES = [
   { slug: "strip-luxury", name: "Strip Luxury", blurb: "Fountains, gondolas and Roman gardens. Big-resort polish with the logistics handled.",
     intro: "The big resorts make a wedding easy on everyone. The ceremony, reception, rooms and restaurants sit on one property, and an in-house team runs the day. Options include the fountain-view terrace at Bellagio, a white gondola at The Venetian, Roman gardens and chapels at Caesars Palace, and the Waldorf Astoria's ballroom with floor-to-ceiling Strip views. Published prices are less common at this level. Several resorts quote by date and guest count, so ask for the ceremony, reception and room block in one request." },
   { slug: "quirky-pop-culture", name: "Quirky & Pop Culture", blurb: "Sharks, drive-thrus, portals and theme chapels. Only-in-Vegas, and proudly so.",
-    intro: "Some weddings could only happen in Las Vegas. You can marry among the tanks at Shark Reef Aquarium, inside Meow Wolf's Omega Mart, under 360-degree projections at AREA15, at the drive-up window of the Tunnel of Love, or in full costume at the Viva Las Vegas theme chapel. These venues work for couples who want a day their guests will retell for years. Published prices run from $150 for the drive-thru to five figures for a full AREA15 production." },
+    intro: "Some weddings could only happen in Las Vegas. You can marry among the tanks at Shark Reef Aquarium, inside Meow Wolf's Omega Mart, under 360-degree projections at AREA15, at the drive-up window of the Tunnel of Love, or in full costume at the Viva Las Vegas theme chapel. These venues work for couples who want a day their guests will retell for years. Published prices run from $69 for a Sign & Go at Little Neon Chapel to five figures for a full AREA15 production." },
   { slug: "classic-chapels", name: "Classic Chapels", blurb: "The chapels that made Las Vegas the wedding capital of the world. Still the fastest way to \"I do.\"",
     intro: "Chapels are the reason Las Vegas is known for weddings. Graceland Wedding Chapel was established in 1939, A Little White Wedding Chapel has hosted weddings since 1951, and Little Church of the West is on the National Register of Historic Places. A chapel is the quickest and most affordable route to a legal ceremony, with published packages starting at $150. Add-ons range from photography and flowers to an Elvis impersonator. Graceland, for one, also offers vow renewals and non-legal ceremonies." },
 ];
@@ -2314,5 +2314,194 @@ It's about half an hour from the Strip near Boulder City, and it books private e
       "Plan photos by the waterfall and the river inside the clubhouse. Nobody back home will believe it's Nevada.",
     ],
     url: "https://cascatagolf.com/", checked: "2026-11-01", status: "listed", featured: false,
+  },
+  {
+    name: "The Sci-Fi Wedding Chapel", slug: "sci-fi-wedding-chapel", category: "quirky-pop-culture",
+    area: "The Strip (Horseshoe Las Vegas, 3645 S Las Vegas Blvd)", drive: "On the Strip", setting: "Indoor",
+    vibe: ["Spaceship", "Character ministers", "Blacklight", "Theme chapel"],
+    priceFrom: 299, priceLabel: "Simple Ceremony (18% service fee on top)", guestMax: 30,
+    facts: [
+      "A spaceship-themed chapel with character ministers, inside the Twilight Zone blacklight mini golf at Horseshoe Las Vegas, 3645 S Las Vegas Blvd.",
+      "Simple Ceremony from $299: the chapel, a traditional minister and a personal host.",
+      "$649 adds a character minister, a ceremony recording, music, souvenirs and 2 mini golf passes.",
+      "$979 adds a photographer with all digital images. $1,179 adds a live webcast.",
+      "An 18% service fee is charged on top of the package price.",
+      "Up to 30 guests.",
+      "Official site: https://scifiweddingchapel.com/. Prices checked Nov 2, 2026 at https://scifiweddingchapel.com/ceremony-packages/. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want a spaceship chapel, and maybe a character minister, inside a blacklight mini golf.",
+    description: `The Sci-Fi Wedding Chapel doesn't look like any other chapel on the Strip. It's a spaceship-themed room inside the Twilight Zone blacklight mini golf at Horseshoe Las Vegas, and a character minister is there if a traditional one feels too ordinary.
+
+The simple ceremony starts at $299 and covers the chapel, a traditional minister and a personal host. An 18% service fee is added on top of every package, so we tell couples to budget past the price on the menu.`,
+    tips: [
+      "Add the 18% service fee on top of whichever package you pick. It applies to the $299, $649, $979 and $1,179 tiers.",
+      "The $649 package is the one with the character minister, a recording, music, souvenirs and two mini golf passes.",
+      "The room holds up to 30 guests.",
+    ],
+    url: "https://scifiweddingchapel.com/", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "Cactus Joe's Blue Diamond Nursery", slug: "cactus-joes-blue-diamond-nursery", category: "desert-outdoors",
+    area: "Blue Diamond (12740 Blue Diamond Rd)", drive: "Southwest of Las Vegas", setting: "Outdoor",
+    vibe: ["Cactus nursery", "Red Rock view", "Desert garden", "Ceremony spots"],
+    priceFrom: 750, priceLabel: "Ceremony (receptions available from 2027)", guestMax: null,
+    facts: [
+      "A seven-acre working cactus nursery in Blue Diamond, at 12740 Blue Diamond Rd, with a Red Rock Canyon view and several ceremony spots among the plants.",
+      "Ceremonies from $750. Intimate dinner or party reservations from $1,500. Four-hour receptions from $2,999.",
+      "Receptions are available from 2027.",
+      "Includes the natural desert setting, multiple ceremony locations, vendor access and setup coordination, a logistics consultation and flexible use of the space.",
+      "Guest capacity is not published. Contact the venue.",
+      "Official site and price source: https://cactusjoeslv.com/weddings-events. Prices checked Nov 2, 2026. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want a working cactus garden with Red Rock Canyon in the background.",
+    description: `Cactus Joe's is a seven-acre working nursery in Blue Diamond, with Red Rock Canyon in the view and more than one spot to stand among the plants.
+
+Ceremonies start at $750, and the booking includes the setting, vendor access, setup help, a logistics consult and flexible use of the space. We like it as a desert ceremony among the plants, with the canyon in view. Receptions, from an intimate dinner to a four-hour party, are available from 2027.`,
+    tips: [
+      "Receptions are available from 2027. A dinner or party reservation starts at $1,500, and a four-hour reception starts at $2,999.",
+      "Guest capacity is not published. Contact the venue before you promise anyone a seat.",
+      "The address is 12740 Blue Diamond Rd, southwest of Las Vegas.",
+    ],
+    url: "https://cactusjoeslv.com/weddings-events", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "Sure Thing Chapel", slug: "sure-thing-chapel", category: "quirky-pop-culture",
+    area: "Downtown / Fremont Street (1110 Fremont St)", drive: "On Fremont Street", setting: "Indoor",
+    vibe: ["Vintage", "Elvis", "Showgirls", "Photobooth"],
+    priceFrom: 666, priceLabel: "The Sure Thing package", guestMax: 43,
+    facts: [
+      "A vintage Fremont Street chapel at 1110 Fremont St, with Elvis, Lady Elvis, showgirl and burlesque officiants and a photobooth.",
+      "The Sure Thing from $666+: officiant and ceremony, marriage license filing, 30 minutes in the chapel, 1 free photobooth strip, and 0–20 guests.",
+      "Higher packages are listed at $888+, $999+ and $1,444+.",
+      "Flowers add-on from $222. Classic car add-on from $222.",
+      "Sure Thing Chapel holds 43 guests max. Sure Thing Too, at 1104 Fremont St, holds 24 max.",
+      "Official site: https://www.surethingchapel.com/. Prices checked Nov 2, 2026 at https://www.surethingchapel.com/sure-thing-chapel-menu. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want a vintage Fremont Street chapel with Elvis, showgirls and a photobooth.",
+    description: `Sure Thing Chapel is a vintage room on Fremont Street, with Elvis, a Lady Elvis, showgirls, burlesque officiants and a photobooth. We think that lineup is the appeal.
+
+The Sure Thing package starts at $666 and covers the officiant and ceremony, marriage license filing, 30 minutes in the chapel and one photobooth strip, for up to 20 guests. Sure Thing Too, at 1104 Fremont St, holds 24 if you want the smaller room.`,
+    tips: [
+      "The $666 package is for 0–20 guests. The chapel itself holds 43, and Sure Thing Too at 1104 Fremont St holds 24.",
+      "Flowers and a classic car are each listed from $222.",
+      "The published prices use a plus, so confirm the total for your date.",
+    ],
+    url: "https://www.surethingchapel.com/", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "Little Neon Chapel and Fremont Wedding Chapel", slug: "little-neon-and-fremont-wedding-chapel", category: "quirky-pop-culture",
+    area: "Downtown / Neonopolis (450 Fremont St)", drive: "On Fremont Street, at Neonopolis", setting: "Indoor",
+    vibe: ["Neon", "Retro", "Pop art", "Tiny chapel"],
+    priceFrom: 69, priceLabel: "Sign & Go (only published price)", guestMax: 50,
+    facts: [
+      "A retro neon chapel, a pop-art mural chapel and a four-person Tiniest Chapel at Neonopolis, 450 Fremont St.",
+      "Only the $69 Sign & Go price is published. Other package prices are not published.",
+      "Booking is through a scheduler. Contact the venue for what the $69 Sign & Go includes.",
+      "Capacities: Little Neon 20, the Tiniest Chapel 4, and Fremont Wedding Chapel 50.",
+      "Official site and price source: https://www.fremontweddingchapel.com/. Prices checked Nov 2, 2026. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want a neon chapel on Fremont Street and can live with one published price.",
+    description: `Little Neon Chapel and the Fremont Wedding Chapel share a spot at Neonopolis: a retro neon room, a pop-art mural chapel, and a four-person nook called the Tiniest Chapel.
+
+We can only pass along one number, because only the $69 Sign & Go price is published. Other package prices aren't on the pages we checked, and booking runs through a scheduler, so ask what that $69 covers before you count on it.`,
+    tips: [
+      "Only the $69 Sign & Go price is published. Contact the venue and ask what it includes.",
+      "Match the room to the group: the Tiniest Chapel holds 4, Little Neon holds 20, and Fremont Wedding Chapel holds 50.",
+      "Other package prices are not published.",
+    ],
+    url: "https://www.fremontweddingchapel.com/", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "Eldorado Dry Lakebed Wedding", slug: "eldorado-dry-lakebed-wedding", category: "desert-outdoors",
+    area: "Boulder City area", drive: "30–40 min south of the Strip", setting: "Outdoor",
+    vibe: ["Dry lakebed", "Open sky", "Styled arch", "Elopement"],
+    priceFrom: 1499, priceLabel: "Styled package (transportation not included)", guestMax: 100,
+    facts: [
+      "A cracked-earth Mojave dry lakebed with a styled arch and open sky, in the Boulder City area, 30–40 minutes south of the Strip. Booked through LVWC.",
+      "$1,499 includes a licensed officiant, a 60-minute photo session with 200+ images, a styled arch, 10 white chairs, a bouquet, a witness and license filing.",
+      "Transportation is not included.",
+      "A $300 deposit holds the date. The balance is due 3 weeks prior.",
+      "10 guests is the standard. Up to 100 guests is by quote.",
+      "Official site and price source: https://lvwc.com/eldorado-dry-lakebed-wedding. Prices checked Nov 2, 2026. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want cracked earth and open sky, and can get themselves there.",
+    description: `The Eldorado dry lakebed is cracked earth, a styled arch and a wide-open sky, about 30 to 40 minutes south of the Strip.
+
+The $1,499 package includes a licensed officiant, an hour of photos, the arch, 10 white chairs, a bouquet, a witness and license filing. Transportation is not included, so the drive is on you. The standard group is 10 guests, and a larger party, up to 100, is by quote.`,
+    tips: [
+      "Transportation is not included. Plan the 30–40 minute drive south of the Strip yourselves.",
+      "The standard package is 10 guests. Up to 100 is by quote.",
+      "A $300 deposit holds the date, and the balance is due 3 weeks before.",
+    ],
+    url: "https://lvwc.com/eldorado-dry-lakebed-wedding", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "Renowned Events", slug: "renowned-events", category: "quirky-pop-culture",
+    area: "Arts District (61 W Utah Ave, Ste 141)", drive: "In the Arts District", setting: "Indoor & outdoor",
+    vibe: ["Industrial", "Art gallery", "Patio", "All-inclusive"],
+    priceFrom: 8500, priceLabel: "All-inclusive reception, Sun–Thu, up to 50 guests", guestMax: 162,
+    facts: [
+      "An industrial gallery-style space in the Arts District at 61 W Utah Ave, Ste 141, with an art-hanging system and a bistro-lit patio. Packages are published by Small Vegas Weddings.",
+      "All-inclusive reception from $8,500 Sunday–Thursday, $9,000 Friday and $9,500 Saturday, for up to 50 guests. Extra guests are $100 each, up to 112.",
+      "Includes a 4-hour private rental, the patio, a catered buffet, a 4-hour premium open bar, a DJ, a 2-tier cake, styled tables, a venue manager, and setup and cleanup.",
+      "A $500 deposit is non-refundable.",
+      "The package goes up to 112 guests. renownedevents.com lists ceremony-only capacity at 112, a seated dinner at 128 and standing room at 162.",
+      "Official site: https://www.renownedevents.com/. Prices checked Nov 2, 2026 at https://www.smallvegasweddings.com/. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want an Arts District reception with the meal, the bar and the music already priced in.",
+    description: `Renowned Events is an industrial gallery in the Arts District, with a system for hanging art and a patio strung with bistro lights. Small Vegas Weddings publishes the wedding packages, and we like that the price names what you get.
+
+An all-inclusive reception starts at $8,500 Sunday through Thursday for up to 50 guests: four hours of the room and patio, a buffet, a premium open bar, a DJ, a two-tier cake, styled tables and the cleanup. Friday and Saturday cost more, and extra guests are priced up to 112.`,
+    tips: [
+      "Sunday–Thursday is $8,500, Friday is $9,000 and Saturday is $9,500, each for up to 50 guests.",
+      "Extra guests are $100 each, up to 112. The $500 deposit is non-refundable.",
+      "renownedevents.com also lists a seated dinner for 128 and standing room for 162. Ask which number applies to your setup.",
+    ],
+    url: "https://www.renownedevents.com/", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "The Doyle", slug: "the-doyle", category: "historic-iconic",
+    area: "Downtown (418 W Mesquite Ave)", drive: "West of the Strip", setting: "Indoor & outdoor",
+    vibe: ["1949 warehouse", "Wood trusses", "Courtyard", "Bring your own vendors"],
+    priceFrom: 5000, priceLabel: "Weekday rental, Mon–Thu", guestMax: 200,
+    facts: [
+      "A restored 1949 warehouse at 418 W Mesquite Ave, downtown and west of the Strip, with a barrel ceiling, wood trusses and a courtyard. You bring your own vendors.",
+      "Rental from $5,000 Monday–Thursday, $6,000 Friday and Sunday, and from $6,000 on Saturday.",
+      "Includes about 5,000 sq ft, surround sound, an HDMI projector, bistro, chandelier and art lighting, tables and chairs for 160, 3 couches and the courtyard.",
+      "200 occupants for weddings. The building maximum is 230.",
+      "Official site and price source: https://thedoylelasvegas.com/. Prices checked Nov 2, 2026. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want a 1949 warehouse and already have their own vendors.",
+    description: `The Doyle is a restored 1949 warehouse just west of the Strip, with a barrel ceiling, wood trusses and a courtyard. You rent the building and bring your own vendors, which is the point if you already have a team.
+
+Weekday rental starts at $5,000 and includes about 5,000 square feet, surround sound, a projector, lighting, tables and chairs for 160, three couches and the courtyard. We'd call it a historic room you style yourselves.`,
+    tips: [
+      "You bring your own vendors. The rental covers the room, the furniture, the lighting and the sound.",
+      "Monday–Thursday starts at $5,000. Friday and Sunday are $6,000, and Saturday is from $6,000.",
+      "Tables and chairs are included for 160. Weddings are listed at 200 occupants, and the building max is 230.",
+    ],
+    url: "https://thedoylelasvegas.com/", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "Forge Social House", slug: "forge-social-house", category: "historic-iconic",
+    area: "Boulder City (historic downtown)", drive: "In historic downtown Boulder City", setting: "Indoor & outdoor",
+    vibe: ["Boulder City", "Agave garden", "Courtyard", "Rooftop"],
+    priceFrom: 3150, priceLabel: "Wedding package", guestMax: 120,
+    facts: [
+      "A small-town venue in historic downtown Boulder City, with an agave garden entry, a courtyard, a rooftop lounge and a park ceremony across the street.",
+      "Packages from $3,150. Includes the venue, on-site catering and bar service, a wedding dinner (buffet or plated), tables and chairs, a projector, house audio and a mic, a sweetheart table, 2 hours to decorate and 3.5 hours of event time.",
+      "Guest range is 20–120. The main hall seats up to 80.",
+      "Official site: https://forgesocialhouse.com/. Prices checked Nov 2, 2026 at https://info.forgesocialhouse.com/. Confirm with the venue.",
+    ],
+    bestFor: "Couples who want a small-town Boulder City wedding with dinner included.",
+    description: `Forge Social House is a small-town wedding spot in historic downtown Boulder City. The approach is an agave garden, then a courtyard and a rooftop lounge, with a park across the street for the ceremony.
+
+Packages start at $3,150, and we like that dinner is already in the price, along with on-site catering and bar service, tables and chairs, a projector, house audio and a mic, and a sweetheart table. You get two hours to decorate and three and a half hours for the event itself.`,
+    tips: [
+      "The main hall seats up to 80. The wider range published for the venue is 20–120 guests.",
+      "You get 2 hours to decorate and 3.5 hours of event time.",
+      "Dinner is buffet or plated, and the catering and bar are on site.",
+    ],
+    url: "https://forgesocialhouse.com/", checked: "2026-11-02", status: "listed", featured: false,
   },
 ];

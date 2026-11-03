@@ -201,12 +201,12 @@ export const guides = [
   {
     slug: "las-vegas-wedding-cost",
     seoTitle: "Las Vegas Wedding Cost: Real Published Venue Prices",
-    metaDescription: "Published Las Vegas wedding prices by venue, from $99 chapel specials to $15,500+ receptions, plus the license fee and the costs couples forget.",
+    metaDescription: "Published Las Vegas wedding prices by venue, from $69 chapel prices to $15,500+ receptions, plus the license fee and the costs couples forget.",
     answer: "Published starting prices at Las Vegas wedding venues in our directory range from {{price-min}} for a chapel ceremony to {{price-max}} or more for a full-production reception. Every couple also pays the $102 Clark County marriage license, and a county civil ceremony costs $77.75.",
     title: "How Much Does a Las Vegas Wedding Cost? Real Published Prices",
     nav: "Wedding cost",
     eyebrow: "Budget",
-    description: "Published prices from Las Vegas wedding venues, from $99 chapel specials to $15,500+ immersive receptions, plus the fees couples forget to budget for.",
+    description: "Published prices from Las Vegas wedding venues, from $69 chapel prices to $15,500+ immersive receptions, plus the fees couples forget to budget for.",
     readMins: 6,
     hero: "cost",
     body: `
@@ -248,7 +248,7 @@ export const guides = [
 <p class="small">Prices change. Every venue page shows the date we last checked, and you should always confirm directly with the venue before booking.</p>
 `,
     faq: [
-      { q: "What is the cheapest way to get married in Las Vegas?", a: "A Clark County civil ceremony ($77.75 including the card fee) plus the $102 license. Several chapels publish ceremony specials from $99, though officiant fees can be extra." },
+      { q: "What is the cheapest way to get married in Las Vegas?", a: "A Clark County civil ceremony ($77.75 including the card fee) plus the $102 license. Chapel prices in our directory start at $69 for Little Neon Chapel's Sign & Go, which doesn't say what is included, and several other chapels publish ceremony specials from $99. Officiant fees can be extra." },
       { q: "How much does a Neon Museum wedding cost?", a: "The Neon Museum publishes its daytime Sweetheart Wedding at $2,500 and the nighttime Stardust Wedding at $3,500 (checked October 2026)." },
     ],
     sources: [
