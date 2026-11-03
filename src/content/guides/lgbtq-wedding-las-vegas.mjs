@@ -14,7 +14,7 @@ export default {
   published: "2026-10-18",
   updated: "2026-10-18",
   body: `
-<p class="lede">Yes, you can get legally married in Las Vegas, and the process is exactly the same as it is for everyone else: same license, same fee, same counter downtown. Here's what the law says, what the application asks, and how to find a venue that's genuinely glad to have you.</p>
+<p class="lede">Yes, you can get legally married in Las Vegas, and the process is exactly the same as it is for everyone else: same license, same fee, same counter downtown. Here's what the law says, what the application asks, and how to find a venue that says so out loud.</p>
 
 <div class="quickfacts">
   <div><span>Legal in Nevada since</span><strong>October 2014</strong></div>
