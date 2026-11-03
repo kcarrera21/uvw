@@ -264,7 +264,7 @@ const planner = [
   P("Notes", `<h1><em>Notes</em></h1>${lines(30)}`),
   `<div class="pg" style="padding:0;background:#2B2B2E">${art("planner-back", "sky-high", 816, 1056)}
    <div style="position:absolute;left:.8in;right:.8in;bottom:1in;background:rgba(255,251,248,.95);border-radius:18px;padding:.45in;text-align:center">
-   <div class="serif" style="font-size:40px">Congratulations. <em>Go have the day.</em></div>
+   <div class="serif" style="font-size:40px">Congratulations. <em>Go celebrate.</em></div>
    <p style="margin-top:12px">Venues, lucky dates and sourced guides at <strong>uniquevegasweddings.com</strong></p>
    <p class="sm">Facts checked October 2026 from official sources (Clark County Clerk, NOAA, Nevada State Parks, BLM, NPS, USFS). Requirements change, so always confirm. © Unique Vegas Weddings. For personal use only; please don't redistribute.</p></div></div>`,
 ];

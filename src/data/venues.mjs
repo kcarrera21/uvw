@@ -19,7 +19,7 @@ export const CATEGORIES = [
   { slug: "strip-luxury", name: "Strip Luxury", blurb: "Fountains, gondolas and Roman gardens. Big-resort polish with the logistics handled.",
     intro: "The big resorts make a wedding easy on everyone. The ceremony, reception, rooms and restaurants sit on one property, and an in-house team runs the day. Options include the fountain-view terrace at Bellagio, a white gondola at The Venetian, Roman gardens and chapels at Caesars Palace, and the Waldorf Astoria's ballroom with floor-to-ceiling Strip views. Published prices are less common at this level. Several resorts quote by date and guest count, so ask for the ceremony, reception and room block in one request." },
   { slug: "quirky-pop-culture", name: "Quirky & Pop Culture", blurb: "Sharks, drive-thrus, portals and theme chapels. Only-in-Vegas, and proudly so.",
-    intro: "Some weddings could only happen in Las Vegas. You can marry among the tanks at Shark Reef Aquarium, inside Meow Wolf's Omega Mart, under 360-degree projections at AREA15, at the drive-up window of the Tunnel of Love, or in full costume at the Viva Las Vegas theme chapel. Guests retell these for years. Published prices run from $69 for a Sign & Go at Little Neon Chapel to five figures for a full AREA15 production." },
+    intro: "Some weddings could only happen in Las Vegas. You can marry among the tanks at Shark Reef Aquarium, inside Meow Wolf's Omega Mart, under 360-degree projections at AREA15, at the drive-up window of the Tunnel of Love, or in full costume at the Viva Las Vegas theme chapel. Your guests will be retelling these for years, and we get why. Published prices run from $69 for a Sign & Go at Little Neon Chapel to five figures for a full AREA15 production." },
   { slug: "classic-chapels", name: "Classic Chapels", blurb: "The chapels that made Las Vegas the wedding capital of the world. Still the fastest way to \"I do.\"",
     intro: "Chapels are the reason Las Vegas is known for weddings. Graceland Wedding Chapel was established in 1939, A Little White Wedding Chapel has hosted weddings since 1951, and Little Church of the West is on the National Register of Historic Places. A chapel is the quickest and most affordable route to a legal ceremony, with published packages starting at $150. Add-ons range from photography and flowers to an Elvis impersonator. Graceland, for one, also offers vow renewals and non-legal ceremonies." },
 ];
@@ -37,7 +37,7 @@ export const venues = [
       "Up to 50 guests included (benches seat 48–50); up to 90 with add-ons.",
       "Daytime Sweetheart Weddings aren't booked June–August because of heat (sunrise weddings are offered). Stardust runs September–May.",
     ],
-    bestFor: "Old Vegas glamour, and not a slot machine in the background.",
+    bestFor: "Old Vegas glamour among the retired signs. It's history you can stand in.",
     description: `Every sign in this place has a past life: hotels that were imploded, motels that faded, casinos that live on only in postcards. Getting married in the middle of them feels a little like borrowing the city's memory for the afternoon.
 
 Book daytime and you get sun-bleached color and long shadows across rusted letters. Book the Stardust package after dark and the signs come back to life through projection mapping. It's the closest thing to time travel the Strip has. It's the backdrop people recognize from across the room at your anniversary party.`,
@@ -62,7 +62,7 @@ Book daytime and you get sun-bleached color and long shadows across rusted lette
     bestFor: "Garden weddings with real desert character and room for the whole family.",
     description: `Before there was a Strip, there was water. Springs Preserve sits on the spring that gave Las Vegas its name ("the meadows"). Today it's 180 acres of desert gardens, trails and shaded terraces. It's the rare venue that feels like nature and still has restrooms, parking and a plan for 200 guests.
 
-A garden ceremony here couldn't be mistaken for anywhere else. Think agave instead of roses, and a skyline you can barely see over the cactus.`,
+We love this one for a garden ceremony that couldn't be mistaken for anywhere else. Think agave instead of roses, and a skyline you can barely see over the cactus.`,
     tips: [
       "The Nevada State Museum, Las Vegas is on the same campus, and its admission runs through the Springs Preserve. It's an easy add-on for guests the day before.",
       "Ceremony-only slots run on Thursdays and Sundays, which is the budget move.",
@@ -104,7 +104,7 @@ Nelson is the antidote to the Vegas you've seen on TV. There's no neon, no casin
       "The Waldorf Ballroom has floor-to-ceiling Strip views and seats up to 450 at banquet or 800 for receptions.",
       "The eighth-floor outdoor Pool Deck hosts ceremonies and cocktail receptions. The Atriums hold 30–60 guests.",
     ],
-    bestFor: "Strip views, none of the casino noise, and no slot floor to cross in a wedding dress.",
+    bestFor: "Strip views in a quiet hotel, so you can reach the ceremony without crossing a casino floor.",
     description: `The Waldorf is the quiet one on the Strip. There's no casino floor, no lobby slot machines, and no wading through a crowd in a wedding dress. You get an elevator, a view and a dedicated events team.
 
 The ballroom's floor-to-ceiling windows put the Strip skyline behind your reception. The eighth-floor pool deck makes an open-air ceremony feel almost private. For a big, polished wedding with an unmistakably Vegas view, it's one of the most elegant options in the city.`,
@@ -172,7 +172,7 @@ It's on the National Register of Historic Places, it was in an Elvis movie, and 
     bestFor: "Spontaneous, fun, budget-friendly weddings with serious Vegas pedigree.",
     description: `This is the chapel your aunt has heard of. Since 1951 the Little White Wedding Chapel has been the shorthand for getting married in Las Vegas, with a white steeple, a pink Cadillac and the kind of guest book the tabloids love.
 
-The price is the other reason people keep booking it. A ceremony starts at $150, and you can scale up to Elvis, a bigger chapel, or the whole production. It's quick, cheerful and unapologetically Vegas. That's exactly why people keep coming back for vow renewals.`,
+We love the value, too. A ceremony starts at $150, and you can scale up to Elvis, a bigger chapel, or the whole production. It's quick, cheerful and unapologetically Vegas. That's exactly why people keep coming back for vow renewals.`,
     tips: [
       "Lucky-number dates (like 6/26/26) fill up fast here. Book early for special dates.",
       "The Pink Cadillac ceremony is the same price as the chapel, and twice the photo.",
@@ -458,10 +458,10 @@ The museum leans into the joke just enough. The puns write themselves, and so do
       "The To the Moon package (80–250 guests, from $50,000++) uses the Altair Sky Lounge, built around a repurposed Burning Man art plane.",
       "Address: 3215 South Rancho Dr.",
     ],
-    bestFor: "A full-production party. The reception is the part guests still describe next year.",
-    description: `AREA15 mixes an art installation, a nightclub and a room that looks like a spaceship. The Portal wraps the ceremony in 360-degree projections: a galaxy, a garden, or a look you pay extra to customize.
+    bestFor: "A joyful, full-production party. Your guests will still be describing the reception next year.",
+    description: `AREA15 mixes an art installation, a nightclub and a room that looks like a spaceship. The Portal wraps your ceremony in 360-degree projections: a galaxy, a garden, or a design you work out with them.
 
-The packages are priced like a full production, and the night is built around the party as much as the vows. If the dance floor matters more than the aisle, start here.`,
+The packages are priced like a full production, and your guests get a night they'll still be describing at the next family reunion. If the dance floor matters as much as the aisle, this is a wonderful place to start.`,
     tips: [
       "\"++\" means tax and service charges come on top. Budget for both.",
       "Ask what the projection content includes and what costs extra to customize.",
@@ -502,9 +502,9 @@ The elopement package covers the essentials, from the officiant who files your p
       "The Conservatory is offered for proposals only, not ceremonies.",
     ],
     bestFor: "Timeless, elegant weddings with the most famous water show in the world behind you.",
-    description: `Bellagio is the fountains, up close. The buildings lean European, the scale is pure Las Vegas, and the water show is the one people mean when they picture this city.
+    description: `Bellagio is the fountains, up close, and it's as romantic as you've hoped. The buildings lean European, the scale is pure Las Vegas, and the water show is the one people mean when they picture this city.
 
-Ask about the private terrace if you want a small wedding with the fountains going off behind the vows. The chapels fit bigger groups, and they include a live broadcast for family back home. Want to propose first? The Conservatory is reserved for proposals, not ceremonies.`,
+The private terrace is the one we love for a small wedding: the fountains going off behind your vows. The chapels fit bigger groups, and they include a live broadcast for family back home. Want to propose first? The Conservatory is reserved for proposals, not ceremonies.`,
     tips: [
       "Terrazza di Sogno seats only 24, so it's best for small weddings.",
       "Ask when the fountain shows run during your ceremony window.",
@@ -549,7 +549,7 @@ The range is the point. A wedding of 50 fits a lobby lounge or the penthouse roo
       "Other venues: Pool Garden Courtyard (100 guests), Waterfall Atrium (60) and the Wedding Fountain Terrace (40).",
     ],
     bestFor: "Romantics who want Venice, gondolier included, without the jet lag.",
-    description: `A white gondola, a gondolier and a canal under a painted sky. The Venetian's gondola wedding is theater, and it knows it. It's also one of the most affordable "only in Vegas" experiences on the Strip.
+    description: `A white gondola, a gondolier and a canal under a painted sky. It's joyful theater, and your guests get to be in on it. It's also one of the most affordable "only in Vegas" experiences on the Strip.
 
 For a bigger group, the resort has a chapel with a fountain view, a waterfall atrium and a pool garden courtyard. That's a lot of Italian romance in one address, and your guests can walk to the reception.`,
     tips: [
@@ -592,8 +592,8 @@ With chapels up to 196 guests and gardens over 100, it's one of the few Strip re
       "Park rules require weddings to reserve the group use area (up to 200 people, $200 plus per-vehicle entry). The event lawn and stage need a Special Use Permit.",
       "The park reopened May 5, 2026.",
     ],
-    bestFor: "A historic ranch lawn under red cliffs, at a state-park permit price. You bring the vendors.",
-    description: `Spring Mountain Ranch sits under the Red Rock escarpment: a green lawn, shade trees and a sandstone ranch house with a past. Howard Hughes owned it once. Now it belongs to Nevada State Parks, so the price comes from a fee schedule, not a ballroom quote.
+    bestFor: "A historic ranch lawn under red cliffs, at a state-park permit price. You bring the vendors, and the setting does the rest.",
+    description: `Spring Mountain Ranch sits under the Red Rock escarpment: a green lawn, shade trees and a sandstone ranch house with a past. Howard Hughes owned it once. Now it belongs to Nevada State Parks, so you get a published fee instead of waiting on a ballroom quote.
 
 This is the do-it-yourself option. You handle the permit, the rentals and the vendors. In return you get a historic ranch wedding at a fraction of resort pricing.`,
     tips: [
@@ -726,7 +726,7 @@ The best detail: you can pay for an actual punk from the museum's list to sign a
     bestFor: "A real chapel wedding for less than a nice dinner on the Strip.",
     description: `Lucky Little is the downtown chapel for couples who want the classic Vegas chapel moment without the classic Vegas bill. The entry package is just the two of you, and the bigger packages fit a small crowd.
 
-It handles legal weddings, vow renewals and commitment ceremonies, so a first marriage and a do-over both fit.`,
+It handles legal weddings, vow renewals and commitment ceremonies, so your first marriage and a renewal are both welcome.`,
     tips: [
       "Budget the officiant's donation separately. It's at least $60 on top of any package.",
       "The site lists two different prices for the Lucky Mini ($99 and $129). Ask which applies before you pay.",
@@ -837,7 +837,7 @@ It's a full resort, so the ceremony, reception and guest rooms can all sit on on
       "The use application fee is $100 and non-refundable. Recovered labor costs are extra.",
       "Organizers need a certificate of insurance for at least $1,000,000 in general liability naming the government as additional insured.",
     ],
-    bestFor: "Hoover Dam in the background, if you don't mind the federal paperwork.",
+    bestFor: "Hoover Dam in the background. The federal paperwork takes time, and the view is worth it.",
     description: `Hoover Dam is one of the most recognizable structures in the country, and the Bureau of Reclamation rents out the Spillway House right next to it for events, weddings included. The building looks out over Lake Mead and the dam itself.
 
 This is a federal facility, so it runs on permits, insurance certificates and lead times. Plan it like a project: a few months ahead, with a coordinator who has done federal permits before.`,
@@ -1115,7 +1115,7 @@ The altitude also means cooler temperatures than the valley floor, which matters
       "The FAQ says larger setups can reach about 200 guests, depending on layout.",
       "Address: 1411 Kingston Rd, Sandy Valley, NV 89019."
     ],
-    bestFor: "Ride in on horseback, and mean it. The ranch is set up for that.",
+    bestFor: "Ride in on horseback, for real. The ranch is ready for you.",
     description: "Sandy Valley Ranch sits over a mountain pass from Jean, far enough out that the Strip disappears and the mesquite takes over. The ceremony happens on a patch of grass with hay bale seating, and the reception moves into a ranch house with farm tables, a bar and a dance floor.\n\nThe add-ons are the reason to come: arrive at the aisle on horseback, slip away for a photo ride after the vows, or end the night riding into the sunset, literally. The base package is one of the clearer prices in the area, and a ranch planner comes with it.",
     tips: [
       "Confirm your headcount limit early. The package says 125, the FAQ says about 200, and the inquiry form caps at 100.",
@@ -1152,7 +1152,7 @@ The altitude also means cooler temperatures than the valley floor, which matters
       "The museum's pages don't say whether the ceremony is legally binding.",
       "Address: 3377 S. Las Vegas Blvd, Ste. 2001, Las Vegas, NV 89109."
     ],
-    bestFor: "A celebrity at the altar who will not upstage you. It's wax.",
+    bestFor: "A wax celebrity beside you at the altar, glad to be in the photo and glad to let the day be yours.",
     description: "Madame Tussauds runs a little white chapel inside the museum, and for about the price of a nice dinner it will marry you in front of a wax celebrity. Pick a figure from the list, stand at the altar, and walk out with sashes, champagne and photos.\n\nIt's light, fast and very Las Vegas. Treat it as the fun ceremony rather than the paperwork unless the museum confirms otherwise, and ask about licensing before you book.",
     tips: [
       "Ask whether your ceremony can be legal. The pages don't say, so you may need a separate legal ceremony.",
@@ -1443,7 +1443,7 @@ The altitude also means cooler temperatures than the valley floor, which matters
       "Add-on finale: drive an Abrams tank over a real car (one driver and one rider).",
       "No event prices are published. Contact (702) 566-1000 or info@battlefieldvegas.com. Address: 2771 Sammy Davis Jr Drive, Las Vegas, NV 89109."
     ],
-    bestFor: "End the night with a tank flattening a sedan, if you ask for it.",
+    bestFor: "Close the night with a tank flattening a sedan. Ask the team, and they'll price it for you.",
     description: "Battlefield Vegas is a military-themed range with a fleet of armored vehicles, and it rents the whole operation out after hours. Weddings are on its list of private events, with catering, a bar and a DJ handled in-house.\n\nThe detail nobody else in town can match: your guests can ride in by Humvee, and you can close the night by crushing a car with a tank. There's no published wedding package, so this is a custom build with the events team.",
     tips: [
       "Book an after-hours slot (from 7:30 p.m.) if you want the range to yourselves.",
@@ -2029,7 +2029,7 @@ The weddings themselves happen in Silverton's event spaces: The Green outside fo
       "Group sales: 702-740-7888 or Sales@HofbrauhausLasVegas.com.",
       "Open daily for lunch and dinner, until 10 p.m. Sunday to Thursday and 11 p.m. Friday and Saturday.",
     ],
-    bestFor: "A beer-hall reception: a liter, a polka, and a crowd that came to be loud.",
+    bestFor: "A beer-hall reception with a liter, a polka, and a room full of people ready to celebrate with you.",
     description: `Hofbräuhaus Las Vegas is a full-size Bavarian beer hall a few minutes off the Strip, modeled on the Munich original, with a Bier Hall and a Biergarten that each seat hundreds. It's not subtle, and that's the point.
 
 It's built for big, loud, happy groups, which also describes most wedding receptions. Book the Biergarten or the Bier Hall for a crowd, or a smaller group for a rehearsal dinner that nobody will forget.`,
@@ -2283,7 +2283,7 @@ Its best feature is the pricing: published per-guest packages, from build-your-o
       "Indoor banquet space holds up to 110 guests, and an adjoining covered patio seats up to 120.",
       "Contact: 702-646-3003 or the club's general inquiry form.",
     ],
-    bestFor: "A golf-course wedding without the country-club dress code.",
+    bestFor: "A relaxed golf-course wedding: fairways, desert, and room to be yourselves.",
     description: `Las Vegas Golf Club is a long-running public course a few miles from downtown, now run by Arcis Golf. It's not a private club, which is part of its charm: no dress code energy, just fairways, desert and a banquet room with a covered patio.
 
 It suits a relaxed wedding of up to about 120, with the ceremony outside and the reception steps away.`,
@@ -2329,10 +2329,10 @@ It's about half an hour from the Strip near Boulder City, and it books private e
       "Up to 30 guests.",
       "Official site: https://scifiweddingchapel.com/. Prices checked Nov 2, 2026 at https://scifiweddingchapel.com/ceremony-packages/. Confirm with the venue.",
     ],
-    bestFor: "A spaceship chapel inside a blacklight mini golf. Character minister optional.",
+    bestFor: "A spaceship chapel inside a blacklight mini golf, with a character minister if you want one.",
     description: `The Sci-Fi Wedding Chapel doesn't look like any other chapel on the Strip. It's a spaceship-themed room inside the Twilight Zone blacklight mini golf at Horseshoe Las Vegas, and a character minister is there if a traditional one feels too ordinary.
 
-The simple ceremony starts at $299 and covers the chapel, a traditional minister and a personal host. An 18% service fee sits on top of every package, so budget past the number on the menu.`,
+The simple ceremony starts at $299 and covers the chapel, a traditional minister and a personal host. An 18% service fee is added on top of every package. Add it in now, so the price you love is the price you pay.`,
     tips: [
       "Add the 18% service fee on top of whichever package you pick. It applies to the $299, $649, $979 and $1,179 tiers.",
       "The $649 package is the one with the character minister, a recording, music, souvenirs and two mini golf passes.",
@@ -2356,7 +2356,7 @@ The simple ceremony starts at $299 and covers the chapel, a traditional minister
     bestFor: "A working cactus garden, with Red Rock Canyon behind you.",
     description: `Cactus Joe's is a seven-acre working nursery in Blue Diamond, with Red Rock Canyon in the view and more than one spot to stand among the plants.
 
-Ceremonies start at $750, and the booking includes the setting, vendor access, setup help, a logistics consult and flexible use of the space. Stand among the plants with the canyon in view, then head to dinner. Receptions, from an intimate dinner to a four-hour party, are available from 2027.`,
+Ceremonies start at $750, and the booking includes the setting, vendor access, setup help, a logistics consult and flexible use of the space. We love this as a desert ceremony among the plants, with the canyon in view. Receptions, from an intimate dinner to a four-hour party, are available from 2027.`,
     tips: [
       "Receptions are available from 2027. A dinner or party reservation starts at $1,500, and a four-hour reception starts at $2,999.",
       "Guest capacity is not published. Contact the venue before you promise anyone a seat.",
@@ -2378,7 +2378,7 @@ Ceremonies start at $750, and the booking includes the setting, vendor access, s
       "Official site: https://www.surethingchapel.com/. Prices checked Nov 2, 2026 at https://www.surethingchapel.com/sure-thing-chapel-menu. Confirm with the venue.",
     ],
     bestFor: "A vintage Fremont Street chapel: Elvis, showgirls, and a photobooth.",
-    description: `Sure Thing Chapel is a vintage room on Fremont Street. Elvis, a Lady Elvis, showgirls, burlesque officiants and a photobooth are the whole point of booking it.
+    description: `Sure Thing Chapel is a vintage room on Fremont Street. We love the lineup: Elvis, a Lady Elvis, showgirls, burlesque officiants and a photobooth.
 
 The Sure Thing package starts at $666 and covers the officiant and ceremony, marriage license filing, 30 minutes in the chapel and one photobooth strip, for up to 20 guests. Sure Thing Too, at 1104 Fremont St, holds 24 if you want the smaller room.`,
     tips: [
@@ -2400,7 +2400,7 @@ The Sure Thing package starts at $666 and covers the officiant and ceremony, mar
       "Capacities: Little Neon 20, the Tiniest Chapel 4, and Fremont Wedding Chapel 50.",
       "Official site and price source: https://www.fremontweddingchapel.com/. Prices checked Nov 2, 2026. Confirm with the venue.",
     ],
-    bestFor: "A neon chapel at Neonopolis. Only one price is published, so ask what it covers.",
+    bestFor: "A neon chapel at Neonopolis. Only one price is published, so ask what the $69 includes and you'll know just what you're booking.",
     description: `Little Neon Chapel and the Fremont Wedding Chapel share a spot at Neonopolis: a retro neon room, a pop-art mural chapel, and a four-person nook called the Tiniest Chapel.
 
 Only the $69 Sign & Go price is published. The other package prices aren't on the pages we checked, and booking runs through a scheduler, so ask what that $69 covers before you count on it.`,
@@ -2424,7 +2424,7 @@ Only the $69 Sign & Go price is published. The other package prices aren't on th
       "10 guests is the standard. Up to 100 guests is by quote.",
       "Official site and price source: https://lvwc.com/eldorado-dry-lakebed-wedding. Prices checked Nov 2, 2026. Confirm with the venue.",
     ],
-    bestFor: "Cracked earth and open sky. You drive yourselves.",
+    bestFor: "Cracked earth and open sky. The drive is yours, about 30 to 40 minutes south, and the quiet out there is wonderful.",
     description: `The Eldorado dry lakebed is cracked earth, a styled arch and a wide-open sky, about 30 to 40 minutes south of the Strip.
 
 The $1,499 package includes a licensed officiant, an hour of photos, the arch, 10 white chairs, a bouquet, a witness and license filing. Transportation is not included, so the drive is on you. The standard group is 10 guests, and a larger party, up to 100, is by quote.`,
@@ -2449,7 +2449,7 @@ The $1,499 package includes a licensed officiant, an hour of photos, the arch, 1
       "Official site: https://www.renownedevents.com/. Prices checked Nov 2, 2026 at https://www.smallvegasweddings.com/. Confirm with the venue.",
     ],
     bestFor: "An Arts District reception with the meal, the bar and the DJ already in the price.",
-    description: `Renowned Events is an industrial gallery in the Arts District, with a system for hanging art and a patio strung with bistro lights. Small Vegas Weddings publishes the wedding packages, and the price names what you get.
+    description: `Renowned Events is an industrial gallery in the Arts District, with a system for hanging art and a patio strung with bistro lights. Small Vegas Weddings publishes the wedding packages, and we love that the price names what you get.
 
 An all-inclusive reception starts at $8,500 Sunday through Thursday for up to 50 guests: four hours of the room and patio, a buffet, a premium open bar, a DJ, a two-tier cake, styled tables and the cleanup. Friday and Saturday cost more, and extra guests are priced up to 112.`,
     tips: [
@@ -2474,7 +2474,7 @@ An all-inclusive reception starts at $8,500 Sunday through Thursday for up to 50
     bestFor: "A 1949 warehouse you rent, then you bring your own vendors.",
     description: `The Doyle is a restored 1949 warehouse just west of the Strip, with a barrel ceiling, wood trusses and a courtyard. You rent the building and bring your own vendors, which is the point if you already have a team.
 
-Weekday rental starts at $5,000 and includes about 5,000 square feet, surround sound, a projector, lighting, tables and chairs for 160, three couches and the courtyard. It's a historic room you style yourselves.`,
+Weekday rental starts at $5,000 and includes about 5,000 square feet, surround sound, a projector, lighting, tables and chairs for 160, three couches and the courtyard. It's a historic room, and you get to style it yourselves. That's the fun part.`,
     tips: [
       "You bring your own vendors. The rental covers the room, the furniture, the lighting and the sound.",
       "Monday–Thursday starts at $5,000. Friday and Sunday are $6,000, and Saturday is from $6,000.",
@@ -2496,7 +2496,7 @@ Weekday rental starts at $5,000 and includes about 5,000 square feet, surround s
     bestFor: "A small-town Boulder City wedding, with dinner already in the package.",
     description: `Forge Social House is a small-town wedding spot in historic downtown Boulder City. The approach is an agave garden, then a courtyard and a rooftop lounge, with a park across the street for the ceremony.
 
-Packages start at $3,150, and dinner is already in the price, along with on-site catering and bar service, tables and chairs, a projector, house audio and a mic, and a sweetheart table. You get two hours to decorate and three and a half hours for the event itself.`,
+Packages start at $3,150, and we love that dinner is already in the price, along with on-site catering and bar service, tables and chairs, a projector, house audio and a mic, and a sweetheart table. You get two hours to decorate and three and a half hours for the event itself.`,
     tips: [
       "The main hall seats up to 80. The wider range published for the venue is 20–120 guests.",
       "You get 2 hours to decorate and 3.5 hours of event time.",
