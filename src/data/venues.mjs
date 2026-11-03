@@ -461,7 +461,9 @@ The museum leans into the joke just enough. The puns write themselves, and so do
     bestFor: "A joyful, full-production party. Your guests will still be describing the reception next year.",
     description: `AREA15 mixes an art installation, a nightclub and a room that looks like a spaceship. The Portal wraps your ceremony in 360-degree projections: a galaxy, a garden, or a design you work out with them.
 
-The packages are priced like a full production, and your guests get a night they'll still be describing at the next family reunion. If the dance floor matters as much as the aisle, this is a wonderful place to start.`,
+The packages are priced like a full production, and your guests get a night they'll still be describing at the next family reunion. If the dance floor matters as much as the aisle, this is a wonderful place to start.
+
+Two attractions inside the building book their own ceremonies, separate from these packages: the [Little Pink Chapel at the Museum of Ice Cream](/venues/museum-of-ice-cream-little-pink-chapel/) and [Universal Horror Unleashed](/venues/universal-horror-unleashed/).`,
     tips: [
       "\"++\" means tax and service charges come on top. Budget for both.",
       "Ask what the projection content includes and what costs extra to customize.",
@@ -1659,7 +1661,9 @@ The micro wedding package is one of the simplest in town: the officiant, license
     bestFor: "Couples who'd rather drive two hours for silence, palm gardens and a sky full of stars.",
     description: `The Oasis at Death Valley is a historic resort inside the national park, with spring-fed gardens and palms in the middle of one of the driest places on earth. It's a long drive from the Strip, which is exactly why it works: no crowds, no neon, just desert and stars.
 
-The elopement package is built for two, with a private dinner and an overnight stay included. Bigger weddings get a garden, a lawn or a rooftop terrace with views across the valley.`,
+The elopement package is built for two, with a private dinner and an overnight stay included. Bigger weddings get a garden, a lawn or a rooftop terrace with views across the valley.
+
+Want the park land itself, outside the resort? [Death Valley National Park](/venues/death-valley-national-park/) permits ceremonies at the overlooks and on the dunes, with its own application.`,
     tips: [
       "Ceremonies on national park land outside the resort need a National Park Service special use permit, so ask the resort team which spots it covers.",
       "Stargazer's Terrace requires a two-night booking of Room 435, the night before and the night of the wedding.",
@@ -2503,5 +2507,192 @@ Packages start at $3,150, and we love that dinner is already in the price, along
       "Dinner is buffet or plated, and the catering and bar are on site.",
     ],
     url: "https://forgesocialhouse.com/", checked: "2026-11-02", status: "listed", featured: false,
+  },
+  {
+    name: "Evel Knievel Experience", slug: "evel-knievel-experience", category: "quirky-pop-culture",
+    area: "Downtown (1001 S. First St.)", drive: "Downtown Las Vegas", setting: "Indoor",
+    vibe: ["Daredevil", "Motorcycles", "Museum", "Downtown"],
+    priceFrom: 1495, priceLabel: "Evel Knievel Ceremony Experience via LV Wedding Connection", guestMax: 2000,
+    facts: [
+      "A daredevil museum at 1001 S. First St., downtown. Ceremonies are held among Evel Knievel's motorcycles, jumpsuits and the restored Big Red Mack truck.",
+      "The Evel Knievel Ceremony Experience through LV Wedding Connection is $1,495. It includes the ceremony inside the museum, an officiant, a photographer with 48 or more images, hotel transport, a bouquet and boutonniere, a champagne toast, taxes and gratuity.",
+      "The museum does not publish a venue-direct wedding price.",
+      "Las Vegas Magazine (Sep 15, 2026) says the space fits an elopement up to a full buyout of up to 2,000 guests.",
+      "Museum site: https://www.ekexperience.com/. Ceremony package: https://www.lvweddingconnection.com/product/evel-knievel-ceremony-experience/. Prices checked Nov 3, 2026. Confirm with the venue.",
+    ],
+    bestFor: "Vows among the motorcycles, with a daredevil museum around you.",
+    description: `The Evel Knievel Experience is a downtown museum at 1001 S. First St., and the wedding leans into the leap. You say your vows among the motorcycles, the jumpsuits and the restored Big Red Mack truck.
+
+The priced ceremony we could find is sold through LV Wedding Connection, not on the museum's own site. It's $1,495 and includes the ceremony inside the museum, an officiant, a photographer with 48 or more images, hotel transport, a bouquet and boutonniere, and a champagne toast, with taxes and gratuity included. Las Vegas Magazine says the room can go from an elopement to a full buyout of up to 2,000 guests. The museum doesn't publish a venue-direct price, so ask them if you're planning past that package.`,
+    tips: [
+      "Book the $1,495 ceremony through LV Wedding Connection, and ask what the 48-image photo set includes.",
+      "A buyout is a different booking. Ask the museum what a large guest count requires before you invite a crowd.",
+      "Venue-direct pricing isn't published. If you aren't using the ceremony package, ask the museum for a quote.",
+    ],
+    url: "https://www.lvweddingconnection.com/product/evel-knievel-ceremony-experience/", checked: "2026-11-03", status: "listed", featured: false,
+  },
+  {
+    name: "Museum of Ice Cream Little Pink Chapel", slug: "museum-of-ice-cream-little-pink-chapel", category: "quirky-pop-culture",
+    area: "AREA15, Zone 2", drive: "Inside AREA15, just west of the Strip", setting: "Indoor",
+    vibe: ["Pink chapel", "Ice cream", "Sprinkles", "AREA15"],
+    priceFrom: null, priceLabel: null, guestMax: null,
+    facts: [
+      "The Little Pink Chapel is inside the Museum of Ice Cream at AREA15, Zone 2. The museum opened in Las Vegas in early July 2026.",
+      "The chapel is built like a tiered wedding cake. Ordained ministers are on staff, with a sprinkle pool and an ice cream buffet nearby.",
+      "The press release says the chapel can be fully reserved for private events and weddings.",
+      "A wedding price is not published. A guest capacity is not published. Pricing is available on request.",
+      "The museum's events page: https://www.museumoficecream.com/events/las-vegas/. AREA15 lists the museum at https://www.area15.com/experiences/museum-of-ice-cream. Checked Nov 3, 2026.",
+    ],
+    bestFor: "A pink chapel shaped like a wedding cake, inside AREA15, with ice cream after.",
+    description: `The Little Pink Chapel opened with the Museum of Ice Cream at AREA15 in early July 2026. It's built like a tiered wedding cake, in the pink the museum is known for, and ordained ministers are on staff. A sprinkle pool and an ice cream buffet sit with it.
+
+The chapel can be reserved for a private wedding. The museum hasn't published a wedding price or a guest count, so pricing is available on request. Contact the museum and ask what a ceremony includes before you promise anyone a seat. The rest of the building is its own venue if you want a bigger party. See [AREA15](/venues/area15/).`,
+    tips: [
+      "Pricing is available on request. Ask what the reservation includes, and whether the sprinkle pool and ice cream buffet are part of it.",
+      "A guest capacity isn't published. Get a number in writing before you send invitations.",
+      "AREA15's own wedding packages are separate. Compare them on the [AREA15](/venues/area15/) page if you want the whole building.",
+    ],
+    url: "https://www.museumoficecream.com/events/las-vegas/", checked: "2026-11-03", status: "listed", featured: false,
+  },
+  {
+    name: "Death Valley National Park", slug: "death-valley-national-park", category: "desert-outdoors",
+    area: "Death Valley National Park, CA", drive: "About 2–2.5 hours from Las Vegas", setting: "Outdoor",
+    vibe: ["Badlands", "Sand dunes", "National park", "Permit"],
+    priceFrom: 300, priceLabel: "NPS non-refundable application fee (monitoring extra)", guestMax: null,
+    facts: [
+      "Permitted wedding sites include Zabriskie Point, Dante's View, Harmony Borax Works, Breakfast Canyon and the Mesquite Flat dunes. This is park land, separate from the Oasis at Death Valley resort.",
+      "The National Park Service charges a $300 non-refundable application fee, plus monitoring of about $50 an hour (roughly one monitor per 8 people) and $0.55 a mile. Most wedding permits do not need insurance.",
+      "Apply at least 30 days ahead. 60 days is recommended. Email DEVA_Permits@nps.gov.",
+      "Published capacities: Badwater and the Mesquite Flat dunes under 12 (wilderness); Breakfast Canyon 20 or fewer; Hell's Gate about 20; Harmony Borax about 30; Dante's View, Zabriskie Point and Stovepipe Wells about 40.",
+      "No drones. No balloons or petals.",
+      "Permit page, updated Mar 18, 2026: https://www.nps.gov/deva/learn/management/special-use-permits-sup.htm. Checked Nov 3, 2026.",
+    ],
+    bestFor: "Badlands, dunes, or a canyon the public doesn't walk into, with a park permit.",
+    description: `These are the National Park Service wedding sites inside Death Valley, about two to two and a half hours from Las Vegas. You can marry on the badlands overlooks, out on the sand dunes, or in Breakfast Canyon, an area closed to the public that you can request for a wedding. This is the park itself. If you want gardens, a room and a dinner, that's the resort at Furnace Creek. See [The Oasis at Death Valley](/venues/oasis-at-death-valley/).
+
+The permit starts with a $300 non-refundable application fee. Monitoring is extra, about $50 an hour, roughly one monitor for every eight people, plus $0.55 a mile. Most wedding permits don't need insurance. Apply at least 30 days ahead, and 60 is the safer lead, by emailing DEVA_Permits@nps.gov. The caps are small and they differ by site, so pick the spot before you count the chairs.`,
+    tips: [
+      "Apply at least 30 days ahead. Give it 60 days if your date can wait.",
+      "Badwater and the Mesquite Flat dunes stay under 12 people. Dante's View, Zabriskie Point and Stovepipe Wells are about 40.",
+      "No drones, balloons or petals.",
+      "Summer heat in Death Valley is extreme. Ask the park which months suit your site.",
+      "A wedding at the Oasis resort is a different booking, and it does not replace this permit if you are on park land outside the hotel.",
+    ],
+    url: "https://www.nps.gov/deva/learn/management/special-use-permits-sup.htm", checked: "2026-11-03", status: "listed", featured: false,
+  },
+  {
+    name: "Universal Horror Unleashed", slug: "universal-horror-unleashed", category: "quirky-pop-culture",
+    area: "Inside AREA15", drive: "Inside AREA15, just west of the Strip", setting: "Indoor",
+    vibe: ["Horror", "Monsters", "AREA15", "After dark"],
+    priceFrom: null, priceLabel: null, guestMax: null,
+    facts: [
+      "Universal's monster-movie attraction at AREA15. Weddings are held inside the attraction.",
+      "A wedding price is not published. A guest capacity is not published. Pricing is available on request.",
+      "Weddings are booked through Universal's group-sales form: https://salesforms.universalparks.com/UHUGroupSalesForm.",
+      "The attraction's page: https://www.area15.com/experiences/universal-horror-unleashed. Las Vegas Magazine covered the wedding option on Jun 12, 2026. Checked Nov 3, 2026.",
+    ],
+    bestFor: "Horror-movie vows inside Universal's monster attraction at AREA15.",
+    description: `Universal Horror Unleashed is Universal's monster-movie attraction at AREA15, and it takes weddings. If a chapel feels too sweet and a ballroom feels too plain, this is the other direction: vows inside a horror attraction.
+
+A price and a guest count aren't published. Weddings go through Universal's group-sales form, so pricing is available on request. Ask which rooms you can use, and whether the attraction stays open around your ceremony. The rest of the building is a separate booking if you want a reception next door. See [AREA15](/venues/area15/).`,
+    tips: [
+      "Pricing is available on request. Start with Universal's group-sales form and say it's a wedding in the first line.",
+      "A guest capacity isn't published. Ask before you build a guest list.",
+      "AREA15's own packages are separate. See [AREA15](/venues/area15/) if you want the building, not just this attraction.",
+    ],
+    url: "https://salesforms.universalparks.com/UHUGroupSalesForm", checked: "2026-11-03", status: "listed", featured: false,
+  },
+  {
+    name: "Allegiant Stadium", slug: "allegiant-stadium", category: "quirky-pop-culture",
+    area: "Paradise, west of the Strip", drive: "West of the Strip", setting: "Indoor",
+    vibe: ["Football", "Raiders", "Field ceremony", "Stadium"],
+    priceFrom: null, priceLabel: null, guestMax: null,
+    facts: [
+      "The Las Vegas Review-Journal reports a field ceremony package: about 1.5 hours, up to 50 guests, a champagne toast and a bridal staging room.",
+      "Reported extras include a Raiders mascot, a Raiderette appearance, a video-board message and a stadium tour.",
+      "A wedding price is not published. The stadium asks you to email privateevents@allegiantstadium.com. Pricing is available on request.",
+      "The stadium site lists the field at 95,000 square feet, with up to 5,500 banquet guests or 4,000 reception guests. Those are event capacities, not the ceremony package.",
+      "Private events: https://visit.allegiantstadium.com/private-events. Checked Nov 3, 2026.",
+    ],
+    bestFor: "A ceremony on the field, for up to 50 guests, with the stadium around you.",
+    description: `Allegiant Stadium will put a ceremony on the field. The Las Vegas Review-Journal describes a package of about an hour and a half for up to 50 guests, with a champagne toast and a bridal staging room. Extras that have been reported include a Raiders mascot, a Raiderette appearance, a message on the video board and a stadium tour.
+
+The stadium doesn't publish a price, so pricing is available on request. Email privateevents@allegiantstadium.com. The field itself is listed at 95,000 square feet, and the building's event numbers go well past a ceremony: up to 5,500 for a banquet or 4,000 for a reception. Those are event capacities, not the wedding package, so ask which number applies to your day.`,
+    tips: [
+      "Pricing is available on request. Email privateevents@allegiantstadium.com and say \"wedding\" in the first line.",
+      "The reported ceremony package covers up to 50 guests. The 5,500 and 4,000 figures are banquet and reception capacities. Confirm which one you're booking.",
+      "Ask whether the mascot, a Raiderette, the video board and a stadium tour are included or added on.",
+    ],
+    url: "https://visit.allegiantstadium.com/private-events", checked: "2026-11-03", status: "listed", featured: false,
+  },
+  {
+    name: "Misora Rooftop at The Platinum Hotel", slug: "platinum-hotel-misora-rooftop", category: "sky-high",
+    area: "Paradise, just east of the Strip", drive: "Just east of the Strip", setting: "Outdoor",
+    vibe: ["Rooftop", "Strip views", "Boutique hotel", "Vow renewal"],
+    priceFrom: null, priceLabel: null, guestMax: null,
+    facts: [
+      "The Platinum Hotel's Misora Rooftop Terrace hosts ceremonies, with separate vow renewal and rooftop proposal packages.",
+      "The wedding brochure lists a ceremony-only package with optional mini receptions. Package dollar amounts are not published on the page or in the brochure text.",
+      "The brochure notes per-guest surcharges for small groups, 8.38% tax and a 24% service charge. The brochure is dated October 2020, so those figures may be stale.",
+      "A guest capacity is not published. Pricing is available on request.",
+      "Weddings page: https://www.platinumhotel.com/weddings. Checked Nov 3, 2026. Confirm current pricing with the hotel.",
+    ],
+    bestFor: "An intimate rooftop terrace just east of the Strip, with the skyline in front of you.",
+    description: `The Platinum is a boutique hotel just east of the Strip, and Misora is its rooftop terrace. The wedding page covers ceremonies, vow renewals and rooftop proposals, and the brochure describes a ceremony-only package with optional mini receptions.
+
+The dollar amounts aren't in the page or the brochure text, so pricing is available on request. Contact the hotel. The brochure, dated October 2020, notes per-guest surcharges for small groups, 8.38% tax and a 24% service charge. Treat those as numbers to confirm, because a brochure that old can go stale. Ask for the current ceremony price, what a mini reception adds, and whether the terrace has a guest limit. A capacity isn't published.`,
+    tips: [
+      "Pricing is available on request. Ask for the current ceremony price in writing, not from the 2020 brochure alone.",
+      "Confirm the 8.38% tax, the 24% service charge and any per-guest surcharge for a small group.",
+      "Vow renewals and rooftop proposals are listed separately. Say which one you want.",
+      "A guest capacity isn't published. Ask before you promise seats.",
+    ],
+    url: "https://www.platinumhotel.com/weddings", checked: "2026-11-03", status: "listed", featured: false,
+  },
+  {
+    name: "Chapel of Crystals", slug: "chapel-of-crystals", category: "quirky-pop-culture",
+    area: "Paradise (Westgate, beside the Strip)", drive: "Beside the Strip, at the Westgate", setting: "Indoor",
+    vibe: ["Elvis", "Prince", "Mobster", "Theme chapel"],
+    priceFrom: 39, priceLabel: "advertised special (confirm current pricing)", guestMax: 45,
+    facts: [
+      "A themed chapel at the Westgate, the former International Hotel where Elvis performed. It holds up to 45 guests.",
+      "Ceremony choices include Elvis, Prince, a mobster theme or a traditional ceremony.",
+      "The homepage has advertised \"$39 weddings\" and \"$99 Elvis weddings\" as sale offers. The Elvis packages page has shown a Just Elvis package at $399. These are advertised specials and they change.",
+      "A third-party travel guide has listed officiation fees at $77 traditional, $150 for an impersonator and $200 outdoor. Those figures are not on the chapel's own pages. Confirm them.",
+      "Official site: https://www.chapelofcrystals.com/. Elvis packages: https://www.chapelofcrystals.com/elvis-packages. Checked Nov 3, 2026. Confirm the current price with the chapel.",
+    ],
+    bestFor: "Elvis, Prince, a mobster theme, or a traditional ceremony, where Elvis used to play.",
+    description: `Chapel of Crystals is inside the Westgate, the old International Hotel where Elvis performed, just beside the Strip. You can choose an Elvis ceremony, a Prince ceremony, a mobster theme or a traditional one. The room holds up to 45 guests.
+
+Treat the prices you see as specials, not a promise. The homepage has advertised \"$39 weddings\" and \"$99 Elvis weddings\" as sale offers, and the Elvis packages page has shown a Just Elvis package at $399. Specials have been advertised from $39, and they change. Confirm the current price, and what it includes, before you book.`,
+    tips: [
+      "Confirm the current price with the chapel. Advertised specials, including offers from $39 and $99 Elvis weddings, change.",
+      "Ask what the Just Elvis package includes if you saw it listed at $399. That figure is an advertisement, not a locked rate.",
+      "The chapel holds up to 45 guests.",
+      "A travel guide has listed separate officiant fees. Those aren't on the chapel's pages, so confirm them too.",
+    ],
+    url: "https://www.chapelofcrystals.com/", checked: "2026-11-03", status: "listed", featured: false,
+  },
+  {
+    name: "Sam's Town Mystic Falls Park", slug: "sams-town-mystic-falls-park", category: "quirky-pop-culture",
+    area: "Boulder Highway, east Las Vegas", drive: "Boulder Highway, east Las Vegas", setting: "Indoor",
+    vibe: ["Indoor waterfall", "Tropical garden", "Locals casino", "Observation deck"],
+    priceFrom: null, priceLabel: null, guestMax: 75,
+    facts: [
+      "An indoor tropical park at Sam's Town on Boulder Highway, with waterfalls and trees. Ceremonies are held on an observation deck over the garden.",
+      "The December 2025 wedding catering menu is the source for atrium packages of 5 to 75 guests.",
+      "A ceremony price is not printed in that menu, and the park page does not publish one. Pricing is available on request.",
+      "Park page: https://samstownlv.boydgaming.com/things-to-do/mystic-falls-park. Checked Nov 3, 2026. Contact the venue for the current ceremony price.",
+    ],
+    bestFor: "An indoor waterfall and a tropical garden, on a deck at a locals casino.",
+    description: `Mystic Falls Park is the indoor garden at Sam's Town, on Boulder Highway in east Las Vegas. You get married on an observation deck over a tropical park, with waterfalls and trees. In July, that beats a lawn.
+
+The December 2025 wedding catering menu is where the guest range shows up: atrium packages for 5 to 75 guests. A ceremony price isn't printed in that menu, and the casino doesn't publish one on the park page, so pricing is available on request. Contact Sam's Town and get the ceremony figure in writing.`,
+    tips: [
+      "Pricing is available on request. Ask Sam's Town for the ceremony price. Don't rely on a third-party listing.",
+      "Atrium packages are listed for 5 to 75 guests. Confirm that range still applies to a ceremony on the observation deck.",
+      "It's indoors, which is the practical reason to book it in summer.",
+    ],
+    url: "https://samstownlv.boydgaming.com/things-to-do/mystic-falls-park", checked: "2026-11-03", status: "listed", featured: false,
   },
 ];

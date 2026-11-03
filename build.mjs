@@ -581,11 +581,14 @@ async function main() {
   }
 
   // ================= VENUE PAGES =================
+  // Internal cross-links are written as [Label](/venues/slug/) and only render when the slug exists.
+  const venueSlugSet = new Set(venues.map((v) => v.slug));
+  const withVenueLinks = (s) => esc(s).replace(/\[([^\]\n]+)\]\(\/venues\/([a-z0-9-]+)\/\)/g, (m, label, slug) => (venueSlugSet.has(slug) ? `<a href="/venues/${slug}/">${label}</a>` : label));
   for (const v of venues) {
     const c = catBy[v.category];
     const related = venues.filter((x) => x.category === v.category && x.slug !== v.slug).slice(0, 3);
     const inquiryId = v.status === "partner" ? v.inquiryFormId || C.formspreeVenueInquiry : "";
-    const paras = (v.description || "").split(/\n\s*\n/).map((t) => `<p>${esc(t.trim())}</p>`).join("");
+    const paras = (v.description || "").split(/\n\s*\n/).map((t) => `<p>${withVenueLinks(t.trim())}</p>`).join("");
     const sidebar = inquiryId
       ? `<div class="panel"><h3>Check availability</h3><p class="small">Your request goes directly to ${esc(v.name)}.</p>
         <form action="${formAction(inquiryId)}" ${formAttrs(inquiryId)} data-next="/thanks/?sent=inquiry">
@@ -645,8 +648,8 @@ async function main() {
   <div class="prose">
     <h2 class="mt0">Why you'll love it</h2>${paras}
     ${ytBlock(v)}
-    <h2>Verified details</h2><ul class="checklist">${(v.facts || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
-    <h2>Good to know</h2><ul class="checklist">${(v.tips || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
+    <h2>Verified details</h2><ul class="checklist">${(v.facts || []).map((f) => `<li>${withVenueLinks(f)}</li>`).join("")}</ul>
+    <h2>Good to know</h2><ul class="checklist">${(v.tips || []).map((f) => `<li>${withVenueLinks(f)}</li>`).join("")}</ul>
     <p><a href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">Official weddings page ↗</a></p>
     ${v.disclosure ? `<div class="note"><strong>Disclosure.</strong> ${esc(v.disclosure)}</div>` : ""}
     <div class="note"><strong>Getting married here legally?</strong> You'll still need a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step.</a></div>
@@ -1112,6 +1115,14 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "renowned-events": ["renowned", "small vegas weddings", "arts district", "industrial", "gallery", "loft"],
     "the-doyle": ["doyle", "warehouse", "mesquite", "barrel ceiling", "bring your own"],
     "forge-social-house": ["forge", "boulder city", "agave", "rooftop lounge", "small town"],
+    "evel-knievel-experience": ["evel knievel", "knievel", "daredevil", "motorcycle", "big red", "downtown museum"],
+    "museum-of-ice-cream-little-pink-chapel": ["museum of ice cream", "little pink chapel", "ice cream", "sprinkle", "pink chapel", "area15"],
+    "death-valley-national-park": ["death valley", "zabriskie", "dante's view", "dantes view", "mesquite flat", "national park", "nps permit"],
+    "universal-horror-unleashed": ["universal horror", "horror unleashed", "horror wedding", "monster", "area15", "halloween"],
+    "allegiant-stadium": ["allegiant", "raiders", "stadium", "football", "50 yard line", "nfl"],
+    "platinum-hotel-misora-rooftop": ["platinum hotel", "misora", "rooftop terrace", "rooftop", "vow renewal"],
+    "chapel-of-crystals": ["chapel of crystals", "westgate", "elvis", "prince", "mobster", "international hotel"],
+    "sams-town-mystic-falls-park": ["sams town", "sam's town", "mystic falls", "indoor waterfall", "boulder highway"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];
@@ -1129,7 +1140,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     built: ISO,
     cats: Object.fromEntries(CATEGORIES.map((c) => [c.slug, c.name])),
     climate: CLIMATE.map(([m, hi, lo]) => [["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].indexOf(m)], hi, lo, verdict(hi)]),
-    venues: venues.map((v) => ({ name: v.name, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`), cat: catBy[v.category].name, catSlug: v.category, area: v.area, drive: v.drive || "", setting: v.setting || "", price: v.priceFrom ?? null, priceLabel: v.priceLabel || "", guests: v.guestMax ?? null, vibe: v.vibe || [], bestFor: v.bestFor || "", alias: ALIASES[v.slug] || [], checkedText: fmtDate(v.checked), text: [v.description, ...(v.facts || []), ...(v.tips || [])].join(" ") })),
+    venues: venues.map((v) => ({ name: v.name, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`), cat: catBy[v.category].name, catSlug: v.category, area: v.area, drive: v.drive || "", setting: v.setting || "", price: v.priceFrom ?? null, priceLabel: v.priceLabel || "", guests: v.guestMax ?? null, vibe: v.vibe || [], bestFor: v.bestFor || "", alias: ALIASES[v.slug] || [], checkedText: fmtDate(v.checked), text: [v.description, ...(v.facts || []), ...(v.tips || [])].join(" ").replace(/\[([^\]\n]+)\]\(\/venues\/[a-z0-9-]+\/\)/g, "$1") })),
     faqs, sections,
     pages: [
       ...posts.map((b) => ({ kind: "Off-Script", title: b.title, url: `/blog/${b.slug}/`, text: b.metaDescription || b.description, kw: (b.tags || []).join(" ") })),
