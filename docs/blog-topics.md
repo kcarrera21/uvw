@@ -33,11 +33,11 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Do you need a witness in Las Vegas? Who can be one. Published 2026-11-02
 - [x] Getting a certified copy of your Clark County marriage certificate. Covered by guide 2026-10-18
 - [x] Changing your name after a Las Vegas wedding: the order to do it in. Covered by guide 2026-10-18
-- [ ] International couples marrying in Las Vegas: documents and apostilles
-- [ ] Vow renewals in Las Vegas: what's different from a legal wedding
-- [ ] Commitment ceremonies vs. legal weddings in Las Vegas
-- [ ] Planning a Las Vegas wedding from out of state: a 6-week timeline
-- [ ] Wedding guest logistics in Las Vegas: rideshare, parking and timing
+- [x] International couples marrying in Las Vegas: documents and apostilles. Covered by the marriage certificate copies and legal vs. symbolic guides (skipped 2026-11-03)
+- [x] Vow renewals in Las Vegas: what's different from a legal wedding. Covered by the vow renewal and legal vs. symbolic guides (skipped 2026-11-03)
+- [x] Commitment ceremonies vs. legal weddings in Las Vegas. Covered by the legal vs. symbolic guide (skipped 2026-11-03)
+- [x] Planning a Las Vegas wedding from out of state: a 6-week timeline. Overlaps the how-far-ahead post and 48-hour elopement guide (skipped 2026-11-03)
+- [x] Wedding guest logistics in Las Vegas: rideshare, parking and timing. Published 2026-11-03
 - [ ] Getting married in Las Vegas with kids or under-21 guests
 - [ ] Accessible Las Vegas wedding venues and what to ask
 - [ ] Las Vegas weddings for pets: which venues allow dogs
