@@ -14,7 +14,7 @@ export default {
   published: "2026-10-21",
   updated: "2026-10-21",
   body: `
-<p class="lede">Most cities give you one weekend a year for a Halloween wedding. Las Vegas gives you all 365 days, a horror villain who'll officiate, and the option of arriving in a hearse. Here's where to go, what it costs, and which places look perfect for a spooky wedding but won't actually host one.</p>
+<p class="lede">Most cities give you one weekend a year for a Halloween wedding. Las Vegas gives you all 365 days, a horror villain who'll officiate, and the option of arriving in a hearse. Here's where to go, what it costs, and which places look the part and which ones will happily host you.</p>
 
 <div class="quickfacts">
   <div><span>Cheapest themed option</span><strong>$189 (up to 2 guests)</strong></div>

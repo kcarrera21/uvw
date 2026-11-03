@@ -270,7 +270,7 @@ export const guides = [
     readMins: 6,
     hero: "season",
     body: `
-<p class="lede">Las Vegas has two wedding seasons: "gorgeous" and "plan around the heat." Here's the month-by-month picture using official NOAA climate normals, plus the venue rules that change with the calendar.</p>
+<p class="lede">Las Vegas has two wedding seasons: the months that feel wonderful outside, and the months when an early start or an indoor room is the kinder plan. Here's the month-by-month picture using official NOAA climate normals, plus the venue rules that change with the calendar.</p>
 
 {{season-now}}
 
@@ -334,7 +334,7 @@ export const guides = [
     readMins: 6,
     hero: "elope",
     body: `
-<p class="lede">Eloping in Las Vegas is a time-honored tradition, and it's easier than ever. Here's a realistic 48-hour plan that gets you legally married somewhere you'll actually want to remember.</p>
+<p class="lede">People have been eloping in Las Vegas for decades, and we're glad you're thinking about it too. Here's a realistic 48-hour plan that gets you legally married somewhere you'll want to remember.</p>
 
 <h2>Before you fly (one evening of planning)</h2>
 <ul class="checklist">
@@ -390,7 +390,7 @@ export const guides = [
     readMins: 7,
     hero: "desert",
     body: `
-<p class="lede">The desert around Las Vegas is some of the most dramatic wedding scenery in the country, and most of it is public land. That means permits. Here's what each place requires, according to the agencies that manage it.</p>
+<p class="lede">The desert around Las Vegas is a beautiful reason to leave the Strip for a few hours, and most of it is public land. That means permits. Here's what each place requires, according to the agencies that manage it, so you can plan the day with the paperwork in hand.</p>
 
 <div class="note"><strong>The easy route:</strong> hire a planner or chapel that already holds the permit and runs ceremonies there. They handle the paperwork, and the permit is usually built into the package price.</div>
 
@@ -479,7 +479,7 @@ export const guides = [
     readMins: 5,
     hero: "license",
     body: `
-<p class="lede">Some couples want their Vegas wedding to be <em>the</em> wedding. Others are already married, or plan to marry at home, and want Vegas for the experience. Both are great. Here's how to decide, and what to do if you need your Vegas marriage recognized abroad.</p>
+<p class="lede">You might want the Vegas ceremony to be the legal wedding. Or you're already married, or you'll marry at home, and you want the photos and the party here. Either way, we're glad you came. Here's how to decide, and what to do if you need your Vegas marriage recognized abroad.</p>
 
 <h2>A legal ceremony needs four things</h2>
 <ul class="checklist">

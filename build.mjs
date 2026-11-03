@@ -149,7 +149,7 @@ const pinterestCallout = () => {
   <div class="pin-mark" aria-hidden="true">${PINTEREST_ICON}</div>
   <div>
     <h2>Follow us on Pinterest</h2>
-    <p>Planning a Vegas wedding? Follow us on Pinterest for venue ideas, checklists and real inspiration.</p>
+    <p>Planning a Vegas wedding? We'd love to have you along. We pin venue photos, license checklists, and dates worth celebrating.</p>
     <a class="btn btn-primary" href="${esc(href)}" target="_blank" rel="noopener">${PINTEREST_ICON}<span>Follow on Pinterest</span></a>
   </div>
 </aside>`;
@@ -366,7 +366,7 @@ ${body}
 <footer class="site-footer"><div class="wrap">
   <div class="foot-grid">
     <div><div style="margin-bottom:16px">${logoSVG({ width: 236, color: "#FFFFFF", accent: "#E8A0A8", sub: "#9CAF88" })}</div>
-      <p>The independent guide to Las Vegas weddings that don't look like everyone else's. Verified facts, published prices, no fluff.</p>
+      <p>The independent guide to Las Vegas weddings that don't look like everyone else's. We check the prices and spell out the fees, so you can focus on the fun part.</p>
       ${socialLinks()}
     </div>
     <div><h2 class="foot-h">Venues</h2><ul>${CATEGORIES.map((c) => `<li><a href="/venues/category/${c.slug}/">${esc(c.name)}</a></li>`).join("")}</ul></div>
@@ -447,8 +447,8 @@ async function main() {
   <div>
     <span class="eyebrow">The unique Las Vegas wedding guide</span>
     <h1>Unique Las Vegas weddings, <em>off-script.</em></h1>
-    <p class="lede">Neon boneyards, ghost towns, canyon floors, shark tanks and towers 800 feet up. ${venues.length} hand-picked places to say "I do," with verified details, published prices and zero fluff.</p>
-    <div class="hero-cta"><a class="btn btn-primary" href="/venues/">Explore venues</a><a class="btn btn-ghost" href="/guides/las-vegas-marriage-license/">Get the license, step by step</a></div>
+    <p class="lede">Neon boneyards, ghost towns, canyon floors, shark tanks and towers 800 feet up. ${venues.length} places to say "I do," with real prices and the details you'll want to know before you book.</p>
+    <div class="hero-cta"><a class="btn btn-primary" href="/venues/">Browse the venues</a><a class="btn btn-ghost" href="/guides/las-vegas-marriage-license/">Get the license, step by step</a></div>
     <p class="search-label">Or just tell us what you want:</p>
     ${searchBar("hero-q")}
     ${searchExamples(3)}
@@ -462,7 +462,7 @@ async function main() {
 </div></section>
 
 <section><div class="wrap">
-  <div class="section-head"><div><span class="eyebrow">Six ways to say I do</span><h2>Pick your <em>kind</em> of unforgettable</h2></div><a class="btn btn-ghost btn-sm" href="/venues/">See all ${venues.length} venues</a></div>
+  <div class="section-head"><div><span class="eyebrow">Six ways to say I do</span><h2>Pick the wedding that feels like <em>you</em></h2></div><a class="btn btn-ghost btn-sm" href="/venues/">See all ${venues.length} venues</a></div>
   <div class="grid-3">${CATEGORIES.map((c) => `<a class="cat" href="/venues/category/${c.slug}/">${pic("cat-" + c.slug, `/assets/art/cat-${c.slug}.svg`)}<div class="cat-txt"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><span class="n">${venues.filter((v) => v.category === c.slug).length} venues →</span></div></a>`).join("")}</div>
 </div></section>
 
@@ -643,7 +643,7 @@ async function main() {
 </div></section>
 <section style="padding-top:40px"><div class="wrap vlayout">
   <div class="prose">
-    <h2 class="mt0">Why couples choose it</h2>${paras}
+    <h2 class="mt0">Why you'll love it</h2>${paras}
     ${ytBlock(v)}
     <h2>Verified details</h2><ul class="checklist">${(v.facts || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     <h2>Good to know</h2><ul class="checklist">${(v.tips || []).map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
@@ -883,7 +883,7 @@ async function main() {
     description: "Claim your free listing on Unique Vegas Weddings, or upgrade to Featured or Spotlight placement and send couples' inquiries straight to your inbox.",
     body: `<section style="padding-top:48px"><div class="wrap">
   <div class="narrow"><span class="eyebrow">For venues, chapels & planners</span><h1>Get found by couples who want <em>different</em></h1>
-  <p class="lede">Unique Vegas Weddings is built for couples searching beyond the ballroom. If your venue is memorable, it belongs here.</p></div>
+  <p class="lede">Unique Vegas Weddings is for couples looking past the ballroom. If your venue is the kind of place they'd be excited to say yes in, it belongs here.</p></div>
   <h2 class="sr-only">Listing plans</h2>
   <div class="tiers">
     <div class="tier"><h3>Listed</h3><div class="price">Free</div><ul class="checklist"><li>Your venue page with verified details</li><li>Correct or update your info anytime</li><li>Link to your official booking page</li></ul><a class="btn btn-ghost" href="#apply">Claim your listing</a></div>
@@ -1179,7 +1179,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
   const simple = (p, title, description, html) => page(p, { title, description, body: `<section style="padding-top:48px"><div class="wrap narrow prose" style="margin:0 auto"><h1>${title}</h1>${html}</div></section>` });
   simple("/about/", "About Unique Vegas Weddings", "Why we built an independent guide to unique Las Vegas wedding venues, and how we keep it accurate.", `
 <p class="lede">Las Vegas is the wedding capital of the world, and most of the internet's advice about it is either a sales page or ten years out of date. We built the guide we wanted to exist.</p>
-<h2>What we do</h2><p>We curate Las Vegas-area wedding venues that are genuinely distinctive, from neon and desert to sky-high and only-in-Vegas. Then we write about them honestly, in our own words.</p>
+<h2>What we do</h2><p>We pick Las Vegas-area wedding venues you couldn't book in another city: neon, desert, sky-high, and the chapels that still do it the old way. Then we write about them in our own words, with the prices checked, so planning feels a little lighter.</p>
 <h2>How we keep it accurate</h2><ul class="checklist"><li>Every venue fact is checked against the venue's official site, and every listing shows the date we checked.</li><li>Legal and permit information comes from the Clark County Clerk, Nevada State Parks, the BLM, the National Park Service and the U.S. Forest Service, and we link to them.</li><li>We don't copy venue marketing copy or photos. Our illustrations are original, and venues can add their own photos by claiming their listing.</li><li>Paid placements are labeled "Featured" or "Partner." They never change the facts.</li></ul>
 <h2>Independent</h2><p>Unique Vegas Weddings isn't owned by any venue, chapel or resort. Every venue is listed for free, and we pick what goes on the site. Venues can pay for Featured or Spotlight placement, which is always labeled, but paying never gets a venue listed and never changes the facts we publish. Where we use affiliate links or sell something, we say so. See our <a href="/disclosure/">disclosure</a>.</p>
 <p>Spotted something out of date? Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a> or <a href="/contact/">use the contact page</a>.</p>`);

@@ -13,7 +13,7 @@ export const config = {
   domain: "https://uniquevegasweddings.com",
   tagline: "Vegas weddings, off-script.",
   description:
-    "The independent guide to unique Las Vegas wedding venues: neon boneyards, ghost towns, canyon floors and sky-high chapels. Verified facts, honest prices, zero fluff.",
+    "The independent guide to unique Las Vegas wedding venues: neon boneyards, ghost towns, canyon floors and sky-high chapels, with prices we checked for you.",
   contactEmail: "hello@uniquevegasweddings.com", // public contact address
 
   // ---------- LEADS + EMAIL (free tier: formspree.io) ----------
