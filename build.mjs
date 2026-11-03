@@ -105,10 +105,14 @@ const pic = (key, fallback, { alt = "", eager = false, sizes = "(max-width: 620p
   if (!p) return `<img src="${fallback}" alt="${esc(alt)}" width="800" height="1000"${eager ? "" : ' loading="lazy"'}${attrs}>`;
   return `<img src="/assets/photos/${key}-sm.webp" srcset="/assets/photos/${key}-sm.webp 720w, /assets/photos/${key}.webp ${p.w}w" sizes="${sizes}" alt="${esc(alt || p.alt)}" width="${p.w}" height="${p.h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"${attrs}>`;
 };
-const PHOTO_NOTES = { area: "This photo shows the surrounding area, not the venue itself.", operator: "Representative photo, not necessarily this company's aircraft." };
+const PHOTO_NOTES = { area: "This photo shows the surrounding area, not the venue itself.", operator: "Representative photo, not necessarily this company's aircraft.", representative: "Representative photo, not the venue itself." };
+const photoHost = (p) => (/pexels\.com/i.test(p.source) ? "Pexels" : /pixabay\.com/i.test(p.source) ? "Pixabay" : "Unsplash");
 const photoCredit = (key) => {
   const p = PHOTOS[key];
   if (!p) return "";
+  if (p.note === "representative") {
+    return `Representative photo by <a href="${esc(p.source)}" rel="nofollow noopener" target="_blank">${esc(p.creator || "unknown")}</a> on <a href="${esc(p.licenseUrl)}" rel="license nofollow noopener" target="_blank">${photoHost(p)}</a>. This photo is not the venue itself.`;
+  }
   return `${esc(p.alt)}. ${p.note ? esc(PHOTO_NOTES[p.note]) + " " : ""}Photo: <a href="${esc(p.source)}" rel="nofollow noopener" target="_blank">${esc(p.creator || "unknown")}</a>, <a href="${esc(p.licenseUrl)}" rel="license nofollow noopener" target="_blank">${esc(p.license)}</a>.`;
 };
 const ogFor = (name) => (fs.existsSync(path.join(ROOT, "src/assets/og", name + ".png")) ? `/assets/og/${name}.png` : "/assets/og/default.png");
