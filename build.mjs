@@ -3,11 +3,14 @@
 //  Run:  node build.mjs        → writes the finished site to /public
 //  Runs automatically every Monday via .github/workflows/weekly-rebuild.yml
 // =====================================================================
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { config as C } from "./src/data/config.mjs";
+import { HERO_VARIANTS } from "./src/data/hero-variants.mjs";
 import { AFFILIATE_IDS } from "./src/data/affiliates.mjs";
 import { AMAZON_ASSOCIATE_STATEMENT, createAffiliateEngine } from "./scripts/affiliate-links.mjs";
 import { venues as baseVenues, CATEGORIES } from "./src/data/venues.mjs";
@@ -38,6 +41,14 @@ const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").r
 const flatLabel = (l) => String(l).replace(/\s*\(([^)]*)\)/g, ", $1");
 const money = (n) => "$" + Number(n).toLocaleString("en-US");
 const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const agoText = (iso) => {
+  const then = new Date(iso + "T12:00:00");
+  const days = Math.round((new Date(NOW.getFullYear(), NOW.getMonth(), NOW.getDate()) - new Date(then.getFullYear(), then.getMonth(), then.getDate())) / 864e5);
+  if (days === 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days > 1 && days < 7) return `${days} days ago`;
+  return fmtDate(iso);
+};
 const catBy = Object.fromEntries(CATEGORIES.map((c) => [c.slug, c]));
 // Central affiliate tagging: every generated .html page passes through AFF.processHtml(), which tags
 // Amazon/Viator/hotel links, adds rel="sponsored nofollow noopener" and the on-page disclosure note.
@@ -55,6 +66,82 @@ const copyDir = (src, dst) => {
     fs.statSync(s).isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d);
   }
 };
+const hashCache = new Map();
+const fileHash = (abs) => {
+  let h = hashCache.get(abs);
+  if (h) return h;
+  h = crypto.createHash("sha256").update(fs.readFileSync(abs)).digest("hex").slice(0, 8);
+  hashCache.set(abs, h);
+  return h;
+};
+// Stable path + content hash. Immutable caching is safe because the query changes with the bytes.
+const assetUrl = (urlPath) => {
+  const clean = String(urlPath).split("?")[0];
+  const rel = clean.replace(/^\//, "");
+  const pub = path.join(OUT, rel);
+  const src = path.join(ROOT, "src", rel);
+  const abs = fs.existsSync(pub) ? pub : fs.existsSync(src) ? src : "";
+  return abs ? `${clean}?v=${fileHash(abs)}` : clean;
+};
+const runBin = (cmd, args) => new Promise((resolve) => {
+  const p = spawn(cmd, args, { stdio: "ignore" });
+  p.on("error", () => resolve(1));
+  p.on("exit", (code) => resolve(code ?? 1));
+});
+async function prepareImages() {
+  if (await runBin("ffmpeg", ["-version"]) !== 0) {
+    console.warn("ffmpeg not found: serving WebP/PNG only (no AVIF)");
+    return;
+  }
+  const imgDir = path.join(OUT, "assets/img");
+  for (const name of ["planner-cover", "planner-spread"]) {
+    const png = path.join(imgDir, `${name}.png`);
+    if (fs.existsSync(png)) await runBin("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-i", png, "-c:v", "libwebp", "-quality", "80", path.join(imgDir, `${name}.webp`)]);
+  }
+  const photoDir = path.join(OUT, "assets/photos");
+  for (const key of ["hero-1", "hero-2", "hero-3"]) {
+    const src = path.join(photoDir, `${key}-sm.webp`);
+    if (!fs.existsSync(src)) continue;
+    await runBin("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-i", src, "-vf", "scale=480:-2", path.join(photoDir, `${key}-xs.webp`)]);
+  }
+  const webps = fs.readdirSync(photoDir).filter((f) => f.endsWith(".webp"));
+  let cursor = 0, made = 0;
+  async function worker() {
+    while (cursor < webps.length) {
+      const f = webps[cursor++];
+      const code = await runBin("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-i", path.join(photoDir, f), "-c:v", "libaom-av1", "-still-picture", "1", "-crf", "32", "-cpu-used", "8", path.join(photoDir, f.replace(/\.webp$/, ".avif"))]);
+      if (code === 0) made++;
+    }
+  }
+  await Promise.all(Array.from({ length: 8 }, () => worker()));
+  console.log(`AVIF: ${made}/${webps.length}`);
+}
+let PAGE_CSS = "";
+const minifyCss = (css) => css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, " ").replace(/\s*([{}:;,])\s*/g, "$1").replace(/;}/g, "}").trim();
+function loadPageCss() {
+  let css = fs.readFileSync(path.join(ROOT, "src/assets/css/site.css"), "utf8");
+  // The hero uses these three faces. Inlining them removes the late font swap that was the LCP and the layout shift.
+  for (const f of ["inter-latin-400-normal.woff2", "playfair-display-latin-500-normal.woff2", "playfair-display-latin-500-italic.woff2"]) {
+    const b64 = fs.readFileSync(path.join(ROOT, "src/assets/fonts", f)).toString("base64");
+    css = css.replaceAll(`url(/assets/fonts/${f})`, `url("data:font/woff2;base64,${b64}")`);
+  }
+  css = css.replace(/url\((\/assets\/fonts\/[^)\s]+)\)/g, (_, u) => `url(${assetUrl(u)})`);
+  PAGE_CSS = minifyCss(css);
+}
+const gotcha = `<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">`;
+function heroRuntime() {
+  const data = HERO_VARIANTS.map((v) => ({
+    id: v.id,
+    content: v.content || [],
+    campaign: v.campaign || [],
+    source: v.source || [],
+    referrer: v.referrer || [],
+    home: v.home || null,
+    venues: v.venues || null,
+  }));
+  const json = JSON.stringify(data).replace(/</g, "\\u003c").replace(/>/g, "\\u003e");
+  return `<script>(function(){var V=${json};var q;try{q=new URLSearchParams(location.search)}catch(e){return}var src=(q.get("utm_source")||"").toLowerCase(),camp=(q.get("utm_campaign")||"").toLowerCase(),content=(q.get("utm_content")||"").toLowerCase(),host="";try{if(document.referrer)host=new URL(document.referrer).hostname.replace(/^www\\./,"").toLowerCase()}catch(e){}function has(list,val){if(!val||!list)return false;for(var i=0;i<list.length;i++)if(list[i]===val)return true;return false}function refHit(list){if(!host||!list)return false;for(var i=0;i<list.length;i++){var h=list[i];if(host===h||host.slice(-(h.length+1))==="."+h)return true}return false}var best=null,score=0;for(var i=0;i<V.length;i++){var v=V[i],s=0;if(has(v.content,content)||has(v.campaign,camp)||has(v.content,camp)||has(v.campaign,content))s=3;else if(has(v.source,src))s=2;else if(refHit(v.referrer))s=1;if(s>score){score=s;best=v}}if(!best)return;var page=/\\/venues\\/?$/.test(location.pathname)?"venues":"home";var copy=best[page];if(!copy)return;var t=document.querySelector("[data-hero-title]");var sub=document.querySelector("[data-hero-sub]");var cta=document.querySelector("[data-hero-cta]");if(t&&copy.title)t.innerHTML=copy.title;if(sub&&copy.sub)sub.textContent=copy.sub;if(cta&&copy.ctaHref){cta.href=copy.ctaHref;if(copy.cta)cta.textContent=copy.cta}})();</script>`;
+}
 // Outbound links to a venue's own site carry UTM tags, so the venue's analytics show the visit came from us.
 // Clean URLs stay in structured data, llms.txt and venues.json.
 const outUrl = (url, slug) => {
@@ -98,12 +185,36 @@ const ytBlock = (v) => {
     <div class="yt" data-yt="${vid.id}" data-yt-title="${esc(vid.title)}"><button type="button" class="yt-play" aria-label="Play video: ${esc(vid.title)}"><img src="https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-btn" aria-hidden="true"></span></button></div>
     <p class="photo-credit">${what}“${esc(vid.title)},” from the official YouTube channel of <a href="${vid.channelUrl}" rel="nofollow noopener" target="_blank">${esc(vid.channel)}</a>. The video only loads when you press play.</p>`;
 };
-const photoSm = (key, fallback) => (PHOTOS[key] ? `/assets/photos/${key}-sm.webp` : fallback);
-// <img> for a photo key, falling back to the generated illustration when no photo exists.
-const pic = (key, fallback, { alt = "", eager = false, sizes = "(max-width: 620px) 100vw, 33vw", attrs = "" } = {}) => {
+const photoSm = (key, fallback) => assetUrl(PHOTOS[key] ? `/assets/photos/${key}-sm.webp` : fallback);
+// Slot widths stay under the 720w candidate at a 1.75x mobile DPR, so phones
+// don't download the full-size photo. AVIF is added when the build produced it.
+const CARD_SIZES = "(max-width: 620px) calc(100vw - 48px), (max-width: 940px) calc(50vw - 32px), 340px";
+const pic = (key, fallback, { alt = "", eager = false, sizes = CARD_SIZES, attrs = "", priority = "" } = {}) => {
   const p = PHOTOS[key];
-  if (!p) return `<img src="${fallback}" alt="${esc(alt)}" width="800" height="1000"${eager ? "" : ' loading="lazy"'}${attrs}>`;
-  return `<img src="/assets/photos/${key}-sm.webp" srcset="/assets/photos/${key}-sm.webp 720w, /assets/photos/${key}.webp ${p.w}w" sizes="${sizes}" alt="${esc(alt || p.alt)}" width="${p.w}" height="${p.h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"${attrs}>`;
+  if (!p) return `<img src="${assetUrl(fallback)}" alt="${esc(alt)}" width="800" height="1000"${eager ? "" : ' loading="lazy"'}${attrs}>`;
+  const xsFile = path.join(OUT, "assets/photos", `${key}-xs.webp`);
+  const sm = assetUrl(`/assets/photos/${key}-sm.webp`);
+  const full = assetUrl(`/assets/photos/${key}.webp`);
+  const webpSet = fs.existsSync(xsFile)
+    ? `${assetUrl(`/assets/photos/${key}-xs.webp`)} 480w, ${sm} 720w, ${full} ${p.w}w`
+    : `${sm} 720w, ${full} ${p.w}w`;
+  const pri = priority || (eager ? "high" : "");
+  const load = eager ? (pri ? ` fetchpriority="${pri}"` : "") : ' loading="lazy"';
+  const img = `<img src="${sm}" srcset="${webpSet}" sizes="${sizes}" alt="${esc(alt || p.alt)}" width="${p.w}" height="${p.h}"${load} decoding="async"${attrs}>`;
+  const smFile = path.join(OUT, "assets/photos", `${key}-sm.avif`);
+  const fullFile = path.join(OUT, "assets/photos", `${key}.avif`);
+  const xsAvif = path.join(OUT, "assets/photos", `${key}-xs.avif`);
+  if (!fs.existsSync(smFile)) return img;
+  const avifParts = [];
+  if (fs.existsSync(xsAvif)) avifParts.push(`${assetUrl(`/assets/photos/${key}-xs.avif`)} 480w`);
+  avifParts.push(`${assetUrl(`/assets/photos/${key}-sm.avif`)} 720w`);
+  if (fs.existsSync(fullFile)) avifParts.push(`${assetUrl(`/assets/photos/${key}.avif`)} ${p.w}w`);
+  return `<picture><source type="image/avif" srcset="${avifParts.join(", ")}" sizes="${sizes}">${img}</picture>`;
+};
+const raster = (file, alt, w, h) => {
+  const webp = path.join(OUT, "assets/img", `${file}.webp`);
+  const rel = fs.existsSync(webp) ? `/assets/img/${file}.webp` : `/assets/img/${file}.png`;
+  return `<img src="${assetUrl(rel)}" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy" decoding="async">`;
 };
 const PHOTO_NOTES = { area: "This photo shows the surrounding area, not the venue itself.", operator: "Representative photo, not necessarily this company's aircraft.", representative: "Representative photo, not the venue itself." };
 const photoHost = (p) => (/pexels\.com/i.test(p.source) ? "Pexels" : /pixabay\.com/i.test(p.source) ? "Pixabay" : "Unsplash");
@@ -177,7 +288,7 @@ const articleFigure = (key, pin = null) => {
   const canPin = !!(pin && media && pin.url && pin.description);
   const attrs = canPin ? ` data-pin-description="${esc(pin.description)}" data-pin-media="${esc(media)}" data-pin-url="${esc(pin.url)}"` : "";
   const save = canPin ? `<a class="pin-save" href="${esc(pinCreateHref(pin.url, media, pin.description))}" target="_blank" rel="noopener">${PINTEREST_ICON}<span>Save to Pinterest</span></a>` : "";
-  return `<figure class="article-photo">${pic(key, "", { eager: true, sizes: "(max-width: 800px) 100vw, 760px", attrs })}<figcaption class="photo-credit">${photoCredit(key)}${save}</figcaption></figure>`;
+  return `<figure class="article-photo">${pic(key, "", { eager: true, sizes: "(max-width: 800px) calc(100vw - 48px), 720px", attrs })}<figcaption class="photo-credit">${photoCredit(key)}${save}</figcaption></figure>`;
 };
 const budgetBand = (n) => (n == null ? "quote" : n < 1000 ? "1" : n < 3000 ? "2" : n < 10000 ? "3" : "4");
 const BAND_LABEL = { 1: "Under $1,000", 2: "$1,000–$2,999", 3: "$3,000–$9,999", 4: "$10,000+", quote: "Custom quote" };
@@ -253,7 +364,7 @@ function newsletterForm({ title = "Get the free Vegas Wedding Checklist", sub = 
   return `<div class="${dark ? "" : "panel"}">
   <${h} class="mt0 h3">${title}</${h}><p class="small" style="${dark ? "color:#CFC6C4" : ""}">${sub}</p>
   <form action="${formAction(C.formspreeNewsletter)}" ${formAttrs(C.formspreeNewsletter)} data-next="/thanks/?download=checklist" class="inline-form">
-    <input type="hidden" name="list" value="newsletter"><input type="hidden" name="_subject" value="UVW: new checklist signup"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="list" value="newsletter"><input type="hidden" name="_subject" value="UVW: new checklist signup">${gotcha}
     <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address">
     <button class="btn btn-primary" type="submit">Send it</button>
   </form></div>`;
@@ -267,7 +378,7 @@ const searchBar = (id, placeholder = "Outdoor wedding under $2,500 for 40 guests
 const searchExamples = (n = 6) => `<div class="chips" data-search-examples>${SEARCH_EXAMPLES.slice(0, n).map((q) => `<a class="chip" href="/search/?q=${encodeURIComponent(q)}">${esc(q)}</a>`).join("")}</div>`;
 
 function plannerCta() {
-  return `<div class="promo"><img src="/assets/img/planner-cover.png" alt="Cover of The Unique Vegas Wedding Planner" width="140" height="181" loading="lazy">
+  return `<div class="promo">${raster("planner-cover", "Cover of The Unique Vegas Wedding Planner", 140, 181)}
   <div><h3>The Unique Vegas Wedding Planner</h3><p>Our printable planner: 25 pages of timelines, license and document checklists, a budget worksheet, venue comparison sheets and day-of schedules, built specifically for Las Vegas.</p>
   <a class="btn btn-primary btn-sm" href="/planner/">Get the planner · ${esc(C.plannerPrice)}</a></div></div>`;
 }
@@ -302,9 +413,10 @@ const NAV = [
   ["/venues/", "Venues"], ["/guides/", "Guides"], ["/blog/", "Off-Script"], ["/lucky-wedding-dates/", "Lucky dates"], ["/planner/", "Planner"], ["/for-venues/", "For venues"],
 ];
 let TRUST = null; // set in main() once venues load
+let SEASON = { banner: "", months: new Set() };
 const CHECK = `<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const trustStrip = () => (TRUST ? `<div class="trust-strip"><div class="wrap">
-  <span class="ts-live"><span class="ts-dot" aria-hidden="true"></span><span>Updated <time datetime="${TRUST.updated}" data-ago>${fmtDate(TRUST.updated)}</time></span></span>
+  <span class="ts-live"><span class="ts-dot" aria-hidden="true"></span><span>Updated <time datetime="${TRUST.updated}" data-ago>${agoText(TRUST.updated)}</time></span></span>
   ${TRUST.post ? `<a class="ts-item ts-new" href="/blog/${TRUST.post.slug}/">New on Off-Script: ${esc(TRUST.post.title)}</a>` : ""}
   <a class="ts-item" href="/about/">${CHECK}<span class="ts-long">${TRUST.venues} venues checked against official sources</span><span class="ts-short">${TRUST.venues} venues fact-checked</span></a>
   <a class="ts-item ts-ind" href="/disclosure/">${CHECK}<span>Independent<span class="ts-long">, paid spots always labeled</span></span></a>
@@ -319,7 +431,7 @@ function layout({ path: p, title, seoTitle, description, body, og = "default", i
   const ogImg = C.domain + (image ? image.path : ogFor(og));
   const ogW = image ? image.w : 1200, ogH = image ? image.h : 630;
   return `<!doctype html>
-<html lang="en"${C.ga4Id ? ` data-ga="${esc(C.ga4Id)}" data-consent="${esc(C.consentMode || "eu")}"` : ""}>
+<html lang="en" data-built="${ISO}"${C.ga4Id ? ` data-ga="${esc(C.ga4Id)}" data-consent="${esc(C.consentMode || "eu")}"` : ""}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -338,19 +450,17 @@ ${C.googleSiteVerification ? `<meta name="google-site-verification" content="${e
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="${esc(C.siteName)}" href="/feed.xml">
-<link rel="preload" href="/assets/fonts/playfair-display-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=${ISO}">
+<style>${PAGE_CSS}</style>
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}
 ${C.adsenseClient ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${C.adsenseClient}" crossorigin="anonymous"></script>` : ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 ${trustStrip()}
-<div class="notice" data-lucky-banner hidden></div>
-<div class="notice" data-months="11" hidden>&#10022; Heads up: Valley of Fire closes to all visitors <strong>December 1–14</strong>, and no weddings are allowed. <a href="/guides/desert-wedding-permits/">Desert permit guide</a></div>
-<div class="notice" data-months="12" data-until-day="12-14" hidden>&#10022; Valley of Fire is closed through <strong>December 14</strong>. Red Rock, Lake Mead and the chapels are open. <a href="/venues/category/desert-outdoors/">Other desert venues</a></div>
-<div class="notice" data-months="6,7,8" hidden>&#10022; Summer in Las Vegas means 100°F+ average highs. <a href="/guides/best-time-to-get-married-in-las-vegas/">How to plan a heat-smart wedding</a></div>
+<div class="notice" data-lucky-banner data-built="${ISO}"${SEASON.banner ? "" : " hidden"}>${SEASON.banner}</div>
+<div class="notice" data-months="11"${SEASON.months.has(11) ? "" : " hidden"}>&#10022; Heads up: Valley of Fire closes to all visitors <strong>December 1–14</strong>, and no weddings are allowed. <a href="/guides/desert-wedding-permits/">Desert permit guide</a></div>
+<div class="notice" data-months="12" data-until-day="12-14"${SEASON.months.has(12) ? "" : " hidden"}>&#10022; Valley of Fire is closed through <strong>December 14</strong>. Red Rock, Lake Mead and the chapels are open. <a href="/venues/category/desert-outdoors/">Other desert venues</a></div>
+<div class="notice" data-months="6,7,8"${[6, 7, 8].some((m) => SEASON.months.has(m)) ? "" : " hidden"}>&#10022; Summer in Las Vegas means 100°F+ average highs. <a href="/guides/best-time-to-get-married-in-las-vegas/">How to plan a heat-smart wedding</a></div>
 <header class="site-header"><div class="wrap">
   <a class="brand" href="/" aria-label="${esc(C.siteName)} home">${logoSVG({ width: 236 })}</a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -379,9 +489,9 @@ ${C.ga4Id ? `<div class="consent" data-consent-banner role="dialog" aria-label="
   <p><strong>Cookies?</strong> We use Google Analytics to see which pages help couples most. No ad tracking. <a href="/privacy/">Privacy policy</a></p>
   <div class="consent-btns"><button type="button" class="btn btn-ghost btn-sm" data-consent-choice="denied">Decline</button><button type="button" class="btn btn-primary btn-sm" data-consent-choice="granted">Accept</button></div>
 </div>` : ""}
-<script src="/assets/js/lucky.js?v=${ISO}" defer></script>
-<script src="/assets/js/main.js?v=${ISO}" defer></script>
-${scripts.map((x) => `<script src="${x}?v=${ISO}" defer></script>`).join("\n")}
+<script src="${assetUrl("/assets/js/lucky.js")}" defer></script>
+<script src="${assetUrl("/assets/js/main.js")}" defer></script>
+${scripts.map((x) => `<script src="${assetUrl(x)}" defer></script>`).join("\n")}
 </body>
 </html>`;
 }
@@ -419,6 +529,23 @@ async function main() {
   write("assets/img/mark.svg", markSVG(64));
   write("favicon.svg", markSVG(64));
   write("assets/img/sparkle.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 0Q11 9 20 10Q11 11 10 20Q9 11 0 10Q9 9 10 0Z" fill="#000"/></svg>`);
+  await prepareImages();
+  loadPageCss();
+  const bigLucky = L.upcoming(NOW, 12, 9).find((a) => {
+    const dd = (new Date(a.y, a.m - 1, a.d) - NOW) / 864e5;
+    return dd >= 0 && dd <= 150;
+  });
+  if (bigLucky) {
+    const d2 = Math.ceil((new Date(bigLucky.y, bigLucky.m - 1, bigLucky.d) - NOW) / 864e5);
+    SEASON = { banner: `&#10022; <strong>${bigLucky.short}</strong> is ${d2} days away (${bigLucky.tags.join(" + ")}). Chapels book up fast. <a href="/lucky-wedding-dates/">See all lucky dates</a>`, months: new Set() };
+  } else {
+    const mo = NOW.getMonth() + 1;
+    const months = new Set();
+    if (mo === 11) months.add(11);
+    if (mo === 12 && NOW.getDate() <= 14) months.add(12);
+    if (mo === 6 || mo === 7 || mo === 8) months.add(mo);
+    SEASON = { banner: "", months };
+  }
 
   const sitemap = [];
   const page = (p, opts) => { const modified = opts.modified || FACTS_CHECKED; write(p === "/" ? "index.html" : p.replace(/^\//, "") + "index.html", layout({ path: p, ...opts, modified })); if (!opts.noindex) sitemap.push([p, modified]); };
@@ -427,11 +554,26 @@ async function main() {
   const priced = venues.filter((v) => v.priceFrom);
   const priceMin = Math.min(...priced.map((v) => v.priceFrom)), priceMax = Math.max(...priced.map((v) => v.priceFrom));
   const sortedByPrice = [...venues].sort((a, b) => (a.priceFrom ?? 1e9) - (b.priceFrom ?? 1e9));
-  const rotation = venues.map((v) => ({ name: v.name, bestFor: v.bestFor, meta: `${catBy[v.category].name} · ${v.area}${v.priceFrom ? " · from " + money(v.priceFrom) : ""}`, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`), featured: !!v.featured }));
   const week = Math.floor((NOW - new Date(2026, 0, 5)) / 6048e5);
   const featPool = venues.filter((v) => v.featured);
-  const votw = (featPool.length ? featPool : venues)[((week % (featPool.length || venues.length)) + (featPool.length || venues.length)) % (featPool.length || venues.length)];
+  const rotPool = featPool.length ? featPool : venues;
+  const rotN = rotPool.length;
+  const rotAt = (off) => rotPool[((week + off) % rotN + rotN) % rotN];
+  const votw = rotAt(0);
+  const rotItem = (v) => ({ name: v.name, bestFor: v.bestFor, meta: `${catBy[v.category].name} · ${v.area}${v.priceFrom ? " · from " + money(v.priceFrom) : ""}`, url: `/venues/${v.slug}/`, img: photoSm(v.slug, `/assets/art/${v.slug}.svg`) });
+  const rotPayload = [0, 1, 2, 3].map((off) => rotItem(rotAt(off)));
   const nextLucky = L.upcoming(NOW, 6, 5);
+  const daysUntil = (a) => Math.round((Date.UTC(a.y, a.m - 1, a.d) - Date.UTC(NOW.getFullYear(), NOW.getMonth(), NOW.getDate())) / 864e5);
+  const whenLabel = (a) => (daysUntil(a) < 0 ? "Passed" : daysUntil(a) === 0 ? "Today!" : daysUntil(a) === 1 ? "Tomorrow" : `In ${daysUntil(a)} days`);
+  const luckyHomeItem = (a) => `<li class="lucky-item${daysUntil(a) < 0 ? " past" : ""}"><div class="lucky-date">${a.short}</div><div><strong>${esc(a.long)}</strong><div class="tags">${a.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div></div><div class="lucky-when">${whenLabel(a)}${daysUntil(a) < 0 ? "" : `<a class="lucky-cd" href="/tools/wedding-countdown/?d=${a.iso}">Count down</a>`}</div></li>`;
+  const nx = L.upcoming(NOW, 1, 6)[0];
+  const nxHtml = nx ? `<strong>${nx.short}</strong> ${daysUntil(nx) === 0 ? "is today" : `is ${daysUntil(nx)} days away`} &middot; ${nx.tags.join(" + ")}` : "";
+  const bentoClass = ["bento-feature", "bento-tile", "bento-tile", "bento-wide", "bento-wide", "bento-wide"];
+  const bentoSizes = {
+    "bento-feature": "(max-width: 620px) calc(100vw - 48px), (max-width: 940px) calc(100vw - 48px), 560px",
+    "bento-tile": "(max-width: 620px) calc(100vw - 48px), (max-width: 940px) calc(50vw - 32px), 270px",
+    "bento-wide": "(max-width: 620px) calc(100vw - 48px), (max-width: 940px) calc(100vw - 48px), 540px",
+  };
 
   const homeFaq = [
     { q: "What is Unique Vegas Weddings?", a: `Unique Vegas Weddings is an independent guide to distinctive Las Vegas-area wedding venues. It lists ${venues.length} venues in ${CATEGORIES.length} categories, with published starting prices and facts checked against official sources.` },
@@ -446,29 +588,30 @@ async function main() {
 <section class="hero"><div class="wrap">
   <div>
     <span class="eyebrow">The unique Las Vegas wedding guide</span>
-    <h1>Unique Las Vegas weddings, <em>off-script.</em></h1>
-    <p class="lede">Neon boneyards, ghost towns, canyon floors, shark tanks and towers 800 feet up. ${venues.length} places to say "I do," with real prices and the details you'll want to know before you book.</p>
-    <div class="hero-cta"><a class="btn btn-primary" href="/venues/">Browse the venues</a><a class="btn btn-ghost" href="/guides/las-vegas-marriage-license/">Get the license, step by step</a></div>
+    <h1 data-hero-title>Unique Las Vegas weddings, <em>off-script.</em></h1>
+    <p class="lede" data-hero-sub>Neon boneyards, ghost towns, canyon floors, shark tanks and towers 800 feet up. ${venues.length} places to say "I do," with real prices and the details you'll want to know before you book.</p>
+    <div class="hero-cta"><a class="btn btn-primary" data-hero-cta href="/venues/">Browse the venues</a><a class="btn btn-ghost" href="/guides/las-vegas-marriage-license/">Get the license, step by step</a></div>
+    ${heroRuntime()}
     <p class="search-label">Or just tell us what you want:</p>
     ${searchBar("hero-q")}
     ${searchExamples(3)}
   </div>
   <div class="arches" aria-hidden="true">
-    <div class="a a1">${pic("hero-1", "/assets/art/the-neon-museum.svg", { eager: true, sizes: "(max-width: 940px) 55vw, 28vw" })}</div>
-    <div class="a a2">${pic("hero-2", "/assets/art/valley-of-fire-state-park.svg", { eager: true, sizes: "(max-width: 940px) 45vw, 22vw" })}</div>
-    <div class="a a3">${pic("hero-3", "/assets/art/strat-chapel-in-the-clouds.svg", { eager: true, sizes: "(max-width: 940px) 45vw, 22vw" })}</div>
+    <div class="a a1">${pic("hero-1", "/assets/art/the-neon-museum.svg", { eager: true, sizes: "(max-width: 940px) 46vw, 280px" })}</div>
+    <div class="a a2">${pic("hero-2", "/assets/art/valley-of-fire-state-park.svg", { eager: true, priority: "low", sizes: "(max-width: 940px) 34vw, 210px" })}</div>
+    <div class="a a3">${pic("hero-3", "/assets/art/strat-chapel-in-the-clouds.svg", { eager: true, priority: "low", sizes: "(max-width: 940px) 34vw, 210px" })}</div>
     <div class="hero-badge"><strong>$102</strong>License fee. No waiting period. Open until midnight, every day.</div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="section-head"><div><span class="eyebrow">Six ways to say I do</span><h2>Pick the wedding that feels like <em>you</em></h2></div><a class="btn btn-ghost btn-sm" href="/venues/">See all ${venues.length} venues</a></div>
-  <div class="grid-3">${CATEGORIES.map((c) => `<a class="cat" href="/venues/category/${c.slug}/">${pic("cat-" + c.slug, `/assets/art/cat-${c.slug}.svg`)}<div class="cat-txt"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><span class="n">${venues.filter((v) => v.category === c.slug).length} venues →</span></div></a>`).join("")}</div>
+  <div class="bento">${CATEGORIES.map((c, i) => { const klass = bentoClass[i] || "bento-tile"; return `<a class="cat ${klass}" href="/venues/category/${c.slug}/">${pic("cat-" + c.slug, `/assets/art/cat-${c.slug}.svg`, { sizes: bentoSizes[klass] || bentoSizes["bento-tile"] })}<div class="cat-txt"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><span class="n">${venues.filter((v) => v.category === c.slug).length} venues →</span></div></a>`; }).join("")}</div>
 </div></section>
 
 <section class="band-blush"><div class="wrap">
-  <div class="grid-2" style="align-items:center" data-rotation='${esc(JSON.stringify(rotation))}'>
-    <a data-rot-link href="/venues/${votw.slug}/" class="cat" style="max-width:420px"><img data-rot-img src="${photoSm(votw.slug, `/assets/art/${votw.slug}.svg`)}" alt="" width="800" height="1000" loading="lazy"></a>
+  <div class="grid-2" style="align-items:center" data-rotation='${esc(JSON.stringify(rotPayload))}' data-rot-week="${week}">
+    <a data-rot-link href="/venues/${votw.slug}/" class="cat" style="max-width:420px" aria-label="${esc(votw.name)}"><img data-rot-img src="${photoSm(votw.slug, `/assets/art/${votw.slug}.svg`)}" alt="" width="800" height="1000" loading="lazy"></a>
     <div><span class="eyebrow">Venue of the week</span><h2 class="mt0" data-rot-name>${esc(votw.name)}</h2>
       <p class="small" data-rot-meta>${esc(catBy[votw.category].name)} · ${esc(votw.area)}${votw.priceFrom ? " · from " + money(votw.priceFrom) : ""}</p>
       <p class="lede" data-rot-blurb>${esc(votw.bestFor)}</p>
@@ -480,9 +623,9 @@ async function main() {
   <div class="grid-2" style="align-items:start">
     <div><span class="eyebrow" style="color:var(--sage)">Lucky dates</span><h2 class="mt0">The dates <em>everyone</em> wants</h2>
       <p>Pattern dates like 6/26/26 are huge in Las Vegas. On that day, one chapel group alone scheduled about 130 weddings (News 3 Las Vegas). Here are the next special dates on the calendar. This list updates itself.</p>
-      <p class="next-lucky" style="color:#CFC6C4" data-lucky-next></p>
+      <p class="next-lucky" style="color:#CFC6C4" data-lucky-next data-built="${ISO}">${nxHtml}</p>
       <a class="btn btn-light" href="/lucky-wedding-dates/">All lucky dates by year</a></div>
-    <ul class="lucky-list" data-lucky-upcoming="5">${nextLucky.slice(0, 5).map((a) => `<li class="lucky-item"><div class="lucky-date">${a.short}</div><div><strong>${a.long}</strong><div class="tags">${a.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div></div><div class="lucky-when"></div></li>`).join("")}</ul>
+    <ul class="lucky-list" data-lucky-upcoming="5" data-built="${ISO}">${nextLucky.slice(0, 5).map(luckyHomeItem).join("")}</ul>
   </div>
 </div></section>
 
@@ -492,7 +635,7 @@ async function main() {
 </div></section>
 
 <section class="band-sage"><div class="wrap product">
-  <div class="product-shot"><img src="/assets/img/planner-cover.png" alt="The Unique Vegas Wedding Planner cover" width="560" height="724" loading="lazy"><img src="/assets/img/planner-spread.png" alt="Inside pages of the planner" width="560" height="724" loading="lazy"></div>
+  <div class="product-shot">${raster("planner-cover", "The Unique Vegas Wedding Planner cover", 560, 724)}${raster("planner-spread", "Inside pages of the planner", 560, 724)}</div>
   <div><span class="eyebrow">Printable planner</span><h2 class="mt0">Everything in one place, <em>Vegas-specific</em></h2>
     <p class="lede">Generic wedding planners don't know about the $102 license, the one-witness rule, the Valley of Fire closure or Red Rock's timed entry. Ours does.</p>
     <ul class="checklist"><li>12-week, 4-week and day-of timelines</li><li>License, ID and certified copy checklists</li><li>Budget worksheet and venue comparison sheets</li><li>Guest list, vendor contacts and vows worksheet</li></ul>
@@ -522,6 +665,22 @@ async function main() {
   });
 
   // ================= DIRECTORY =================
+  const VENUE_PAGE = 24;
+  const venueRecord = (v) => {
+    const c = catBy[v.category];
+    return {
+      s: v.slug, n: v.name, c: v.category, cn: c.name,
+      st: (v.setting || "").toLowerCase(), b: budgetBand(v.priceFrom),
+      q: [v.name, v.area, c.name, ...(v.vibe || [])].join(" ").toLowerCase(),
+      p: v.priceFrom ?? "", g: v.guestMax ?? "", k: v.checked || "",
+      ns: v.name.replace(/^The\s+/i, "").toLowerCase(),
+      badge: v.status === "partner" ? "Partner" : v.featured ? "Featured" : "",
+      area: v.area, setting: v.setting || "",
+      price: v.priceFrom ? money(v.priceFrom) : "",
+      img: pic(v.slug, `/assets/art/${v.slug}.svg`),
+    };
+  };
+  const venueCatalogJson = JSON.stringify(venues.map(venueRecord)).replace(/</g, "\\u003c");
   const filters = `<div class="filters">
     <label>Search<input type="search" data-filter-q placeholder="Neon, desert, Elvis…"></label>
     <label>Category<select data-filter="cat"><option value="all">All categories</option>${CATEGORIES.map((c) => `<option value="${c.slug}">${esc(c.name)}</option>`).join("")}</select></label>
@@ -535,13 +694,17 @@ async function main() {
     schema: [crumbSchema([["Home", "/"], ["Venues", "/venues/"]]), { "@context": "https://schema.org", "@type": "ItemList", itemListElement: venues.map((v, i) => ({ "@type": "ListItem", position: i + 1, url: `${C.domain}/venues/${v.slug}/`, name: v.name })) }],
     body: `<section style="padding-top:48px"><div class="wrap">
   ${crumbs([["Home", "/"], ["Venues", "/venues/"]])}
-  <span class="eyebrow">The directory</span><h1>Unique Las Vegas <em>wedding venues</em></h1>
-  <p class="lede narrow">${venues.length} places to get married that aren't another hotel ballroom. Prices are the venue's own published "from" prices on the date we checked. Always confirm before booking.</p>
+  <span class="eyebrow">The directory</span><h1 data-hero-title>Unique Las Vegas <em>wedding venues</em></h1>
+  <p class="lede narrow" data-hero-sub>${venues.length} places to get married that aren't another hotel ballroom. Prices are the venue's own published "from" prices on the date we checked. Always confirm before booking.</p>
+  ${heroRuntime()}
   ${filters}
-  <p class="small" style="margin:-10px 0 20px">Not sure what to filter? <a href="/search/">Describe the wedding you want in plain words</a>.</p>
-  <h2 class="sr-only">All venues</h2>
-  <div class="grid-3" data-filter-grid>${venues.map(venueCard).join("")}</div>
+  <p class="small" style="margin:-12px 0 20px">Not sure what to filter? <a href="/search/">Describe the wedding you want in plain words</a>.</p>
+  <h2 class="sr-only">Venue cards</h2>
+  <div class="grid-3" data-filter-grid data-page-size="${VENUE_PAGE}">${venues.slice(0, VENUE_PAGE).map(venueCard).join("")}</div>
   <p data-filter-empty hidden class="center">No venues match those filters. Try widening the budget or setting.</p>
+  ${venues.length > VENUE_PAGE ? `<p class="more-row"><a class="btn btn-ghost" href="#all-venues" data-venue-more>Show more venues</a></p>` : ""}
+  <nav class="venue-index" id="all-venues" aria-label="All venues"><h2>All venues</h2><p>${venues.map((v) => `<a href="/venues/${v.slug}/">${esc(v.name)}</a>`).join("")}</p></nav>
+  <script type="application/json" id="venue-catalog">${venueCatalogJson}</script>
 </div></section>`,
   });
 
@@ -592,7 +755,7 @@ async function main() {
     const sidebar = inquiryId
       ? `<div class="panel"><h3>Check availability</h3><p class="small">Your request goes directly to ${esc(v.name)}.</p>
         <form action="${formAction(inquiryId)}" ${formAttrs(inquiryId)} data-next="/thanks/?sent=inquiry">
-          <input type="hidden" name="venue" value="${esc(v.name)}"><input type="hidden" name="_subject" value="UVW venue inquiry: ${esc(v.name)}"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="venue" value="${esc(v.name)}"><input type="hidden" name="_subject" value="UVW venue inquiry: ${esc(v.name)}"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field"><label for="iq-n">Your names</label><input id="iq-n" name="names" required></div>
           <div class="field"><label for="iq-e">Email</label><input id="iq-e" type="email" name="email" required></div>
           <div class="row2"><div class="field"><label for="iq-d">Date</label><input id="iq-d" type="date" name="date"></div><div class="field"><label for="iq-g">Guests</label><input id="iq-g" type="number" min="0" name="guests"></div></div>
@@ -642,7 +805,7 @@ async function main() {
     </div>
 <p class="small">Prices change, so always confirm directly with the venue.</p>
   </div>
-  <figure class="art-fig"><div class="art">${pic(v.slug, `/assets/art/${v.slug}.svg`, { alt: PHOTOS[v.slug] ? "" : "Illustration for " + v.name, eager: true, sizes: "(max-width: 940px) 100vw, 560px" })}</div>${PHOTOS[v.slug] ? `<figcaption class="photo-credit">${photoCredit(v.slug)}</figcaption>` : ""}</figure>
+  <figure class="art-fig"><div class="art">${pic(v.slug, `/assets/art/${v.slug}.svg`, { alt: PHOTOS[v.slug] ? "" : "Illustration for " + v.name, eager: true, sizes: "(max-width: 940px) calc(100vw - 48px), 540px" })}</div>${PHOTOS[v.slug] ? `<figcaption class="photo-credit">${photoCredit(v.slug)}</figcaption>` : ""}</figure>
 </div></section>
 <section style="padding-top:40px"><div class="wrap vlayout">
   <div class="prose">
@@ -861,9 +1024,9 @@ async function main() {
   page("/planner/", {
     title: "The Unique Vegas Wedding Planner (Printable PDF)", og: "planner",
     description: "A 25-page printable Las Vegas wedding planner: timelines, license and document checklists, budget worksheet, venue comparisons, guest list, day-of schedule and vows worksheet.",
-    schema: [{ "@context": "https://schema.org", "@type": "Product", name: "The Unique Vegas Wedding Planner", description: "25-page printable Las Vegas wedding planner (PDF).", image: C.domain + "/assets/img/planner-cover.png", brand: { "@type": "Brand", name: C.siteName }, ...(C.plannerCheckoutUrl ? { offers: { "@type": "Offer", price: C.plannerPrice.replace(/[^0-9.]/g, ""), priceCurrency: "USD", url: C.plannerCheckoutUrl, availability: "https://schema.org/InStock" } } : {}) }],
+    schema: [{ "@context": "https://schema.org", "@type": "Product", name: "The Unique Vegas Wedding Planner", description: "25-page printable Las Vegas wedding planner (PDF).", image: C.domain + (fs.existsSync(path.join(OUT, "assets/img/planner-cover.webp")) ? "/assets/img/planner-cover.webp" : "/assets/img/planner-cover.png"), brand: { "@type": "Brand", name: C.siteName }, ...(C.plannerCheckoutUrl ? { offers: { "@type": "Offer", price: C.plannerPrice.replace(/[^0-9.]/g, ""), priceCurrency: "USD", url: C.plannerCheckoutUrl, availability: "https://schema.org/InStock" } } : {}) }],
     body: `<section style="padding-top:48px"><div class="wrap product">
-  <div class="product-shot"><img src="/assets/img/planner-cover.png" alt="Planner cover" width="560" height="724"><img src="/assets/img/planner-spread.png" alt="Planner inside page" width="560" height="724"></div>
+  <div class="product-shot">${raster("planner-cover", "Planner cover", 560, 724)}${raster("planner-spread", "Planner inside page", 560, 724)}</div>
   <div><span class="eyebrow">Printable PDF · 25 pages</span><h1>The Unique Vegas <em>Wedding Planner</em></h1>
     <p class="lede">A planner built for Las Vegas, not a generic wedding binder with a cactus on the cover.</p>
     ${buy}
@@ -900,7 +1063,7 @@ async function main() {
   <ul class="checklist"><li>Photos must be yours or properly licensed</li><li>We verify facts against your official site</li><li>Weddings must be currently offered</li></ul></div>
   <div class="panel"><form action="${formAction(C.formspreePartner)}" ${formAttrs(C.formspreePartner)} data-next="/thanks/?sent=partner">
     <input type="hidden" name="_subject" value="UVW: venue listing application">
-    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="field"><label for="pv">Venue or business name</label><input id="pv" name="venue" required></div>
     <div class="row2"><div class="field"><label for="pn">Your name</label><input id="pn" name="name" required></div><div class="field"><label for="pr">Your role</label><input id="pr" name="role"></div></div>
     <div class="field"><label for="pe">Work email</label><input id="pe" type="email" name="email" required></div>
@@ -1178,7 +1341,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
   <div><span class="eyebrow">Saved on this device</span><h1>Your <em>shortlist</em></h1><ul class="shortlist-list" data-sl-list></ul><a class="btn btn-ghost btn-sm" href="/venues/">Keep browsing</a></div>
   <div class="panel"><h2 class="mt0 h3">Email me my shortlist</h2><p class="small">We'll send the list with links, plus the free Vegas wedding checklist.</p>
     <form action="${formAction(C.formspreeNewsletter)}" ${formAttrs(C.formspreeNewsletter)} data-next="/thanks/?download=checklist">
-      <input type="hidden" name="list" value="shortlist"><input type="hidden" name="_subject" value="UVW: shortlist request"><input type="hidden" name="shortlist" data-sl-field><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="list" value="shortlist"><input type="hidden" name="_subject" value="UVW: shortlist request"><input type="hidden" name="shortlist" data-sl-field><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field"><label for="sle">Email</label><input id="sle" type="email" name="email" required></div>
       <div class="field"><label for="sld">Wedding date (if you know it)</label><input id="sld" type="date" name="date"></div>
       <button class="btn btn-primary" type="submit" style="width:100%">Send my shortlist</button>

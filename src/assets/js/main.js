@@ -7,6 +7,8 @@
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
   var now = new Date();
+  var todayIso = now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2);
+  var builtToday = document.documentElement.getAttribute("data-built") === todayIso;
 
   // ---------- cookie consent + Google Analytics ----------
   (function () {
@@ -40,9 +42,28 @@
       if (banner) banner.hidden = true;
       if (v === "granted") loadGA(); else stopGA();
     }
-    if (choice === "granted") loadGA();
+    function armGA() {
+      var kicked = false;
+      function kick() {
+        if (kicked || loaded) return;
+        kicked = true;
+        var run = function () { loadGA(); };
+        var later = function () {
+          if (window.requestIdleCallback) window.requestIdleCallback(run, { timeout: 2000 });
+          else setTimeout(run, 1);
+        };
+        if (document.readyState === "complete") later();
+        else window.addEventListener("load", later);
+      }
+      ["pointerdown", "keydown", "touchstart"].forEach(function (ev) {
+        window.addEventListener(ev, kick, { once: true, passive: true, capture: true });
+      });
+      if (document.readyState === "complete") kick();
+      else window.addEventListener("load", kick);
+    }
+    if (choice === "granted") armGA();
     else if (choice === "denied" || gpc) { /* stay off */ }
-    else if (mode === "off" || !mustAsk) loadGA();
+    else if (mode === "off" || !mustAsk) armGA();
     else if (banner) banner.hidden = false;
     document.addEventListener("click", function (e) {
       var b = e.target.closest("[data-consent-choice]"); if (b) return decide(b.getAttribute("data-consent-choice"));
@@ -62,6 +83,7 @@
 
   // ---------- trust strip: "Updated today / yesterday / 3 days ago" ----------
   $$("time[data-ago]").forEach(function (t) {
+    if (builtToday) return;
     var d = t.getAttribute("datetime").split("-").map(Number);
     var days = Math.round((new Date(now.getFullYear(), now.getMonth(), now.getDate()) - new Date(d[0], d[1] - 1, d[2])) / 864e5);
     if (days === 0) t.textContent = "today";
@@ -71,7 +93,7 @@
 
   // ---------- season-aware blocks: <div data-months="6,7,8"> ----------
   var mo = now.getMonth() + 1, dayOfMonth = now.getDate();
-  $$("[data-months]").forEach(function (el) {
+  if (!builtToday) $$("[data-months]").forEach(function (el) {
     var list = el.getAttribute("data-months").split(",").map(Number);
     var until = el.getAttribute("data-until-day"); // optional e.g. "12-14"
     var show = list.indexOf(mo) > -1;
@@ -88,14 +110,15 @@
     try {
       var items = JSON.parse(rot.getAttribute("data-rotation"));
       var week = Math.floor((now - new Date(2026, 0, 5)) / 6048e5);
-      var featured = items.filter(function (v) { return v.featured; });
-      var pool = featured.length ? featured : items;
-      var v = pool[((week % pool.length) + pool.length) % pool.length];
+      var delta = week - (+rot.getAttribute("data-rot-week") || 0);
+      var v = delta > 0 && delta < items.length ? items[delta] : null;
       if (v) {
         rot.querySelector("[data-rot-name]").textContent = v.name;
         rot.querySelector("[data-rot-blurb]").textContent = v.bestFor;
         rot.querySelector("[data-rot-meta]").textContent = v.meta;
         $$("[data-rot-link]", rot).forEach(function (a) { a.href = v.url; });
+        var catLink = rot.querySelector("a.cat[data-rot-link]");
+        if (catLink) catLink.setAttribute("aria-label", v.name);
         var img = rot.querySelector("[data-rot-img]"); if (img) img.src = v.img;
       }
     } catch (e) {}
@@ -109,9 +132,9 @@
     return '<li class="lucky-item' + (a.iso < todayIso ? " past" : "") + '"><div class="lucky-date">' + a.short + '</div><div><strong>' + a.long + '</strong><div class="tags">' +
       a.tags.map(function (t) { return '<span class="tag">' + t + "</span>"; }).join("") + '</div></div><div class="lucky-when">' + when + (a.iso >= todayIso ? '<a class="lucky-cd" href="/tools/wedding-countdown/?d=' + a.iso + '">Count down</a>' : "") + "</div></li>";
   }
-  var todayIso = now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2);
   if (L) {
     $$("[data-lucky-upcoming]").forEach(function (el) {
+      if (el.getAttribute("data-built") === todayIso && el.children.length) return;
       var n = +el.getAttribute("data-lucky-upcoming") || 5;
       el.innerHTML = L.upcoming(now, n, 5).map(function (a) { return dateCard(a, todayIso); }).join("");
     });
@@ -136,7 +159,7 @@
     }
     if (yearList && !yearSel) renderYear(+yearList.getAttribute("data-start-year") || now.getFullYear());
     var countdown = $("[data-lucky-next]");
-    if (countdown) {
+    if (countdown && countdown.getAttribute("data-built") !== todayIso) {
       var nx = L.upcoming(now, 1, 6)[0];
       if (nx) {
         var dd = Math.round((new Date(nx.y, nx.m - 1, nx.d) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
@@ -193,51 +216,107 @@
   var grid = $("[data-filter-grid]");
   if (grid) {
     var state = { cat: "all", setting: "all", budget: "all", q: "" };
-    var cards = $$("[data-venue]", grid);
     var empty = $("[data-filter-empty]");
     var countEl = $("[data-filter-count]");
-    function apply() {
-      var shown = 0;
-      cards.forEach(function (c) {
-        var ok = (state.cat === "all" || c.getAttribute("data-cat") === state.cat) &&
-          (state.setting === "all" || c.getAttribute("data-setting").indexOf(state.setting) > -1) &&
-          (state.budget === "all" || c.getAttribute("data-budget") === state.budget) &&
-          (!state.q || c.getAttribute("data-search").indexOf(state.q) > -1);
-        c.hidden = !ok; if (ok) shown++;
+    var catalog = null;
+    var catalogEl = document.getElementById("venue-catalog");
+    try { catalog = catalogEl ? JSON.parse(catalogEl.textContent) : null; } catch (e) { catalog = null; }
+    if (catalog) {
+      var pageSize = +grid.getAttribute("data-page-size") || 24;
+      var rendered = $$("[data-venue]", grid).length;
+      var more = $("[data-venue-more]");
+      var HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>';
+      function escH(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+      function cardHtml(v) {
+        var price = v.price ? "<span>From</span><strong>" + escH(v.price) + "</strong>" : "<span>Pricing</span><strong>Custom quote</strong>";
+        var badge = v.badge ? '<span class="badge">' + escH(v.badge) + "</span>" : "";
+        return '<article class="vcard" data-venue data-cat="' + escH(v.c) + '" data-setting="' + escH(v.st) + '" data-budget="' + escH(v.b) + '" data-search="' + escH(v.q) + '" data-price="' + escH(v.p) + '" data-guests="' + escH(v.g) + '" data-name="' + escH(v.ns) + '" data-checked="' + escH(v.k) + '">' +
+          badge + '<button class="save" type="button" data-save="' + escH(v.s) + '" data-name="' + escH(v.n) + '" data-url="/venues/' + escH(v.s) + '/" aria-pressed="false" aria-label="Save ' + escH(v.n) + ' to your shortlist">' + HEART + '<span class="save-label">Save</span></button>' +
+          '<div class="img">' + v.img + '</div><div class="body"><span class="tag sage" style="align-self:flex-start">' + escH(v.cn) + '</span><h3><a href="/venues/' + escH(v.s) + '/">' + escH(v.n) + '</a></h3><div class="meta">' + escH(v.area) + (v.setting ? " · " + escH(v.setting) : "") + '</div><div class="price">' + price + "</div></div></article>";
+      }
+      function matchRec(v) {
+        return (state.cat === "all" || v.c === state.cat) &&
+          (state.setting === "all" || String(v.st).indexOf(state.setting) > -1) &&
+          (state.budget === "all" || v.b === state.budget) &&
+          (!state.q || String(v.q).indexOf(state.q) > -1);
+      }
+      function numOf(v, k) { return v[k] === "" || v[k] == null ? null : +v[k]; }
+      var byRec = {
+        "recommended": function (a, b) { return a.i - b.i; },
+        "price-asc": function (a, b) { var x = numOf(a, "p"), y = numOf(b, "p"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : x - y; },
+        "price-desc": function (a, b) { var x = numOf(a, "p"), y = numOf(b, "p"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : y - x; },
+        "guests-desc": function (a, b) { var x = numOf(a, "g"), y = numOf(b, "g"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : y - x; },
+        "name": function (a, b) { return a.ns < b.ns ? -1 : a.ns > b.ns ? 1 : 0; },
+        "checked": function (a, b) { return a.k < b.k ? 1 : a.k > b.k ? -1 : 0; }
+      };
+      catalog.forEach(function (v, i) { v.i = i; });
+      function rowsNow() {
+        var key = ($("[data-sort]") || {}).value || "recommended";
+        var f = byRec[key] || byRec.recommended;
+        return catalog.filter(matchRec).sort(function (a, b) { return f(a, b) || a.i - b.i; });
+      }
+      function syncRows(rows) {
+        if (countEl) countEl.textContent = rows.length + (rows.length === 1 ? " venue" : " venues");
+        if (empty) empty.hidden = rows.length > 0;
+        if (more) more.hidden = rendered >= rows.length;
+      }
+      function paint(reset) {
+        var rows = rowsNow();
+        if (reset) {
+          rendered = Math.min(pageSize, rows.length);
+          grid.innerHTML = rows.slice(0, rendered).map(cardHtml).join("");
+        }
+        syncRows(rows);
+        paintSL();
+      }
+      $$("[data-filter]").forEach(function (sel) {
+        sel.addEventListener("change", function () { state[sel.getAttribute("data-filter")] = sel.value; paint(true); });
       });
-      if (empty) empty.hidden = shown > 0;
-      if (countEl) countEl.textContent = shown + (shown === 1 ? " venue" : " venues");
-    }
-    $$("[data-filter]").forEach(function (sel) {
-      sel.addEventListener("change", function () { state[sel.getAttribute("data-filter")] = sel.value; apply(); });
-    });
-    var q = $("[data-filter-q]");
-    if (q) q.addEventListener("input", function () { state.q = q.value.trim().toLowerCase(); apply(); });
-    var pre = new URLSearchParams(location.search).get("category");
-    if (pre) { var s = $('[data-filter="cat"]'); if (s) { s.value = pre; state.cat = pre; } }
-    apply();
-
-    // sort (the venues page): reorder cards in place; venues without a number always go last
-    var sortSel = $("[data-sort]");
-    if (sortSel) {
-      cards.forEach(function (c, i) { c.setAttribute("data-idx", i); });
-      var num = function (c, k) { var v = c.getAttribute(k); return v === "" || v == null ? null : +v; };
-      var by = {
-        "recommended": function (a, b) { return a.getAttribute("data-idx") - b.getAttribute("data-idx"); },
-        "price-asc": function (a, b) { var x = num(a, "data-price"), y = num(b, "data-price"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : x - y; },
-        "price-desc": function (a, b) { var x = num(a, "data-price"), y = num(b, "data-price"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : y - x; },
-        "guests-desc": function (a, b) { var x = num(a, "data-guests"), y = num(b, "data-guests"); return x === null ? (y === null ? 0 : 1) : y === null ? -1 : y - x; },
-        "name": function (a, b) { return a.getAttribute("data-name") < b.getAttribute("data-name") ? -1 : 1; },
-        "checked": function (a, b) { return a.getAttribute("data-checked") < b.getAttribute("data-checked") ? 1 : a.getAttribute("data-checked") > b.getAttribute("data-checked") ? -1 : 0; }
-      };
-      var doSort = function (key, push) {
-        var f = by[key] || by.recommended;
-        cards.slice().sort(function (a, b) { return f(a, b) || a.getAttribute("data-idx") - b.getAttribute("data-idx"); }).forEach(function (c) { grid.appendChild(c); });
-        if (push) { try { var u = new URL(location.href); if (key === "recommended") u.searchParams.delete("sort"); else u.searchParams.set("sort", key); history.replaceState(null, "", u); } catch (e) {} }
-      };
-      var preSort = new URLSearchParams(location.search).get("sort");
-      if (preSort && by[preSort]) { sortSel.value = preSort; doSort(preSort, false); }
-      sortSel.addEventListener("change", function () { doSort(sortSel.value, true); });
+      var qIn = $("[data-filter-q]");
+      if (qIn) qIn.addEventListener("input", function () { state.q = qIn.value.trim().toLowerCase(); paint(true); });
+      var sortSel = $("[data-sort]");
+      if (sortSel) sortSel.addEventListener("change", function () {
+        try { var u = new URL(location.href); if (sortSel.value === "recommended") u.searchParams.delete("sort"); else u.searchParams.set("sort", sortSel.value); history.replaceState(null, "", u); } catch (e) {}
+        paint(true);
+      });
+      if (more) more.addEventListener("click", function (e) {
+        e.preventDefault();
+        var rows = rowsNow();
+        var next = rows.slice(rendered, rendered + pageSize);
+        if (next.length) grid.insertAdjacentHTML("beforeend", next.map(cardHtml).join(""));
+        rendered += next.length;
+        syncRows(rows);
+        paintSL();
+      });
+      var params = new URLSearchParams(location.search);
+      var preCat = params.get("category");
+      var preSort = params.get("sort");
+      if (preCat) { var sel = $('[data-filter="cat"]'); if (sel) { sel.value = preCat; state.cat = preCat; } }
+      if (preSort && byRec[preSort] && sortSel) sortSel.value = preSort;
+      if (preCat || (preSort && byRec[preSort])) paint(true);
+      else syncRows(rowsNow());
+    } else {
+      var cards = $$("[data-venue]", grid);
+      function apply() {
+        var shown = 0;
+        cards.forEach(function (c) {
+          var ok = (state.cat === "all" || c.getAttribute("data-cat") === state.cat) &&
+            (state.setting === "all" || c.getAttribute("data-setting").indexOf(state.setting) > -1) &&
+            (state.budget === "all" || c.getAttribute("data-budget") === state.budget) &&
+            (!state.q || c.getAttribute("data-search").indexOf(state.q) > -1);
+          c.hidden = !ok; if (ok) shown++;
+        });
+        if (empty) empty.hidden = shown > 0;
+        if (countEl) countEl.textContent = shown + (shown === 1 ? " venue" : " venues");
+      }
+      $$("[data-filter]").forEach(function (sel) {
+        sel.addEventListener("change", function () { state[sel.getAttribute("data-filter")] = sel.value; apply(); });
+      });
+      var q = $("[data-filter-q]");
+      if (q) q.addEventListener("input", function () { state.q = q.value.trim().toLowerCase(); apply(); });
+      var pre = new URLSearchParams(location.search).get("category");
+      if (pre) { var s = $('[data-filter="cat"]'); if (s) { s.value = pre; state.cat = pre; } }
+      apply();
     }
   }
 
@@ -286,7 +365,7 @@
 
   // ---------- big lucky date coming up? show the banner ----------
   var lb = $("[data-lucky-banner]");
-  if (lb && L) {
+  if (lb && L && lb.getAttribute("data-built") !== todayIso) {
     var big = L.upcoming(now, 12, 9).filter(function (a) {
       var dd = (new Date(a.y, a.m - 1, a.d) - now) / 864e5; return dd >= 0 && dd <= 150;
     })[0];
