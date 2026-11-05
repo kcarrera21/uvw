@@ -39,7 +39,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Planning a Las Vegas wedding from out of state: a 6-week timeline. Overlaps the how-far-ahead post and 48-hour elopement guide (skipped 2026-11-03)
 - [x] Wedding guest logistics in Las Vegas: rideshare, parking and timing. Published 2026-11-03
 - [x] Getting married in Las Vegas with kids or under-21 guests. Published 2026-11-04
-- [ ] Accessible Las Vegas wedding venues and what to ask
+- [x] Accessible Las Vegas wedding venues and what to ask. Published 2026-11-05
 - [ ] Las Vegas weddings for pets: which venues allow dogs
 
 ## Evergreen: ideas and venues
