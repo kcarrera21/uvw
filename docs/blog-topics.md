@@ -43,7 +43,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Las Vegas weddings for pets: which venues allow dogs. Published 2026-11-06
 
 ## Evergreen: ideas and venues
-- [ ] Drive-thru weddings explained: how the Tunnel of Love works
+- [x] Drive-thru weddings explained: how the Tunnel of Love works. Published 2026-11-07
 - [ ] Elvis weddings: what actually happens at the ceremony
 - [ ] Helicopter weddings: Strip flight vs. Grand Canyon landing
 - [ ] Ghost town weddings at Nelson: what to know before you drive out
