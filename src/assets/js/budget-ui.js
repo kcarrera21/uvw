@@ -13,14 +13,15 @@
 
   var venueSel = $("#bp-venue");
   var venueOut = $("#bp-venue-out");
+  var venueBrief = $("#bp-venue-brief");
+  var venueMore = $("#bp-venue-more");
   var useBtn = $("#bp-use-price");
   var packageInput = $("[data-money='packageAmount']", root);
   var packageNote = $("#bp-package-note");
   var dirLink = $("#bp-directory");
-  var confirmedEl = $("#bp-confirmed");
-  var estimateEl = $("#bp-estimates");
-  var cushionEl = $("#bp-cushion-out");
+  var youLabel = $("#bp-you-label");
   var youEl = $("#bp-you");
+  var noteEl = $("#bp-total-note");
   var guestsEl = $("#bp-guests-out");
   var warnEl = $("#bp-warnings");
 
@@ -47,27 +48,32 @@
     return input;
   }
 
-  var WARN = {
-    "civil-and-package": "You're counting a county ceremony and a venue package. Keep both if the courthouse is the legal part and the venue is a separate celebration. If the package includes the officiant, uncheck the county ceremony.",
-    "invalid-ignored": "Something that isn't a positive number was left out of the total.",
-    "capped": "A very large number was capped so the total stays a real figure."
-  };
-
   function renderTotals(r) {
-    confirmedEl.textContent = B.formatMoney(r.confirmed);
-    estimateEl.textContent = B.formatMoney(r.estimate);
-    cushionEl.textContent = B.formatMoney(r.cushion);
-    youEl.textContent = B.formatMoney(r.youPay);
-    if (r.payGuestCosts) guestsEl.textContent = B.formatMoney(r.guestCosts) + ", in what you pay";
-    else guestsEl.textContent = B.formatMoney(r.guestsPay);
-    warnEl.textContent = r.warnings.map(function (code) { return WARN[code] || ""; }).filter(Boolean).join(" ");
+    var partial = r.estimate === 0 && r.cushion === 0 && !r.payGuestCosts;
+    if (partial) {
+      youLabel.textContent = "County fees so far";
+      youEl.textContent = B.formatMoney(r.confirmed);
+      noteEl.textContent = "Your package and other costs are still blank, so this is not the full amount you pay." + (r.guestCosts > 0 ? " Guest costs stay separate." : "");
+    } else {
+      youLabel.textContent = "You pay";
+      youEl.textContent = B.formatMoney(r.youPay);
+      var bits = [B.formatMoney(r.confirmed) + " county fees (published)"];
+      if (r.estimate > 0) bits.push(B.formatMoney(r.estimate) + " you entered");
+      if (r.cushion > 0) bits.push(B.formatMoney(r.cushion) + " extra for unexpected costs");
+      if (r.payGuestCosts) bits.push(B.formatMoney(r.guestCosts) + " guest costs you're covering");
+      noteEl.textContent = bits.join(" + ") + ".";
+    }
+    if (r.payGuestCosts) guestsEl.textContent = "Included in what you pay";
+    else if (r.guestCosts > 0) guestsEl.textContent = B.formatMoney(r.guestsPay);
+    else guestsEl.textContent = "Not entered";
+    warnEl.textContent = B.warningLines(r.warnings).join(" ");
     if (dirLink) {
       if (r.guests > 0) {
         dirLink.href = "/venues/?guests=" + r.guests;
-        dirLink.textContent = "Browse venues that publish room for " + r.guests.toLocaleString("en-US") + (r.guests === 1 ? " guest" : " guests");
+        dirLink.textContent = "Venues with room for " + r.guests.toLocaleString("en-US");
       } else {
         dirLink.href = "/venues/";
-        dirLink.textContent = "Browse the venue directory";
+        dirLink.textContent = "Browse venues";
       }
     }
   }
@@ -125,70 +131,72 @@
     else if (fit === "mixed") line = "The listing says more than one thing. Read the sentences, then ask the venue.";
     else if (v.photo.quotes && v.photo.quotes.length) line = "The listing mentions photography, but not whether an outside photographer is allowed.";
     var extra = "";
-    if (v.photo.included && fit !== "yes") extra = "A package in the listing includes a photographer. That is not a yes or no on bringing someone else. If your quote includes one, check Already in the package so you don't count it twice.";
+    if (v.photo.included && fit !== "yes") extra = "A listed package includes a photographer. That does not say you can bring your own. If yours is included, check Already included.";
     return [line, extra];
   }
 
   var shownSlug = "";
+  function clearBox(el) { if (el) el.textContent = ""; }
+  function hasListingNote(topicObj) {
+    return topicObj && ((topicObj.quotes && topicObj.quotes.length) || (topicObj.fit && topicObj.fit !== "unknown") || topicObj.included);
+  }
   function renderVenue(slug, guestCount) {
     if (slug !== shownSlug) {
       if (packageNote && shownSlug) packageNote.textContent = "";
       shownSlug = slug;
     }
-    venueOut.textContent = "";
+    clearBox(venueBrief);
+    if (venueOut) venueOut.textContent = "";
     var v = bySlug[slug];
     if (!v) {
       if (useBtn) useBtn.hidden = true;
-      addP(venueOut, "Pick a venue to compare your guest count with the published maximum, and to read what the listing actually says. If a listing is silent, it stays not stated.");
+      if (venueMore) venueMore.hidden = true;
       return;
     }
     var fit = B.guestFit({
       guests: v.guests, price: v.price, label: v.label, checked: v.checked,
       includedCap: v.includedCap, includedQuote: v.includedQuote
     }, guestCount);
+    briefLines(fit).forEach(function (line) { addP(venueBrief, line); });
+    if (useBtn) {
+      useBtn.hidden = !(v.price > 0);
+      useBtn.textContent = v.price > 0 ? "Use " + B.formatMoney(v.price) + " as the package price" : "";
+    }
+    if (venueMore) venueMore.hidden = false;
     var head = document.createElement("p");
     var a = document.createElement("a");
     a.href = "/venues/" + v.s + "/";
-    a.textContent = v.n;
+    a.textContent = "Open the " + v.n + " page";
     head.appendChild(a);
     venueOut.appendChild(head);
-    addP(venueOut, capacityLine(fit));
-    priceLines(fit).forEach(function (line) { addP(venueOut, line); });
-    topic(venueOut, "Outside photographer", v.photo, photoLead(v));
-    topic(venueOut, "Access", v.access, [accessLead(v.access)]);
-    topic(venueOut, "Privacy", v.privacy, [privacyLead(v.privacy)]);
-    topic(venueOut, "Music", v.music, [musicLead(v.music)]);
+    var any = false;
+    [["Photographer", v.photo, photoLead(v)], ["Access", v.access, [accessLead(v.access)]], ["Privacy", v.privacy, [privacyLead(v.privacy)]], ["Music", v.music, [musicLead(v.music)]]].forEach(function (row) {
+      if (!hasListingNote(row[1])) return;
+      any = true;
+      topic(venueOut, row[0], row[1], row[2]);
+    });
     if (v.money && v.money.length) {
-      var moneyTopic = { fit: "yes", quotes: v.money };
-      topic(venueOut, "Money notes from the listing", moneyTopic, ["These sentences are from the listing. Nothing here is added for you. If your quote already includes a fee, don't type it again."]);
+      any = true;
+      topic(venueOut, "Fees the listing mentions", { fit: "yes", quotes: v.money }, ["Nothing here is added for you. Type a fee only if your quote doesn't already include it."]);
     }
-    if (useBtn) {
-      useBtn.hidden = !(v.price > 0);
-      useBtn.textContent = v.price > 0 ? "Use " + B.formatMoney(v.price) + " as the package estimate" : "";
-    }
+    if (!any) addP(venueOut, "This listing doesn't say, in a way we can check, whether you can bring a photographer, or what the access, privacy, and music rules are.");
   }
 
-  function capacityLine(fit) {
-    if (fit.capacity === "need-count") return "Add your guest count to compare it with the published maximum.";
-    if (fit.capacity === "unknown") return "Our listing doesn't publish a maximum guest count.";
-    if (fit.capacity === "over") return "Your guest count is higher than the largest number in our listing (" + fit.max.toLocaleString("en-US") + ").";
-    return "Your guest count is within the largest published option (" + fit.max.toLocaleString("en-US") + "). A smaller package can still have a lower limit.";
-  }
-
-  function priceLines(fit) {
+  function briefLines(fit) {
     var lines = [];
-    if (fit.flags.indexOf("no-price") > -1) {
-      lines.push("Our listing doesn't have a published starting price. Leave the package line blank until you have a quote.");
-    } else {
-      var when = fit.checked ? " Checked " + prettyDate(fit.checked) + "." : "";
-      lines.push("Published starting price: " + B.formatMoney(fit.price) + (fit.label ? " for " + fit.label : "") + "." + when + " That is the venue's from price, not a quote for your guest count.");
+    if (fit.capacity === "need-count") lines.push("Add a guest count to compare it with the published maximum.");
+    else if (fit.capacity === "unknown") lines.push("This listing doesn't give a maximum guest count.");
+    else if (fit.capacity === "over") lines.push("That's more guests than the largest number in the listing (" + fit.max.toLocaleString("en-US") + ").");
+    else lines.push("That fits the largest published option (" + fit.max.toLocaleString("en-US") + "). A smaller package may hold fewer.");
+    if (fit.flags.indexOf("no-price") > -1) lines.push("No published starting price. Leave the package line blank until you have a quote.");
+    else {
+      var when = fit.checked ? ", checked " + prettyDate(fit.checked) : "";
+      lines.push("Starting price " + B.formatMoney(fit.price) + (fit.label ? " for " + fit.label : "") + when + ". That's the venue's from price, not a quote for your guests.");
     }
-    if (fit.flags.indexOf("label-smaller") > -1) {
-      lines.push("The price label reads as a smaller guest count than you entered. Use that figure only as a floor, then replace it when you have a quote for your real headcount.");
-    }
+    if (fit.flags.indexOf("label-smaller") > -1) lines.push("That starting price looks like a smaller group than you entered. Use it only until you have a real quote.");
     if (fit.flags.indexOf("included-cap") > -1) {
       if (fit.includedQuote) lines.push(fit.includedQuote);
-      lines.push("Your guest count is above the included number in that sentence. Add any extra-guest fee yourself if you know it. We won't turn it into a new price.");
+      lines.push("Your guest count is above the number included in that sentence. Add any extra guest fee yourself if you know it.");
     }
     return lines;
   }
@@ -215,11 +223,85 @@
     return "Not stated in our checked listing.";
   }
 
+  function currentSheet() {
+    var input = read();
+    var result = B.calculate(input);
+    var venue = venueSel && bySlug[venueSel.value];
+    return B.budgetSheet(input, result, {
+      prepared: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      venueName: venue ? venue.n : "",
+      venueChecked: venue && venue.checked ? prettyDate(venue.checked) : "",
+      packageNote: packageNote && packageNote.textContent ? packageNote.textContent : ""
+    });
+  }
+  function fillSheet(sheet) {
+    var el = document.getElementById("bp-sheet");
+    if (!el) return;
+    el.textContent = "";
+    var h = document.createElement("h1");
+    h.textContent = sheet.title;
+    el.appendChild(h);
+    if (sheet.prepared) addP(el, "Prepared " + sheet.prepared);
+    var h2 = document.createElement("h2");
+    h2.textContent = sheet.headline;
+    el.appendChild(h2);
+    var amt = document.createElement("p");
+    amt.className = "bp-sheet-amt";
+    amt.textContent = sheet.amountText;
+    el.appendChild(amt);
+    addP(el, sheet.note);
+    sheet.sections.forEach(function (section) {
+      var sh = document.createElement("h2");
+      sh.textContent = section.heading;
+      el.appendChild(sh);
+      var table = document.createElement("table");
+      section.rows.forEach(function (row) {
+        var tr = document.createElement("tr");
+        var th = document.createElement("th");
+        th.scope = "row";
+        th.textContent = row.label;
+        var td = document.createElement("td");
+        td.textContent = row.detail;
+        tr.appendChild(th);
+        tr.appendChild(td);
+        table.appendChild(tr);
+      });
+      el.appendChild(table);
+    });
+    if (sheet.warnings.length) {
+      var wh = document.createElement("h2");
+      wh.textContent = "Please check";
+      el.appendChild(wh);
+      sheet.warnings.forEach(function (line) { addP(el, line); });
+    }
+    var caveat = addP(el, sheet.caveat);
+    caveat.className = "bp-sheet-note";
+  }
+  function showSummary(text, message) {
+    var box = $("#bp-fallback");
+    var note = $("#bp-copy-note");
+    if (note) { note.hidden = false; note.textContent = message; }
+    if (box) { box.hidden = false; box.value = text; }
+  }
+  function markIncluded() {
+    $$("[data-flag]", root).forEach(function (box) {
+      if (!/Included$/.test(box.getAttribute("data-flag") || "")) return;
+      var line = box.closest(".bp-line");
+      if (line) line.classList.toggle("is-included", box.checked);
+    });
+  }
   function recalc() {
     var input = markInvalid(read());
     var result = B.calculate(input);
     renderTotals(result);
     renderVenue(venueSel ? venueSel.value : "", input.guests);
+    markIncluded();
+    fillSheet(B.budgetSheet(input, result, {
+      prepared: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      venueName: venueSel && bySlug[venueSel.value] ? bySlug[venueSel.value].n : "",
+      venueChecked: venueSel && bySlug[venueSel.value] && bySlug[venueSel.value].checked ? prettyDate(bySlug[venueSel.value].checked) : "",
+      packageNote: packageNote && packageNote.textContent ? packageNote.textContent : ""
+    }));
   }
 
   root.addEventListener("input", recalc);
@@ -261,6 +343,43 @@
     });
     split.dispatchEvent(new Event("input"));
   }
+
+  var pdfBtn = $("#bp-pdf");
+  var emailBtn = $("#bp-email");
+  var copyBtn = $("#bp-copy");
+  if (pdfBtn) pdfBtn.addEventListener("click", function () { recalc(); window.print(); });
+  if (emailBtn) emailBtn.addEventListener("click", function () {
+    var text = B.plainSummary(currentSheet());
+    var href = B.mailtoHref({ subject: "My Las Vegas wedding budget", body: text });
+    var note = $("#bp-copy-note");
+    if (!href) {
+      showSummary(text, "This summary is too long for an email link. It's selected below. Copy it into an email you send yourself. We don't send it.");
+      var box = $("#bp-fallback");
+      if (box) { box.focus(); box.select(); }
+      return;
+    }
+    var a = document.createElement("a");
+    a.href = href;
+    a.rel = "nofollow";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    if (note) { note.hidden = false; note.textContent = "If your email app didn't open, use Copy the summary. Add your address there and send it yourself."; }
+  });
+  if (copyBtn) copyBtn.addEventListener("click", function () {
+    var text = B.plainSummary(currentSheet());
+    var note = $("#bp-copy-note");
+    function failed() {
+      showSummary(text, "Copy didn't work in this browser. The summary is selected below.");
+      var box = $("#bp-fallback");
+      if (box) { box.focus(); box.select(); }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        if (note) { note.hidden = false; note.textContent = "Copied. Paste it wherever you want to keep it."; }
+      }).catch(failed);
+    } else failed();
+  });
 
   recalc();
 })();

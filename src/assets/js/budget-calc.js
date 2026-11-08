@@ -349,6 +349,140 @@
     return null;
   }
 
+  var WARNINGS = {
+    "civil-and-package": "You have both a courthouse ceremony and a venue package. Keep both only if the courthouse is the legal part and the venue is a separate celebration. Otherwise turn off the courthouse ceremony.",
+    "invalid-ignored": "A line that isn't a positive number was left out.",
+    "capped": "A very large number was reduced so the total stays readable."
+  };
+  var MAILTO_LIMIT = 7500;
+
+  function warningLines(codes) {
+    return (codes || []).map(function (code) { return WARNINGS[code] || ""; }).filter(Boolean);
+  }
+
+  function moneyDetail(raw, included) {
+    var parsed = parseMoney(raw);
+    if (included) {
+      var shown = parsed.ok && !parsed.empty ? formatMoney(parsed.value) : "$0";
+      return shown + " typed. Already included, not added.";
+    }
+    if (!parsed.ok) return "Left out. Not a positive number.";
+    if (parsed.empty || parsed.value === 0) return "Not entered";
+    return formatMoney(parsed.capped ? MONEY_CAP : parsed.value) + (parsed.capped ? " (reduced from a larger number)" : "");
+  }
+
+  function perPersonDetail(raw, count, total, included) {
+    var parsed = parseMoney(raw);
+    var n = count || 0;
+    if (included) {
+      var shown = parsed.ok && !parsed.empty ? formatMoney(parsed.value) : "$0";
+      return shown + " per guest. Already included, not added.";
+    }
+    if (!parsed.ok) return "Left out. Not a positive number.";
+    if (parsed.empty || parsed.value === 0) return "Not entered";
+    if (n === 0) return formatMoney(parsed.value) + " per guest. Guest count is 0, so nothing is added.";
+    return formatMoney(parsed.value) + " per guest × " + n.toLocaleString("en-US") + " = " + formatMoney(total);
+  }
+
+  function budgetSheet(input, result, context) {
+    input = input || {};
+    result = result || calculate(input);
+    context = context || {};
+    var partial = result.estimate === 0 && result.cushion === 0 && !result.payGuestCosts;
+    var county = [
+      { label: "Marriage license", detail: result.license > 0 ? formatMoney(result.license) + ". Published Clark County fee." : "Left off." },
+      { label: "Certificate copies", detail: result.copies > 0 ? result.copies + " × " + formatMoney(CONFIRMED.copy) + " = " + formatMoney(result.copyCost) + ". Published Clark County fee." : "None." }
+    ];
+    if (result.cardFee > 0) county.push({ label: "Card fee on those copies", detail: formatMoney(result.cardFee) + ". Published 2% plus " + formatMoney(CONFIRMED.copyCardFlat) + "." });
+    if (result.civil > 0) county.push({ label: "Courthouse ceremony", detail: formatMoney(result.civil) + ". Published fee, card fee included." });
+    if (result.apostille > 0) county.push({ label: "Apostille", detail: formatMoney(result.apostille) + ". Published Nevada fee." });
+    if (result.cardFee === 0 && result.civil === 0 && result.apostille === 0) county.push({ label: "Other county fees", detail: "Not added." });
+
+    var yours = [
+      { label: "Package price", detail: moneyDetail(input.packageAmount, false) },
+      { label: "Photographer", detail: moneyDetail(input.photo, !!input.photoIncluded) },
+      { label: "Food and drinks", detail: moneyDetail(input.reception, !!input.receptionIncluded) },
+      { label: "Clothes, hair and makeup", detail: moneyDetail(input.attire, false) },
+      { label: "Flowers and decor", detail: moneyDetail(input.flowers, !!input.flowersIncluded) },
+      { label: "Tips", detail: moneyDetail(input.tips, !!input.tipsIncluded) },
+      { label: "Tax and venue fees", detail: moneyDetail(input.taxes, !!input.taxesIncluded) },
+      { label: "Extras the package leaves out", detail: moneyDetail(input.extras, false) },
+      { label: "Ride for the two of you", detail: moneyDetail(input.transport, !!input.transportIncluded) },
+      { label: "Photo permit or park fee", detail: moneyDetail(input.photoPermit, false) },
+      { label: "Extra you pay per guest", detail: perPersonDetail(input.perGuest, result.guests, result.perGuestTotal, !!input.perGuestIncluded) },
+      { label: "Extra for unexpected costs", detail: result.cushionPct + "% of the costs you entered = " + formatMoney(result.cushion) + ". County fees and guest travel are not included." }
+    ];
+
+    var guests = [
+      { label: "Guest count", detail: result.guests > 0 ? result.guests.toLocaleString("en-US") : "Not entered" },
+      { label: "Travel, rooms and rides", detail: perPersonDetail(input.guestTravelEach, result.guests, result.guestTravel, false) },
+      { label: "Meals and parking they pay", detail: perPersonDetail(input.guestOtherEach, result.guests, result.guestOther, false) },
+      { label: "Who pays guest costs", detail: result.payGuestCosts ? "You're paying them, so " + formatMoney(result.guestCosts) + " is inside what you pay." : (result.guestCosts > 0 ? "Guests pay " + formatMoney(result.guestsPay) + " themselves. It is not inside what you pay." : "Not entered.") }
+    ];
+
+    var place = [];
+    if (context.venueName) {
+      place.push({ label: "Venue", detail: context.venueName + (context.venueChecked ? ". Listing checked " + context.venueChecked + "." : "") });
+    } else {
+      place.push({ label: "Venue", detail: "None selected." });
+    }
+    if (context.packageNote) place.push({ label: "Package note", detail: context.packageNote });
+
+    var notes = warningLines(result.warnings);
+    var headline = partial ? "County fees so far" : "You pay";
+    var amount = partial ? result.confirmed : result.youPay;
+    var note = partial
+      ? "Your package and other costs are still blank, so this is not the full amount you pay."
+      : formatMoney(result.confirmed) + " county fees (published) + " + formatMoney(result.estimate) + " you entered" + (result.cushion > 0 ? " + " + formatMoney(result.cushion) + " extra for unexpected costs" : "") + (result.payGuestCosts ? " + " + formatMoney(result.guestCosts) + " guest costs you're covering" : "") + ".";
+
+    return {
+      title: "Las Vegas wedding budget",
+      prepared: context.prepared || "",
+      headline: headline,
+      amount: amount,
+      amountText: formatMoney(amount),
+      note: note,
+      partial: partial,
+      youPay: result.youPay,
+      guestsPay: result.guestsPay,
+      sections: [
+        { heading: "County fees", rows: county },
+        { heading: "Your package and other costs", rows: yours },
+        { heading: "Guest costs", rows: guests },
+        { heading: "Venue", rows: place }
+      ],
+      warnings: notes,
+      caveat: "Amounts you typed are your own estimates, not prices we verified. The license, certificate copies, card fee, courthouse ceremony, and apostille use published Clark County and Nevada fees. A venue starting price is not a quote. Nothing on this page was saved or sent for you. Source: https://uniquevegasweddings.com/tools/budget-planner/"
+    };
+  }
+
+  function plainSummary(sheet) {
+    var lines = [sheet.title];
+    if (sheet.prepared) lines.push("Prepared " + sheet.prepared);
+    lines.push("", sheet.headline + ": " + sheet.amountText, sheet.note, "");
+    sheet.sections.forEach(function (section) {
+      lines.push(section.heading);
+      section.rows.forEach(function (row) { lines.push(row.label + ": " + row.detail); });
+      lines.push("");
+    });
+    if (sheet.warnings && sheet.warnings.length) {
+      lines.push("Please check");
+      sheet.warnings.forEach(function (line) { lines.push(line); });
+      lines.push("");
+    }
+    lines.push(sheet.caveat);
+    return lines.join("\n");
+  }
+
+  function mailtoHref(opts) {
+    opts = opts || {};
+    var subject = String(opts.subject || "My Las Vegas wedding budget");
+    var body = String(opts.body || "");
+    var href = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    if (href.length > (opts.limit || MAILTO_LIMIT)) return null;
+    return href;
+  }
+
   function guestFit(info, guests) {
     info = info || {};
     var count = parseCount(guests, COUNT_CAP);
@@ -393,6 +527,12 @@
     formatMoney: formatMoney,
     calculate: calculate,
     splitBudget: splitBudget,
+    WARNINGS: WARNINGS,
+    warningLines: warningLines,
+    budgetSheet: budgetSheet,
+    plainSummary: plainSummary,
+    mailtoHref: mailtoHref,
+    MAILTO_LIMIT: MAILTO_LIMIT,
     topicNotes: topicNotes,
     guestFit: guestFit,
     sourceSentences: sourceSentences
