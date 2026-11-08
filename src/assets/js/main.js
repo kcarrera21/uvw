@@ -271,9 +271,11 @@
       function cardHtml(v) {
         var price = v.price ? "<span>From</span><strong>" + escH(v.price) + "</strong>" : "<span>Pricing</span><strong>Custom quote</strong>";
         var badge = v.badge ? '<span class="badge">' + escH(v.badge) + "</span>" : "";
-        return '<article class="vcard" data-venue data-cat="' + escH(v.c) + '" data-setting="' + escH(v.st) + '" data-budget="' + escH(v.b) + '" data-search="' + escH(v.q) + '" data-price="' + escH(v.p) + '" data-guests="' + escH(v.g) + '" data-name="' + escH(v.ns) + '" data-checked="' + escH(v.k) + '">' +
+        var reception = v.reception ? '<span class="tag">Reception only</span>' : "";
+        var illustrative = v.illustrative ? '<p class="small photo-flag">Illustrative photo, not the venue.</p>' : "";
+        return '<article class="vcard" data-venue data-cat="' + escH(v.c) + '" data-setting="' + escH(v.st) + '" data-budget="' + escH(v.b) + '" data-search="' + escH(v.q) + '" data-price="' + escH(v.p) + '" data-guests="' + escH(v.g) + '" data-name="' + escH(v.ns) + '" data-checked="' + escH(v.k) + '" data-ceremony="' + (v.reception ? "0" : "1") + '">' +
           badge + '<button class="save" type="button" data-save="' + escH(v.s) + '" data-name="' + escH(v.n) + '" data-url="/venues/' + escH(v.s) + '/" aria-pressed="false" aria-label="Save ' + escH(v.n) + ' to your shortlist">' + HEART + '<span class="save-label">Save</span></button>' +
-          '<div class="img">' + v.img + '</div><div class="body"><span class="tag sage" style="align-self:flex-start">' + escH(v.cn) + '</span><h3><a href="/venues/' + escH(v.s) + '/">' + escH(v.n) + '</a></h3><div class="meta">' + escH(v.area) + (v.setting ? " · " + escH(v.setting) : "") + (v.g ? " · up to " + Number(v.g).toLocaleString("en-US") + " guests" : "") + '</div><div class="price">' + price + "</div></div></article>";
+          '<div class="img">' + v.img + '</div><div class="body"><span class="tag sage" style="align-self:flex-start">' + escH(v.cn) + "</span>" + reception + illustrative + '<h3><a href="/venues/' + escH(v.s) + '/">' + escH(v.n) + '</a></h3><div class="meta">' + escH(v.area) + (v.setting ? " · " + escH(v.setting) : "") + (v.g ? " · up to " + Number(v.g).toLocaleString("en-US") + " guests" : "") + '</div><div class="price">' + price + "</div></div></article>";
       }
       function matchOther(v) {
         return (state.cat === "all" || v.c === state.cat) &&

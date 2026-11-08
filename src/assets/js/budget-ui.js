@@ -157,10 +157,12 @@
       guests: v.guests, price: v.price, label: v.label, checked: v.checked,
       includedCap: v.includedCap, includedQuote: v.includedQuote
     }, guestCount);
+    if (v.ceremony === false) addP(venueBrief, "This listing is for a reception. It is not a confirmed place to say the vows, and it has no ceremony package to drop in.");
     briefLines(fit).forEach(function (line) { addP(venueBrief, line); });
     if (useBtn) {
-      useBtn.hidden = !(v.price > 0);
-      useBtn.textContent = v.price > 0 ? "Use " + B.formatMoney(v.price) + " as the package price" : "";
+      var pricedCeremony = v.ceremony !== false && v.price > 0;
+      useBtn.hidden = !pricedCeremony;
+      useBtn.textContent = pricedCeremony ? "Use " + B.formatMoney(v.price) + " as the package price" : "";
     }
     if (venueMore) venueMore.hidden = false;
     var head = document.createElement("p");
@@ -184,7 +186,7 @@
 
   function briefLines(fit) {
     var lines = [];
-    if (fit.capacity === "need-count") lines.push("Add a guest count to compare it with the published maximum.");
+    if (fit.capacity === "need-count") lines.push(fit.max == null ? "This listing doesn't give a maximum guest count." : "Add a guest count to compare it with the published maximum.");
     else if (fit.capacity === "unknown") lines.push("This listing doesn't give a maximum guest count.");
     else if (fit.capacity === "over") lines.push("That's more guests than the largest number in the listing (" + fit.max.toLocaleString("en-US") + ").");
     else lines.push("That fits the largest published option (" + fit.max.toLocaleString("en-US") + "). A smaller package may hold fewer.");

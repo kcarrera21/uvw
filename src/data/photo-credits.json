@@ -1342,5 +1342,83 @@
   "source": "https://unsplash.com/photos/Px9FCR8JrZI",
   "w": 1600,
   "h": 1069
+ },
+ "love-it-loud-rock-roll-chapel": {
+  "alt": "Musicians playing guitars on a small stage under warm lights. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "Men playing guitar on stage",
+  "creator": "Kenny Eliason",
+  "creatorUrl": "https://unsplash.com/@heyquilia",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/men-playing-guitar-on-stage-UtNyK8Vsnzo",
+  "image": "https://images.unsplash.com/photo-1495582358586-280971a57d8b",
+  "w": 1600,
+  "h": 1066
+ },
+ "dennys-wedding-chapel": {
+  "alt": "A Denny's sign on a restaurant roof. Illustrative photo, not the Fremont Street chapel.",
+  "note": "illustrative",
+  "title": "A sign for a restaurant called Denny's on the side of a building",
+  "creator": "Highway Z",
+  "creatorUrl": "https://unsplash.com/@hwyz",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-sign-for-a-restaurant-called-dennys-on-the-side-of-a-building-EO8RSLd7AD8",
+  "image": "https://images.unsplash.com/photo-1671684917899-de71555fa994",
+  "w": 1600,
+  "h": 1556
+ },
+ "brooklyn-bowl-las-vegas": {
+  "alt": "Bowling lanes with pins and a ball under colored lights. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "A bowling alley filled with neon bowling balls",
+  "creator": "Dirk Erasmus",
+  "creatorUrl": "https://unsplash.com/@derasmus",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-bowling-alley-filled-with-neon-bowling-balls-UYztDnR42jc",
+  "image": "https://images.unsplash.com/photo-1671959986201-db542c4456d8",
+  "w": 1600,
+  "h": 1066
+ },
+ "keep-memory-alive-event-center": {
+  "alt": "An empty event hall with a large screen and rows of seats. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "An empty auditorium with a large screen in the center",
+  "creator": "Adam Kolmacka",
+  "creatorUrl": "https://unsplash.com/@adamkolmacka",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/an-empty-auditorium-with-a-large-screen-in-the-center-L7Z0NkCj3SA",
+  "image": "https://images.unsplash.com/photo-1714846973752-deba7a841e13",
+  "w": 1600,
+  "h": 2400
+ },
+ "lakeside-weddings-events": {
+  "alt": "A pond and a wooden gazebo in a garden. Illustrative photo, not Lake Jacqueline.",
+  "note": "illustrative",
+  "title": "A pond surrounded by trees with a gazebo in the middle",
+  "creator": "Vlad D",
+  "creatorUrl": "https://unsplash.com/@hiking_corgi",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/a-pond-surrounded-by-trees-with-a-gazebo-in-the-middle-Rus9llfdO9s",
+  "image": "https://images.unsplash.com/photo-1702024740455-3272b8d96eb2",
+  "w": 1600,
+  "h": 1066
+ },
+ "minus5-icebar": {
+  "alt": "An ice bar with glowing ice stools and glasses. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "Block of ice in an ice room",
+  "creator": "Charlota Blunarova",
+  "creatorUrl": "https://unsplash.com/@charlotablunarova",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/block-of-ice-in-ice-room-7cpDWdtwwJE",
+  "image": "https://images.unsplash.com/photo-1557865353-71e2dd333951",
+  "w": 1600,
+  "h": 2134
  }
 }

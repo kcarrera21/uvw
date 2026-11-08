@@ -2695,4 +2695,153 @@ The December 2025 wedding catering menu is where the guest range shows up: atriu
     ],
     url: "https://samstownlv.boydgaming.com/things-to-do/mystic-falls-park", checked: "2026-11-03", status: "listed", featured: false,
   },
+  {
+    name: "Love It Loud Rock & Roll Wedding Chapel", slug: "love-it-loud-rock-roll-chapel", category: "quirky-pop-culture",
+    area: "Rio, Masquerade Village", drive: "At the Rio, 3700 W. Flamingo Rd", setting: "Indoor",
+    vibe: ["Rock and roll", "Stage vows", "Character minister", "Rio"],
+    priceFrom: 299, priceLabel: "Hotter Than Hell ceremony, before the 18% service fee, traditional minister, up to 30 guests", guestMax: null,
+    facts: [
+      "One chapel at the Rio All-Suite Hotel & Casino, Masquerade Village, casino level, 3700 W. Flamingo Rd, Las Vegas, NV 89103. KISS and Love It Loud are names for this same chapel, not a second venue.",
+      "The ceremony page lists Hotter Than Hell at $299. It includes the chapel, a traditional minister with no substitutions, a ceremony host, and up to 30 guests. An 18% service fee is added to the final balance.",
+      "Character-minister packages start with Whole Lotta Love at $649, also before the 18% service fee, and also list up to 30 ceremony guests. The page calls those officiants character ministers, including KISS members. They are impersonators.",
+      "Receptions are separate. The reception page lists glow minigolf packages at KISS World Mini Golf, starting with Premier at $799 plus tax and an 18% service charge, minimum 20 guests. That price is not part of the $299 ceremony.",
+    ],
+    bestFor: "Stage vows at the Rio, with a traditional minister at $299 or a rock impersonator if you pay for one.",
+    description: `The vows happen on a stage at the Rio, in Masquerade Village on the casino level. Concert lighting, a heart-shaped truss, and Marshall speakers are how the chapel describes the room. This is the Love It Loud chapel. A search for the KISS chapel is the same place.
+
+The published starting ceremony is Hotter Than Hell, $299, before an 18% service fee. That package uses a traditional minister and does not allow a substitution. It lists up to 30 guests. If you want a character minister, Whole Lotta Love starts at $649 before the same fee, and the page is clear those are characters, not the real performers.
+
+A glow-in-the-dark minigolf reception is a different booking. Premier starts at $799 plus tax and the 18% service charge, for at least 20 guests, with a taco bar and 18 holes. Don't fold that into the ceremony price.`,
+    tips: [
+      "Ask whether the 18% service fee is on the ceremony, the add-ons, or both. The ceremony page says it applies to the final balance.",
+      "The $299 minister is the traditional one. A character minister is a higher package, and extra characters have their own add-on fees.",
+      "The 30-guest figure is what the ceremony packages publish. It is not a published maximum for the minigolf reception.",
+      "The reception is at KISS World Mini Golf, not automatically in the chapel. Book it on its own if you want it.",
+    ],
+    url: "https://rocknrollchapel.com/ceremony-packages/", checked: "2026-11-08", status: "listed", featured: false,
+  },
+  {
+    name: "Denny's Wedding Chapel", slug: "dennys-wedding-chapel", category: "quirky-pop-culture",
+    area: "Fremont Street", drive: "450 East Fremont Street", setting: "Indoor",
+    vibe: ["Diner", "Fremont", "Small package", "Late night"],
+    priceFrom: 199, priceLabel: "Chapel, silk bouquet and boutonniere, cake, champagne toast, two T-shirts, and two Original Grand Slams on a later visit", guestMax: null,
+    facts: [
+      "Denny's publishes the wedding package for its Fremont Street restaurant at 450 East Fremont Street, Las Vegas.",
+      "The $199 package lists use of the chapel, a silk presentation bouquet and boutonniere, wedding cake, a champagne toast, two wedding T-shirts, and two Original Grand Slams good for a later visit.",
+      "That page does not say an officiant is included, and it does not give a guest count or describe a reception beyond the cake and the toast.",
+    ],
+    bestFor: "A $199 diner package on Fremont Street, with the inclusions printed and the guest count still a question.",
+    description: `Denny's on Fremont Street publishes one wedding package at $199. You get the chapel, a silk bouquet and boutonniere, cake, a champagne toast, two wedding T-shirts, and two Original Grand Slams for a later visit.
+
+The page does not say a minister is included. It also does not say how many people fit, or that the restaurant closes for a reception. Cake and a toast are what is printed. Ask before you treat this as a full party, and ask who is actually performing the ceremony.
+
+The restaurant address on Denny's own location page is 450 East Fremont Street. This is not the Taco Bell chapel.`,
+    tips: [
+      "Confirm who officiates. The $199 list we checked does not name a minister.",
+      "Ask how many guests the chapel holds. The package page doesn't say.",
+      "The Grand Slams are for a later visit, not a meal during the ceremony.",
+      "An older free-wedding promotion is not this package. The price on the page now is $199.",
+    ],
+    url: "https://dennys.com/vegas-weddings-unique-affordable-wedding-chapel", checked: "2026-11-08", status: "listed", featured: false,
+  },
+  {
+    name: "Brooklyn Bowl Las Vegas", slug: "brooklyn-bowl-las-vegas", category: "quirky-pop-culture",
+    area: "The LINQ Promenade", drive: "3545 Las Vegas Blvd S., Suite 22", setting: "Indoor & outdoor",
+    vibe: ["Bowling", "Live music", "Ceremony or reception", "The LINQ"],
+    priceFrom: null, priceLabel: "Ceremony or reception by quote", guestMax: null,
+    facts: [
+      "Live Nation's events page for Brooklyn Bowl Las Vegas, 3545 Las Vegas Blvd S., Suite 22, says you can book a ceremony or a reception.",
+      "The venue describes 32 bowling lanes, six bars, and a concert room. Some spaces open onto a terrace.",
+      "That page does not publish a wedding price. It also does not publish one wedding capacity. It describes concert nights of up to 3,000 guests and smaller rooms with their own reception counts. Neither figure is used here as a wedding maximum.",
+      "The same page offers a complimentary confetti cannon when you book a ceremony or reception. It does not spell out the terms.",
+    ],
+    bestFor: "A ceremony or reception in a bowling alley and concert venue on The LINQ, with the price and the layout still a quote.",
+    description: `Brooklyn Bowl at The LINQ will book the ceremony or the reception. You are in a bowling alley that also has a stage: 32 lanes, six bars, and room for a concert. Some of the smaller spaces connect to a terrace.
+
+The events page does not print a wedding price, so this listing doesn't invent one. It also doesn't pick a guest maximum. The same page talks about nights of up to 3,000 concert guests and lists smaller rooms with their own counts. Those are not a wedding layout. Ask which room you would actually use, and what it holds for vows or for dinner.
+
+A complimentary confetti cannon is offered when you book. The page doesn't say what that includes, so treat it as a question, not a promise.`,
+    tips: [
+      "Get the room, the guest count, and the price in the quote. The public page doesn't settle them.",
+      "Ask what the confetti-cannon offer includes before you plan around it.",
+      "This is Brooklyn Bowl, not the High Roller and not a generic LINQ ballroom.",
+      "Some spaces are indoors and some open outside. Say which one you want.",
+    ],
+    url: "https://specialevents.livenation.com/venues/brooklyn-bowl-las-vegas", checked: "2026-11-08", status: "listed", featured: false,
+  },
+  {
+    name: "Keep Memory Alive Event Center", slug: "keep-memory-alive-event-center", category: "historic-iconic",
+    area: "Downtown, 888 W. Bonneville Ave", drive: "888 W. Bonneville Avenue", setting: "Indoor & outdoor",
+    vibe: ["Frank Gehry", "Event center", "Indoor and outdoor", "Downtown"],
+    priceFrom: null, priceLabel: "Wedding by quote", guestMax: null,
+    facts: [
+      "The wedding page gives the address as 888 W. Bonneville Avenue, Las Vegas, NV 89106, and a phone number, 702-263-9797.",
+      "It describes a Frank Gehry canopy of windows and stainless steel, and lighting that can be set to the wedding colors.",
+      "It says events can use a mix of indoor and outdoor space. It does not publish a ceremony layout, a guest count, or a price.",
+      "The page says event proceeds support research, treatment, and prevention of brain disorders such as Alzheimer's and Parkinson's.",
+    ],
+    bestFor: "A Frank Gehry event center downtown, for a wedding planned by quote rather than from a package menu.",
+    description: `Keep Memory Alive Event Center is the Frank Gehry building at 888 W. Bonneville Avenue, downtown, off the Strip. The wedding page talks about the canopy of windows and stainless steel, and about lighting the walls in your colors.
+
+It says the day can mix indoor and outdoor space, set up for what you want. It does not say which room is the ceremony, how many people fit, or what it costs. Those stay a quote. Ignore a price you saw on a third-party site. It wasn't on this page.
+
+The center says event proceeds support research into brain disorders, including Alzheimer's and Parkinson's. This is not the Smith Center, not Barrick, and not the Fifth Street School.`,
+    tips: [
+      "Ask for the ceremony setup, the guest count, and the price in writing. The wedding page doesn't publish them.",
+      "If the colored lighting matters, ask whether it is included or an add-on. The page mentions an LED lighting package and doesn't price it.",
+      "The building is downtown at 888 W. Bonneville, not on the Strip.",
+    ],
+    url: "https://www.kmaeventcenterlasvegas.com/event-services/weddings/", checked: "2026-11-08", status: "listed", featured: false,
+  },
+  {
+    name: "Lakeside Weddings & Events", slug: "lakeside-weddings-events", category: "desert-outdoors",
+    area: "Lake Jacqueline, Desert Shores", drive: "2620 Regatta Dr, Suite 102", setting: "Indoor & outdoor",
+    vibe: ["Lake", "Gardens", "Ceremony and reception", "Summerlin"],
+    priceFrom: null, priceLabel: "Ceremony or reception by quote; minister paid separately", guestMax: null,
+    facts: [
+      "The packages page places the venue on Lake Jacqueline, in the Desert Shores community of Summerlin, at 2620 Regatta Dr, Suite 102, Las Vegas, NV 89128. This is not Lake Las Vegas.",
+      "It lists ceremonies and receptions, and names Grand Garden, Heritage Garden, Swan Garden, and Lakeview Chapel as the locations on site.",
+      "Ceremony packages say a licensed minister performs the ceremony and that the minister is paid separately. A bouquet, boutonniere, chairs, and ceremony music are listed as inclusions. Photography is described as optional to purchase.",
+      "The same page describes reception halls and all-inclusive packages, and it does not print a current starting price or a guest maximum.",
+    ],
+    bestFor: "A lake ceremony or reception at Lake Jacqueline in Desert Shores, with the minister billed separately and the price still a quote.",
+    description: `Lakeside Weddings & Events is on Lake Jacqueline, in Desert Shores, Summerlin. The address on the packages page is 2620 Regatta Drive, Suite 102. People mix this up with Lake Las Vegas. It isn't that lake, and it isn't Lake Mead.
+
+The page lists four ceremony spots on the property: Grand Garden, Heritage Garden, Swan Garden, and an indoor Lakeview Chapel. It also describes reception halls. Heritage Garden is written up as terraces with covered archways leading to a gazebo at the water. That's the venue's description of its own garden.
+
+A ceremony package includes a licensed minister, and the page says the minister is paid separately. It does not publish a starting price or a guest count we can put on this listing. Ask for both.`,
+    tips: [
+      "Budget the minister on top of the venue. The packages page says the minister is paid separately.",
+      "Say Lake Jacqueline or Desert Shores when you search. Lake Las Vegas is a different place.",
+      "Ask which garden or the chapel, and whether the reception is in a hall on site. The page offers both and doesn't price them here.",
+      "Don't treat a blog post about what a lake wedding 'should cost' as this venue's rate. The packages page we checked doesn't print one.",
+    ],
+    url: "https://lakesideweddings.com/lake-wedding-packages/", checked: "2026-11-08", status: "listed", featured: false,
+  },
+  {
+    name: "minus5 ICEBAR", slug: "minus5-icebar", category: "quirky-pop-culture",
+    offers: "reception",
+    area: "Mandalay Bay, Venetian, and LINQ", drive: "Three Strip locations, booked separately", setting: "Indoor",
+    vibe: ["Ice bar", "Reception only", "Strip", "Private event"],
+    priceFrom: null, priceLabel: "Reception quote", guestMax: null,
+    facts: [
+      "minus5 lists three Las Vegas locations you book on their own: Mandalay Bay, The Venetian, and The LINQ Promenade. This listing is not one street address.",
+      "An October 3, 2025 events article on the minus5 site says the spaces can be booked for wedding receptions and for full or partial buyouts. It does not confirm wedding ceremonies.",
+      "The article describes ice walls, ice seats, and drinks in ice glasses, in a room kept at about 23°F. Parkas and gloves are provided. A standard visit is about 45 minutes. Private events are timed separately.",
+      "No reception price and no single guest count are published for a wedding. Room sizes differ, and this listing does not pick one.",
+    ],
+    bestFor: "A wedding reception inside an ice bar, at the Strip location you actually book. Not a confirmed ceremony site.",
+    description: `minus5 keeps the room at about 23°F. The walls, the seats, and the glasses are ice. You get a parka and gloves. That is the setting for a reception, not a claim that you can say the vows here.
+
+The company's October 3, 2025 events article says you can book a wedding reception, or a full or partial buyout. It names three locations: Mandalay Bay, The Venetian, and The LINQ Promenade. They are booked separately. There is no one address, no one guest count, and no published package price that covers all of them, so this listing leaves those blank.
+
+The same article does not say minus5 hosts ceremonies. Plan the vows at a place that does, and ask minus5 which room you would be buying out.`,
+    tips: [
+      "This listing is for a reception. Ask minus5 directly before you plan a ceremony in the ice room.",
+      "Name the location in the quote. Mandalay Bay, The Venetian, and The LINQ are not one booking.",
+      "Ask how long a private event runs. A regular ticket is about 45 minutes, and the article says private events are timed for the group.",
+      "The floor is ice. The article suggests closed-toe shoes. Parkas and gloves are provided.",
+    ],
+    url: "https://www.minus5experience.com/what-to-expect-at-minus5-a-top-las-vegas-event-space-tour/", checked: "2026-11-08", status: "listed", featured: false,
+  },
 ];
