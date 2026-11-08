@@ -44,7 +44,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 
 ## Evergreen: ideas and venues
 - [x] Drive-thru weddings explained: how the Tunnel of Love works. Published 2026-11-07
-- [ ] Elvis weddings: what actually happens at the ceremony
+- [x] Elvis weddings: what actually happens at the ceremony. Published 2026-11-08
 - [ ] Helicopter weddings: Strip flight vs. Grand Canyon landing
 - [ ] Ghost town weddings at Nelson: what to know before you drive out
 - [ ] Sky-high ceremonies: STRAT, High Roller and the Eiffel Tower compared
