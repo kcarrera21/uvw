@@ -53,13 +53,12 @@ Disclosure, privacy, terms, and photo credits were read and not edited. The priv
 
 Budget planner calculations, wedding-finder question ids, and form actions were not touched.
 
-## Reported, not "fixed"
+## Reported, then checked
 
-These disagree inside the site. No new number was chosen.
+Red Rock fees, the Taco Bell guest count, and the privacy/terms template lines were checked on November 8, 2026. The log is `docs/source-corrections.md`.
 
-- Red Rock commercial permit minimum is $130 in the spring post and $345 in the Easter and Cinco de Mayo posts.
+- Red Rock's $130 versus $345 wording, and Taco Bell's 25 versus 15 tip, are corrected in `docs/source-corrections.md`. The unresolved piece is whether a future permit will use the newer national fee table, and whether Taco Bell's 25 includes the couple.
 - The courthouse guide says the courthouse is cheaper than the chapels. Little Neon's $69 Sign & Go is lower, and that guide already refuses to fold it into an all-in total.
-- Taco Bell's package line says up to 25 guests. A tip on the same listing says other parts of the site mention 15. The tip already tells the reader to confirm.
 - Oasis facts say the dinner with paired wines is for two, while the package takes 2 to 8 guests. The description now says both. It does not invent a headcount for the dinner.
 - Machine Guns Vegas lists more than one ceremony price and more than one place the ceremony starts. Both are already in the facts.
 - The Grove, Renowned Events, Sandy Valley Ranch, and Palms chapel have internal price or capacity clashes already named in their tips or facts.

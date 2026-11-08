@@ -45,7 +45,7 @@ export default {
 
 <h2>Red Rock Canyon: early gates, then the end of timed entry</h2>
 <p>From April through September, Red Rock's Scenic Drive opens at 6 a.m. and closes at 8 p.m., so a sunrise ceremony is easy to reach. Timed-entry reservations are required from October 1 through May 31 for entry between 8 a.m. and 5 p.m. Guests arriving before 8 skip that step, and from June 1 it isn't needed at all.</p>
-<p>Every wedding at Red Rock needs a BLM Special Recreation Permit. The BLM says its commercial wedding permit allotment is currently full, so if you're hiring a planner or photographer, ask whether they already hold one. One more timing detail from our listing: the Visitor Center Amphitheater runs 9 a.m. to 4:30 p.m., with the last ceremony at 3:30. For a sunrise or late-evening ceremony, pick one of the outdoor overlook sites instead.</p>
+<p>Every wedding at Red Rock needs a BLM Special Recreation Permit. The planning page checked November 8, 2026 does not say the commercial allotment is full. If you're hiring a planner or photographer, ask whether they already hold a permit. One more timing detail from the same page: the Visitor Center Amphitheater runs 9 a.m. to 4:30 p.m., with the last ceremony at 3:30. For a sunrise or late-evening ceremony, pick one of the outdoor overlook sites instead.</p>
 {{venue-picks:red-rock-canyon}}
 
 <h2>The Neon Museum: a heat rule worth knowing</h2>

@@ -406,7 +406,7 @@ Getting married here takes a permit or a planner who handles one, plus a willing
     facts: [
       "Designated in 1990 as Nevada's first National Conservation Area. It has a 13-mile scenic drive.",
       "Every wedding needs a BLM Special Recreation Permit. Apply 30 to 180 days ahead; permits are first come, first served.",
-      "Permit fees: noncommercial groups pay the greater of $115 or $6 per person. With a paid officiant or photographer it's a one-time commercial permit, $345 minimum. Scenic Drive gate fees are included.",
+      "Wedding permit fees on the BLM planning page, checked November 8, 2026: noncommercial groups (unpaid or reimbursed help) pay the greater of $115 or $6 per person. A new one-time commercial permit, when an officiant and/or photographer is paid, has a $345 minimum. Scenic Drive gate fees are included in that permit. BLM's national special recreation permit FAQ and a September 2026 Red Rock commercial prospectus use a $130 minimum and $7 per person per day for other permit types. The planning page does not date its wedding fees, so the amount on the approved permit is the one to pay.",
       "Four wedding sites: the Visitor Center Amphitheater (up to 200), the Red Rock Overlook on SR 159 and the Red Spring Boardwalk Platform (50 each), and the Ash Spring Overlook (12).",
       "Scenic Drive timed-entry reservations are required October 1–May 31 for entry between 8 a.m. and 5 p.m.",
       "Chapel of the Flowers' Red Rock package is $3,899 plus a $900 venue fee, and includes a helicopter ride for the couple plus 2 guests.",
@@ -1862,7 +1862,7 @@ It's a full event venue now, not a museum, so you can take over one room for a d
     priceFrom: 777, priceLabel: "The Wedding Package, up to 25 guests", guestMax: 25,
     facts: [
       "Taco Bell's flagship Las Vegas Cantina has its own wedding chapel upstairs.",
-      "The $777 Wedding Package covers a half-hour ceremony with an ordained officiant and an event coordinator, plus a private area in the restaurant for your reception.",
+      "The $777 Wedding Package, on tacobellwedding.com checked November 8, 2026, is a half-hour ceremony with an ordained officiant and an event coordinator, plus a private reception area. The package page and FAQ say up to 25 guests. The homepage says couples and up to 25 of their guests. A Cantina events sheet dated April 2025 lists the chapel room at up to 25 people. None of those pages said 15.",
       "It includes a sauce-packet garter and bow tie, \"Just Married\" T-shirts, champagne flutes, a Cinnabon Delights cake and a Taco Party Pack.",
       "You can borrow a bouquet made of Taco Bell sauce packets to walk down the aisle.",
       "Taco Bell says ceremonies can happen in as little as four hours from booking.",
@@ -1870,10 +1870,10 @@ It's a full event venue now, not a museum, so you can take over one room for a d
     bestFor: "Couples who met over a Crunchwrap and aren't embarrassed about it.",
     description: `Yes, it's real. Taco Bell's flagship Cantina on the Strip has a wedding chapel, and the package is exactly as committed to the bit as you'd hope: a sauce-packet bouquet, a sauce-packet garter, and a Cinnabon Delights cake instead of a tiered one.
 
-It's also one of the better deals on the Strip. For $777 you get the ceremony, an officiant, a coordinator and a private reception area for up to 25 people, with tacos. Nobody leaves hungry.`,
+It's also one of the better deals on the Strip. For $777 you get the ceremony, an officiant, a coordinator and a private reception area for up to 25 guests, with tacos. The site's own pages don't all say whether the two of you are inside that 25. Nobody leaves hungry.`,
     tips: [
       "Book through Taco Bell's wedding site, which shows open dates and times.",
-      "The package page says up to 25 guests, but other parts of the site mention 15. Confirm your headcount when you book.",
+      "Checked November 8, 2026: the package page and FAQ say up to 25 guests, and no current page we opened said 15. The homepage also says couples and up to 25 of their guests. Ask, when you book, whether 25 includes the two of you.",
       "Get your marriage license from the Clark County Marriage License Bureau before the ceremony.",
       "The Cantina serves alcohol, so ask what's included for your reception and what's pay-as-you-go.",
     ],

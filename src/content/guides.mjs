@@ -383,7 +383,7 @@ export const guides = [
     slug: "desert-wedding-permits",
     seoTitle: "Las Vegas Desert Wedding Permits: Rules, Fees & Closures",
     metaDescription: "Which parks near Las Vegas allow weddings, which permit you need, published fees, lead times and closures, from the agencies that manage them.",
-    answer: "Most public lands near Las Vegas allow weddings with a permit. Valley of Fire requires a Nevada State Parks Special Use Permit ($25 processing fee, apply 60 days ahead), Red Rock Canyon requires a BLM Special Recreation Permit, Lake Mead requires a National Park Service Special Use Permit ($150 application fee), and Death Valley's permit starts with a $300 application fee, filed at least 30 days ahead.",
+    answer: "Most public lands near Las Vegas allow weddings with a permit. Valley of Fire requires a Nevada State Parks Special Use Permit ($25 processing fee, apply 60 days ahead). Red Rock Canyon requires a BLM Special Recreation Permit. The planning page checked November 8, 2026 lists a noncommercial minimum of the greater of $115 or $6 per person, and a $345 minimum for a new one-time commercial permit when an officiant or photographer is paid. Lake Mead requires a National Park Service Special Use Permit ($150 application fee), and Death Valley's permit starts with a $300 application fee, filed at least 30 days ahead.",
     title: "Desert & Outdoor Wedding Permits Near Las Vegas",
     nav: "Desert permits",
     eyebrow: "Outdoor weddings",
@@ -407,8 +407,9 @@ export const guides = [
 <h2>Red Rock Canyon National Conservation Area (BLM)</h2>
 <ul class="checklist">
   <li><strong>Weddings allowed?</strong> Yes, with a BLM Special Recreation Permit.</li>
-  <li><strong>Limits:</strong> 10 commercial wedding permittees (currently full) and 100 noncommercial wedding permits.</li>
-  <li><strong>How to apply:</strong> email the Red Rock recreation team listed on the BLM page.</li>
+  <li><strong>Fee, from the BLM planning page checked November 8, 2026:</strong> noncommercial groups, with unpaid or reimbursed help, pay the greater of $115 or $6 per person. A new one-time commercial permit, when an officiant and/or photographer is paid, has a $345 minimum. A chapel that already holds a permit includes that cost in its price. Scenic Drive gate fees are included.</li>
+  <li><strong>A different BLM number:</strong> the national special recreation permit FAQ, and a September 2026 Red Rock prospectus for commercial operators, use a $130 minimum and $7 per person per day. That is not the wedding figure on the planning page. The planning page does not date its wedding fees, and the permittee list it links is labeled fiscal year 2022, so pay the amount on the approved permit.</li>
+  <li><strong>How to apply:</strong> the form linked from the planning page, or call (702) 515-5371 or email RRC_Reservations@blm.gov. Apply no more than 180 days ahead and at least 30 days ahead.</li>
   <li><strong>Pro portraits:</strong> need a film permit, which can take up to 60 days.</li>
   <li><strong>Timed entry:</strong> required for the Scenic Drive October 1–May 31.</li>
 </ul>
@@ -461,7 +462,7 @@ export const guides = [
 `,
     faq: [
       { q: "Do you need a permit to get married at Valley of Fire?", a: "Yes. Weddings require a Special Use Permit from Nevada State Parks ($25 processing fee, apply 60 days ahead), and they're prohibited during the park's December 1–14 closure." },
-      { q: "Can you get married at Red Rock Canyon?", a: "Yes, with a BLM Special Recreation Permit. The BLM limits wedding permits to 10 commercial permittees and 100 noncommercial permits." },
+      { q: "Can you get married at Red Rock Canyon?", a: "Yes, with a BLM Special Recreation Permit. The planning page checked November 8, 2026 lists a noncommercial minimum of the greater of $115 or $6 per person, and a $345 minimum for a new one-time commercial permit when an officiant or photographer is paid. A $130 minimum on other BLM pages is for different permit types. Pay the amount on the approved permit." },
       { q: "Can you get married at Seven Magic Mountains?", a: "We found no official wedding permit process, and the site's official guidance limits photography to private, non-commercial use." },
     ],
     sources: [
