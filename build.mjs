@@ -661,8 +661,8 @@ async function main() {
 </div></section>
 
 <section class="band-blush"><div class="wrap center narrow">
-  <span class="eyebrow">For venues & planners</span><h2 class="mt0">Run a place couples can't book <em>anywhere else</em>?</h2>
-  <p class="lede">Claim a free listing. Featured and Spotlight add your photos and an inquiry form that emails you.</p>
+  <span class="eyebrow">For venues & planners</span><h2 class="mt0">Host weddings in Las Vegas?</h2>
+  <p class="lede">A free listing adds your venue to the directory. Featured and Spotlight add your photos and an inquiry form that emails you.</p>
   <a class="btn btn-primary" href="/for-venues/">List your venue</a>
 </div></section>`,
   });
@@ -1057,8 +1057,8 @@ async function main() {
     title: "List Your Las Vegas Wedding Venue", og: "for-venues",
     description: "Claim your free listing on Unique Vegas Weddings, or upgrade to Featured or Spotlight placement and send couples' inquiries straight to your inbox.",
     body: `<section style="padding-top:48px"><div class="wrap">
-  <div class="narrow"><span class="eyebrow">For venues, chapels & planners</span><h1>List a place couples can't book <em>anywhere else</em></h1>
-  <p class="lede">Unique Vegas Weddings is an independent guide for couples who want more than a ballroom. If that's your venue, start with a free listing. Featured and Spotlight are there if you want more placement.</p></div>
+  <div class="narrow"><span class="eyebrow">For venues, chapels & planners</span><h1>Help couples find <em>your venue</em></h1>
+  <p class="lede">Unique Vegas Weddings is an independent guide couples use while they're choosing a place. A free listing adds your venue to the directory, with a link to your booking page. Featured and Spotlight add placement if you want it.</p></div>
   <h2 class="sr-only">Listing plans</h2>
   <div class="tiers">
     <div class="tier"><h3>Listed</h3><div class="price">Free</div><ul class="checklist"><li>Your venue page with verified details</li><li>Correct or update your info anytime</li><li>Link to your official booking page</li></ul><a class="btn btn-ghost" href="#apply">Claim your listing</a></div>
@@ -1513,21 +1513,18 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <h2>How we keep it accurate</h2><ul class="checklist"><li>Every venue fact is checked against the venue's official site, and every listing shows the date we checked.</li><li>Legal and permit information comes from the Clark County Clerk, Nevada State Parks, the BLM, the National Park Service and the U.S. Forest Service, and we link to them.</li><li>We don't copy venue marketing copy or photos. Our illustrations are original, and venues can add their own photos by claiming their listing.</li><li>Paid placements are labeled "Featured" or "Partner." They never change the facts.</li></ul>
 <h2>Independent</h2><p>Unique Vegas Weddings isn't owned by any venue, chapel or resort. Every venue is listed for free, and we pick what goes on the site. Venues can pay for Featured or Spotlight placement, which is always labeled, but paying never gets a venue listed and never changes the facts we publish. Where we use affiliate links or sell something, we say so. See our <a href="/disclosure/">disclosure</a>.</p>
 <p>Spotted something out of date? Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a> or <a href="/contact/">use the contact page</a>.</p>`);
-  simple("/contact/", "Contact", "Write to hello@uniquevegasweddings.com. We fix listing mistakes, answer questions about the site, and help venues get listed. We don't book dates.", `
-<p class="lede">Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. If a page is wrong, or you're not sure where a question should go, start here.</p>
-<p>Include the page link, and a sentence on what you need.</p>
-<h2>Something on the site is wrong</h2>
-<p>Fees, prices, and guest counts change. Send the page and what's off. If you've got a link to the venue's site, or to the county page, send that too. We check the listing against it.</p>
-<h2>You want a date or a price</h2>
-<p>We don't hold dates, and we don't quote packages. Open the venue's listing and use the link to its official site. If that listing has an inquiry form, your note goes to the venue, not to us.</p>
-<p>We can correct a fact on our page. We can't tell you if a Saturday is free.</p>
-<h2>You run a venue</h2>
-<p>For a free listing, or a question about Featured or Spotlight, use the form on <a href="/for-venues/">List your venue</a>. Email works too. Tell us the venue name, your role, and the official website.</p>
-<p>Paid placements stay labeled. Paying doesn't change the facts we publish.</p>
+  simple("/contact/", "Contact", "Write to hello@uniquevegasweddings.com with a question or a correction. For a venue's prices and dates, start from that venue's listing.", `
+<p class="lede">Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. You're welcome to write with a question, a correction, or anything you're not sure where to send. A page link and a sentence or two is plenty.</p>
+<h2>Spotted something we should update?</h2>
+<p>Fees, prices, and guest counts change. Send the page and what looks off. If you have the venue's own page, or the county page, include that too. We use it to check the listing.</p>
+<h2>Checking prices or available dates?</h2>
+<p>For current packages and availability, head to the venue's official website from its listing. You'll hear directly from the people who can help you book. If the listing has an inquiry form, that message goes to the venue. When a figure on our page has gone stale, send it here and we'll correct the directory.</p>
+<h2>If you host weddings</h2>
+<p>A free listing, or a question about Featured or Spotlight, starts on <a href="/for-venues/">List your venue</a>. Email works too. Tell us the venue name, your role, and the official website. Paid placements stay labeled, and paying doesn't change the facts we publish.</p>
 <h2>Press</h2>
-<p>For a quote or an interview, email us. Say what you're working on, and the deadline if you have one.</p>
+<p>If you need a quote or an interview, tell us what you're working on. A deadline helps us see the timing.</p>
 ${C.social.pinterest ? `<h2>Pinterest</h2><p><a class="social-link" href="${esc(C.social.pinterest)}" rel="me noopener" target="_blank">${PINTEREST_ICON}<span>Follow Unique Vegas Weddings on Pinterest</span></a></p>` : ""}
-<div class="note">We're a guide, not a venue and not a booking service. We can't reserve a room or issue a marriage license. The license comes from the Clark County Clerk. <a href="/guides/las-vegas-marriage-license/">The license steps are here.</a></div>`);
+<div class="note">We're an independent guide. Booking happens with the venue, and the marriage license comes from the Clark County Clerk. <a href="/guides/las-vegas-marriage-license/">The license steps are here.</a></div>`);
   simple("/photo-credits/", "Photo Credits", "Credits and licenses for the free-license photos used on Unique Vegas Weddings.", `
 <p>The photos on this site are free-license images: most come from <a href="https://unsplash.com/" rel="nofollow noopener" target="_blank">Unsplash</a> under the Unsplash License, and the rest are shared under Creative Commons licenses or released to the public domain (found through <a href="https://openverse.org/" rel="nofollow noopener" target="_blank">Openverse</a>). Thank you to every photographer below.</p>
 <p>All photos were resized and cropped to fit the layout. No other changes were made. Venue logos and names that appear in photos belong to their owners, and their appearance doesn't mean the venue endorses this site.</p>

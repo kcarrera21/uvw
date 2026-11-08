@@ -24,7 +24,7 @@ export default {
 </div>
 
 <h2>The full horror show: Viva Las Vegas Wedding Chapel</h2>
-<p><a href="/venues/viva-las-vegas-wedding-chapel/">Viva Las Vegas</a>, on the north end of the Strip at 1205 Las Vegas Blvd. South, has been doing theme weddings longer than anyone, and its gothic and horror line is the deepest in town. The chapel runs these packages year-round. Its own line is that Halloween is every day there.</p>
+<p><a href="/venues/viva-las-vegas-wedding-chapel/">Viva Las Vegas</a>, on the north end of the Strip at 1205 Las Vegas Blvd. South, publishes its own gothic and horror line. The chapel runs these packages year-round. Its own line is that Halloween is every day there.</p>
 <p>The chapel says every themed ceremony comes with a live character officiant, round-trip limo, professional photos, a livestream, and your names on its Strip marquee. Fog, lighting and characters are part of the staging. Packages published on its site when we checked, all for up to 80 guests:</p>
 <ul class="checklist">
   <li><strong>$750:</strong> Halloween Theme, Dracula's Tomb, Grim Reaper's Graveyard, Freddy's Nightmare, and a "Mistress of the Dark" theme.</li>

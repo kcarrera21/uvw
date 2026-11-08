@@ -118,7 +118,7 @@ export const guides = [
       { q: "How much is a marriage license in Las Vegas?", a: "$102 at the Clark County Marriage License Bureau, rechecked October 31, 2026. The Clerk has not posted a 2027 change. Card payments carry a processing fee of 2% + $1.25." },
       { q: "Is the Las Vegas marriage license office open on holidays?", a: "The bureau at 201 E. Clark Avenue is open 8 a.m. to midnight every day, including all holidays. Henderson, Laughlin, and Mesquite close on legal holidays." },
       { q: "Can we get a Las Vegas marriage license online?", a: "You can submit the application online, and it stays on file for one year, but both partners must appear in person together to receive the license." },
-      { q: "Is there a waiting period or blood test in Nevada?", a: "No. There's no waiting period, no blood test and no residency requirement." },
+      { q: "Is there a waiting period or blood test in Nevada?", a: "No waiting period and no blood test. Adults have no Nevada residency requirement. The requirements page's only residency rule is a 17-year-old who lives in Clark County and has a court order. The office says it does not give legal advice on that exception." },
       { q: "How many witnesses do you need to get married in Las Vegas?", a: "At least one witness besides the officiant." },
       { q: "How long is a Nevada marriage license valid?", a: "One year from the date it's issued." },
     ],
@@ -175,7 +175,7 @@ export const guides = [
 </ul>
 
 <h2>Who can come</h2>
-<p>Bring <strong>one required witness</strong> plus up to <strong>eight guests</strong>. That's ten people in the room besides you two and the officiant, which is enough for parents, siblings and a best friend with a phone camera.</p>
+<p>Bring <strong>one required witness</strong> plus up to <strong>eight guests</strong>. That's nine people in the room besides you two and the officiant, which is enough for parents, siblings and a best friend with a phone camera.</p>
 
 <div class="note"><strong>Be on time.</strong> Late arrivals have to reschedule. Get your license first (the Bureau is a short walk away), then head over with time to spare.</div>
 
@@ -579,7 +579,7 @@ export const guides = [
     readMins: 5,
     hero: "weekend",
     body: `
-<p class="lede">A Vegas wedding is a mini vacation for everyone you invite. Plan the weekend around them, not just the ceremony, and people will still be talking about it at your tenth anniversary. If the two of you are marrying the day you land, your clock is the <a href="/guides/same-day-las-vegas-wedding/">same-day plan</a>. This page is the guest weekend around it.</p>
+<p class="lede">A Vegas wedding is a mini vacation for everyone you invite. Plan the weekend around them, not just the ceremony: where they stay, how they get there, and a note with the times. If the two of you are marrying the day you land, your clock is the <a href="/guides/same-day-las-vegas-wedding/">same-day plan</a>. This page is the guest weekend around it.</p>
 
 <h2>Where should guests stay?</h2>
 <p>Base guests close to your ceremony. A downtown wedding (Neon Museum, Mob Museum, Graceland) suits Fremont-area hotels. A Strip ceremony makes walking to the reception easy. For desert venues, choose a Strip hotel and book one shuttle instead of 20 rideshares.</p>

@@ -128,7 +128,7 @@ The ballroom's floor-to-ceiling windows put the Strip skyline behind your recept
     bestFor: "Ocean lovers, divers, and anyone who wants their witnesses to have fins.",
     description: `In the middle of the Mojave there's a shipwreck full of sharks, and you can get married in front of it. The blue light, slow-moving rays and the occasional shark gliding past make everything look like a film still.
 
-It's air-conditioned, which is no small thing in July. It's also on the Strip, so the reception can be an elevator ride away. Few venues anywhere get the "wait, where did you get married?" reaction this one does.`,
+It's air-conditioned, which is no small thing in July. It's also on the Strip, so the reception can be an elevator ride away. You'll get the "wait, where did you get married?" reaction.`,
     tips: [
       "Book through Mandalay Bay's wedding team. Ask about the guest limit in the tunnel areas.",
       "Aquarium lighting is dim and blue. Hire a photographer who's comfortable with low light.",
@@ -214,7 +214,7 @@ It began as an accessibility idea and turned into a legend. It's fast, affordabl
       "Ceremonies are offered in Spanish, French, Portuguese, German, Italian and Romanian.",
     ],
     bestFor: "Elvis fans who want the original, and international couples who want vows in their own language.",
-    description: `If you're going to be married by the King, you might as well go where it started. Graceland has been marrying couples since 1939, and its Elvis ceremonies date back to 1977. It's small and sincere, and there's a lot more heart in it than you'd expect from a sequined jumpsuit.
+    description: `If you're going to be married by the King, this is the chapel that calls itself the first. Graceland has been marrying couples since 1939, and its Elvis ceremonies date back to 1977. It's small and sincere, and there's a lot more heart in it than you'd expect from a sequined jumpsuit.
 
 It also quietly serves couples from all over the world, with ceremonies in six languages besides English. For a destination wedding where Grandma can follow along, that's a big deal.`,
     tips: [
@@ -259,7 +259,7 @@ What makes it unusual is how far it reaches. The same team will take you to Vall
       "Its Gothic & Horror line runs about a dozen packages, from Dracula's Tomb to a Cursed Hearse. Most are $750 for up to 80 guests, and they run year-round.",
     ],
     bestFor: "Theme ceremonies, a long welcome for LGBTQ+ couples, and your names on the marquee.",
-    description: `Want a gothic wedding? A 1920s speakeasy wedding? A wedding in space? Viva Las Vegas has been building theme ceremonies longer than anyone, and it commits to the bit with costumes, sets and characters.
+    description: `Want a gothic wedding? A 1920s speakeasy wedding? A wedding in space? Viva Las Vegas bills itself as the first theme chapel, and it commits to the bit with costumes, sets and characters.
 
 It has also been welcoming LGBTQ+ couples since 1999, long before it was legal to marry in Nevada. And every couple gets their names on the marquee. That's free billing on Las Vegas Boulevard, which is more than most headliners can say.`,
     tips: [
@@ -575,7 +575,7 @@ For a bigger group, the resort has a chapel with a fountain view, a waterfall at
     bestFor: "Big, glamorous weddings with Roman grandeur and space for the whole guest list.",
     description: `Caesars has been the definition of Vegas glamour for generations, and its wedding venues lean all the way in. There are marble temples, garden colonnades, a koi pond and a stone aisle. Its pools feel like they belong to actual gods.
 
-With chapels up to 196 guests and gardens over 100, it's one of the few Strip resorts that can host a large wedding with real outdoor ceremony options. Your guests can stay, eat, swim and celebrate without leaving the property.`,
+With chapels up to 196 guests and gardens over 100, it can host a large wedding with outdoor ceremony options. Your guests can stay, eat, swim and celebrate without leaving the property.`,
     tips: [
       "The gardens are best in spring and fall. Summer ceremonies want early-morning or evening times.",
       "Venus Garden's temple and koi pond make the most distinctive backdrop.",
@@ -1227,7 +1227,7 @@ The altitude also means cooler temperatures than the valley floor, which matters
       "Address: 3780 E Kellogg Road, Pahrump, NV 89061."
     ],
     bestFor: "Vineyard rows in the Mojave, and a wine list that matches the view.",
-    description: "Vineyards aren't what most people picture an hour outside Las Vegas, which is part of the appeal. Sanders Family Winery grows grapes in Pahrump on the other side of the Spring Mountains, and it hosts ceremonies and receptions among the vines and at a gazebo, with Mount Charleston behind you.\n\nThere's no package menu online, so expect to plan by phone and paperwork. That suits couples who want a relaxed, wine-country day without flying to Napa.",
+    description: "Vineyards aren't what most people picture about 45 minutes outside Las Vegas, which is part of the appeal. Sanders Family Winery grows grapes in Pahrump on the other side of the Spring Mountains, and it hosts ceremonies and receptions among the vines and at a gazebo, with Mount Charleston behind you.\n\nThere's no package menu online, so expect to plan by phone and paperwork. That suits couples who want a relaxed, wine-country day without flying to Napa.",
     tips: [
       "Call first. The winery starts every wedding with an emailed application and checklist.",
       "Ask about prices, deposits and vendor rules on that first call. None are published.",
@@ -1446,7 +1446,7 @@ The altitude also means cooler temperatures than the valley floor, which matters
       "No event prices are published. Contact (702) 566-1000 or info@battlefieldvegas.com. Address: 2771 Sammy Davis Jr Drive, Las Vegas, NV 89109."
     ],
     bestFor: "Close the night with a tank flattening a sedan. Ask the team, and they'll price it for you.",
-    description: "Battlefield Vegas is a military-themed range with a fleet of armored vehicles, and it rents the whole operation out after hours. Weddings are on its list of private events, with catering, a bar and a DJ handled in-house.\n\nThe detail nobody else in town can match: your guests can ride in by Humvee, and you can close the night by crushing a car with a tank. There's no published wedding package, so this is a custom build with the events team.",
+    description: "Battlefield Vegas is a military-themed range with a fleet of armored vehicles, and it rents the whole operation out after hours. Weddings are on its list of private events, with catering, a bar and a DJ handled in-house.\n\nYour guests can ride in by Humvee, and you can close the night by crushing a car with a tank. There's no published wedding package, so this is a custom build with the events team.",
     tips: [
       "Book an after-hours slot (from 7:30 p.m.) if you want the range to yourselves.",
       "Ask whether the tank car crush can be scheduled as the send-off. It's priced separately.",
@@ -1661,7 +1661,7 @@ The micro wedding package is one of the simplest in town: the officiant, license
     bestFor: "Couples who'd rather drive two hours for silence, palm gardens and a sky full of stars.",
     description: `The Oasis at Death Valley is a historic resort inside the national park, with spring-fed gardens and palms in the middle of one of the driest places on earth. It's a long drive from the Strip, which is exactly why it works: no crowds, no neon, just desert and stars.
 
-The elopement package is built for two, with a private dinner and an overnight stay included. Bigger weddings get a garden, a lawn or a rooftop terrace with views across the valley.
+The elopement package takes 2 to 8 guests, with a private dinner for two and an overnight stay included. Bigger weddings get a garden, a lawn or a rooftop terrace with views across the valley.
 
 Want the park land itself, outside the resort? [Death Valley National Park](/venues/death-valley-national-park/) permits ceremonies at the overlooks and on the dunes, with its own application.`,
     tips: [
@@ -1707,7 +1707,7 @@ It handles weddings start to finish, from the ceremony on the patio to the party
       "A dedicated wedding specialist handles planning: 702-567-6136.",
     ],
     bestFor: "A lake, an 80-foot yacht, and a resort team, without the Strip.",
-    description: `The Westin sits on the shore of Lake Las Vegas, a Mediterranean-style resort community about half an hour from the Strip. You can say your vows at a gazebo by the water, then take everyone out on the resort's 80-foot yacht.
+    description: `The Westin sits on the shore of Lake Las Vegas, a Mediterranean-style resort community about half an hour from the Strip. You can say your vows at a gazebo by the water, or take up to 100 guests out on the resort's 80-foot yacht.
 
 It's a full-service resort, so the ceremony, reception and room block all happen in one place. If the Strip feels like too much, this is the calm, lakeside version of a Vegas wedding.`,
     tips: [
@@ -1753,7 +1753,7 @@ It's an easy pick for a classic Vegas wedding with a party right outside the doo
       "A specials flyer on the wedding page offers 10% off Monday to Thursday ceremonies between 10 a.m. and 3 p.m.",
     ],
     bestFor: "Waterfalls, palms and pink flamingos, a short walk from your room.",
-    description: `The Flamingo's gardens are one of the Strip's best-kept secrets: waterfalls, palms, ponds and the hotel's famous pink flamingos, all behind the casino. The hotel runs five ceremony spots back there, from an indoor chapel to a gazebo and a tiny waterfall nook.
+    description: `The Flamingo's gardens sit behind the casino: waterfalls, palms, ponds and the hotel's famous pink flamingos. The hotel runs five ceremony spots back there, from an indoor chapel to a gazebo and a tiny waterfall nook.
 
 It's old Vegas in the best way, with resort convenience. Get married in the garden, then have dinner and a room upstairs without ever getting in a car.`,
     tips: [
@@ -2036,7 +2036,7 @@ The weddings themselves happen in Silverton's event spaces: The Green outside fo
     bestFor: "A beer-hall reception with a liter, a polka, and a room full of people ready to celebrate with you.",
     description: `Hofbräuhaus Las Vegas is a full-size Bavarian beer hall a few minutes off the Strip, modeled on the Munich original, with a Bier Hall and a Biergarten that each seat hundreds. It's not subtle, and that's the point.
 
-It's built for big, loud, happy groups, which also describes most wedding receptions. Book the Biergarten or the Bier Hall for a crowd, or a smaller group for a rehearsal dinner that nobody will forget.`,
+It's built for big, loud, happy groups, which also describes most wedding receptions. Book the Biergarten or the Bier Hall for a crowd, or a smaller room for the rehearsal dinner.`,
     tips: [
       "Prices and menus for groups aren't published, so ask group sales for a quote and food options.",
       "The hall runs its own Oktoberfest events, so ask early if you want a September or October date.",
