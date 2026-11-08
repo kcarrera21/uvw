@@ -107,7 +107,7 @@ Nelson is the antidote to the Vegas you've seen on TV. There's no neon, no casin
     bestFor: "Strip views in a quiet hotel, so you can reach the ceremony without crossing a casino floor.",
     description: `The Waldorf is the quiet one on the Strip. There's no casino floor, no lobby slot machines, and no wading through a crowd in a wedding dress. You get an elevator, a view and a dedicated events team.
 
-The ballroom's floor-to-ceiling windows put the Strip skyline behind your reception. The eighth-floor pool deck makes an open-air ceremony feel almost private. For a big, polished wedding with an unmistakably Vegas view, it's one of the most elegant options in the city.`,
+The ballroom's floor-to-ceiling windows put the Strip skyline behind your reception. The eighth-floor pool deck makes an open-air ceremony feel almost private. For a bigger group, those two rooms are the choice: the skyline indoors, or the deck outside.`,
     tips: [
       "Pricing is quote-only. Ask for ceremony + reception bundles and room-block terms in the same email.",
       "The Atriums (30–60 guests) suit intimate weddings that still want luxury.",
@@ -503,8 +503,8 @@ The elopement package covers the essentials, from the officiant who files your p
       "The Fountain Courtyard package holds up to 80 guests (100 with an added fee).",
       "The Conservatory is offered for proposals only, not ceremonies.",
     ],
-    bestFor: "Timeless, elegant weddings with the most famous water show in the world behind you.",
-    description: `Bellagio is the fountains, up close, and it's as romantic as you've hoped. The buildings lean European, the scale is pure Las Vegas, and the water show is the one people mean when they picture this city.
+    bestFor: "The fountains, up close, for a small terrace wedding or a bigger chapel group.",
+    description: `Bellagio is the fountains, up close. The buildings lean European, the scale is pure Las Vegas, and the water show is the one people mean when they picture this city.
 
 The private terrace is the one we love for a small wedding: the fountains going off behind your vows. The chapels fit bigger groups, and they include a live broadcast for family back home. Want to propose first? The Conservatory is reserved for proposals, not ceremonies.`,
     tips: [
