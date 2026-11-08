@@ -6,6 +6,7 @@
   "description": "Static site for uniquevegasweddings.com. Zero dependencies.",
   "scripts": {
     "build": "node build.mjs",
+    "test": "node --test test/*.mjs",
     "preview": "node build.mjs && cd public && python3 -m http.server 8080",
     "creatives": "node scripts/creatives.mjs && python3 scripts/render.py"
   }

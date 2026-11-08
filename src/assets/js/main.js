@@ -215,7 +215,48 @@
   // ---------- directory filters ----------
   var grid = $("[data-filter-grid]");
   if (grid) {
-    var state = { cat: "all", setting: "all", budget: "all", q: "" };
+    var state = { cat: "all", setting: "all", budget: "all", q: "", guests: 0, knownOnly: false };
+    var guestInput = $("[data-filter-guests]");
+    var knownInput = $("[data-filter-known]");
+    var moreNote = $("[data-filter-more]");
+    function capValue(raw) {
+      if (raw === "" || raw == null) return null;
+      var n = +raw;
+      return Number.isFinite(n) && n > 0 ? n : null;
+    }
+    function guestPass(cap) {
+      if (state.knownOnly && cap == null) return false;
+      if (state.guests > 0 && cap != null && cap < state.guests) return false;
+      return true;
+    }
+    function guestNote(list, capOf) {
+      if (!moreNote) return;
+      if (!state.guests && !state.knownOnly) { moreNote.hidden = true; moreNote.textContent = ""; return; }
+      var caps = list.map(capOf);
+      var unknown = caps.filter(function (c) { return c == null; }).length;
+      var fit = caps.filter(function (c) { return c != null && (state.guests <= 0 || c >= state.guests); }).length;
+      var low = state.guests > 0 ? caps.filter(function (c) { return c != null && c < state.guests; }).length : 0;
+      var bits = [];
+      if (state.guests > 0) bits.push(fit + (fit === 1 ? " venue publishes" : " venues publish") + " a capacity of at least " + state.guests.toLocaleString("en-US") + ".");
+      if (low) bits.push(low + (low === 1 ? " is" : " are") + " hidden because the published maximum is lower.");
+      if (unknown && !state.knownOnly) bits.push(unknown + (unknown === 1 ? " doesn't publish a maximum, so it stays in the list." : " don't publish a maximum, so they stay in the list."));
+      if (unknown && state.knownOnly) bits.push(unknown + (unknown === 1 ? " doesn't publish a maximum and is hidden." : " don't publish a maximum and are hidden."));
+      moreNote.hidden = false;
+      moreNote.textContent = bits.join(" ");
+    }
+    function syncGuestUrl() {
+      try {
+        var u = new URL(location.href);
+        if (state.guests > 0) u.searchParams.set("guests", String(state.guests)); else u.searchParams.delete("guests");
+        if (state.knownOnly) u.searchParams.set("known", "1"); else u.searchParams.delete("known");
+        history.replaceState(null, "", u);
+      } catch (e) {}
+    }
+    function readGuestState() {
+      var n = parseInt(guestInput && guestInput.value, 10);
+      state.guests = Number.isFinite(n) && n > 0 ? n : 0;
+      state.knownOnly = !!(knownInput && knownInput.checked);
+    }
     var empty = $("[data-filter-empty]");
     var countEl = $("[data-filter-count]");
     var catalog = null;
@@ -232,14 +273,15 @@
         var badge = v.badge ? '<span class="badge">' + escH(v.badge) + "</span>" : "";
         return '<article class="vcard" data-venue data-cat="' + escH(v.c) + '" data-setting="' + escH(v.st) + '" data-budget="' + escH(v.b) + '" data-search="' + escH(v.q) + '" data-price="' + escH(v.p) + '" data-guests="' + escH(v.g) + '" data-name="' + escH(v.ns) + '" data-checked="' + escH(v.k) + '">' +
           badge + '<button class="save" type="button" data-save="' + escH(v.s) + '" data-name="' + escH(v.n) + '" data-url="/venues/' + escH(v.s) + '/" aria-pressed="false" aria-label="Save ' + escH(v.n) + ' to your shortlist">' + HEART + '<span class="save-label">Save</span></button>' +
-          '<div class="img">' + v.img + '</div><div class="body"><span class="tag sage" style="align-self:flex-start">' + escH(v.cn) + '</span><h3><a href="/venues/' + escH(v.s) + '/">' + escH(v.n) + '</a></h3><div class="meta">' + escH(v.area) + (v.setting ? " · " + escH(v.setting) : "") + '</div><div class="price">' + price + "</div></div></article>";
+          '<div class="img">' + v.img + '</div><div class="body"><span class="tag sage" style="align-self:flex-start">' + escH(v.cn) + '</span><h3><a href="/venues/' + escH(v.s) + '/">' + escH(v.n) + '</a></h3><div class="meta">' + escH(v.area) + (v.setting ? " · " + escH(v.setting) : "") + (v.g ? " · up to " + Number(v.g).toLocaleString("en-US") + " guests" : "") + '</div><div class="price">' + price + "</div></div></article>";
       }
-      function matchRec(v) {
+      function matchOther(v) {
         return (state.cat === "all" || v.c === state.cat) &&
           (state.setting === "all" || String(v.st).indexOf(state.setting) > -1) &&
           (state.budget === "all" || v.b === state.budget) &&
           (!state.q || String(v.q).indexOf(state.q) > -1);
       }
+      function matchRec(v) { return matchOther(v) && guestPass(capValue(v.g)); }
       function numOf(v, k) { return v[k] === "" || v[k] == null ? null : +v[k]; }
       var byRec = {
         "recommended": function (a, b) { return a.i - b.i; },
@@ -259,6 +301,7 @@
         if (countEl) countEl.textContent = rows.length + (rows.length === 1 ? " venue" : " venues");
         if (empty) empty.hidden = rows.length > 0;
         if (more) more.hidden = rendered >= rows.length;
+        guestNote(catalog.filter(matchOther), function (v) { return capValue(v.g); });
       }
       function paint(reset) {
         var rows = rowsNow();
@@ -293,48 +336,51 @@
       var preSort = params.get("sort");
       if (preCat) { var sel = $('[data-filter="cat"]'); if (sel) { sel.value = preCat; state.cat = preCat; } }
       if (preSort && byRec[preSort] && sortSel) sortSel.value = preSort;
-      if (preCat || (preSort && byRec[preSort])) paint(true);
+      var preGuests = parseInt(params.get("guests"), 10);
+      if (preGuests > 0 && guestInput) { guestInput.value = String(preGuests); state.guests = preGuests; }
+      if (params.get("known") === "1" && knownInput) { knownInput.checked = true; state.knownOnly = true; }
+      function onGuest() { readGuestState(); syncGuestUrl(); paint(true); }
+      if (guestInput) guestInput.addEventListener("input", onGuest);
+      if (knownInput) knownInput.addEventListener("change", onGuest);
+      if (preCat || (preSort && byRec[preSort]) || state.guests || state.knownOnly) paint(true);
       else syncRows(rowsNow());
     } else {
       var cards = $$("[data-venue]", grid);
       function apply() {
         var shown = 0;
         cards.forEach(function (c) {
-          var ok = (state.cat === "all" || c.getAttribute("data-cat") === state.cat) &&
+          var other = (state.cat === "all" || c.getAttribute("data-cat") === state.cat) &&
             (state.setting === "all" || c.getAttribute("data-setting").indexOf(state.setting) > -1) &&
             (state.budget === "all" || c.getAttribute("data-budget") === state.budget) &&
             (!state.q || c.getAttribute("data-search").indexOf(state.q) > -1);
+          var ok = other && guestPass(capValue(c.getAttribute("data-guests")));
           c.hidden = !ok; if (ok) shown++;
         });
         if (empty) empty.hidden = shown > 0;
         if (countEl) countEl.textContent = shown + (shown === 1 ? " venue" : " venues");
+        guestNote(cards.filter(function (c) {
+          return (state.cat === "all" || c.getAttribute("data-cat") === state.cat) &&
+            (state.setting === "all" || c.getAttribute("data-setting").indexOf(state.setting) > -1) &&
+            (state.budget === "all" || c.getAttribute("data-budget") === state.budget) &&
+            (!state.q || c.getAttribute("data-search").indexOf(state.q) > -1);
+        }), function (c) { return capValue(c.getAttribute("data-guests")); });
       }
       $$("[data-filter]").forEach(function (sel) {
         sel.addEventListener("change", function () { state[sel.getAttribute("data-filter")] = sel.value; apply(); });
       });
       var q = $("[data-filter-q]");
       if (q) q.addEventListener("input", function () { state.q = q.value.trim().toLowerCase(); apply(); });
-      var pre = new URLSearchParams(location.search).get("category");
+      var preParams = new URLSearchParams(location.search);
+      var pre = preParams.get("category");
       if (pre) { var s = $('[data-filter="cat"]'); if (s) { s.value = pre; state.cat = pre; } }
+      var preGuests2 = parseInt(preParams.get("guests"), 10);
+      if (preGuests2 > 0 && guestInput) { guestInput.value = String(preGuests2); state.guests = preGuests2; }
+      if (preParams.get("known") === "1" && knownInput) { knownInput.checked = true; state.knownOnly = true; }
+      function onGuestFallback() { readGuestState(); syncGuestUrl(); apply(); }
+      if (guestInput) guestInput.addEventListener("input", onGuestFallback);
+      if (knownInput) knownInput.addEventListener("change", onGuestFallback);
       apply();
     }
-  }
-
-  // ---------- budget planner ----------
-  var bp = $("[data-budget-planner]");
-  if (bp) {
-    var total = $("#bp-total"), rows = $$("[data-bp-row]", bp);
-    function fmt(n) { return "$" + Math.round(n).toLocaleString(); }
-    function calc() {
-      var t = +total.value || 0, used = 0;
-      rows.forEach(function (r) {
-        var pct = +$("input", r).value || 0; used += pct;
-        $("output", r).textContent = fmt(t * pct / 100);
-      });
-      $("#bp-used").textContent = used + "%";
-      $("#bp-used").className = used === 100 ? "ok" : "warn";
-    }
-    bp.addEventListener("input", calc); calc();
   }
 
   // ---------- forms: AJAX submit to Formspree, then go to thank-you page ----------
