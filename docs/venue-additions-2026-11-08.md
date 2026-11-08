@@ -1,5 +1,7 @@
 # Venue additions checked November 8, 2026
 
+The six new listings use a flat blush color block, not the category drawing. That drawing includes a heart, sparkles, and a landscape, which these pages do not show. The block is not a picture of the venue. Alt text and the venue-page caption say so.
+
 Internal only. These notes are not linked from the site. Research notes were dated November 7, 2026 Pacific. The fields below were re-read from the official pages on November 8, 2026 before the listings were written. Nothing here is a booking, a partner deal, or a claim that a date is open.
 
 Six listings were added. The directory count goes from 105 to 111. One of them, minus5 ICEBAR, is reception-only. Ceremony counts in the hero and directory say 110 places to get married, plus 1 reception-only listing.

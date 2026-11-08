@@ -156,6 +156,12 @@ function motif(cat, p, r) {
   }
 }
 
+// A flat brand color for listings that must not use the category drawing.
+// No scene, no heart, no star, no diamond, and no claim that this is the venue.
+export function plainArt(w = 800, h = 1000) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="${w}" height="${h}" fill="#F2D6D2"/></svg>`;
+}
+
 export function art(slug, cat, w = 800, h = 1000) {
   const p = PALETTES[cat] || PALETTES["classic-chapels"];
   const r = rng(hash(slug));

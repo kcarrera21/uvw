@@ -5,6 +5,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { venues } from "../src/data/venues.mjs";
+import { plainArt } from "../scripts/art.mjs";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const finderCtx = {};
@@ -98,6 +99,26 @@ test("a reception-only venue is never a finder ceremony match or alternative", (
   const judged = F.assess(ice, { style: "quirky", setting: "either", guests: null, price: "quote" });
   assert.equal(judged.fit, false);
   assert.ok(judged.gaps.some((gap) => /Reception only/i.test(gap)));
+});
+
+test("the six new listings use a flat color placeholder, not the category drawing", () => {
+  const svg = plainArt(800, 1000);
+  assert.match(svg, /<rect /);
+  assert.equal(/<(path|circle|polygon|line|ellipse)\b/.test(svg), false);
+  assert.equal(/heart|sparkle|star|diamond/i.test(svg), false);
+  const build = fs.readFileSync(path.join(root, "build.mjs"), "utf8");
+  for (const slug of ADDED) assert.match(build, new RegExp(slug));
+  assert.match(build, /PLAIN_ART\.has\(v\.slug\) \? plainArt/);
+  const publicArt = path.join(root, "public/assets/art");
+  if (!fs.existsSync(publicArt)) return;
+  for (const slug of ADDED) {
+    const file = fs.readFileSync(path.join(publicArt, slug + ".svg"), "utf8");
+    assert.equal(/<(path|circle|polygon|line|ellipse)\b/.test(file), false, slug);
+    assert.match(file, /fill="#F2D6D2"/);
+  }
+  const page = fs.readFileSync(path.join(root, "public/venues/minus5-icebar/index.html"), "utf8");
+  assert.match(page, /Not a photo of the venue/);
+  assert.equal(page.includes("Illustration for minus5"), false);
 });
 
 test("the public templates keep reception-only wording out of the ceremony defaults", () => {

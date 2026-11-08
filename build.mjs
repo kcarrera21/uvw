@@ -15,7 +15,7 @@ import { AFFILIATE_IDS } from "./src/data/affiliates.mjs";
 import { AMAZON_ASSOCIATE_STATEMENT, createAffiliateEngine } from "./scripts/affiliate-links.mjs";
 import { venues as baseVenues, CATEGORIES } from "./src/data/venues.mjs";
 import { guides } from "./src/content/guides.mjs";
-import { art, logoSVG, markSVG } from "./scripts/art.mjs";
+import { art, logoSVG, markSVG, plainArt } from "./scripts/art.mjs";
 import { pathToFileURL } from "node:url";
 import { VIDEOS as VIDEO_DATA } from "./src/data/videos.mjs";
 
@@ -295,6 +295,8 @@ const articleFigure = (key, pin = null) => {
   return `<figure class="article-photo">${pic(key, "", { eager: true, sizes: "(max-width: 800px) calc(100vw - 48px), 720px", attrs })}<figcaption class="photo-credit">${photoCredit(key)}${save}</figcaption></figure>`;
 };
 const budgetBand = (n) => (n == null ? "quote" : n < 1000 ? "1" : n < 3000 ? "2" : n < 10000 ? "3" : "4");
+const PLAIN_ART = new Set(["love-it-loud-rock-roll-chapel", "dennys-wedding-chapel", "brooklyn-bowl-las-vegas", "keep-memory-alive-event-center", "lakeside-weddings-events", "minus5-icebar"]);
+const plainArtAlt = "Color placeholder. Not a photo of the venue.";
 const BAND_LABEL = { 1: "Under $1,000", 2: "$1,000–$2,999", 3: "$3,000–$9,999", 4: "$10,000+", quote: "Custom quote" };
 const warnings = [];
 const seoWarnings = [];
@@ -398,7 +400,7 @@ function venueCard(v) {
   return `<article class="vcard" data-venue data-cat="${v.category}" data-setting="${esc((v.setting || "").toLowerCase())}" data-budget="${budgetBand(v.priceFrom)}" data-search="${esc(search)}" data-price="${v.priceFrom ?? ""}" data-guests="${v.guestMax ?? ""}" data-name="${esc(v.name.replace(/^The\s+/i, "").toLowerCase())}" data-checked="${v.checked || ""}" data-ceremony="${v.offers === "reception" ? "0" : "1"}">
   ${v.status === "partner" ? `<span class="badge">Partner</span>` : v.featured ? `<span class="badge">Featured</span>` : ""}
   ${saveBtn(v)}
-  <div class="img">${pic(v.slug, `/assets/art/${v.slug}.svg`)}</div>
+  <div class="img">${pic(v.slug, `/assets/art/${v.slug}.svg`, { alt: PLAIN_ART.has(v.slug) ? plainArtAlt : "" })}</div>
   <div class="body">
     <span class="tag sage" style="align-self:flex-start">${esc(c.name)}</span>${v.offers === "reception" ? `<span class="tag">Reception only</span>` : ""}
     <h3><a href="/venues/${v.slug}/">${esc(v.name)}</a></h3>
@@ -523,7 +525,7 @@ async function main() {
   if (fs.existsSync(path.join(ROOT, "marketing/pins"))) copyDir(path.join(ROOT, "marketing/pins"), path.join(OUT, "pins"));
 
   // ---------- generated art + brand files ----------
-  for (const v of venues) write(`assets/art/${v.slug}.svg`, art(v.slug, v.category, 800, 1000));
+  for (const v of venues) write(`assets/art/${v.slug}.svg`, PLAIN_ART.has(v.slug) ? plainArt(800, 1000) : art(v.slug, v.category, 800, 1000));
   for (const c of CATEGORIES) write(`assets/art/cat-${c.slug}.svg`, art("cat-" + c.slug, c.slug, 800, 1000));
   const b64 = (f) => fs.readFileSync(path.join(ROOT, "src/assets/fonts", f)).toString("base64");
   const fontStyle = `<style>@font-face{font-family:"Playfair Display";font-weight:500;src:url(data:font/woff2;base64,${b64("playfair-display-latin-500-normal.woff2")})}@font-face{font-family:"Playfair Display";font-weight:500;font-style:italic;src:url(data:font/woff2;base64,${b64("playfair-display-latin-500-italic.woff2")})}@font-face{font-family:Inter;font-weight:600;src:url(data:font/woff2;base64,${b64("inter-latin-600-normal.woff2")})}</style>`;
@@ -686,7 +688,7 @@ async function main() {
       reception: v.offers === "reception",
       area: v.area, setting: v.setting || "",
       price: v.priceFrom ? money(v.priceFrom) : "",
-      img: pic(v.slug, `/assets/art/${v.slug}.svg`),
+      img: pic(v.slug, `/assets/art/${v.slug}.svg`, { alt: PLAIN_ART.has(v.slug) ? plainArtAlt : "" }),
     };
   };
   const venueCatalogJson = JSON.stringify(venues.map(venueRecord)).replace(/</g, "\\u003c");
@@ -833,7 +835,7 @@ async function main() {
     </div>
 <p class="small">Prices change, so always confirm directly with the venue.</p>
   </div>
-  <figure class="art-fig"><div class="art">${pic(v.slug, `/assets/art/${v.slug}.svg`, { alt: PHOTOS[v.slug] ? "" : "Illustration for " + v.name, eager: true, sizes: "(max-width: 940px) calc(100vw - 48px), 540px" })}</div>${PHOTOS[v.slug] ? `<figcaption class="photo-credit">${photoCredit(v.slug)}</figcaption>` : ""}</figure>
+  <figure class="art-fig"><div class="art">${pic(v.slug, `/assets/art/${v.slug}.svg`, { alt: PLAIN_ART.has(v.slug) ? plainArtAlt : (PHOTOS[v.slug] ? "" : "Illustration for " + v.name), eager: true, sizes: "(max-width: 940px) calc(100vw - 48px), 540px" })}</div>${PHOTOS[v.slug] ? `<figcaption class="photo-credit">${photoCredit(v.slug)}</figcaption>` : PLAIN_ART.has(v.slug) ? `<figcaption class="photo-credit">${esc(plainArtAlt)}</figcaption>` : ""}</figure>
 </div></section>
 <section style="padding-top:40px"><div class="wrap vlayout">
   <div class="prose">
