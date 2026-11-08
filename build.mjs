@@ -248,6 +248,7 @@ const articlePhoto = (a, cat) => {
   return cat && PHOTOS["cat-" + cat] ? "cat-" + cat : null;
 };
 const PINTEREST_ICON = `<svg class="pin-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.2-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>`;
+const FACEBOOK_ICON = `<svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>`;
 const pinterestFollowHref = () => {
   if (!C.social.pinterest) return "";
   const u = new URL(C.social.pinterest);
@@ -269,7 +270,7 @@ const pinterestCallout = () => {
 </aside>`;
 };
 const socialLinks = () => {
-  const items = [["pinterest", "Pinterest", PINTEREST_ICON], ["instagram", "Instagram", ""], ["tiktok", "TikTok", ""]].filter(([k]) => C.social[k]);
+  const items = [["pinterest", "Pinterest", PINTEREST_ICON], ["facebook", "Follow on Facebook", FACEBOOK_ICON], ["instagram", "Instagram", ""], ["tiktok", "TikTok", ""]].filter(([k]) => C.social[k]);
   if (!items.length) return "";
   return `<nav class="social-links" aria-label="Social"><ul>${items.map(([k, label, icon]) => `<li><a href="${esc(C.social[k])}" rel="me noopener" target="_blank">${icon}<span>${label}</span></a></li>`).join("")}</ul></nav>`;
 };
@@ -393,13 +394,13 @@ const viatorUrl = AFF.viatorSearch;
 function venueCard(v) {
   const c = catBy[v.category];
   const price = v.priceFrom ? `<span>From</span><strong>${money(v.priceFrom)}</strong>` : `<span>Pricing</span><strong>Custom quote</strong>`;
-  const search = [v.name, v.area, c.name, ...(v.vibe || [])].join(" ").toLowerCase();
-  return `<article class="vcard" data-venue data-cat="${v.category}" data-setting="${esc((v.setting || "").toLowerCase())}" data-budget="${budgetBand(v.priceFrom)}" data-search="${esc(search)}" data-price="${v.priceFrom ?? ""}" data-guests="${v.guestMax ?? ""}" data-name="${esc(v.name.replace(/^The\s+/i, "").toLowerCase())}" data-checked="${v.checked || ""}">
+  const search = [v.name, v.area, c.name, ...(v.vibe || []), v.offers === "reception" ? "reception only" : ""].join(" ").toLowerCase();
+  return `<article class="vcard" data-venue data-cat="${v.category}" data-setting="${esc((v.setting || "").toLowerCase())}" data-budget="${budgetBand(v.priceFrom)}" data-search="${esc(search)}" data-price="${v.priceFrom ?? ""}" data-guests="${v.guestMax ?? ""}" data-name="${esc(v.name.replace(/^The\s+/i, "").toLowerCase())}" data-checked="${v.checked || ""}" data-ceremony="${v.offers === "reception" ? "0" : "1"}">
   ${v.status === "partner" ? `<span class="badge">Partner</span>` : v.featured ? `<span class="badge">Featured</span>` : ""}
   ${saveBtn(v)}
   <div class="img">${pic(v.slug, `/assets/art/${v.slug}.svg`)}</div>
   <div class="body">
-    <span class="tag sage" style="align-self:flex-start">${esc(c.name)}</span>
+    <span class="tag sage" style="align-self:flex-start">${esc(c.name)}</span>${v.offers === "reception" ? `<span class="tag">Reception only</span>` : ""}
     <h3><a href="/venues/${v.slug}/">${esc(v.name)}</a></h3>
     <div class="meta">${esc(v.area)}${v.setting ? " · " + esc(v.setting) : ""}${v.guestMax ? ` · up to ${Number(v.guestMax).toLocaleString("en-US")} guests` : ""}</div>
     <div class="price">${price}</div>
@@ -507,6 +508,10 @@ const crumbs = (items) => `<nav class="crumbs" aria-label="Breadcrumb">${items.m
 // =====================================================================
 async function main() {
   const venues = await loadVenues();
+  const hostsCeremony = (v) => v.offers !== "reception";
+  const ceremonyCount = venues.filter(hostsCeremony).length;
+  const receptionCount = venues.length - ceremonyCount;
+  const receptionNote = receptionCount ? `, plus ${receptionCount} reception-only listing${receptionCount === 1 ? "" : "s"}` : "";
   // Trust strip: "updated" = newest real content change (post, venue check or guide update), never just the build date.
   const lastUpdated = [posts[0]?.date, ...venues.map((v) => v.checked), ...guides.map((g) => g.updated)].filter((d) => d && d <= ISO).sort().pop() || FACTS_CHECKED;
   TRUST = { updated: lastUpdated, venues: venues.length, guides: guides.length, post: posts[0] };
@@ -579,7 +584,7 @@ async function main() {
   };
 
   const homeFaq = [
-    { q: "What is Unique Vegas Weddings?", a: `Unique Vegas Weddings is an independent guide to distinctive Las Vegas-area wedding venues. It lists ${venues.length} venues in ${CATEGORIES.length} categories, with published starting prices and facts checked against official sources.` },
+    { q: "What is Unique Vegas Weddings?", a: `Unique Vegas Weddings is an independent guide to distinctive Las Vegas-area wedding venues. It lists ${ceremonyCount} ceremony venues${receptionCount ? ` and ${receptionCount} reception-only listing${receptionCount === 1 ? "" : "s"}` : ""} in ${CATEGORIES.length} categories, with published starting prices and facts checked against official sources.` },
     { q: "How much does it cost to get married in Las Vegas?", a: `The Clark County marriage license costs $102. Published venue starting prices in our directory range from ${money(priceMin)} to ${money(priceMax)}, and a county civil ceremony costs $77.75.` },
     guides[0].faq[2], guides[0].faq[3], guides[0].faq[1],
   ];
@@ -592,7 +597,7 @@ async function main() {
   <div>
     <span class="eyebrow">The unique Las Vegas wedding guide</span>
     <h1 data-hero-title>Unique Las Vegas weddings, <em>off-script.</em></h1>
-    <p class="lede" data-hero-sub>Neon boneyards, ghost towns, canyon floors, shark tanks and towers 800 feet up. ${venues.length} places to say "I do," with real prices and the details you'll want to know before you book.</p>
+    <p class="lede" data-hero-sub>Neon boneyards, ghost towns, canyon floors, shark tanks and towers 800 feet up. ${ceremonyCount} places to say "I do"${receptionNote}, with real prices and the details you'll want to know before you book.</p>
     <div class="hero-cta"><a class="btn btn-primary" data-hero-cta href="/venues/">Browse the venues</a><a class="btn btn-ghost" href="/guides/las-vegas-marriage-license/">Get the license, step by step</a></div>
     ${heroRuntime()}
     <p class="search-label">Or just tell us what you want:</p>
@@ -674,10 +679,11 @@ async function main() {
     return {
       s: v.slug, n: v.name, c: v.category, cn: c.name,
       st: (v.setting || "").toLowerCase(), b: budgetBand(v.priceFrom),
-      q: [v.name, v.area, c.name, ...(v.vibe || [])].join(" ").toLowerCase(),
+      q: [v.name, v.area, c.name, ...(v.vibe || []), v.offers === "reception" ? "reception only" : ""].join(" ").toLowerCase(),
       p: v.priceFrom ?? "", g: v.guestMax ?? "", k: v.checked || "",
       ns: v.name.replace(/^The\s+/i, "").toLowerCase(),
       badge: v.status === "partner" ? "Partner" : v.featured ? "Featured" : "",
+      reception: v.offers === "reception",
       area: v.area, setting: v.setting || "",
       price: v.priceFrom ? money(v.priceFrom) : "",
       img: pic(v.slug, `/assets/art/${v.slug}.svg`),
@@ -695,13 +701,13 @@ async function main() {
   <p class="filter-more" data-filter-more hidden></p>
   <label class="filter-known"><input type="checkbox" data-filter-known> Only show venues that publish a guest capacity</label>`;
   page("/venues/", {
-    title: "Unique Las Vegas Wedding Venues", seoTitle: `${venues.length} Unique Las Vegas Wedding Venues, With Prices`, og: "venues", modified: maxChecked(venues),
-    description: `Browse ${venues.length} unique Las Vegas wedding venues: neon, desert, sky-high, quirky and classic. Filter by setting and budget. Published prices, verified details.`,
+    title: "Unique Las Vegas Wedding Venues", seoTitle: `${venues.length} Las Vegas Wedding Listings, With Prices`, og: "venues", modified: maxChecked(venues),
+    description: `Browse ${venues.length} Las Vegas listings: ${ceremonyCount} wedding venues${receptionCount ? ` and ${receptionCount} reception-only` : ""}. Neon, desert, sky-high, quirky and classic. Filter by setting and budget. Published prices, verified details.`,
     schema: [crumbSchema([["Home", "/"], ["Venues", "/venues/"]]), { "@context": "https://schema.org", "@type": "ItemList", itemListElement: venues.map((v, i) => ({ "@type": "ListItem", position: i + 1, url: `${C.domain}/venues/${v.slug}/`, name: v.name })) }],
     body: `<section style="padding-top:48px"><div class="wrap">
   ${crumbs([["Home", "/"], ["Venues", "/venues/"]])}
   <span class="eyebrow">The directory</span><h1 data-hero-title>Unique Las Vegas <em>wedding venues</em></h1>
-  <p class="lede narrow" data-hero-sub>${venues.length} places to get married that aren't another hotel ballroom. Prices are the venue's own published "from" prices on the date we checked. Always confirm before booking.</p>
+  <p class="lede narrow" data-hero-sub>${ceremonyCount} places to get married that aren't another hotel ballroom${receptionNote}. Prices are the venue's own published "from" prices on the date we checked. A blank price is a quote, not free. Always confirm before booking.</p>
   ${heroRuntime()}
   ${filters}
   <p class="small" style="margin:0 0 20px">Not sure what to filter? <a href="/search/">Describe the wedding you want in plain words</a>, or <a href="/tools/wedding-finder/">picture the hour with your partner</a>. A starting price is the package named on the venue page. It is not a quote for every guest count.</p>
@@ -717,21 +723,24 @@ async function main() {
   // ================= CATEGORY PAGES =================
   for (const c of CATEGORIES) {
     const list = venues.filter((v) => v.category === c.slug);
-    const cp = list.filter((v) => v.priceFrom).sort((a, b) => a.priceFrom - b.priceFrom);
-    const biggest = list.filter((v) => v.guestMax).sort((a, b) => b.guestMax - a.guestMax)[0];
+    const ceremonyList = list.filter(hostsCeremony);
+    const receptionList = list.filter((v) => !hostsCeremony(v));
+    const cp = ceremonyList.filter((v) => v.priceFrom).sort((a, b) => a.priceFrom - b.priceFrom);
+    const biggest = ceremonyList.filter((v) => v.guestMax).sort((a, b) => b.guestMax - a.guestMax)[0];
     const lower = c.name.toLowerCase();
+    const receptionNames = receptionList.map((v) => v.name).join(", ");
     const catFaq = [
       { q: `How much does a ${lower} wedding in Las Vegas cost?`, a: cp.length > 1
-        ? `Published starting prices for ${lower} venues in our directory range from ${money(cp[0].priceFrom)} (${cp[0].name}) to ${money(cp[cp.length - 1].priceFrom)} (${cp[cp.length - 1].name}), as checked ${fmtDate(maxChecked(list))}. ${list.length - cp.length} of the ${list.length} venues are quote-only.`
-        : cp.length === 1 ? `${cp[0].name} publishes a starting price of ${money(cp[0].priceFrom)}. The other ${list.length - 1} venues in this category quote by date and guest count.` : `Venues in this category quote by date and guest count.` },
+        ? `Published starting prices for ${lower} ceremony venues in our directory range from ${money(cp[0].priceFrom)} (${cp[0].name}) to ${money(cp[cp.length - 1].priceFrom)} (${cp[cp.length - 1].name}), as checked ${fmtDate(maxChecked(list))}. ${ceremonyList.length - cp.length} of the ${ceremonyList.length} ceremony venues are quote-only.${receptionList.length ? ` ${receptionNames} ${receptionList.length === 1 ? "is" : "are"} reception-only and ${receptionList.length === 1 ? "is" : "are"} not in that price range.` : ""}`
+        : cp.length === 1 ? `${cp[0].name} publishes a starting price of ${money(cp[0].priceFrom)}. The other ${ceremonyList.length - 1} ceremony venues in this category quote by date and guest count.` : `Ceremony venues in this category quote by date and guest count.` },
       ...(biggest ? [{ q: `Which ${lower} venue holds the most guests?`, a: `${biggest.name}, with up to ${biggest.guestMax.toLocaleString("en-US")} guests in its largest published option.` }] : []),
-      { q: `What are the ${lower} wedding venues in Las Vegas?`, a: `Our directory lists ${list.length}: ${list.map((v) => v.name).join(", ")}.` },
+      { q: `What are the ${lower} wedding venues in Las Vegas?`, a: `Our directory lists ${ceremonyList.length} for ceremonies: ${ceremonyList.map((v) => v.name).join(", ")}.${receptionList.length ? ` ${receptionNames} ${receptionList.length === 1 ? "is listed" : "are listed"} for receptions only.` : ""}` },
     ];
     page(`/venues/category/${c.slug}/`, {
       title: `${c.name} Wedding Venues in Las Vegas`, og: "cat-" + c.slug, modified: maxChecked(list),
-      description: (() => { const head = `${list.length} ${lower} wedding venues in Las Vegas${cp.length ? `, with published prices from ${money(cp[0].priceFrom)}` : ""}: `; let names = []; for (const v of list) { if ((head + [...names, v.name].join(", ") + " and more.").length > 156) break; names.push(v.name); } return head + names.join(", ") + (names.length < list.length ? " and more." : "."); })(),
+      description: (() => { const head = `${ceremonyList.length} ${lower} wedding venues in Las Vegas${cp.length ? `, with published prices from ${money(cp[0].priceFrom)}` : ""}${receptionList.length ? `, plus ${receptionList.length} reception-only` : ""}: `; let names = []; for (const v of ceremonyList) { if ((head + [...names, v.name].join(", ") + " and more.").length > 156) break; names.push(v.name); } return head + names.join(", ") + (names.length < ceremonyList.length ? " and more." : "."); })(),
       schema: [crumbSchema([["Home", "/"], ["Venues", "/venues/"], [c.name, `/venues/category/${c.slug}/`]]),
-        { "@context": "https://schema.org", "@type": "ItemList", name: `${c.name} wedding venues in Las Vegas`, numberOfItems: list.length, itemListElement: list.map((v, i) => ({ "@type": "ListItem", position: i + 1, url: `${C.domain}/venues/${v.slug}/`, name: v.name })) },
+        { "@context": "https://schema.org", "@type": "ItemList", name: `${c.name} ${receptionList.length ? "listings" : "wedding venues"} in Las Vegas`, numberOfItems: list.length, itemListElement: list.map((v, i) => ({ "@type": "ListItem", position: i + 1, url: `${C.domain}/venues/${v.slug}/`, name: v.name })) },
         faqSchema(catFaq)],
       body: `<section style="padding-top:48px"><div class="wrap">
   ${crumbs([["Home", "/"], ["Venues", "/venues/"], [c.name, ""]])}
@@ -741,6 +750,7 @@ async function main() {
   </div>
   <div class="prose narrow" style="margin-bottom:34px"><p>${c.intro}</p></div>
   <h2 class="mt0">${list.length} ${esc(lower)} venues</h2>
+  ${receptionList.length ? `<p class="small">${esc(receptionNames)} ${receptionList.length === 1 ? "is" : "are"} listed for receptions only, not as a confirmed ceremony site.</p>` : ""}
   <div class="grid-3">${list.map(venueCard).join("")}</div>
   <div class="narrow"><h2>Questions about ${esc(c.name)}</h2>${faqHtml(catFaq)}</div>
   <h2>Other ways to say I do</h2>
@@ -778,12 +788,20 @@ async function main() {
         <hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
         ${newsletterForm({ title: "Free Vegas wedding checklist", sub: "License steps, documents, witness rules and certified copies on one printable page." }).replace('<div class="panel">', "<div>")}
       </div>`;
+    const receptionOnly = !hostsCeremony(v);
     const hasW = /wedding/i.test(v.name);
-    const vBase = hasW ? v.name : `${v.name} Weddings`;
+    const vBase = receptionOnly ? `${v.name} Receptions` : (hasW ? v.name : `${v.name} Weddings`);
     const vTitle = (v.priceFrom ? ["Prices, Details & Tips", "Prices & Tips"] : ["Venue Details & Tips", "Details & Tips"]).map((t) => `${vBase}: ${t}`).find((t) => t.length <= 60) || vBase;
     const approx = /min|hr/.test(v.drive || "") ? " (approximate)" : "";
-    const glance = `${v.priceFrom ? `At ${v.name}, published wedding pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` (${flatLabel(v.priceLabel)})` : ""}.` : `${v.name} doesn't publish wedding prices, so pricing is by custom quote.`}${v.guestMax ? ` The largest published option holds up to ${v.guestMax.toLocaleString("en-US")} guests.` : ""} Location: ${v.area}. Details checked ${fmtDate(v.checked)} against the venue's official site.`;
-    const vFaq = [
+    const glance = receptionOnly
+      ? `${v.name} is listed for wedding receptions. A ceremony here is not confirmed. ${v.priceFrom ? `A published reception price starts at ${money(v.priceFrom)}${v.priceLabel ? ` (${flatLabel(v.priceLabel)})` : ""}.` : "No reception price is published, so this listing does not show one."}${v.guestMax ? ` The largest published option holds up to ${v.guestMax.toLocaleString("en-US")} guests.` : " No single guest maximum is published."} Location: ${v.area}. Details checked ${fmtDate(v.checked)} against the venue's official site.`
+      : `${v.priceFrom ? `At ${v.name}, published wedding pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` (${flatLabel(v.priceLabel)})` : ""}.` : `${v.name} doesn't publish wedding prices, so pricing is by custom quote.`}${v.guestMax ? ` The largest published option holds up to ${v.guestMax.toLocaleString("en-US")} guests.` : ""} Location: ${v.area}. Details checked ${fmtDate(v.checked)} against the venue's official site.`;
+    const vFaq = receptionOnly ? [
+      { q: `How much does a reception at ${v.name} cost?`, a: v.priceFrom ? `Published pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` for the ${v.priceLabel}` : ""}, as checked ${fmtDate(v.checked)}. Confirm current pricing with the venue.` : `${v.name} doesn't publish a reception price. Ask for a quote for the location and the guest count. This is not a free booking.` },
+      { q: `Can you get married at ${v.name}?`, a: `The page we checked describes wedding receptions, not ceremonies. Plan the vows somewhere that hosts them, and ask ${v.name} before you treat this listing as a ceremony site.` },
+      { q: `Where is ${v.name}?`, a: `${v.area}. ${v.drive}${approx}.` },
+      ...(v.setting ? [{ q: `Is ${v.name} an indoor or outdoor venue?`, a: `${v.setting}.` }] : []),
+    ] : [
       { q: `How much does a wedding at ${v.name} cost?`, a: v.priceFrom ? `Published pricing starts at ${money(v.priceFrom)}${v.priceLabel ? ` for the ${v.priceLabel}` : ""}, as checked ${fmtDate(v.checked)}. Confirm current pricing with the venue.` : `${v.name} doesn't publish wedding prices. Request a quote for your date and guest count through its official weddings page.` },
       ...(v.guestMax ? [{ q: `How many guests can ${v.name} hold?`, a: `Up to ${v.guestMax.toLocaleString("en-US")} guests in its largest published option. Smaller spaces and packages have lower limits.` }] : []),
       { q: `Where is ${v.name}?`, a: `${v.area}. ${v.drive}${approx}.` },
@@ -791,13 +809,15 @@ async function main() {
     ];
     const GUIDE_MAP = { "historic-iconic": ["how-to-elope-in-las-vegas", "best-time-to-get-married-in-las-vegas"], "desert-outdoors": ["desert-wedding-permits", "best-time-to-get-married-in-las-vegas", "vegas-elopement-packing-list"], "sky-high": ["how-to-elope-in-las-vegas", "las-vegas-wedding-weekend-guide"], "strip-luxury": ["las-vegas-wedding-weekend-guide", "legal-vs-symbolic-ceremony"], "quirky-pop-culture": ["las-vegas-vow-renewal", "how-to-elope-in-las-vegas"], "classic-chapels": ["las-vegas-courthouse-wedding", "las-vegas-vow-renewal", "legal-vs-symbolic-ceremony"] };
     const vGuides = ["las-vegas-marriage-license", "las-vegas-wedding-cost", ...(GUIDE_MAP[v.category] || [])].map((sl) => guides.find((g) => g.slug === sl)).filter(Boolean);
-    const vDesc = `${v.name} wedding guide: ${v.priceFrom ? `published prices from ${money(v.priceFrom)}` : "quote-only pricing"}${v.guestMax ? `, up to ${v.guestMax.toLocaleString("en-US")} guests` : ""}, ${v.area}. Verified details, tips and the official booking link.`;
+    const vDesc = receptionOnly
+      ? `${v.name} reception guide: ceremonies are not confirmed here. ${v.priceFrom ? `Published reception prices from ${money(v.priceFrom)}` : "No published reception price"}, ${v.area}. Verified details and the official events link.`
+      : `${v.name} wedding guide: ${v.priceFrom ? `published prices from ${money(v.priceFrom)}` : "quote-only pricing"}${v.guestMax ? `, up to ${v.guestMax.toLocaleString("en-US")} guests` : ""}, ${v.area}. Verified details, tips and the official booking link.`;
     page(`/venues/${v.slug}/`, {
       title: `${vBase}: Prices, Details & Tips`, seoTitle: vTitle, og: "v-" + v.slug, modified: v.checked,
       description: vDesc,
       schema: [crumbSchema([["Home", "/"], ["Venues", "/venues/"], [c.name, `/venues/category/${c.slug}/`], [v.name, `/venues/${v.slug}/`]]),
         { "@context": "https://schema.org", "@type": "WebPage", name: vTitle, url: `${C.domain}/venues/${v.slug}/`, description: clip(vDesc), dateModified: v.checked, lastReviewed: v.checked, reviewedBy: orgRef, inLanguage: "en-US", isPartOf: { "@type": "WebSite", name: C.siteName, url: C.domain },
-          mainEntity: { "@type": /airborne/i.test(v.setting || "") ? "TouristAttraction" : "EventVenue", name: v.name, description: v.bestFor, url: v.url, image: C.domain + ogFor("v-" + v.slug), ...(v.guestMax ? { maximumAttendeeCapacity: v.guestMax } : {}), address: { "@type": "PostalAddress", addressRegion: /AZ/.test(v.area) ? "AZ" : "NV", addressCountry: "US" }, containedInPlace: { "@type": "Place", name: v.area } } },
+          mainEntity: { "@type": /airborne/i.test(v.setting || "") ? "TouristAttraction" : "EventVenue", name: v.name, description: v.bestFor, url: v.url, image: C.domain + ogFor("v-" + v.slug), ...(!receptionOnly && v.guestMax ? { maximumAttendeeCapacity: v.guestMax } : {}), address: { "@type": "PostalAddress", addressRegion: /AZ/.test(v.area) ? "AZ" : "NV", addressCountry: "US" }, containedInPlace: { "@type": "Place", name: v.area } } },
         faqSchema(vFaq)],
       body: `<section class="vhero"><div class="wrap">
   <div>${crumbs([["Home", "/"], ["Venues", "/venues/"], [c.name, `/venues/category/${c.slug}/`], [v.name, ""]])}
@@ -806,7 +826,7 @@ async function main() {
     <p class="glance">${esc(glance)}</p>
     <div class="tags">${(v.vibe || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
     <div class="facts-row">
-      <div><span>Starting price</span><strong>${v.priceFrom ? money(v.priceFrom) : "Custom quote"}</strong>${v.priceLabel && !(!v.priceFrom && /^custom quote$/i.test(v.priceLabel)) ? `<div class="small">${esc(v.priceLabel)}</div>` : ""}</div>
+      <div><span>${receptionOnly ? "Reception price" : "Starting price"}</span><strong>${v.priceFrom ? money(v.priceFrom) : "Custom quote"}</strong>${v.priceLabel && !(!v.priceFrom && /^custom quote$/i.test(v.priceLabel)) ? `<div class="small">${esc(v.priceLabel)}</div>` : ""}</div>
       <div><span>Area</span><strong>${esc(v.area)}</strong></div>
       <div><span>Setting</span><strong>${esc(v.setting || "-")}</strong></div>
       <div><span>${v.guestMax ? "Max guests (largest option)" : "Getting there"}</span><strong>${v.guestMax ? v.guestMax.toLocaleString("en-US") : esc(v.drive || "-")}</strong></div>
@@ -821,9 +841,11 @@ async function main() {
     ${ytBlock(v)}
     <h2>Verified details</h2><ul class="checklist">${(v.facts || []).map((f) => `<li>${withVenueLinks(f)}</li>`).join("")}</ul>
     <h2>Good to know</h2><ul class="checklist">${(v.tips || []).map((f) => `<li>${withVenueLinks(f)}</li>`).join("")}</ul>
-    <p><a href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">Official weddings page ↗</a></p>
+    <p><a href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">${receptionOnly ? "Official events page" : "Official weddings page"} ↗</a></p>
     ${v.disclosure ? `<div class="note"><strong>Disclosure.</strong> ${esc(v.disclosure)}</div>` : ""}
-    <div class="note"><strong>Getting married here legally?</strong> You'll still need a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step.</a></div>
+    ${receptionOnly
+      ? `<div class="note"><strong>Reception only.</strong> This listing is not a confirmed ceremony site. A legal marriage still needs a ceremony somewhere that hosts one, plus a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step for the license.</a></div>`
+      : `<div class="note"><strong>Getting married here legally?</strong> You'll still need a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step.</a></div>`}
     ${plannerCta()}
     ${v.status !== "partner" ? `<div class="panel" style="box-shadow:none"><h3 class="mt0">Is this your venue?</h3><p class="small">Claim this listing to add your own photos and copy, correct anything we got wrong, and receive inquiries directly.</p><a class="btn btn-ghost btn-sm" href="/for-venues/?venue=${encodeURIComponent(v.name)}">Claim ${esc(v.name)}</a> <a class="btn btn-ghost btn-sm" href="/for-venues/?badge=${v.slug}#badge">Get your free badge</a></div>` : ""}
     <h2>Questions about ${esc(v.name)}</h2>${faqHtml(vFaq)}
@@ -1116,7 +1138,7 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
     const budgetVenues = venues.slice().sort((a, b) => a.name.replace(/^The\s+/i, "").localeCompare(b.name.replace(/^The\s+/i, ""))).map((v) => {
       const notes = Budget.topicNotes(v.facts, v.tips);
       return {
-        s: v.slug, n: v.name, price: v.priceFrom, label: v.priceLabel || "", guests: v.guestMax, checked: v.checked || "",
+        s: v.slug, n: v.name, price: v.priceFrom, label: v.priceLabel || "", guests: v.guestMax, checked: v.checked || "", ceremony: hostsCeremony(v),
         photo: { fit: notes.photo.fit, quotes: notes.photo.quotes, included: !!notes.photo.included },
         access: { fit: notes.access.fit, quotes: notes.access.quotes },
         privacy: { fit: notes.privacy.fit, quotes: notes.privacy.quotes },
@@ -1171,7 +1193,7 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
     <section class="bp-step">
       <h2>1. The basics</h2>
       <div class="bp-field"><label for="bp-guests">How many guests?</label><input id="bp-guests" type="number" min="0" step="1" inputmode="numeric" data-count="guests" aria-describedby="bp-guests-help"><p class="small" id="bp-guests-help">Used only when a line says per guest.</p></div>
-      <div class="bp-field"><label for="bp-venue">Venue, if you've picked one</label><select id="bp-venue"><option value="">No venue yet</option>${budgetVenues.map((v) => `<option value="${v.s}">${esc(v.n)}</option>`).join("")}</select></div>
+      <div class="bp-field"><label for="bp-venue">Venue, if you've picked one</label><select id="bp-venue"><option value="">No venue yet</option>${budgetVenues.map((v) => `<option value="${v.s}">${esc(v.n)}${v.ceremony ? "" : " (reception only)"}</option>`).join("")}</select></div>
       <div id="bp-venue-brief" class="bp-brief"></div>
       <button class="btn btn-ghost btn-sm" type="button" id="bp-use-price" hidden>Use this starting price</button>
       <p class="small"><a id="bp-directory" href="/venues/">Browse venues</a></p>
@@ -1245,7 +1267,7 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
 
   // ================= TOOLS: WEDDING FINDER =================
   {
-    const finderVenues = venues.map((v) => ({
+    const finderVenues = venues.filter(hostsCeremony).map((v) => ({
       slug: v.slug, name: v.name, category: v.category, setting: v.setting || "",
       priceFrom: v.priceFrom, priceLabel: v.priceLabel || "", guestMax: v.guestMax, checked: v.checked || "",
     }));
@@ -1441,6 +1463,12 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
     "platinum-hotel-misora-rooftop": ["platinum hotel", "misora", "rooftop terrace", "rooftop", "vow renewal"],
     "chapel-of-crystals": ["chapel of crystals", "westgate", "elvis", "prince", "mobster", "international hotel"],
     "sams-town-mystic-falls-park": ["sams town", "sam's town", "mystic falls", "indoor waterfall", "boulder highway"],
+    "love-it-loud-rock-roll-chapel": ["kiss chapel", "kiss wedding", "love it loud", "rock and roll chapel", "rock n roll chapel", "rio chapel"],
+    "dennys-wedding-chapel": ["dennys", "denny's", "denny's chapel", "fremont dennys"],
+    "brooklyn-bowl-las-vegas": ["brooklyn bowl", "linq bowling", "bowling wedding"],
+    "keep-memory-alive-event-center": ["keep memory alive", "kma event center", "gehry", "lou ruvo"],
+    "lakeside-weddings-events": ["lake jacqueline", "desert shores", "lakeside weddings"],
+    "minus5-icebar": ["minus5", "minus 5", "ice bar", "icebar", "reception only"],
   };
   const strip = (h) => h.replace(/<script.*?<\/script>/gs, " ").replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
   const sections = [];
@@ -1524,6 +1552,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <h2>Press</h2>
 <p>If you need a quote or an interview, tell us what you're working on. A deadline helps us see the timing.</p>
 ${C.social.pinterest ? `<h2>Pinterest</h2><p><a class="social-link" href="${esc(C.social.pinterest)}" rel="me noopener" target="_blank">${PINTEREST_ICON}<span>Follow Unique Vegas Weddings on Pinterest</span></a></p>` : ""}
+${C.social.facebook ? `<h2>Facebook</h2><p><a class="social-link" href="${esc(C.social.facebook)}" rel="me noopener" target="_blank">${FACEBOOK_ICON}<span>Follow on Facebook</span></a></p>` : ""}
 <div class="note">We're an independent guide. Booking happens with the venue, and the marriage license comes from the Clark County Clerk. <a href="/guides/las-vegas-marriage-license/">The license steps are here.</a></div>`);
   simple("/photo-credits/", "Photo Credits", "Credits and licenses for the free-license photos used on Unique Vegas Weddings.", `
 <p>The photos on this site are free-license images: most come from <a href="https://unsplash.com/" rel="nofollow noopener" target="_blank">Unsplash</a> under the Unsplash License, and the rest are shared under Creative Commons licenses or released to the public domain (found through <a href="https://openverse.org/" rel="nofollow noopener" target="_blank">Openverse</a>). Thank you to every photographer below.</p>

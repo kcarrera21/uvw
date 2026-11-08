@@ -255,6 +255,7 @@
 
   function assess(venue, concept) {
     var gaps = [];
+    if (venue.ceremony === false) gaps.push("Reception only. Not a ceremony match.");
     if (venue.category !== STYLES[concept.style].cat) gaps.push("Different venue group.");
     var setting = settingGap(venue, concept.setting);
     var guests = guestGap(venue, concept.guests);
@@ -277,7 +278,7 @@
   }
 
   function pickVenues(venues, concept) {
-    var pool = (venues || []).filter(function (venue) { return venue.category === STYLES[concept.style].cat; });
+    var pool = (venues || []).filter(function (venue) { return venue.category === STYLES[concept.style].cat && venue.ceremony !== false; });
     var fits = [];
     var alts = [];
     pool.forEach(function (venue) {

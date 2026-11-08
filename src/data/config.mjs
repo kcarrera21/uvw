@@ -74,6 +74,7 @@ export const config = {
 
   social: {
     pinterest: "https://www.pinterest.com/uniquevegasweddings/",
+    facebook: "https://www.facebook.com/uniquevegasweddings",
     instagram: "",
     tiktok: "",
   },
