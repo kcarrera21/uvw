@@ -85,7 +85,7 @@ Already done for you: every page was submitted to Bing, Yandex and the other Ind
 - If you set `venueSheetCsvUrl`, new rows in your Google Sheet become live venue pages, with no code
 - When any venue hasn't been re-checked for 180 days, it **opens a GitHub Issue** listing exactly which venue pages to verify
 
-**Partner inquiries:** a partner venue's inquiry form posts to that venue's own Formspree form (`inquiryFormId` in `venues.mjs`). Leads go straight to them, not to you.
+**Partner inquiries:** a partner listing can show an inquiry form. The form posts to Formspree (`inquiryFormId` if set, otherwise `formspreeVenueInquiry` in config). This repo does not show which inbox receives it.
 
 ## What still needs you (~1 hour/month)
 - Onboard paying venues: set `status: "partner"` or `featured: true`, add their `inquiryFormId`, swap in their photos if provided

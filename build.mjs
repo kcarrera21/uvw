@@ -662,7 +662,7 @@ async function main() {
 
 <section class="band-blush"><div class="wrap center narrow">
   <span class="eyebrow">For venues & planners</span><h2 class="mt0">Host weddings in Las Vegas?</h2>
-  <p class="lede">A free listing adds your venue to the directory. Featured and Spotlight add your photos and an inquiry form that emails you.</p>
+  <p class="lede">A free listing adds your venue to the directory. Featured and Spotlight add your photos and an inquiry form.</p>
   <a class="btn btn-primary" href="/for-venues/">List your venue</a>
 </div></section>`,
   });
@@ -759,7 +759,7 @@ async function main() {
     const inquiryId = v.status === "partner" ? v.inquiryFormId || C.formspreeVenueInquiry : "";
     const paras = (v.description || "").split(/\n\s*\n/).map((t) => `<p>${withVenueLinks(t.trim())}</p>`).join("");
     const sidebar = inquiryId
-      ? `<div class="panel"><h3>Check availability</h3><p class="small">Your request goes directly to ${esc(v.name)}.</p>
+      ? `<div class="panel"><h3>Send an inquiry</h3><p class="small">Ask about a date, a guest count, or what's included.</p>
         <form action="${formAction(inquiryId)}" ${formAttrs(inquiryId)} data-next="/thanks/?sent=inquiry">
           <input type="hidden" name="venue" value="${esc(v.name)}"><input type="hidden" name="_subject" value="UVW venue inquiry: ${esc(v.name)}"><input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field"><label for="iq-n">Your names</label><input id="iq-n" name="names" required></div>
@@ -825,7 +825,7 @@ async function main() {
     ${v.disclosure ? `<div class="note"><strong>Disclosure.</strong> ${esc(v.disclosure)}</div>` : ""}
     <div class="note"><strong>Getting married here legally?</strong> You'll still need a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step.</a></div>
     ${plannerCta()}
-    ${v.status !== "partner" ? `<div class="panel" style="box-shadow:none"><h3 class="mt0">Is this your venue?</h3><p class="small">Claim this listing to add your own photos and copy, correct anything we got wrong, and receive inquiries directly.</p><a class="btn btn-ghost btn-sm" href="/for-venues/?venue=${encodeURIComponent(v.name)}">Claim ${esc(v.name)}</a> <a class="btn btn-ghost btn-sm" href="/for-venues/?badge=${v.slug}#badge">Get your free badge</a></div>` : ""}
+    ${v.status !== "partner" ? `<div class="panel" style="box-shadow:none"><h3 class="mt0">Is this your venue?</h3><p class="small">Claim this listing to add your own photos and copy, and correct anything we got wrong.</p><a class="btn btn-ghost btn-sm" href="/for-venues/?venue=${encodeURIComponent(v.name)}">Claim ${esc(v.name)}</a> <a class="btn btn-ghost btn-sm" href="/for-venues/?badge=${v.slug}#badge">Get your free badge</a></div>` : ""}
     <h2>Questions about ${esc(v.name)}</h2>${faqHtml(vFaq)}
     <h2>Plan the rest</h2><ul class="checklist">${vGuides.map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.title)}</a></li>`).join("")}<li><a href="/lucky-wedding-dates/">Lucky wedding dates</a></li></ul>
     ${related.length ? `<h2>More ${esc(c.name.toLowerCase())} venues</h2><div class="grid-3">${related.map(venueCard).join("")}</div>` : ""}
@@ -1055,20 +1055,20 @@ async function main() {
   const tierBtn = (url, label) => (url ? `<a class="btn btn-primary" href="${esc(url)}">${label}</a>` : `<a class="btn btn-primary" href="#apply">${label}</a>`);
   page("/for-venues/", {
     title: "List Your Las Vegas Wedding Venue", og: "for-venues",
-    description: "Claim your free listing on Unique Vegas Weddings, or upgrade to Featured or Spotlight placement and send couples' inquiries straight to your inbox.",
+    description: "Claim your free listing on Unique Vegas Weddings, or ask about Featured or Spotlight placement.",
     body: `<section style="padding-top:48px"><div class="wrap">
   <div class="narrow"><span class="eyebrow">For venues, chapels & planners</span><h1>Help couples find <em>your venue</em></h1>
   <p class="lede">Unique Vegas Weddings is an independent guide couples use while they're choosing a place. A free listing adds your venue to the directory, with a link to your booking page. Featured and Spotlight add placement if you want it.</p></div>
   <h2 class="sr-only">Listing plans</h2>
   <div class="tiers">
     <div class="tier"><h3>Listed</h3><div class="price">Free</div><ul class="checklist"><li>Your venue page with verified details</li><li>Correct or update your info anytime</li><li>Link to your official booking page</li></ul><a class="btn btn-ghost" href="#apply">Claim your listing</a></div>
-    <div class="tier hot"><span class="tag" style="align-self:flex-start">Most popular</span><h3>Featured</h3><div class="price">${esc(C.featuredPrice)}</div><ul class="checklist"><li>Everything in Listed</li><li>"Featured" badge and top placement in your category</li><li>Inquiry form that sends couples' requests to <strong>your</strong> inbox</li><li>Your own photos and copy</li><li>In the "Venue of the week" rotation</li></ul>${tierBtn(C.featuredCheckoutUrl, "Go Featured")}</div>
+    <div class="tier hot"><span class="tag" style="align-self:flex-start">Most popular</span><h3>Featured</h3><div class="price">${esc(C.featuredPrice)}</div><ul class="checklist"><li>Everything in Listed</li><li>"Featured" badge and top placement in your category</li><li>An inquiry form on your listing</li><li>Your own photos and copy</li><li>In the "Venue of the week" rotation</li></ul>${tierBtn(C.featuredCheckoutUrl, "Go Featured")}</div>
     <div class="tier"><h3>Spotlight</h3><div class="price">${esc(C.spotlightPrice)}</div><ul class="checklist"><li>Everything in Featured</li><li>Placement in relevant planning guides</li><li>A dedicated Pinterest pin set for your venue</li><li>Inclusion in our email to couples</li></ul>${tierBtn(C.spotlightCheckoutUrl, "Go Spotlight")}</div>
   </div>
   <p class="small center" style="margin-top:18px">Monthly, cancel anytime. Paid placements are always labeled. Editorial facts stay accurate whether you pay or not. Listing questions: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
 </div></section>
 <section class="band-blush" id="apply"><div class="wrap grid-2">
-  <div><h2 class="mt0">Claim or apply</h2><p>Tell us about the venue and how you're connected to it. We'll check that, then set up the listing. Already paid for Featured or Spotlight? Use this form for your photos, your wording, and the email that should get inquiries.</p>
+  <div><h2 class="mt0">Claim or apply</h2><p>Tell us about the venue and how you're connected to it. We'll check that, then set up the listing. Already paid for Featured or Spotlight? Use this form for your photos and your wording.</p>
   <ul class="checklist"><li>Photos must be yours or properly licensed</li><li>We verify facts against your official site</li><li>Weddings must be currently offered</li></ul></div>
   <div class="panel"><form action="${formAction(C.formspreePartner)}" ${formAttrs(C.formspreePartner)} data-next="/thanks/?sent=partner">
     <input type="hidden" name="_subject" value="UVW: venue listing application">
@@ -1518,7 +1518,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <h2>Spotted something we should update?</h2>
 <p>Fees, prices, and guest counts change. Send the page and what looks off. If you have the venue's own page, or the county page, include that too. We use it to check the listing.</p>
 <h2>Checking prices or available dates?</h2>
-<p>For current packages and availability, head to the venue's official website from its listing. You'll hear directly from the people who can help you book. If the listing has an inquiry form, that message goes to the venue. When a figure on our page has gone stale, send it here and we'll correct the directory.</p>
+<p>For current packages and availability, head to the venue's official website from its listing. You'll hear directly from the people who can help you book. When a figure on our page has gone stale, send it here and we'll correct the directory.</p>
 <h2>If you host weddings</h2>
 <p>A free listing, or a question about Featured or Spotlight, starts on <a href="/for-venues/">List your venue</a>. Email works too. Tell us the venue name, your role, and the official website. Paid placements stay labeled, and paying doesn't change the facts we publish.</p>
 <h2>Press</h2>
