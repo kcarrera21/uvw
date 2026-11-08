@@ -1,6 +1,17 @@
 # Venue additions checked November 8, 2026
 
-The six new listings use a flat blush color block, not the category drawing. That drawing includes a heart, sparkles, and a landscape, which these pages do not show. The block is not a picture of the venue. Alt text and the venue-page caption say so.
+The six new listings use free Unsplash photographs. None of them is a verified photo of that exact venue, so every page and card says "Illustrative photo, not the venue." Credits link to the Unsplash photo page. License: https://unsplash.com/license
+
+| Listing | Photographer | Photo page | Image file |
+| --- | --- | --- | --- |
+| Love It Loud | Kenny Eliason, https://unsplash.com/@heyquilia | https://unsplash.com/photos/men-playing-guitar-on-stage-UtNyK8Vsnzo | https://images.unsplash.com/photo-1495582358586-280971a57d8b |
+| Denny's | Highway Z, https://unsplash.com/@hwyz | https://unsplash.com/photos/a-sign-for-a-restaurant-called-dennys-on-the-side-of-a-building-EO8RSLd7AD8 | https://images.unsplash.com/photo-1671684917899-de71555fa994 |
+| Brooklyn Bowl | Dirk Erasmus, https://unsplash.com/@derasmus | https://unsplash.com/photos/a-bowling-alley-filled-with-neon-bowling-balls-UYztDnR42jc | https://images.unsplash.com/photo-1671959986201-db542c4456d8 |
+| Keep Memory Alive | Adam Kolmacka, https://unsplash.com/@adamkolmacka | https://unsplash.com/photos/an-empty-auditorium-with-a-large-screen-in-the-center-L7Z0NkCj3SA | https://images.unsplash.com/photo-1714846973752-deba7a841e13 |
+| Lakeside | Vlad D, https://unsplash.com/@hiking_corgi | https://unsplash.com/photos/a-pond-surrounded-by-trees-with-a-gazebo-in-the-middle-Rus9llfdO9s | https://images.unsplash.com/photo-1702024740455-3272b8d96eb2 |
+| minus5 | Charlota Blunarova, https://unsplash.com/@charlotablunarova | https://unsplash.com/photos/block-of-ice-in-ice-room-7cpDWdtwwJE | https://images.unsplash.com/photo-1557865353-71e2dd333951 |
+
+The Denny's photo is a Denny's sign, not the chapel at 450 East Fremont Street. The lake photo is a garden pond in Victoria, Canada, not Lake Jacqueline. The event-hall photo is not the Frank Gehry building. No Unsplash photo was found that the page itself names as these venues.
 
 Internal only. These notes are not linked from the site. Research notes were dated November 7, 2026 Pacific. The fields below were re-read from the official pages on November 8, 2026 before the listings were written. Nothing here is a booking, a partner deal, or a claim that a date is open.
 

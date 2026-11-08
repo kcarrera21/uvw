@@ -507,6 +507,10 @@ table.data td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 /* ---------- photos ---------- */
 .vcard .img img, .cat img, .vhero .art img, .arches .a img { object-fit: cover; }
+.vcard .img img.crop-right, .vhero .art img.crop-right { object-position: 78% 46%; }
+.vcard .img img.crop-stage, .vhero .art img.crop-stage { object-position: 46% 30%; }
+.vcard .img img.crop-sign, .vhero .art img.crop-sign { object-position: 42% 42%; }
+.photo-flag { margin: 0; }
 .art-fig { margin: 0; }
 .photo-credit { font-size: var(--fs--3); line-height: 1.45; color: var(--ink-soft); margin: var(--space-2) 0 0; }
 .photo-credit a { color: var(--ink-soft); }

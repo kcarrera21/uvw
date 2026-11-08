@@ -5,7 +5,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { venues } from "../src/data/venues.mjs";
-import { plainArt } from "../scripts/art.mjs";
+import credits from "../src/data/photo-credits.json" with { type: "json" };
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const finderCtx = {};
@@ -101,24 +101,40 @@ test("a reception-only venue is never a finder ceremony match or alternative", (
   assert.ok(judged.gaps.some((gap) => /Reception only/i.test(gap)));
 });
 
-test("the six new listings use a flat color placeholder, not the category drawing", () => {
-  const svg = plainArt(800, 1000);
-  assert.match(svg, /<rect /);
-  assert.equal(/<(path|circle|polygon|line|ellipse)\b/.test(svg), false);
-  assert.equal(/heart|sparkle|star|diamond/i.test(svg), false);
-  const build = fs.readFileSync(path.join(root, "build.mjs"), "utf8");
-  for (const slug of ADDED) assert.match(build, new RegExp(slug));
-  assert.match(build, /PLAIN_ART\.has\(v\.slug\) \? plainArt/);
-  const publicArt = path.join(root, "public/assets/art");
-  if (!fs.existsSync(publicArt)) return;
-  for (const slug of ADDED) {
-    const file = fs.readFileSync(path.join(publicArt, slug + ".svg"), "utf8");
-    assert.equal(/<(path|circle|polygon|line|ellipse)\b/.test(file), false, slug);
-    assert.match(file, /fill="#F2D6D2"/);
+const PHOTO_SOURCES = {
+  "love-it-loud-rock-roll-chapel": ["Kenny Eliason", "https://unsplash.com/@heyquilia", "https://unsplash.com/photos/men-playing-guitar-on-stage-UtNyK8Vsnzo", "https://images.unsplash.com/photo-1495582358586-280971a57d8b"],
+  "dennys-wedding-chapel": ["Highway Z", "https://unsplash.com/@hwyz", "https://unsplash.com/photos/a-sign-for-a-restaurant-called-dennys-on-the-side-of-a-building-EO8RSLd7AD8", "https://images.unsplash.com/photo-1671684917899-de71555fa994"],
+  "brooklyn-bowl-las-vegas": ["Dirk Erasmus", "https://unsplash.com/@derasmus", "https://unsplash.com/photos/a-bowling-alley-filled-with-neon-bowling-balls-UYztDnR42jc", "https://images.unsplash.com/photo-1671959986201-db542c4456d8"],
+  "keep-memory-alive-event-center": ["Adam Kolmacka", "https://unsplash.com/@adamkolmacka", "https://unsplash.com/photos/an-empty-auditorium-with-a-large-screen-in-the-center-L7Z0NkCj3SA", "https://images.unsplash.com/photo-1714846973752-deba7a841e13"],
+  "lakeside-weddings-events": ["Vlad D", "https://unsplash.com/@hiking_corgi", "https://unsplash.com/photos/a-pond-surrounded-by-trees-with-a-gazebo-in-the-middle-Rus9llfdO9s", "https://images.unsplash.com/photo-1702024740455-3272b8d96eb2"],
+  "minus5-icebar": ["Charlota Blunarova", "https://unsplash.com/@charlotablunarova", "https://unsplash.com/photos/block-of-ice-in-ice-room-7cpDWdtwwJE", "https://images.unsplash.com/photo-1557865353-71e2dd333951"],
+};
+
+test("the six new listings use credited illustrative Unsplash photos", () => {
+  for (const [slug, [creator, profile, source, image]] of Object.entries(PHOTO_SOURCES)) {
+    const photo = credits[slug];
+    assert.ok(photo, slug);
+    assert.equal(photo.note, "illustrative");
+    assert.equal(photo.creator, creator);
+    assert.equal(photo.creatorUrl, profile);
+    assert.equal(photo.source, source);
+    assert.equal(photo.image, image);
+    assert.equal(photo.license, "Unsplash License");
+    assert.equal(photo.licenseUrl, "https://unsplash.com/license");
+    assert.match(photo.alt, /Illustrative photo, not the venue|not the Fremont Street chapel|not Lake Jacqueline/);
+    assert.equal(fs.existsSync(path.join(root, "src/assets/photos", slug + ".webp")), true);
+    assert.equal(fs.existsSync(path.join(root, "src/assets/photos", slug + "-sm.webp")), true);
+    assert.ok(photo.w >= 1600);
   }
-  const page = fs.readFileSync(path.join(root, "public/venues/minus5-icebar/index.html"), "utf8");
-  assert.match(page, /Not a photo of the venue/);
-  assert.equal(page.includes("Illustration for minus5"), false);
+  const page = path.join(root, "public/venues/minus5-icebar/index.html");
+  if (!fs.existsSync(page)) return;
+  const html = fs.readFileSync(page, "utf8");
+  assert.match(html, /Illustrative photo, not the venue/);
+  assert.match(html, /https:\/\/unsplash\.com\/photos\/block-of-ice-in-ice-room-7cpDWdtwwJE/);
+  assert.match(html, /Charlota Blunarova/);
+  assert.equal(html.includes("Color placeholder"), false);
+  const card = fs.readFileSync(path.join(root, "public/venues/index.html"), "utf8");
+  assert.match(card, /Illustrative photo, not the venue/);
 });
 
 test("the public templates keep reception-only wording out of the ceremony defaults", () => {
