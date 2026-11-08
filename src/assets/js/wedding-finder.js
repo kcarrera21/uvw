@@ -5,134 +5,134 @@
   var STYLES = {
     desert: {
       cat: "desert-outdoors",
-      title: "Desert light",
-      summary: "Say the vows outside the neon, and let the landscape do the decorating.",
+      title: "Out where the sky does the decorating",
+      summary: "Red rock or open desert, away from the ballrooms, and a ceremony that does not need a chandelier.",
       touches: [
-        "Ask about a morning time if the month runs hot. That is a question for the venue, not a package they have promised.",
-        "Leave a quiet half hour before the vows so you are not stepping straight out of the car into the ceremony."
+        "If the month runs hot, ask about a morning time. That is a question for them, not a package they have promised.",
+        "Leave a quiet half hour before the vows, so you are not climbing out of the car and straight into the ceremony."
       ],
-      soon: "Many desert sites are public land and need a permit. If you want a near date, ask about lead time before you settle on one."
+      soon: "A lot of desert sites are public land and need a permit. If the date is close, ask how long that takes before you tell anyone it is set."
     },
     quirky: {
       cat: "quirky-pop-culture",
-      title: "Only in this city",
-      summary: "A ceremony your friends will retell, in a place that does not exist anywhere else.",
+      title: "Only this city would put a wedding here",
+      summary: "A room your friends will describe twice, because it does not exist anywhere else.",
       touches: [
-        "Bring one detail that is yours: a song, a jacket, a snack. Check the listing before you assume props, costumes, or outside vendors are welcome.",
-        "Plan a few minutes of photos after, only if the venue says that time is included."
+        "Bring one thing that is yours: a song, a jacket, a snack you both love. Check the listing before you assume costumes or outside vendors are welcome.",
+        "If you want a few photos after, ask whether that time is part of the hour."
       ],
-      soon: "Some of these rooms book in short windows. Ask what is actually open this month instead of assuming a walk-in."
+      soon: "Some of these rooms only hold a few ceremonies a day. Ask what is actually open this month."
     },
     historic: {
       cat: "historic-iconic",
-      title: "A place with a past",
-      summary: "Marry somewhere the city already has a story, instead of a ballroom that could be anywhere.",
+      title: "Somewhere the city already has a story",
+      summary: "A place that was here before the current skyline, not a ballroom that could be anywhere.",
       touches: [
-        "Read the house rules on touching, confetti, and music. Several of these places are museums or landmarks first.",
-        "Pick one photo you want from the setting, then let the rest of the hour be the ceremony."
+        "Read the house rules on touching, confetti, and music. A lot of these are museums or landmarks first.",
+        "Pick the one photo you want from the room, then let the rest of the hour be the ceremony."
       ],
-      soon: "Landmark rooms are often appointment-only. A soon date is a question, not a guarantee."
+      soon: "Landmark rooms are often by appointment. A close date is worth asking about. It is not a yes until they say so."
     },
     sky: {
       cat: "sky-high",
-      title: "Above the city",
-      summary: "Take the ceremony up: a tower, a wheel, or a flight, with the valley behind you.",
+      title: "Up where the view is the room",
+      summary: "A tower, a wheel, or a flight. The listing says what you can actually see from there.",
       touches: [
-        "Decide whether the view or the comfort of your guests matters more. Cabins and aircraft cap the headcount.",
-        "If anyone dislikes heights or tight spaces, say so before you book. That is a people question, not a venue promise."
+        "Talk about the view and about the people you are bringing. Cabins and aircraft only hold so many.",
+        "If anyone hates heights or tight spaces, say so before you book. That is between you, not a promise from the venue."
       ],
-      soon: "Flights and observation decks run on schedules. Ask what a near date can still hold."
+      soon: "Flights and observation decks run on a schedule. Ask what a near date can still hold."
     },
     luxury: {
       cat: "strip-luxury",
-      title: "Let the resort carry it",
-      summary: "Ceremony, rooms, and dinner on one property, with a team that already runs events.",
+      title: "Let the resort run the hour",
+      summary: "A property that already hosts events, with rooms upstairs if you want the night to stay put.",
       touches: [
-        "Ask for the ceremony, the meal, and the room block in one note, so the starting price is not the only number you see.",
-        "If you are bringing anyone under 21, ask for a route that does not park them on a casino floor."
+        "When you write them, ask about the ceremony, the meal, and the rooms as three separate lines. The starting price is rarely the whole number.",
+        "If anyone in your group is under 21, ask for a way through that does not leave them on a casino floor."
       ],
-      soon: "Weekend dates at the big resorts go first. A soon wedding may mean a weekday, or a smaller room."
+      soon: "Weekends at the big resorts go first. A close date may mean a weekday, or a smaller room. Ask before you hold the night."
     },
     chapel: {
       cat: "classic-chapels",
-      title: "Chapel, then the night is yours",
-      summary: "A legal ceremony without a production, and the rest of the day left open.",
+      title: "A chapel, then the night is yours",
+      summary: "Say it, sign it, and go have the dinner you actually want.",
       touches: [
-        "Confirm what the published package actually includes. Officiant, photos, and a witness are often separate.",
-        "Keep the guest list to the people who need to be in the room. You can celebrate with everyone else afterward."
+        "Look at what the published package names. The officiant, photos, and a witness are often separate.",
+        "The room is for the people who need to be there. Everyone else can meet you after."
       ],
-      soon: "Chapels are the usual path when the date is close. Still ask before you tell anyone the hour is held."
+      soon: "A chapel is the usual path when the date is close. Still ask before you tell anyone the hour is held."
     }
   };
 
   var QUESTIONS = [
     {
       id: "place",
-      prompt: "Where do you picture the ceremony?",
+      prompt: "Picture the moment you say “we do.” What’s around you?",
       options: [
-        { id: "desert", label: "Out in the desert", styles: { desert: 3 } },
-        { id: "historic", label: "Somewhere with a real history", styles: { historic: 3 } },
-        { id: "sky", label: "Up high, with a view", styles: { sky: 3 } },
-        { id: "chapel", label: "A classic chapel", styles: { chapel: 3 } },
-        { id: "quirky", label: "Somewhere only Las Vegas would have", styles: { quirky: 3 } },
-        { id: "luxury", label: "A resort that handles the details", styles: { luxury: 3 } },
-        { id: "unsure", label: "Not sure yet", styles: {} }
+        { id: "desert", label: "Red rock, open desert, and a lot of sky", styles: { desert: 3 } },
+        { id: "historic", label: "A building that was here before the neon", styles: { historic: 3 } },
+        { id: "sky", label: "Up high, with the view around us", styles: { sky: 3 } },
+        { id: "chapel", label: "A little chapel, then the night is ours", styles: { chapel: 3 } },
+        { id: "quirky", label: "A room that only exists in Las Vegas", styles: { quirky: 3 } },
+        { id: "luxury", label: "A resort, and let their team run the hour", styles: { luxury: 3 } },
+        { id: "unsure", label: "We’re still picturing it", styles: {} }
       ]
     },
     {
       id: "setting",
-      prompt: "Indoors or outdoors?",
+      prompt: "Sun on your face, or a roof over your head?",
       options: [
-        { id: "indoor", label: "Indoors" },
-        { id: "outdoor", label: "Outdoors" },
-        { id: "either", label: "Either is fine" }
+        { id: "indoor", label: "Inside, with a roof and the air conditioning" },
+        { id: "outdoor", label: "Outside, even if the afternoon runs hot" },
+        { id: "either", label: "Either. We’ll know when we see the spot" }
       ]
     },
     {
       id: "guests",
-      prompt: "How many people need to be in the room?",
-      help: "This is the ceremony headcount, not a whole guest-weekend list.",
+      prompt: "Who do you want in the room for the vows?",
+      help: "Count the ceremony itself. The friends who fly in for dinner can be a longer list.",
       options: [
-        { id: "us", label: "Just the two of you", guests: 2 },
-        { id: "handful", label: "A handful, about 10", guests: 10 },
+        { id: "us", label: "Just the two of us", guests: 2 },
+        { id: "handful", label: "A few favorite people, about 10", guests: 10 },
         { id: "party", label: "A small party, about 40", guests: 40 },
-        { id: "bigger", label: "A larger group, about 80", guests: 80 },
-        { id: "crowd", label: "A crowd, about 100 or more", guests: 100 },
-        { id: "unsure", label: "We don't know yet", guests: null }
+        { id: "bigger", label: "A full room, about 80", guests: 80 },
+        { id: "crowd", label: "A real crowd, about 100 or more", guests: 100 },
+        { id: "unsure", label: "We haven’t counted yet", guests: null }
       ]
     },
     {
       id: "ceremony",
-      prompt: "What feels comfortable for the ceremony's published starting price?",
-      help: "This is not your whole wedding budget. Food, photos, the license, and guest travel are separate.",
+      prompt: "What feels comfortable for the ceremony itself?",
+      help: "This is the venue’s published starting price for the ceremony. Dinner, photos, the license, and flights sit outside it.",
       options: [
-        { id: "modest", label: "Modest. A published start under $1,000" },
-        { id: "middle", label: "Middle. A published start of $1,000 to $2,999" },
-        { id: "higher", label: "Higher. A published start of $3,000 or more" },
-        { id: "quote", label: "A quote is fine. No published price required" },
-        { id: "unsure", label: "Flexible on the starting price" }
+        { id: "modest", label: "Keep it modest. A published start under $1,000" },
+        { id: "middle", label: "Somewhere in the middle, $1,000 to $2,999 to start" },
+        { id: "higher", label: "We’re fine at $3,000 or more to start" },
+        { id: "quote", label: "Happy to call and ask, if they don’t list a price" },
+        { id: "unsure", label: "We’ll know when we see the number" }
       ]
     },
     {
       id: "pace",
-      prompt: "How soon do you want the ceremony?",
+      prompt: "How soon is this happening?",
       options: [
-        { id: "soon", label: "Soon. Days or a couple of weeks" },
-        { id: "planned", label: "We can plan ahead" },
-        { id: "unsure", label: "The timing is flexible" }
+        { id: "soon", label: "Soon. Days, or a couple of weeks" },
+        { id: "planned", label: "We can pick a date and plan toward it" },
+        { id: "unsure", label: "The calendar is still open" }
       ]
     },
     {
       id: "touch",
-      prompt: "What would make the hour feel like yours?",
+      prompt: "What would make that hour feel like yours?",
       options: [
-        { id: "elvis", label: "A theme, Elvis included", styles: { chapel: 2, quirky: 1 } },
-        { id: "quiet", label: "Quiet and a lot of sky", styles: { desert: 2, sky: 1 } },
-        { id: "food", label: "A real meal after the vows", styles: { luxury: 2, historic: 1 } },
-        { id: "photos", label: "Photos in a place people recognize", styles: { historic: 2, sky: 1, quirky: 1 } },
-        { id: "simple", label: "Keep it legal and simple", styles: { chapel: 2 } },
-        { id: "surprise", label: "Something our friends did not see coming", styles: { quirky: 2, sky: 1 } },
-        { id: "unsure", label: "We'll know it when we see it", styles: {} }
+        { id: "elvis", label: "Elvis, or a theme with a wink", styles: { chapel: 2, quirky: 1 } },
+        { id: "quiet", label: "Quiet, and more sky than soundtrack", styles: { desert: 2, sky: 1 } },
+        { id: "food", label: "A few favorite people, then a really good dinner", styles: { luxury: 2, historic: 1 } },
+        { id: "photos", label: "Photos somewhere people will recognize", styles: { historic: 2, sky: 1, quirky: 1 } },
+        { id: "simple", label: "Keep it legal, short, and done", styles: { chapel: 2 } },
+        { id: "surprise", label: "Something our friends didn’t see coming", styles: { quirky: 2, sky: 1 } },
+        { id: "unsure", label: "We’ll know it when we’re standing there", styles: {} }
       ]
     }
   ];
@@ -226,13 +226,13 @@
     if (price === "flexible" || price === "quote") {
       if (venue.priceFrom == null) {
         return price === "quote"
-          ? "No published starting price. You said a quote is fine, but this is not a confirmed price match."
-          : "No published starting price, so it is not listed as a price match.";
+          ? "No published starting price. You’re happy to call and ask, but this is not a confirmed price match."
+          : "No published starting price, so this isn’t listed as a price match.";
       }
       return "";
     }
     if (venue.priceFrom == null) return "No published starting price.";
-    if (!priceOk(venue, price)) return "Published start is " + money(venue.priceFrom) + ", outside the ceremony range for this idea.";
+    if (!priceOk(venue, price)) return "The published start is " + money(venue.priceFrom) + ", outside the ceremony range for this idea.";
     return "";
   }
 
@@ -240,16 +240,16 @@
     var text = String(venue.setting || "");
     var lower = text.toLowerCase();
     if (setting !== "indoor" && setting !== "outdoor") return "";
-    if (!text) return "The listing does not say indoor or outdoor.";
-    if (setting === "indoor" && lower.indexOf("indoor") === -1) return "Listing says " + text + ", not indoor.";
-    if (setting === "outdoor" && lower.indexOf("outdoor") === -1) return "Listing says " + text + ", not outdoor.";
+    if (!text) return "The listing doesn’t say whether it’s indoors or outdoors.";
+    if (setting === "indoor" && lower.indexOf("indoor") === -1) return "The listing says " + text + ", not indoors.";
+    if (setting === "outdoor" && lower.indexOf("outdoor") === -1) return "The listing says " + text + ", not outdoors.";
     return "";
   }
 
   function guestGap(venue, guests) {
     if (!guests) return "";
-    if (venue.guestMax == null) return "Guest maximum is not published. Confirm it before you count on this room.";
-    if (venue.guestMax < guests) return "Published maximum is " + Number(venue.guestMax).toLocaleString("en-US") + " guests, under the " + guests.toLocaleString("en-US") + " you named.";
+    if (venue.guestMax == null) return "The guest maximum is not published. Ask before you count on this room.";
+    if (venue.guestMax < guests) return "The published maximum is " + Number(venue.guestMax).toLocaleString("en-US") + " guests, under the " + guests.toLocaleString("en-US") + " you named.";
     return "";
   }
 
@@ -319,25 +319,24 @@
   }
 
   function whyText(mode, owner) {
-    if (owner === "flexible") return "The questions were left open, so these three are starting points, not a read on who you are.";
-    if (mode === "together") return "This is one direction in the answers you gave together. It is not a label for you as a couple.";
-    if (owner === "both") return "You both gave this some weight.";
-    if (owner === "a") return "This follows Partner 1 more closely. Partner 2's answers show up in another idea.";
-    if (owner === "b") return "This follows Partner 2 more closely. Partner 1's answers show up in another idea.";
-    if (owner === "flexible") return "You both left this open, so these three are starting points, not a read on who you are.";
-    return "This is here so you can see a third, different direction. Neither of you has to prefer it.";
+    if (owner === "flexible") return "You left a lot of this open, so these three are starting points. They’re places to look, not a verdict on the two of you.";
+    if (mode === "together") return "This is one way the answers you gave together could look. It’s an idea, not a label for the two of you.";
+    if (owner === "both") return "This showed up in both of your answers.";
+    if (owner === "a") return "This one leans toward what Partner 1 pictured. Partner 2’s picture is in another idea, with the same weight.";
+    if (owner === "b") return "This one leans toward what Partner 2 pictured. Partner 1’s picture is in another idea, with the same weight.";
+    return "This is a third picture, so you can see a direction neither of you named. It’s here to compare, not to talk either of you out of the other two.";
   }
 
   function budgetNote(price, mode, a, b) {
-    var lead = "The figures on the venue cards are published starting prices for a ceremony, not the cost of the whole day. The license, photos, food, and guest travel are separate. The budget planner is where those get added. Nothing here fills that planner in for you.";
-    var names = { modest: "a published start under $1,000", middle: "a published start of $1,000 to $2,999", higher: "a published start of $3,000 or more", quote: "that a quote is fine", flexible: "any published starting price" };
+    var lead = "The figures on the cards are the venue’s published ceremony start, not the cost of the whole day. Dinner, photos, the license, and getting people here are separate. Add those in the budget planner. It stays blank until you type.";
+    var names = { modest: "a ceremony start under $1,000", middle: "a ceremony start of $1,000 to $2,999", higher: "a ceremony start of $3,000 or more", quote: "calling to ask for a number", flexible: "leaving the starting price open" };
     var used = price === "flexible"
-      ? "No single ceremony price was required. Venues with no published start are not called a price match. "
+      ? "This idea stays open on price. A match still has a published starting price, so we aren’t guessing. "
       : price === "quote"
-        ? "A quote is fine, but a match still needs a published starting price so we are not guessing. Listings without one are shown separately. "
+        ? "You’re happy to call and ask. A match still needs a published starting price, and a listing without one is not a confirmed price match. "
         : "This idea looks for " + names[price] + ". ";
     if (mode !== "together" && a && b && a.ceremony && b.ceremony && a.ceremony !== "unsure" && b.ceremony !== "unsure" && a.ceremony !== b.ceremony) {
-      return "Partner 1 said " + names[a.ceremony] + ". Partner 2 said " + names[b.ceremony] + ". " + used + lead;
+      return "Partner 1 was picturing " + names[a.ceremony] + ". Partner 2 was picturing " + names[b.ceremony] + ". " + used + lead;
     }
     return used + lead;
   }
@@ -349,12 +348,12 @@
       var choice = option(q, id);
       return choice ? choice.label : "Not answered";
     }
-    if (a.place !== b.place) rows.push("Place: Partner 1 said “" + label("place", a.place) + "”. Partner 2 said “" + label("place", b.place) + "”.");
-    if (a.setting !== b.setting) rows.push("Indoors or outdoors: Partner 1 said “" + label("setting", a.setting) + "”. Partner 2 said “" + label("setting", b.setting) + "”.");
-    if (a.guests !== b.guests) rows.push("Guest count: Partner 1 said “" + label("guests", a.guests) + "”. Partner 2 said “" + label("guests", b.guests) + "”. The larger known count is the one we used.");
-    if (a.ceremony !== b.ceremony) rows.push("Ceremony price: Partner 1 said “" + label("ceremony", a.ceremony) + "”. Partner 2 said “" + label("ceremony", b.ceremony) + "”.");
-    if (a.pace !== b.pace) rows.push("Timing: Partner 1 said “" + label("pace", a.pace) + "”. Partner 2 said “" + label("pace", b.pace) + "”.");
-    if (a.touch !== b.touch) rows.push("Personal note: Partner 1 said “" + label("touch", a.touch) + "”. Partner 2 said “" + label("touch", b.touch) + "”.");
+    if (a.place !== b.place) rows.push("The setting: Partner 1 pictured “" + label("place", a.place) + "”. Partner 2 pictured “" + label("place", b.place) + "”.");
+    if (a.setting !== b.setting) rows.push("Inside or outside: Partner 1 said “" + label("setting", a.setting) + "”. Partner 2 said “" + label("setting", b.setting) + "”.");
+    if (a.guests !== b.guests) rows.push("Who’s there: Partner 1 said “" + label("guests", a.guests) + "”. Partner 2 said “" + label("guests", b.guests) + "”. We used the larger number, so neither list gets cut.");
+    if (a.ceremony !== b.ceremony) rows.push("The ceremony price: Partner 1 said “" + label("ceremony", a.ceremony) + "”. Partner 2 said “" + label("ceremony", b.ceremony) + "”.");
+    if (a.pace !== b.pace) rows.push("The timing: Partner 1 said “" + label("pace", a.pace) + "”. Partner 2 said “" + label("pace", b.pace) + "”.");
+    if (a.touch !== b.touch) rows.push("The personal bit: Partner 1 said “" + label("touch", a.touch) + "”. Partner 2 said “" + label("touch", b.touch) + "”.");
     return rows;
   }
 
@@ -396,7 +395,7 @@
       var meta = STYLES[style];
       var pace = together ? a.pace : (owner === "a" ? a.pace : owner === "b" ? b.pace : (a.pace === "soon" || b.pace === "soon" ? "soon" : a.pace));
       var none = picked.fitCount === 0
-        ? "Nothing in this group fits every limit we can check. The places below are in the same group, with the gap named. They are not matches."
+        ? "Nothing in this group fits every limit we can check. The places below are the same kind of wedding, with the gap named. They are not matches."
         : "";
       return {
         id: style,
@@ -426,30 +425,30 @@
   }
 
   function plainSummary(result) {
-    var lines = ["Wedding ideas from Unique Vegas Weddings", "", "These compare your answers with venues already listed on the site. They are not a booking, and not a read on who you are."];
+    var lines = ["Three ways the hour could look, from Unique Vegas Weddings", "", "These come from your answers and the venues already on this site. They aren’t a booking, and they aren’t a read on the two of you."];
     if (result.differences && result.differences.length) {
-      lines.push("", "Where the answers differ:");
+      lines.push("", "Where you pictured it differently:");
       result.differences.forEach(function (line) { lines.push("- " + line); });
     }
     (result.concepts || []).forEach(function (concept) {
       lines.push("", concept.title, concept.summary, concept.why);
       if (concept.paceNote) lines.push(concept.paceNote);
       lines.push(concept.budgetNote);
-      lines.push("Ideas, not promises:");
+      lines.push("A few things you could bring to it. Ask before you assume the venue includes them:");
       (concept.touches || []).forEach(function (touch) { lines.push("- " + touch); });
       if (concept.noneMessage) lines.push(concept.noneMessage);
       if (concept.fits && concept.fits.length) {
-        lines.push("Venues that fit the limits we can check:");
+        lines.push("Places that line up with the listing:");
         concept.fits.forEach(function (card) { lines.push("- " + card.name + ". " + card.facts + " Listing: " + card.url); });
       }
       if (concept.alternatives && concept.alternatives.length) {
-        lines.push("Same group, not a full match:");
+        lines.push("Same kind of place, not a full match:");
         concept.alternatives.forEach(function (card) { lines.push("- " + card.name + ". " + card.facts + " Gap: " + card.gaps.join(" ") + " Listing: " + card.url); });
       }
       lines.push("More in this group: " + concept.categoryUrl);
       lines.push("Budget planner: " + concept.plannerUrl);
     });
-    lines.push("", "Starting prices are ceremony prices the venue published. They are not a full wedding cost.");
+    lines.push("", "A starting price is the ceremony price the venue published. It is not the cost of the whole day.");
     return lines.join("\n");
   }
 

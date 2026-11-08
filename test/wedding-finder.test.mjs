@@ -21,6 +21,14 @@ function answers(over) {
   }, over);
 }
 
+test("the six questions and their answer ids stay put", () => {
+  assert.equal(F.QUESTIONS.map((q) => q.id).join(","), "place,setting,guests,ceremony,pace,touch");
+  assert.equal(F.QUESTIONS[0].options.find((o) => o.id === "desert").styles.desert, 3);
+  assert.equal(F.QUESTIONS[5].options.find((o) => o.id === "food").styles.luxury, 2);
+  assert.equal(F.QUESTIONS[2].options.find((o) => o.id === "handful").guests, 10);
+  assert.equal(F.QUESTIONS.every((q) => q.options.length >= 3), true);
+});
+
 test("two partners who agree get a shared desert idea and real modest outdoor matches", () => {
   const shared = answers({ place: "desert", setting: "outdoor", guests: "handful", ceremony: "modest", touch: "quiet" });
   const result = F.buildResults("separate", shared, shared, venues);
@@ -131,7 +139,7 @@ test("indoor and outdoor disagreement is named and not forced into one setting",
   const a = answers({ place: "desert", setting: "indoor" });
   const b = answers({ place: "desert", setting: "outdoor" });
   const result = F.buildResults("separate", a, b, venues);
-  assert.ok(result.differences.some((line) => /Indoors or outdoors/.test(line)));
+  assert.ok(result.differences.some((line) => /Inside or outside/.test(line)));
   const shared = result.concepts[0];
   assert.equal(shared.setting, "either");
 });

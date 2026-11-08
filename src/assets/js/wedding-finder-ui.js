@@ -28,8 +28,8 @@
   function bag() { return state.partner === 2 ? state.b : state.a; }
 
   function partnerLabel() {
-    if (state.mode !== "separate") return "Answering together";
-    return state.partner === 2 ? "Partner 2" : "Partner 1";
+    if (state.mode !== "separate") return "Together";
+    return state.partner === 2 ? "Partner 2’s turn" : "Partner 1’s turn";
   }
 
   function focusHeading() {
@@ -47,11 +47,11 @@
   function renderIntro() {
     root.innerHTML = ''
       + '<div class="wf-screen">'
-      + '<h2 data-wf-focus tabindex="-1">How do you want to answer?</h2>'
-      + '<p>Six short questions. You can each answer on this phone, or answer once together. We don\'t save the answers, and we don\'t ask for an email.</p>'
+      + '<h2 data-wf-focus tabindex="-1">Want a turn each, or one conversation?</h2>'
+      + '<p>Same six questions either way. Taking turns is more fun if you don\'t peek. Your answers stay on this page. We don\'t ask for names or an email.</p>'
       + '<div class="wf-actions">'
-      + '<button class="btn btn-primary" type="button" data-wf="separate">Answer separately</button>'
-      + '<button class="btn btn-ghost" type="button" data-wf="together">Answer together</button>'
+      + '<button class="btn btn-primary" type="button" data-wf="separate">We\'ll each take a turn</button>'
+      + '<button class="btn btn-ghost" type="button" data-wf="together">We\'ll answer together</button>'
       + "</div></div>";
     focusHeading();
   }
@@ -69,11 +69,11 @@
       + '<fieldset class="wf-q"><legend data-wf-focus tabindex="-1">' + esc(question.prompt) + "</legend>"
       + (question.help ? '<p class="small" id="wf-help">' + esc(question.help) + "</p>" : "")
       + '<div class="wf-options"' + (question.help ? ' aria-describedby="wf-help"' : "") + ">" + choiceButtons(question, selected) + "</div>"
-      + '<p class="wf-need" id="wf-need" hidden>Pick one answer. "Not sure" is a fine answer.</p>'
+      + '<p class="wf-need" id="wf-need" hidden>Pick the one that feels closest. The open option counts.</p>'
       + "</fieldset>"
       + '<div class="wf-actions">'
       + '<button class="btn btn-ghost" type="button" data-wf="back">Back</button>'
-      + '<button class="btn btn-primary" type="submit">' + (state.step === total - 1 ? (state.mode === "separate" && state.partner === 1 ? "Partner 2's turn" : "See the three ideas") : "Next") + "</button>"
+      + '<button class="btn btn-primary" type="submit">' + (state.step === total - 1 ? (state.mode === "separate" && state.partner === 1 ? "Hand the phone over" : "Show us the three ideas") : "Next question") + "</button>"
       + "</div></form>"
       + '<p class="small"><button class="link-btn" type="button" data-wf="restart">Start over</button></p>'
       + "</div>";
@@ -83,11 +83,11 @@
   function renderHandoff() {
     root.innerHTML = ''
       + '<div class="wf-screen">'
-      + '<h2 data-wf-focus tabindex="-1">Hand this to Partner 2</h2>'
-      + "<p>Partner 1's answers stay on this page until you leave it. Partner 2 answers the same six questions. We won't mix in names or email addresses, because we never ask for them.</p>"
+      + '<h2 data-wf-focus tabindex="-1">Don\'t show them your answers</h2>'
+      + "<p>Partner 2 gets the same six questions. The good part is seeing where you pictured the same hour, and where you didn't. Nothing here asks for a name or an email.</p>"
       + '<div class="wf-actions">'
       + '<button class="btn btn-ghost" type="button" data-wf="back">Back</button>'
-      + '<button class="btn btn-primary" type="button" data-wf="handoff">Partner 2 is ready</button>'
+      + '<button class="btn btn-primary" type="button" data-wf="handoff">Partner 2, it\'s yours</button>'
       + "</div>"
       + '<p class="small"><button class="link-btn" type="button" data-wf="restart">Start over</button></p>'
       + "</div>";
@@ -102,40 +102,40 @@
     return '<article class="wf-card">'
       + "<h4><a href=\"" + esc(card.url) + "\">" + esc(card.name) + "</a></h4>"
       + "<p>" + esc(card.facts) + "</p>"
-      + (kind === "fit" ? '<p class="wf-fit">Fits the limits we can check on this listing.</p>' : '<p class="wf-gaplabel">Not a match. Here is the gap:</p>' + gaps)
+      + (kind === "fit" ? '<p class="wf-fit">This lines up with what the listing publishes.</p>' : '<p class="wf-gaplabel">Not a match. Here is what to check:</p>' + gaps)
       + checked
-      + '<p class="wf-cardlinks"><a href="' + esc(card.url) + '">Open the listing</a> · <a href="' + esc(card.plannerUrl) + '">Open the budget planner with this venue</a></p>'
+      + '<p class="wf-cardlinks"><a href="' + esc(card.url) + '">Read the listing</a> · <a href="' + esc(card.plannerUrl) + '">Take this venue to the budget planner</a></p>'
       + "</article>";
   }
 
   function renderResults() {
     var result = state.result;
     var diff = result.differences.length
-      ? '<section class="wf-diff"><h3>Where you answered differently</h3><ul>' + result.differences.map(function (line) { return "<li>" + esc(line) + "</li>"; }).join("") + "</ul></section>"
+      ? '<section class="wf-diff"><h3>Where you pictured it differently</h3><p>Neither answer cancels the other. Both show up below.</p><ul>' + result.differences.map(function (line) { return "<li>" + esc(line) + "</li>"; }).join("") + "</ul></section>"
       : "";
     var concepts = result.concepts.map(function (concept, index) {
       var fits = concept.fits.length
-        ? '<h4>Venues that fit the limits we can check</h4>' + concept.fits.map(function (card) { return cardHtml(card, "fit"); }).join("")
+        ? '<h4>Places that line up</h4>' + concept.fits.map(function (card) { return cardHtml(card, "fit"); }).join("")
         : '<p class="wf-none">' + esc(concept.noneMessage) + "</p>";
       var alts = concept.alternatives.length
-        ? '<h4>Same group, with the gap named</h4>' + concept.alternatives.map(function (card) { return cardHtml(card, "alt"); }).join("")
+        ? '<h4>Same kind of place, once you check this</h4>' + concept.alternatives.map(function (card) { return cardHtml(card, "alt"); }).join("")
         : "";
       var pace = concept.paceNote ? "<p>" + esc(concept.paceNote) + "</p>" : "";
-      var touches = '<h4>Ideas, not promises</h4><ul>' + concept.touches.map(function (touch) { return "<li>" + esc(touch) + "</li>"; }).join("") + "</ul>";
+      var touches = '<h4>A few things you could bring to it</h4><ul>' + concept.touches.map(function (touch) { return "<li>" + esc(touch) + "</li>"; }).join("") + "</ul>";
       return '<article class="panel wf-concept"><p class="wf-kicker">Idea ' + (index + 1) + " of 3</p><h3>" + esc(concept.title) + "</h3>"
         + "<p>" + esc(concept.summary) + "</p><p>" + esc(concept.why) + "</p>" + pace + touches
         + "<p>" + esc(concept.budgetNote) + "</p>" + fits + alts
-        + '<p class="wf-cardlinks"><a href="' + esc(concept.categoryUrl) + '">See this whole venue group</a> · <a href="' + esc(concept.plannerUrl) + '">Open the budget planner</a></p>'
+        + '<p class="wf-cardlinks"><a href="' + esc(concept.categoryUrl) + '">See more places like this</a> · <a href="' + esc(concept.plannerUrl) + '">Add the rest of the costs</a></p>'
         + "</article>";
     }).join("");
     root.innerHTML = ''
       + '<div class="wf-screen" aria-live="polite">'
-      + '<h2 data-wf-focus tabindex="-1">Three ways this could go</h2>'
-      + "<p>Each idea uses the venue list on this site. A match means the published category, setting, guest maximum, and starting price line up with the answers. If a fact isn't on the listing, we don't treat it as a yes.</p>"
+      + '<h2 data-wf-focus tabindex="-1">Three ways the hour could look</h2>'
+      + "<p>Built from what you just said, and from venues already on this site. If a listing is missing a guest count, a price, or indoors versus outdoors, we say so instead of calling it a yes.</p>"
       + diff + concepts
       + '<div class="wf-actions">'
-      + '<button class="btn btn-ghost" type="button" data-wf="edit">Edit answers</button>'
-      + '<button class="btn btn-ghost" type="button" data-wf="copy">Copy these ideas</button>'
+      + '<button class="btn btn-ghost" type="button" data-wf="edit">Change an answer</button>'
+      + '<button class="btn btn-ghost" type="button" data-wf="copy">Copy this for the two of you</button>'
       + '<button class="btn btn-ghost" type="button" data-wf="restart">Start over</button>'
       + "</div>"
       + '<p class="small" id="wf-copy-note" hidden></p>'
@@ -149,10 +149,10 @@
     root.innerHTML = ''
       + '<div class="wf-screen">'
       + '<h2 data-wf-focus tabindex="-1">Start over?</h2>'
-      + "<p>This clears both sets of answers on this page. Nothing was saved anywhere else.</p>"
+      + "<p>" + (state.mode === "separate" ? "This clears both of your answers on this page. We never saved them anywhere else." : "This clears the answers you gave together. We never saved them anywhere else.") + "</p>"
       + '<div class="wf-actions">'
-      + '<button class="btn btn-primary" type="button" data-wf="confirm-restart">Yes, clear the answers</button>'
-      + '<button class="btn btn-ghost" type="button" data-wf="cancel-restart">Keep them</button>'
+      + '<button class="btn btn-primary" type="button" data-wf="confirm-restart">Yes, clear them</button>'
+      + '<button class="btn btn-ghost" type="button" data-wf="cancel-restart">No, keep what we have</button>'
       + "</div></div>";
     focusHeading();
   }
@@ -291,11 +291,11 @@
       var text = F.plainSummary(state.result);
       var note = root.querySelector("#wf-copy-note");
       function failed() {
-        showCopyFallback(text, "Copy didn't work in this browser. The ideas are selected below. They stay on this page only.");
+        showCopyFallback(text, "Copy didn’t work in this browser. The ideas are selected below. They stay on this page only.");
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(function () {
-          if (note) { note.hidden = false; note.textContent = "Copied. Paste it wherever you want to keep it. We don't store it."; }
+          if (note) { note.hidden = false; note.textContent = "Copied. Paste it into a note for the two of you. We don’t keep a copy."; }
         }).catch(failed);
       } else failed();
     }

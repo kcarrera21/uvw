@@ -608,7 +608,7 @@ async function main() {
 </div></section>
 
 <section><div class="wrap">
-  <div class="section-head"><div><span class="eyebrow">Six ways to say I do</span><h2>Pick the wedding that feels like <em>you</em></h2><p>Answering with a partner? <a href="/tools/wedding-finder/">Try the wedding style finder</a>.</p></div><a class="btn btn-ghost btn-sm" href="/venues/">See all ${venues.length} venues</a></div>
+  <div class="section-head"><div><span class="eyebrow">Six ways to say I do</span><h2>Pick the wedding that feels like <em>you</em></h2><p>Planning it with your partner? <a href="/tools/wedding-finder/">Picture the hour together</a>.</p></div><a class="btn btn-ghost btn-sm" href="/venues/">See all ${venues.length} venues</a></div>
   <div class="bento">${CATEGORIES.map((c, i) => { const klass = bentoClass[i] || "bento-tile"; return `<a class="cat ${klass}" href="/venues/category/${c.slug}/">${pic("cat-" + c.slug, `/assets/art/cat-${c.slug}.svg`, { sizes: bentoSizes[klass] || bentoSizes["bento-tile"] })}<div class="cat-txt"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><span class="n">${venues.filter((v) => v.category === c.slug).length} venues →</span></div></a>`; }).join("")}</div>
 </div></section>
 
@@ -704,7 +704,7 @@ async function main() {
   <p class="lede narrow" data-hero-sub>${venues.length} places to get married that aren't another hotel ballroom. Prices are the venue's own published "from" prices on the date we checked. Always confirm before booking.</p>
   ${heroRuntime()}
   ${filters}
-  <p class="small" style="margin:0 0 20px">Not sure what to filter? <a href="/search/">Describe the wedding you want in plain words</a>, or <a href="/tools/wedding-finder/">answer a few questions in the wedding style finder</a>. A starting price is the package named on the venue page. It is not a quote for every guest count.</p>
+  <p class="small" style="margin:0 0 20px">Not sure what to filter? <a href="/search/">Describe the wedding you want in plain words</a>, or <a href="/tools/wedding-finder/">picture the hour with your partner</a>. A starting price is the package named on the venue page. It is not a quote for every guest count.</p>
   <h2 class="sr-only">Venue cards</h2>
   <div class="grid-3" data-filter-grid data-page-size="${VENUE_PAGE}">${venues.slice(0, VENUE_PAGE).map(venueCard).join("")}</div>
   <p data-filter-empty hidden class="center">No venues match those filters. Try a wider budget, a different setting, or a lower guest count.</p>
@@ -898,7 +898,7 @@ async function main() {
   <span class="eyebrow">Plan it right</span><h1>Las Vegas wedding <em>guides</em></h1><p class="lede narrow">Plain-English answers, with every fact linked to the official source.</p>
   <div class="grid-3" style="margin-top:30px">${guides.map((g) => `<a class="mini" href="/guides/${g.slug}/"><span class="tag sage">${esc(g.eyebrow)}</span><strong style="margin-top:10px">${esc(g.title)}</strong><span>${esc(g.metaDescription || g.description)}</span></a>`).join("")}
   <a class="mini" href="/lucky-wedding-dates/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Lucky & special wedding dates</strong><span>Palindromes, mirror dates and lucky sevens, calculated for any year.</span></a>
-  <a class="mini" href="/tools/wedding-finder/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Wedding style finder</strong><span>Each of you answers six short questions. See three ideas, with venues from this directory.</span></a>
+  <a class="mini" href="/tools/wedding-finder/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Wedding style finder</strong><span>Six questions each, or once together. Three ways the hour could look, with venues from this directory.</span></a>
   <a class="mini" href="/tools/budget-planner/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Vegas wedding budget planner</strong><span>See what you pay, and what guests pay, without mixing the two.</span></a>
   <a class="mini" href="/tools/wedding-countdown/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Wedding countdown</strong><span>A live countdown to share, post to your story or add to your wedding website.</span></a></div>
 </div></section>`,
@@ -1143,7 +1143,7 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
       body: `<section style="padding-top:48px"><div class="wrap narrow bp" style="margin:0 auto">
   ${crumbs([["Home", "/"], ["Guides", "/guides/"], ["Budget planner", ""]])}
   <span class="eyebrow">Free tool</span><h1>Vegas wedding <em>budget planner</em></h1>
-  <p class="lede">See what you pay, then what guests pay on their own. The license and certificate copies are Clark County's prices. Everything else stays blank until you type it. We don't save the numbers. Still choosing a direction? <a href="/tools/wedding-finder/">Try the wedding style finder</a>.</p>
+  <p class="lede">See what you pay, then what guests pay on their own. The license and certificate copies are Clark County's prices. Everything else stays blank until you type it. We don't save the numbers. Still picturing the day? <a href="/tools/wedding-finder/">Try the wedding style finder</a>.</p>
   <div data-true-cost>
     <div class="panel bp-summary" aria-live="polite">
       <h2 class="mt0" id="bp-you-label">County fees so far</h2>
@@ -1250,26 +1250,26 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
       priceFrom: v.priceFrom, priceLabel: v.priceLabel || "", guestMax: v.guestMax, checked: v.checked || "",
     }));
     const wfFaq = [
-      { q: "Do you save our answers?", a: "No. The answers stay on this page until you leave it or start over. We don't ask for an email, and we don't store the choices." },
-      { q: "Is this a personality test?", a: "No. It lines up a few practical preferences with the venues already in this directory. The three ideas are different directions, not a score." },
-      { q: "What if we disagree?", a: "You each answer the same questions. One idea follows the overlap. The others keep a direction that mattered more to one of you, and the page says where the answers differed." },
-      { q: "Why isn't every venue called a match?", a: "A match needs a published category, setting, guest maximum, and starting price that fit the answers. If a listing doesn't say, we show it as a maybe and name the missing fact." },
+      { q: "Do you save our answers?", a: "No. They stay on this page until you leave it or start over. We don’t ask for an email, and we don’t store the choices." },
+      { q: "Is this a personality test?", a: "No. It’s six questions about the hour you want, matched to venues already on this site. The three ideas are different pictures, not a score, and a difference isn’t a problem." },
+      { q: "What if we don’t picture the same day?", a: "That’s useful. You’ll see where you overlapped and where you didn’t, and each picture gets the same weight." },
+      { q: "Why isn’t every venue a match?", a: "A match has to line up with what that listing publishes: the kind of place, indoors or outdoors, how many people it holds, and the ceremony’s starting price. If the listing is quiet on one of those, we show the place and name the missing piece." },
     ];
     page("/tools/wedding-finder/", {
       title: "Wedding style finder", og: "guides",
-      description: "Answer six short questions, separately or together, and see three Las Vegas wedding ideas with real venue matches. Nothing is saved.",
+      description: "Six questions for each of you, or once together. See three Las Vegas wedding ideas with real venues from this directory. Nothing is saved.",
       scripts: ["/assets/js/wedding-finder.js", "/assets/js/wedding-finder-ui.js"],
       schema: [crumbSchema([["Home", "/"], ["Guides", "/guides/"], ["Wedding style finder", "/tools/wedding-finder/"]]),
         { "@context": "https://schema.org", "@type": "WebApplication", name: "Wedding style finder", url: `${C.domain}/tools/wedding-finder/`, applicationCategory: "LifestyleApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, publisher: orgRef },
         faqSchema(wfFaq)],
       body: `<section style="padding-top:48px"><div class="wrap narrow" style="margin:0 auto">
   ${crumbs([["Home", "/"], ["Guides", "/guides/"], ["Wedding style finder", ""]])}
-  <span class="eyebrow">Free tool</span><h1>A wedding that fits <em>you both</em></h1>
-  <p class="lede">Six short questions. Answer separately on this phone, or once together. You'll get three different ideas, with venues from this directory and a link into the budget planner. We don't save the answers.</p>
+  <span class="eyebrow">Free tool</span><h1>Picture the moment you say <em>we do</em></h1>
+  <p class="lede">Six questions, the same six for each of you. Take a turn on this phone, or talk through them once together. Then we’ll show three ways the hour could look, using venues from this site.</p>
   <div data-finder></div>
   <noscript><div class="note">This finder needs JavaScript. You can still <a href="/venues/">browse the venues</a> or <a href="/tools/budget-planner/">use the budget planner</a>.</div></noscript>
   <h2>Questions</h2>${faqHtml(wfFaq)}
-  <p class="small">A published starting price is the ceremony package named on the venue's listing. It is not the cost of the whole day. Guest maximums and indoor or outdoor notes are only as complete as the listing. Confirm anything that matters with the venue.</p>
+  <p class="small">The price on a card is the ceremony start published on that listing. It isn’t the whole day. If a listing doesn’t give a guest maximum, or say indoors or outdoors, we leave it unknown. Ask the venue before you book.</p>
   <script type="application/json" id="wf-venues">${JSON.stringify(finderVenues).replace(/</g, "\\u003c")}</script>
 </div></section>`,
     });
@@ -1465,7 +1465,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
       ...guides.map((g) => ({ kind: "Guide", title: g.title, url: `/guides/${g.slug}/`, text: g.metaDescription || g.description, kw: g.nav + " " + g.eyebrow })),
       ...CATEGORIES.map((c) => ({ kind: "Venue category", title: `${c.name} wedding venues`, url: `/venues/category/${c.slug}/`, text: c.blurb })),
       { kind: "Tool", title: "Lucky wedding dates", url: "/lucky-wedding-dates/", text: "Upcoming palindrome, mirror and matching-number wedding dates, recalculated every week.", kw: "lucky special date palindrome numbers calendar" },
-      { kind: "Tool", title: "Wedding style finder", url: "/tools/wedding-finder/", text: "Six short questions for each partner, or once together. Three wedding ideas with venue matches from this directory and a link to the budget planner.", kw: "style quiz ideas both partners venue match" },
+      { kind: "Tool", title: "Wedding style finder", url: "/tools/wedding-finder/", text: "Six questions for each partner, or once together. Three ways the hour could look, with venue matches from this directory and a link to the budget planner.", kw: "style quiz ideas both partners venue match" },
       { kind: "Tool", title: "Vegas wedding budget planner", url: "/tools/budget-planner/", text: "Add the Clark County license and certificate fees, your package, and optional guest costs. What you pay stays separate from what guests pay.", kw: "budget calculator license fees guest travel package" },
       { kind: "Tool", title: "Las Vegas wedding countdown", url: "/tools/wedding-countdown/", text: "A live countdown to your wedding day you can share, download as a story image, add to your calendar or embed on your wedding site.", kw: "countdown timer days until wedding date clock" },
       { kind: "Planner", title: "The Unique Vegas Wedding Planner", url: "/planner/", text: "A 25-page printable planner with timelines, license checklists, a budget worksheet and venue comparison sheets.", kw: "planner printable pdf checklist timeline download" },
@@ -1633,7 +1633,7 @@ ${CATEGORIES.map((c) => `- [${c.name}](${C.domain}/venues/category/${c.slug}/): 
 
 ## Tools
 - [Lucky wedding dates](${C.domain}/lucky-wedding-dates/): upcoming palindrome, mirror and matching-number dates, recalculated every week
-- [Wedding style finder](${C.domain}/tools/wedding-finder/): six short questions for each partner, or once together, then three ideas with venue matches from this directory
+- [Wedding style finder](${C.domain}/tools/wedding-finder/): six questions for each partner, or once together, then three ways the hour could look, with venue matches from this directory
 - [Budget planner](${C.domain}/tools/budget-planner/): Clark County fees, your package, and optional guest costs kept separate from what you pay
 - [Wedding countdown](${C.domain}/tools/wedding-countdown/): free shareable countdown with story images, calendar file and embed code
 - [Site search](${C.domain}/search/): plain-language search of venues and guides; pass the query as ${C.domain}/search/?q=your+words
