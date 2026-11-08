@@ -35,6 +35,9 @@ const posts = allPosts.filter((p) => p.date <= ISO).sort((a, b) => (a.date < b.d
 const luckyCtx = {};
 vm.runInNewContext(fs.readFileSync(path.join(ROOT, "src/assets/js/lucky.js"), "utf8"), { globalThis: luckyCtx, window: luckyCtx });
 const L = luckyCtx.UVWLucky;
+const budgetCtx = {};
+vm.runInNewContext(fs.readFileSync(path.join(ROOT, "src/assets/js/budget-calc.js"), "utf8"), { globalThis: budgetCtx });
+const Budget = budgetCtx.UVWBudget;
 
 // ---------- helpers ----------
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -398,7 +401,7 @@ function venueCard(v) {
   <div class="body">
     <span class="tag sage" style="align-self:flex-start">${esc(c.name)}</span>
     <h3><a href="/venues/${v.slug}/">${esc(v.name)}</a></h3>
-    <div class="meta">${esc(v.area)}${v.setting ? " · " + esc(v.setting) : ""}</div>
+    <div class="meta">${esc(v.area)}${v.setting ? " · " + esc(v.setting) : ""}${v.guestMax ? ` · up to ${Number(v.guestMax).toLocaleString("en-US")} guests` : ""}</div>
     <div class="price">${price}</div>
   </div></article>`;
 }
@@ -686,8 +689,11 @@ async function main() {
     <label>Category<select data-filter="cat"><option value="all">All categories</option>${CATEGORIES.map((c) => `<option value="${c.slug}">${esc(c.name)}</option>`).join("")}</select></label>
     <label>Setting<select data-filter="setting"><option value="all">Any setting</option><option value="indoor">Indoor</option><option value="outdoor">Outdoor</option><option value="airborne">Airborne</option></select></label>
     <label>Starting price<select data-filter="budget"><option value="all">Any budget</option>${["1", "2", "3", "4", "quote"].map((b) => `<option value="${b}">${BAND_LABEL[b]}</option>`).join("")}</select></label>
+    <label>Fits at least<input type="number" inputmode="numeric" min="0" step="1" data-filter-guests placeholder="Guests"></label>
     <label>Sort by<select data-sort><option value="recommended">Recommended</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="guests-desc">Most guests</option><option value="name">Name (A–Z)</option><option value="checked">Recently verified</option></select></label>
-  </div><p class="filter-count" data-filter-count>${venues.length} venues</p>`;
+  </div><p class="filter-count" data-filter-count>${venues.length} venues</p>
+  <p class="filter-more" data-filter-more hidden></p>
+  <label class="filter-known"><input type="checkbox" data-filter-known> Only show venues that publish a guest capacity</label>`;
   page("/venues/", {
     title: "Unique Las Vegas Wedding Venues", seoTitle: `${venues.length} Unique Las Vegas Wedding Venues, With Prices`, og: "venues", modified: maxChecked(venues),
     description: `Browse ${venues.length} unique Las Vegas wedding venues: neon, desert, sky-high, quirky and classic. Filter by setting and budget. Published prices, verified details.`,
@@ -698,10 +704,10 @@ async function main() {
   <p class="lede narrow" data-hero-sub>${venues.length} places to get married that aren't another hotel ballroom. Prices are the venue's own published "from" prices on the date we checked. Always confirm before booking.</p>
   ${heroRuntime()}
   ${filters}
-  <p class="small" style="margin:-12px 0 20px">Not sure what to filter? <a href="/search/">Describe the wedding you want in plain words</a>.</p>
+  <p class="small" style="margin:0 0 20px">Not sure what to filter? <a href="/search/">Describe the wedding you want in plain words</a>. A starting price is the package named on the venue page. It is not a quote for every guest count.</p>
   <h2 class="sr-only">Venue cards</h2>
   <div class="grid-3" data-filter-grid data-page-size="${VENUE_PAGE}">${venues.slice(0, VENUE_PAGE).map(venueCard).join("")}</div>
-  <p data-filter-empty hidden class="center">No venues match those filters. Try widening the budget or setting.</p>
+  <p data-filter-empty hidden class="center">No venues match those filters. Try a wider budget, a different setting, or a lower guest count.</p>
   ${venues.length > VENUE_PAGE ? `<p class="more-row"><a class="btn btn-ghost" href="#all-venues" data-venue-more>Show more venues</a></p>` : ""}
   <nav class="venue-index" id="all-venues" aria-label="All venues"><h2>All venues</h2><p>${venues.map((v) => `<a href="/venues/${v.slug}/">${esc(v.name)}</a>`).join("")}</p></nav>
   <script type="application/json" id="venue-catalog">${venueCatalogJson}</script>
@@ -761,11 +767,13 @@ async function main() {
           <div class="row2"><div class="field"><label for="iq-d">Date</label><input id="iq-d" type="date" name="date"></div><div class="field"><label for="iq-g">Guests</label><input id="iq-g" type="number" min="0" name="guests"></div></div>
           <div class="field"><label for="iq-m">Anything else?</label><textarea id="iq-m" name="message"></textarea></div>
           <button class="btn btn-primary" type="submit" style="width:100%">Send inquiry</button>
-        </form></div>`
+        </form>
+        <a class="btn btn-ghost" style="width:100%;margin-top:12px" href="/tools/budget-planner/?venue=${v.slug}">Check it in the budget planner</a></div>`
       : `<div class="panel"><h3>Plan it</h3>
         <p class="small">Check dates and packages on the venue's official site, and save it to compare later.</p>
         <div class="stack"><a class="btn btn-primary" style="width:100%" href="${esc(outUrl(v.url, v.slug))}" rel="nofollow noopener" target="_blank">Check dates on the official site ↗</a>
         <button class="btn btn-ghost" style="width:100%" type="button" data-save="${v.slug}" data-name="${esc(v.name)}" data-url="/venues/${v.slug}/"><span class="save-label">Save</span> to shortlist</button>
+        <a class="btn btn-ghost" style="width:100%" href="/tools/budget-planner/?venue=${v.slug}">Check it in the budget planner</a>
         <a class="btn btn-ghost" style="width:100%" href="/tools/wedding-countdown/?v=${v.slug}">Start your countdown</a></div>
         <hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
         ${newsletterForm({ title: "Free Vegas wedding checklist", sub: "License steps, documents, witness rules and certified copies on one printable page." }).replace('<div class="panel">', "<div>")}
@@ -890,7 +898,7 @@ async function main() {
   <span class="eyebrow">Plan it right</span><h1>Las Vegas wedding <em>guides</em></h1><p class="lede narrow">Plain-English answers, with every fact linked to the official source.</p>
   <div class="grid-3" style="margin-top:30px">${guides.map((g) => `<a class="mini" href="/guides/${g.slug}/"><span class="tag sage">${esc(g.eyebrow)}</span><strong style="margin-top:10px">${esc(g.title)}</strong><span>${esc(g.metaDescription || g.description)}</span></a>`).join("")}
   <a class="mini" href="/lucky-wedding-dates/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Lucky & special wedding dates</strong><span>Palindromes, mirror dates and lucky sevens, calculated for any year.</span></a>
-  <a class="mini" href="/tools/budget-planner/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Vegas wedding budget planner</strong><span>Set your total and split it across venue, photos, attire and the rest.</span></a>
+  <a class="mini" href="/tools/budget-planner/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Vegas wedding budget planner</strong><span>County fees are filled in. Package extras, tips and guest costs stay separate until you enter them.</span></a>
   <a class="mini" href="/tools/wedding-countdown/"><span class="tag sage">Tool</span><strong style="margin-top:10px">Wedding countdown</strong><span>A live countdown to share, post to your story or add to your wedding website.</span></a></div>
 </div></section>`,
   });
@@ -1101,24 +1109,108 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
   });
 
   // ================= TOOLS: BUDGET =================
-  const BP = [["Venue & ceremony package", 35], ["Photography & video", 18], ["Attire, hair & makeup", 12], ["Reception food & drink", 15], ["Flowers & decor", 6], ["Travel & rooms", 8], ["License, certified copies & fees", 2], ["Buffer (you'll use it)", 4]];
-  page("/tools/budget-planner/", {
-    title: "Las Vegas Wedding Budget Planner", og: "budget",
-    description: "Free Las Vegas wedding budget planner: enter your total and split it across venue, photography, attire, reception, travel and fees.",
-    body: `<section style="padding-top:48px"><div class="wrap narrow" style="margin:0 auto">
+  {
+    const fee = Budget.CONFIRMED;
+    const fm = (n) => Budget.formatMoney(n);
+    const budgetVenues = venues.slice().sort((a, b) => a.name.replace(/^The\s+/i, "").localeCompare(b.name.replace(/^The\s+/i, ""))).map((v) => {
+      const notes = Budget.topicNotes(v.facts, v.tips);
+      return {
+        s: v.slug, n: v.name, price: v.priceFrom, label: v.priceLabel || "", guests: v.guestMax, checked: v.checked || "",
+        photo: { fit: notes.photo.fit, quotes: notes.photo.quotes, included: !!notes.photo.included },
+        access: { fit: notes.access.fit, quotes: notes.access.quotes },
+        privacy: { fit: notes.privacy.fit, quotes: notes.privacy.quotes },
+        music: { fit: notes.music.fit, quotes: notes.music.quotes },
+        money: notes.money, includedCap: notes.includedGuests.cap, includedQuote: notes.includedGuests.quote || "",
+      };
+    });
+    const bpFaq = [
+      { q: "Do you save what I type?", a: "No. The numbers stay on this page while you use it. We don't ask for your email, and we don't store the amounts." },
+      { q: "Which amounts are real prices?", a: `The marriage license is ${fm(fee.license)}, certified copies are ${fm(fee.copy)} each, paying the Clerk by card for those copies adds 2% plus ${fm(fee.copyCardFlat)} per transaction, a county civil ceremony is ${fm(fee.civil)} including the card fee, and a Nevada apostille is ${fm(fee.apostille)}. Venue lines start blank.` },
+      { q: "Why is guest travel separate?", a: "Guests often pay their own flights and rooms. That spending is shown on its own line. Check the box if you are covering it, and it is added once, not twice." },
+    ];
+    const moneyField = (id, key, label, help) => `<div class="bp-field"><label for="${id}">${label}</label><input id="${id}" type="text" inputmode="decimal" autocomplete="off" placeholder="0" data-money="${key}"${help ? ` aria-describedby="${id}-help"` : ""}>${help ? `<p class="small" id="${id}-help">${help}</p>` : ""}</div>`;
+    const includeField = (id, key, label, help) => `${moneyField(id, key, label, help)}<label class="bp-check" for="${id}-in"><input id="${id}-in" type="checkbox" data-flag="${key}Included" aria-label="${esc("Count " + label + " as already in the package")}"> Count this as already in the package</label>`;
+    page("/tools/budget-planner/", {
+      title: "Las Vegas Wedding Budget Planner", og: "budget",
+      description: "Free Las Vegas wedding budget planner. County license and certificate fees are published prices. Add package exclusions, transport, tips and guest costs as your own estimates.",
+      scripts: ["/assets/js/budget-calc.js", "/assets/js/budget-ui.js"],
+      schema: [crumbSchema([["Home", "/"], ["Guides", "/guides/"], ["Budget planner", "/tools/budget-planner/"]]),
+        { "@context": "https://schema.org", "@type": "WebApplication", name: "Las Vegas Wedding Budget Planner", url: `${C.domain}/tools/budget-planner/`, applicationCategory: "LifestyleApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, publisher: orgRef },
+        faqSchema(bpFaq)],
+      body: `<section style="padding-top:48px"><div class="wrap narrow bp" style="margin:0 auto">
   ${crumbs([["Home", "/"], ["Guides", "/guides/"], ["Budget planner", ""]])}
   <span class="eyebrow">Free tool</span><h1>Vegas wedding <em>budget planner</em></h1>
-  <p class="lede">Enter your total, then adjust the percentages until they add up to 100%. The starting split is just a starting point. Your priorities set the real one.</p>
-  <h2 class="sr-only">Split your budget</h2>
-  <div class="panel" data-budget-planner>
-    <div class="field"><label for="bp-total">Total budget ($)</label><input id="bp-total" type="number" min="0" step="100" value="5000"></div>
-    ${BP.map(([n, p]) => `<div class="bp-row" data-bp-row><span>${n}</span><input type="number" min="0" max="100" value="${p}" aria-label="${n} percent"><output>$0</output></div>`).join("")}
-    <p style="margin:14px 0 0">Allocated: <strong id="bp-used">100%</strong></p>
+  <p class="lede">A published starting price is the first line, not the whole bill. County fees below are filled in from the Clerk's published prices. Everything else stays blank until you type it, and those lines are estimates.</p>
+  <div class="panel" data-true-cost>
+    <div class="bp-totals" aria-live="polite">
+    <h2 class="mt0">Your total</h2>
+    <dl>
+      <div><dt>Published county fees</dt><dd id="bp-confirmed">${fm(fee.license + fee.copy)}</dd></div>
+      <div><dt>Your estimates</dt><dd id="bp-estimates">$0</dd></div>
+      <div><dt>Cushion <span class="bp-tag estimate">Estimate</span></dt><dd id="bp-cushion-out">$0</dd></div>
+      <div class="bp-grand"><dt>What you pay</dt><dd id="bp-you">${fm(fee.license + fee.copy)}</dd></div>
+      <div><dt>Guests pay themselves</dt><dd id="bp-guests-out">$0</dd></div>
+    </dl>
+    <p class="small" id="bp-warnings"></p>
+    </div>
+    <h2>County fees</h2>
+    <p class="small">These are published Clark County and Nevada fees. Uncheck anything you've already paid or don't need.</p>
+    <label class="bp-check" for="bp-license"><input id="bp-license" type="checkbox" data-flag="license" checked> Include the ${fm(fee.license)} marriage license</label>
+    <div class="bp-field"><label for="bp-copies">Certified copies, ${fm(fee.copy)} each</label><input id="bp-copies" type="number" min="0" max="100" step="1" value="1" inputmode="numeric" data-count="copies"></div>
+    <label class="bp-check" for="bp-copy-card"><input id="bp-copy-card" type="checkbox" data-flag="copyCard"> Paying the Clerk by card for those copies (2% + ${fm(fee.copyCardFlat)} per order)</label>
+    <label class="bp-check" for="bp-civil"><input id="bp-civil" type="checkbox" data-flag="civil"> County civil ceremony, ${fm(fee.civil)}, card fee included. Leave this off if a chapel or another officiant is doing the ceremony.</label>
+    <label class="bp-check" for="bp-apostille"><input id="bp-apostille" type="checkbox" data-flag="apostille"> Nevada apostille, ${fm(fee.apostille)}, if you'll use the certificate abroad</label>
+    <h2>Check a venue</h2>
+    <p class="small">Compare your guest count with the published maximum, and read what the listing actually says about photographers, access, privacy and music. Silence stays "not stated."</p>
+    <div class="bp-field"><label for="bp-venue">Venue</label><select id="bp-venue"><option value="">No venue yet</option>${budgetVenues.map((v) => `<option value="${v.s}">${esc(v.n)}</option>`).join("")}</select></div>
+    <div class="bp-field"><label for="bp-guests">Guest count</label><input id="bp-guests" type="number" min="0" step="1" inputmode="numeric" placeholder="0" data-count="guests"></div>
+    <div id="bp-venue-out" class="bp-venue"></div>
+    <button class="btn btn-ghost btn-sm" type="button" id="bp-use-price" hidden>Use the published starting price</button>
+    <p><a id="bp-directory" href="/venues/">Browse the venue directory</a></p>
+    <h2>The package, and what it leaves out</h2>
+    <p class="small">Estimates. Use the box under a line when that cost is already inside the package price, so it isn't counted twice.</p>
+    ${moneyField("bp-package", "packageAmount", "Ceremony or venue package", "")}
+    <p class="small" id="bp-package-note"></p>
+    ${moneyField("bp-extras", "extras", "Required extras the package does not include", "A coordinator the venue requires, a minister fee, a weekend add-on. One amount is enough. Don't repeat the package price.")}
+    ${includeField("bp-photo", "photo", "Photography, if you're hiring it yourself", "Leave this at 0, or check the box, when the package already includes a photographer.")}
+    ${moneyField("bp-photo-permit", "photoPermit", "Photo permit or park entry, if you already know the fee", "Leave this at 0 if you don't. Permit prices aren't guessed here.")}
+    ${includeField("bp-transport", "transport", "Transportation for the two of you", "Rides and a limo. Guest flights belong in the guest section, not here.")}
+    ${includeField("bp-tips", "tips", "Tips and gratuities", "Leave this at 0 if the quote already includes them. There is no default percentage.")}
+    ${includeField("bp-taxes", "taxes", "Taxes and venue fees", "Leave this at 0 if your package price already includes them, or if the venue hasn't quoted them yet.")}
+    ${moneyField("bp-attire", "attire", "Attire, hair and makeup", "")}
+    ${includeField("bp-flowers", "flowers", "Flowers and decor", "")}
+    ${includeField("bp-reception", "reception", "Reception food and drink", "A flat amount. Per-guest charges go on the next line, not both, unless they really are extra.")}
+    <div class="bp-field"><label for="bp-per-guest">Per-guest charges you pay, on top of the lines above</label><input id="bp-per-guest" type="text" inputmode="decimal" autocomplete="off" placeholder="0" data-money="perGuest" aria-describedby="bp-per-guest-help"><p class="small" id="bp-per-guest-help">Multiplied by your guest count. Leave at 0 if those charges are already in the package or the reception line.</p></div>
+    <label class="bp-check" for="bp-per-guest-in"><input id="bp-per-guest-in" type="checkbox" data-flag="perGuestIncluded" aria-label="Count per-guest charges as already in the package"> Already in the package price</label>
+    <h2>What guests may pay</h2>
+    <p class="small">This is their spending, not yours, unless you check the box. Don't also put the same flights in your own transport line.</p>
+    ${moneyField("bp-guest-travel", "guestTravelEach", "Travel, rooms and rides per guest", "An estimate of what one guest might spend. Multiplied by the guest count.")}
+    ${moneyField("bp-guest-other", "guestOtherEach", "Meals, parking and extras per guest, if you are not hosting them", "")}
+    <label class="bp-check" for="bp-pay-guests"><input id="bp-pay-guests" type="checkbox" data-flag="payGuestCosts"> We're paying these guest costs too</label>
+    <h2>A cushion</h2>
+    <div class="bp-field"><label for="bp-cushion">Percent of the estimate lines only</label><input id="bp-cushion" type="text" inputmode="decimal" autocomplete="off" placeholder="0" value="0" data-percent="cushionPct" aria-describedby="bp-cushion-help"><p class="small" id="bp-cushion-help">County fees, guest travel and this cushion are not part of the base. Leave it at 0 if your lines already have room.</p></div>
   </div>
-  <p class="small" style="margin-top:14px">Every Vegas wedding pays the $102 license fee. Certified copies are $20 each. See <a href="/guides/las-vegas-wedding-cost/">published venue prices</a> to sanity-check your venue line.</p>
+  <h2>What this total can't see</h2>
+  <ul class="checklist">
+    <li>Both of you pick up the license together, in person. The Marriage License Bureau is open 8 a.m. to midnight. <a href="/guides/las-vegas-marriage-license/">License steps</a>.</li>
+    <li>Nevada requires at least one witness besides the officiant. If the venue charges for one, put that fee in required extras. <a href="/blog/2026-11-02-do-you-need-a-witness-las-vegas-wedding/">Witness rules</a>.</li>
+    <li>Guest rides, parking and a long walk are not dollar lines here. <a href="/blog/2026-11-03-las-vegas-wedding-guest-logistics-parking-rideshare/">Guest logistics</a> and <a href="/blog/2026-11-05-accessible-las-vegas-wedding-venues/">access notes</a>.</li>
+    <li>Summer heat changes outdoor timing. The total won't show that. <a href="/guides/best-time-to-get-married-in-las-vegas/">Month by month</a>.</li>
+  </ul>
+  <h2>Or split a total you already have</h2>
+  <p>If you already know the whole number, divide it here. The percentages are a starting point. They should add up to 100%.</p>
+  <div class="panel" data-budget-split data-budget-planner>
+    <div class="bp-field"><label for="bp-total">Total budget ($)</label><input id="bp-total" type="text" inputmode="decimal" autocomplete="off" value="5000"></div>
+    ${Budget.SPLIT_DEFAULTS.map(([n, p]) => `<div class="bp-row" data-bp-row><span>${n}</span><input type="number" min="0" max="100" value="${p}" aria-label="${esc(n)} percent"><output aria-label="${esc(n)} dollars">$0</output></div>`).join("")}
+    <p style="margin:14px 0 0">Allocated: <strong id="bp-used">100%</strong> <span id="bp-balance">Adds up.</span></p>
+  </div>
+  <p class="small" style="margin-top:14px">See <a href="/guides/las-vegas-wedding-cost/">published venue prices</a> when you want to sanity-check a package line. Prices change, and a from price is not your quote.</p>
+  <h2>Questions</h2>${faqHtml(bpFaq)}
   ${plannerCta()}
+  <script type="application/json" id="bp-venues">${JSON.stringify(budgetVenues).replace(/</g, "\\u003c")}</script>
 </div></section>`,
-  });
+    });
+  }
 
   // ================= WEDDING COUNTDOWN (shareable tool) =================
   {
@@ -1310,7 +1402,7 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
       ...guides.map((g) => ({ kind: "Guide", title: g.title, url: `/guides/${g.slug}/`, text: g.metaDescription || g.description, kw: g.nav + " " + g.eyebrow })),
       ...CATEGORIES.map((c) => ({ kind: "Venue category", title: `${c.name} wedding venues`, url: `/venues/category/${c.slug}/`, text: c.blurb })),
       { kind: "Tool", title: "Lucky wedding dates", url: "/lucky-wedding-dates/", text: "Upcoming palindrome, mirror and matching-number wedding dates, recalculated every week.", kw: "lucky special date palindrome numbers calendar" },
-      { kind: "Tool", title: "Vegas wedding budget planner", url: "/tools/budget-planner/", text: "Enter your total and split it across venue, photos, attire, reception, travel and fees.", kw: "budget calculator money split" },
+      { kind: "Tool", title: "Vegas wedding budget planner", url: "/tools/budget-planner/", text: "Add up a Las Vegas wedding from the published license fee, then your own estimates for the package, exclusions, transport, tips and guest costs.", kw: "budget calculator true cost license fees guest travel" },
       { kind: "Tool", title: "Las Vegas wedding countdown", url: "/tools/wedding-countdown/", text: "A live countdown to your wedding day you can share, download as a story image, add to your calendar or embed on your wedding site.", kw: "countdown timer days until wedding date clock" },
       { kind: "Planner", title: "The Unique Vegas Wedding Planner", url: "/planner/", text: "A 25-page printable planner with timelines, license checklists, a budget worksheet and venue comparison sheets.", kw: "planner printable pdf checklist timeline download" },
       { kind: "Free download", title: "Free Vegas wedding checklist", url: "/#checklist", text: "One printable page: license steps, documents, witness rules and certified copies.", kw: "free checklist download pdf" },
@@ -1477,7 +1569,7 @@ ${CATEGORIES.map((c) => `- [${c.name}](${C.domain}/venues/category/${c.slug}/): 
 
 ## Tools
 - [Lucky wedding dates](${C.domain}/lucky-wedding-dates/): upcoming palindrome, mirror and matching-number dates, recalculated every week
-- [Budget planner](${C.domain}/tools/budget-planner/): split a Las Vegas wedding budget by category
+- [Budget planner](${C.domain}/tools/budget-planner/): published county fees plus your own estimates for the package, exclusions, transport, tips and guest costs
 - [Wedding countdown](${C.domain}/tools/wedding-countdown/): free shareable countdown with story images, calendar file and embed code
 - [Site search](${C.domain}/search/): plain-language search of venues and guides; pass the query as ${C.domain}/search/?q=your+words
 

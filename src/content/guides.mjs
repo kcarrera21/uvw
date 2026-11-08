@@ -243,6 +243,7 @@ export const guides = [
   <li><strong>Weekend premiums.</strong> Several venues publish lower Sunday–Thursday pricing.</li>
   <li><strong>Special-date demand.</strong> Lucky dates sell out early. See <a href="/lucky-wedding-dates/">upcoming lucky dates</a>.</li>
 </ul>
+<p>Add them up in the free <a href="/tools/budget-planner/">budget planner</a>. The license and certificate fees are the Clerk's published prices. Package extras, tips, transport and guest costs stay blank until you type them, and guest travel stays out of your total unless you are paying it.</p>
 
 {{planner-cta}}
 <p class="small">Prices change. Every venue page shows the date we last checked, and you should always confirm directly with the venue before booking.</p>
