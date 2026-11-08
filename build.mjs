@@ -369,7 +369,7 @@ function newsletterForm({ title = "Get the free Vegas Wedding Checklist", sub = 
   <form action="${formAction(C.formspreeNewsletter)}" ${formAttrs(C.formspreeNewsletter)} data-next="/thanks/?download=checklist" class="inline-form">
     <input type="hidden" name="list" value="newsletter"><input type="hidden" name="_subject" value="UVW: new checklist signup">${gotcha}
     <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address">
-    <button class="btn btn-primary" type="submit">Send it</button>
+    <button class="btn btn-primary" type="submit">Send the checklist</button>
   </form></div>`;
 }
 
@@ -661,8 +661,8 @@ async function main() {
 </div></section>
 
 <section class="band-blush"><div class="wrap center narrow">
-  <span class="eyebrow">For venues & planners</span><h2 class="mt0">Couples are looking for <em>you</em></h2>
-  <p class="lede">Claim your free listing, add your own photos and copy, and get inquiries sent straight to your inbox.</p>
+  <span class="eyebrow">For venues & planners</span><h2 class="mt0">Host weddings in Las Vegas?</h2>
+  <p class="lede">A free listing adds your venue to the directory. Featured and Spotlight add your photos and an inquiry form that emails you.</p>
   <a class="btn btn-primary" href="/for-venues/">List your venue</a>
 </div></section>`,
   });
@@ -742,7 +742,7 @@ async function main() {
   <div class="prose narrow" style="margin-bottom:34px"><p>${c.intro}</p></div>
   <h2 class="mt0">${list.length} ${esc(lower)} venues</h2>
   <div class="grid-3">${list.map(venueCard).join("")}</div>
-  <div class="narrow"><h2>${esc(c.name)} wedding FAQ</h2>${faqHtml(catFaq)}</div>
+  <div class="narrow"><h2>Questions about ${esc(c.name)}</h2>${faqHtml(catFaq)}</div>
   <h2>Other ways to say I do</h2>
   <div class="chips">${CATEGORIES.filter((x) => x.slug !== c.slug).map((x) => `<a class="chip" href="/venues/category/${x.slug}/">${esc(x.name)}</a>`).join("")}</div>
 </div></section>`,
@@ -817,7 +817,7 @@ async function main() {
 </div></section>
 <section style="padding-top:40px"><div class="wrap vlayout">
   <div class="prose">
-    <h2 class="mt0">Why you'll love it</h2>${paras}
+    <h2 class="mt0">What it's like</h2>${paras}
     ${ytBlock(v)}
     <h2>Verified details</h2><ul class="checklist">${(v.facts || []).map((f) => `<li>${withVenueLinks(f)}</li>`).join("")}</ul>
     <h2>Good to know</h2><ul class="checklist">${(v.tips || []).map((f) => `<li>${withVenueLinks(f)}</li>`).join("")}</ul>
@@ -826,7 +826,7 @@ async function main() {
     <div class="note"><strong>Getting married here legally?</strong> You'll still need a Clark County marriage license ($102, both partners in person) and at least one witness. <a href="/guides/las-vegas-marriage-license/">Here's the step-by-step.</a></div>
     ${plannerCta()}
     ${v.status !== "partner" ? `<div class="panel" style="box-shadow:none"><h3 class="mt0">Is this your venue?</h3><p class="small">Claim this listing to add your own photos and copy, correct anything we got wrong, and receive inquiries directly.</p><a class="btn btn-ghost btn-sm" href="/for-venues/?venue=${encodeURIComponent(v.name)}">Claim ${esc(v.name)}</a> <a class="btn btn-ghost btn-sm" href="/for-venues/?badge=${v.slug}#badge">Get your free badge</a></div>` : ""}
-    <h2>${esc(v.name)} wedding FAQ</h2>${faqHtml(vFaq)}
+    <h2>Questions about ${esc(v.name)}</h2>${faqHtml(vFaq)}
     <h2>Plan the rest</h2><ul class="checklist">${vGuides.map((g) => `<li><a href="/guides/${g.slug}/">${esc(g.title)}</a></li>`).join("")}<li><a href="/lucky-wedding-dates/">Lucky wedding dates</a></li></ul>
     ${related.length ? `<h2>More ${esc(c.name.toLowerCase())} venues</h2><div class="grid-3">${related.map(venueCard).join("")}</div>` : ""}
   </div>
@@ -881,7 +881,7 @@ async function main() {
 </div></div></header>
 <article class="article"><div class="wrap">
   <div class="prose">${answer ? `<div class="answer"><strong>Quick answer</strong><p>${esc(answer)}</p></div>` : ""}${withIds}
-    ${g.faq?.length ? `<h2 id="faq">Frequently asked questions</h2>${faqHtml(g.faq)}` : ""}
+    ${g.faq?.length ? `<h2 id="faq">Questions</h2>${faqHtml(g.faq)}` : ""}
     <h2>Keep planning</h2><ul class="checklist">${relatedGuides.map((r) => `<li><a href="/guides/${r.slug}/">${esc(r.title)}</a></li>`).join("")}<li><a href="/venues/">Browse all ${venues.length} unique venues</a></li></ul>
     <div class="sources"><strong>Sources</strong><ol>${g.sources.map((s) => `<li><a href="${s.u}" ${s.u.startsWith("http") ? 'rel="nofollow noopener" target="_blank"' : ""}>${esc(s.t)}</a></li>`).join("")}</ol></div>
     ${pinterestCallout()}
@@ -930,7 +930,7 @@ async function main() {
 </div></div></header>
 <article class="article"><div class="wrap">
   <div class="prose">${answer ? `<div class="answer"><strong>Quick answer</strong><p>${esc(answer)}</p></div>` : ""}${withIds}
-    ${b.faq?.length ? `<h2 id="faq">Frequently asked questions</h2>${faqHtml(b.faq)}` : ""}
+    ${b.faq?.length ? `<h2 id="faq">Questions</h2>${faqHtml(b.faq)}` : ""}
     <h2>Keep planning</h2><ul class="checklist">${relGuides.map((r) => `<li><a href="/guides/${r.slug}/">${esc(r.title)}</a></li>`).join("")}${more.map((r) => `<li><a href="/blog/${r.slug}/">${esc(r.title)}</a></li>`).join("")}<li><a href="/venues/">Browse all ${venues.length} unique venues</a></li></ul>
     ${(b.sources || []).length ? `<div class="sources"><strong>Sources</strong><ol>${b.sources.map((x) => `<li><a href="${x.u}" ${x.u.startsWith("http") ? 'rel="nofollow noopener" target="_blank"' : ""}>${esc(x.t)}</a></li>`).join("")}</ol></div>` : ""}
     ${pinterestCallout()}
@@ -988,7 +988,7 @@ async function main() {
   <h2>Browse by year</h2>${yearChips(null)}${YEAR > 2026 ? `<p class="small" style="margin-top:12px">Past years: ${Array.from({ length: YEAR - 2026 }, (_, k) => 2026 + k).map((y) => `<a href="/lucky-wedding-dates/${y}/">${y}</a>`).join(" · ")}</p>` : ""}
   ${luckyCheck}
   ${luckyHow}
-  <h2>Lucky date FAQ</h2>${faqHtml(hubFaq)}
+  <h2>Questions</h2>${faqHtml(hubFaq)}
   ${luckySources}
   ${newsletterForm({ title: "Get lucky-date alerts", sub: "We'll email you before big pattern dates open up, plus the free Vegas wedding checklist." })}
   <p style="margin-top:28px">Found your date? <a href="/venues/">Find a venue →</a></p>
@@ -1018,7 +1018,7 @@ async function main() {
   <h2>Other years</h2>${yearChips(y)}
   ${luckyCheck}
   ${luckyHow}
-  <h2>${y} lucky date FAQ</h2>${faqHtml(yFaq)}
+  <h2>Questions about ${y}</h2>${faqHtml(yFaq)}
   ${luckySources}
   ${newsletterForm({ title: "Get lucky-date alerts", sub: "We'll email you before big pattern dates open up, plus the free Vegas wedding checklist." })}
   <p style="margin-top:28px">Found your date? <a href="/venues/">Find a venue →</a></p>
@@ -1057,8 +1057,8 @@ async function main() {
     title: "List Your Las Vegas Wedding Venue", og: "for-venues",
     description: "Claim your free listing on Unique Vegas Weddings, or upgrade to Featured or Spotlight placement and send couples' inquiries straight to your inbox.",
     body: `<section style="padding-top:48px"><div class="wrap">
-  <div class="narrow"><span class="eyebrow">For venues, chapels & planners</span><h1>Get found by couples who want <em>different</em></h1>
-  <p class="lede">Unique Vegas Weddings is for couples looking past the ballroom. If your venue is the kind of place they'd be excited to say yes in, it belongs here.</p></div>
+  <div class="narrow"><span class="eyebrow">For venues, chapels & planners</span><h1>Help couples find <em>your venue</em></h1>
+  <p class="lede">Unique Vegas Weddings is an independent guide couples use while they're choosing a place. A free listing adds your venue to the directory, with a link to your booking page. Featured and Spotlight add placement if you want it.</p></div>
   <h2 class="sr-only">Listing plans</h2>
   <div class="tiers">
     <div class="tier"><h3>Listed</h3><div class="price">Free</div><ul class="checklist"><li>Your venue page with verified details</li><li>Correct or update your info anytime</li><li>Link to your official booking page</li></ul><a class="btn btn-ghost" href="#apply">Claim your listing</a></div>
@@ -1068,7 +1068,7 @@ async function main() {
   <p class="small center" style="margin-top:18px">Monthly, cancel anytime. Paid placements are always labeled. Editorial facts stay accurate whether you pay or not. Listing questions: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
 </div></section>
 <section class="band-blush" id="apply"><div class="wrap grid-2">
-  <div><h2 class="mt0">Claim or apply</h2><p>Tell us about your venue. We'll verify that you represent it, then set up your listing. Already paid for Featured or Spotlight? Use this form to send your photos, copy and inquiry email.</p>
+  <div><h2 class="mt0">Claim or apply</h2><p>Tell us about the venue and how you're connected to it. We'll check that, then set up the listing. Already paid for Featured or Spotlight? Use this form for your photos, your wording, and the email that should get inquiries.</p>
   <ul class="checklist"><li>Photos must be yours or properly licensed</li><li>We verify facts against your official site</li><li>Weddings must be currently offered</li></ul></div>
   <div class="panel"><form action="${formAction(C.formspreePartner)}" ${formAttrs(C.formspreePartner)} data-next="/thanks/?sent=partner">
     <input type="hidden" name="_subject" value="UVW: venue listing application">
@@ -1079,7 +1079,7 @@ async function main() {
     <div class="field"><label for="pw">Official website</label><input id="pw" type="url" name="website" placeholder="https://"></div>
     <div class="field"><label for="pt">Plan</label><select id="pt" name="plan"><option>Listed (free)</option><option>Featured</option><option>Spotlight</option></select></div>
     <div class="field"><label for="pm">Anything we should know?</label><textarea id="pm" name="message"></textarea></div>
-    <button class="btn btn-primary" type="submit" style="width:100%">Send</button>
+    <button class="btn btn-primary" type="submit" style="width:100%">Send the request</button>
   </form></div>
 </div></section>
 <section id="badge"><div class="wrap grid-2" style="align-items:center">
@@ -1513,16 +1513,18 @@ function P(x){return(x<10?"0":"")+x}function T(){var df=Math.abs(g-Date.now());d
 <h2>How we keep it accurate</h2><ul class="checklist"><li>Every venue fact is checked against the venue's official site, and every listing shows the date we checked.</li><li>Legal and permit information comes from the Clark County Clerk, Nevada State Parks, the BLM, the National Park Service and the U.S. Forest Service, and we link to them.</li><li>We don't copy venue marketing copy or photos. Our illustrations are original, and venues can add their own photos by claiming their listing.</li><li>Paid placements are labeled "Featured" or "Partner." They never change the facts.</li></ul>
 <h2>Independent</h2><p>Unique Vegas Weddings isn't owned by any venue, chapel or resort. Every venue is listed for free, and we pick what goes on the site. Venues can pay for Featured or Spotlight placement, which is always labeled, but paying never gets a venue listed and never changes the facts we publish. Where we use affiliate links or sell something, we say so. See our <a href="/disclosure/">disclosure</a>.</p>
 <p>Spotted something out of date? Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a> or <a href="/contact/">use the contact page</a>.</p>`);
-  simple("/contact/", "Contact", "Contact Unique Vegas Weddings at hello@uniquevegasweddings.com for questions, corrections, venue listings, and press.", `
-<p class="lede">Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. That's the address for everything below.</p>
-<h2>Questions and corrections</h2>
-<p>A fee that changed, a venue detail that's wrong, or a question the guides don't answer: write to <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
-<h2>Venue listings</h2>
-<p>To claim a free listing, or to ask about Featured or Spotlight, email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. You can also use the form on <a href="/for-venues/">List your venue</a>. Paid listings are always labeled, and paying never changes the facts we publish.</p>
+  simple("/contact/", "Contact", "Write to hello@uniquevegasweddings.com with a question or a correction. For a venue's prices and dates, start from that venue's listing.", `
+<p class="lede">Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>. You're welcome to write with a question, a correction, or anything you're not sure where to send. A page link and a sentence or two is plenty.</p>
+<h2>Spotted something we should update?</h2>
+<p>Fees, prices, and guest counts change. Send the page and what looks off. If you have the venue's own page, or the county page, include that too. We use it to check the listing.</p>
+<h2>Checking prices or available dates?</h2>
+<p>For current packages and availability, head to the venue's official website from its listing. You'll hear directly from the people who can help you book. If the listing has an inquiry form, that message goes to the venue. When a figure on our page has gone stale, send it here and we'll correct the directory.</p>
+<h2>If you host weddings</h2>
+<p>A free listing, or a question about Featured or Spotlight, starts on <a href="/for-venues/">List your venue</a>. Email works too. Tell us the venue name, your role, and the official website. Paid placements stay labeled, and paying doesn't change the facts we publish.</p>
 <h2>Press</h2>
-<p>Interviews, quotes, and questions about the research: <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
+<p>If you need a quote or an interview, tell us what you're working on. A deadline helps us see the timing.</p>
 ${C.social.pinterest ? `<h2>Pinterest</h2><p><a class="social-link" href="${esc(C.social.pinterest)}" rel="me noopener" target="_blank">${PINTEREST_ICON}<span>Follow Unique Vegas Weddings on Pinterest</span></a></p>` : ""}
-<div class="note">We're a guide, not a booking agency, so we can't book venues or issue marriage licenses. For licenses, contact the Clark County Clerk directly.</div>`);
+<div class="note">We're an independent guide. Booking happens with the venue, and the marriage license comes from the Clark County Clerk. <a href="/guides/las-vegas-marriage-license/">The license steps are here.</a></div>`);
   simple("/photo-credits/", "Photo Credits", "Credits and licenses for the free-license photos used on Unique Vegas Weddings.", `
 <p>The photos on this site are free-license images: most come from <a href="https://unsplash.com/" rel="nofollow noopener" target="_blank">Unsplash</a> under the Unsplash License, and the rest are shared under Creative Commons licenses or released to the public domain (found through <a href="https://openverse.org/" rel="nofollow noopener" target="_blank">Openverse</a>). Thank you to every photographer below.</p>
 <p>All photos were resized and cropped to fit the layout. No other changes were made. Venue logos and names that appear in photos belong to their owners, and their appearance doesn't mean the venue endorses this site.</p>
@@ -1547,14 +1549,20 @@ ${C.adsenseClient ? `<h2>Advertising</h2><p>Some pages show display ads from thi
 <p>Email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a> if anything here is unclear. Last updated ${fmtDate("2026-10-31")}.</p>`);
   simple("/privacy/", "Privacy Policy", "How Unique Vegas Weddings handles your information: what our forms collect, how the shortlist is stored, analytics, cookies and your choices.", `
 <p class="small">Effective ${fmtDate(FACTS_CHECKED)}</p>
-<h2>What we collect</h2><ul class="checklist"><li><strong>Forms.</strong> When you submit a form (newsletter, shortlist, venue inquiry or partner application), we receive what you enter. Forms are processed by Formspree. Venue inquiries for Partner venues are sent to that venue.</li><li><strong>Your shortlist</strong> is stored only in your own browser (localStorage). We never see it unless you email it to yourself.</li><li><strong>Analytics.</strong> We use Google Analytics to understand which pages are useful. It uses cookies. Visitors in Europe and the UK are asked first, and Analytics stays off unless they accept. Elsewhere it is on by default. Anyone can turn it off at any time with the "Cookie settings" link at the bottom of every page, and we honor the Global Privacy Control browser signal.</li><li><strong>Affiliate partners${C.adsenseClient ? " and ad networks" : ""}.</strong> When you click an affiliate link, the company you land on (for example Amazon, Viator or a hotel site) sets its own cookies to credit us for a purchase${C.adsenseClient ? ", and ad networks may set cookies to measure ads" : ""}. Their privacy policies apply once you leave our site.</li></ul>
-<h2>How we use it</h2><p>To send what you asked for (like the checklist or lucky-date alerts), to pass inquiries to the venue you chose, and to improve the site. We don't sell your personal information.</p>
+<h2>What we collect</h2><ul class="checklist"><li><strong>Forms.</strong> Newsletter, checklist, shortlist, partner-listing, and partner-venue inquiry forms are submitted to Formspree. The website code shows that destination. It does not show the inbox Formspree uses after a partner-venue inquiry arrives, so we don't state a venue email address here.</li><li><strong>Your shortlist</strong> is stored only in your own browser (localStorage). We never see it unless you email it to yourself.</li><li><strong>Analytics.</strong> The site can load Google Analytics (measurement ID in the site config) to see which pages are used. It uses cookies. If your browser time zone is set to Europe, we ask before it loads. Elsewhere it loads unless you have declined, or your browser sends Global Privacy Control. Cookie settings, in the footer, reopens that choice. This is how the script behaves. It is not a determination of which privacy law applies to you.</li><li><strong>Affiliate partners${C.adsenseClient ? " and ad networks" : ""}.</strong> When you click an affiliate link, the company you land on (for example Amazon, Viator or a hotel site) sets its own cookies to credit us for a purchase${C.adsenseClient ? ", and ad networks may set cookies to measure ads" : ""}. Their privacy policies apply once you leave our site.</li></ul>
+<h2>How we use it</h2><p>To send what you asked for, such as the checklist or a shortlist you emailed to yourself, and to see which pages are useful. We don't sell your personal information. The site is published with GitHub Pages.</p>
 <h2>Your choices</h2><p>Every email includes an unsubscribe link. You can clear your shortlist by clearing your browser storage. To ask us to delete your information, email <a href="mailto:${C.contactEmail}">${C.contactEmail}</a>.</p>
-<p class="small">This policy is a plain-language template. Have it reviewed for your specific setup before launch.</p>`);
+<h2>Tools on this site</h2>
+<ul class="checklist">
+  <li><strong>Budget planner.</strong> The numbers stay in the page while you use it. We don't store them. Save as PDF opens your browser's print window. Email my results opens your own email app with a summary filled in. You add the address and send it. Copy puts the summary on your clipboard.</li>
+  <li><strong>Wedding style finder.</strong> The answers stay in the page until you leave it or start over. We don't store them. Copy, if you use it, puts the ideas on your clipboard.</li>
+  <li><strong>Wedding countdown.</strong> Names, date, time, and venue can be saved in this browser (localStorage) and in the link you share. That link is not sent to us unless you send it yourself.</li>
+</ul>
+<p class="small">Effective date above is unchanged. The wording in this section was checked against the site as built on November 8, 2026. A lawyer has not reviewed this page, and it does not add rights or promises beyond what the site does.</p>`);
   simple("/terms/", "Terms of Use", "Terms of use for Unique Vegas Weddings: information only, no booking relationship, third-party links, content ownership and liability.", `
 <p class="small">Effective ${fmtDate(FACTS_CHECKED)}</p>
 <ul class="checklist"><li><strong>Information only.</strong> Our content is general information, not legal, financial or travel advice. Marriage requirements, permits and prices change, so always confirm with the official source and the venue before you book or travel.</li><li><strong>No booking relationship.</strong> We don't sell or guarantee venue services. Your contract is with the venue or vendor you choose.</li><li><strong>Third-party sites.</strong> We link to other sites and aren't responsible for their content or services.</li><li><strong>Our content.</strong> Text and illustrations on this site are ours. Please don't republish them without permission. Venue names and trademarks belong to their owners.</li><li><strong>Liability.</strong> To the extent the law allows, we aren't liable for losses arising from use of this site.</li></ul>
-<p class="small">Template terms. Have them reviewed before launch.</p>`);
+<p class="small">These terms match the commitments above. A lawyer has not reviewed them, and this note does not add a new effective date or a promise of compliance.</p>`);
   page("/thanks/", {
     title: "Thank you", noindex: true, description: "Thanks for reaching out.",
     body: `<section style="padding-top:64px"><div class="wrap narrow center" style="margin:0 auto">

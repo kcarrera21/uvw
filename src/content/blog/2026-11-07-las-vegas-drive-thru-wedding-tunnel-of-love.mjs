@@ -25,7 +25,7 @@ export default {
 
 <h2>How it started</h2>
 <p>The chapel tells the story this way. In 1991, its owner noticed a couple with a disability struggling to get out of their car and into the chapel. She had her son, a contractor, knock out a wall and put in a drive-up window. It opened on Valentine's Day, and before long all kinds of couples were lining up to use it. The chapel now bills it as "The Original Drive-Thru Wedding."</p>
-<p>That origin is worth remembering. The Tunnel of Love is a gimmick, sure, but it also works well for anyone who'd rather not walk an aisle at all.</p>
+<p>That origin is worth remembering. The Tunnel of Love works well for anyone who'd rather not walk an aisle at all.</p>
 
 <h2>How the ceremony works</h2>
 <p>The tunnel sits at A Little White Wedding Chapel, 1301 South Las Vegas Boulevard, just north of the Strip. Inside, the ceiling is painted with cherubs and lit with little starlights. You come through in your own car, on a motorcycle, on a bicycle or on foot. The chapel's package page names all four.</p>

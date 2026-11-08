@@ -37,7 +37,7 @@ export default {
 <p>Every wedding there needs an approved Special Recreation Permit, and someone in your party has to have a copy in hand on the day. The basics, from the BLM's planning page:</p>
 <ul class="checklist">
   <li><strong>Window:</strong> apply no more than 180 days and at least 30 days before the wedding. For Easter Sunday that window opened on September 29, 2026 and closes on February 26, 2027. Permits are first come, first served.</li>
-  <li><strong>Fee:</strong> noncommercial groups pay the greater of $115 or $6 per person. If you're paying an officiant or photographer, it's a commercial permit, with a $345 minimum. Scenic Drive gate fees are included.</li>
+  <li><strong>Fee:</strong> on the BLM planning page checked November 8, 2026, noncommercial groups pay the greater of $115 or $6 per person. If you're paying an officiant or photographer, a new one-time commercial permit has a $345 minimum. Scenic Drive gate fees are included. A $130 minimum on other BLM pages is for different permits. Pay the amount on the approved permit.</li>
   <li><strong>Sites and sizes:</strong> the Overlook on State Route 159 and the Red Spring Boardwalk Platform each hold up to 50, the Ash Spring Overlook up to 12, and the Visitor Center Amphitheater up to 200. A permit doesn't give you the site to yourself.</li>
   <li><strong>Not for sunrise:</strong> the amphitheater keeps 9 a.m. to 4:30 p.m. hours, with the last ceremony at 3:30 p.m.</li>
 </ul>

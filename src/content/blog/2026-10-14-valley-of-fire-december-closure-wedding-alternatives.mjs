@@ -27,7 +27,7 @@ export default {
 <p>The closure happens every year. Nevada State Parks uses the two weeks for maintenance, and during that time the park is shut to visitors, camping reservations aren't available, and weddings, photo shoots and guided tours are off the table. There's no workaround and no special permit for it, so don't spend time hunting for one.</p>
 
 <h2>Option 1: Red Rock Canyon</h2>
-<p>This is the closest match in looks, and it's about 30 minutes from the Strip instead of an hour. It's Bureau of Land Management land, so weddings need a BLM Special Recreation Permit. The 10 commercial wedding permits are full, which means the realistic route is booking through an operator that already holds one.</p>
+<p>This is the closest match in looks, and it's about 30 minutes from the Strip instead of an hour. It's Bureau of Land Management land, so weddings need a BLM Special Recreation Permit. The planning page checked November 8, 2026 does not say a commercial allotment is full. It does say chapels that already hold a permit include that cost in their price, and a new permit when an officiant or photographer is paid is a one-time permit. Asking the operator whether they already hold one is still the practical question.</p>
 <p>One example: <strong>Chapel of the Flowers</strong> sells a Red Rock Canyon package at $3,899 plus a $900 venue fee. It includes a helicopter ride to the canyon for the two of you and two guests, flowers, a photographer, a planner, and park fees and gratuities. The package asks for at least 5 days' notice.</p>
 <p>If any guests are driving in, December comes with two rules. Timed-entry reservations are required for the Scenic Drive between 8 a.m. and 5 p.m. from Oct. 1 to May 31, and in December the drive itself is open 6 a.m. to 5 p.m. With sunset at 4:26 p.m. on Dec. 1, a golden-hour ceremony fits, but plan to be heading out right after.</p>
 
@@ -65,7 +65,7 @@ export default {
   faq: [
     { q: "When is Valley of Fire closed in December 2026?", a: "From Tuesday, Dec. 1 through Monday, Dec. 14, 2026. The park closes for those dates every year." },
     { q: "Can you get married at Valley of Fire during the December closure?", a: "No. Nevada State Parks prohibits commercial activities, including weddings and photo shoots, during the closure." },
-    { q: "What's the closest alternative to Valley of Fire for a red rock wedding?", a: "Red Rock Canyon, about 30 minutes from the Strip. Its commercial wedding permits are full, so book through an operator that holds one." },
+    { q: "What's the closest alternative to Valley of Fire for a red rock wedding?", a: "Red Rock Canyon, about 30 minutes from the Strip. Weddings need a BLM Special Recreation Permit. The planning page checked November 8, 2026 does not say the commercial allotment is full. Ask the operator whether they already hold a permit." },
     { q: "What time is sunset in Las Vegas in early December?", a: "4:26 p.m. Pacific Standard Time on Dec. 1, 2026, according to the U.S. Naval Observatory. Civil twilight ends at 4:54 p.m." },
     { q: "Do I need a permit for a Lake Mead wedding in December?", a: "A ceremony on your own needs a National Park Service special use permit, filed 45 business days ahead with a $150 fee. A concessioner like the Desert Princess cruise is the faster route." },
   ],

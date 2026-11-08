@@ -118,7 +118,7 @@ export const guides = [
       { q: "How much is a marriage license in Las Vegas?", a: "$102 at the Clark County Marriage License Bureau, rechecked October 31, 2026. The Clerk has not posted a 2027 change. Card payments carry a processing fee of 2% + $1.25." },
       { q: "Is the Las Vegas marriage license office open on holidays?", a: "The bureau at 201 E. Clark Avenue is open 8 a.m. to midnight every day, including all holidays. Henderson, Laughlin, and Mesquite close on legal holidays." },
       { q: "Can we get a Las Vegas marriage license online?", a: "You can submit the application online, and it stays on file for one year, but both partners must appear in person together to receive the license." },
-      { q: "Is there a waiting period or blood test in Nevada?", a: "No. There's no waiting period, no blood test and no residency requirement." },
+      { q: "Is there a waiting period or blood test in Nevada?", a: "No waiting period and no blood test. Adults have no Nevada residency requirement. The requirements page's only residency rule is a 17-year-old who lives in Clark County and has a court order. The office says it does not give legal advice on that exception." },
       { q: "How many witnesses do you need to get married in Las Vegas?", a: "At least one witness besides the officiant." },
       { q: "How long is a Nevada marriage license valid?", a: "One year from the date it's issued." },
     ],
@@ -175,7 +175,7 @@ export const guides = [
 </ul>
 
 <h2>Who can come</h2>
-<p>Bring <strong>one required witness</strong> plus up to <strong>eight guests</strong>. That's ten people in the room besides you two and the officiant, which is enough for parents, siblings and a best friend with a phone camera.</p>
+<p>Bring <strong>one required witness</strong> plus up to <strong>eight guests</strong>. That's nine people in the room besides you two and the officiant, which is enough for parents, siblings and a best friend with a phone camera.</p>
 
 <div class="note"><strong>Be on time.</strong> Late arrivals have to reschedule. Get your license first (the Bureau is a short walk away), then head over with time to spare.</div>
 
@@ -383,7 +383,7 @@ export const guides = [
     slug: "desert-wedding-permits",
     seoTitle: "Las Vegas Desert Wedding Permits: Rules, Fees & Closures",
     metaDescription: "Which parks near Las Vegas allow weddings, which permit you need, published fees, lead times and closures, from the agencies that manage them.",
-    answer: "Most public lands near Las Vegas allow weddings with a permit. Valley of Fire requires a Nevada State Parks Special Use Permit ($25 processing fee, apply 60 days ahead), Red Rock Canyon requires a BLM Special Recreation Permit, Lake Mead requires a National Park Service Special Use Permit ($150 application fee), and Death Valley's permit starts with a $300 application fee, filed at least 30 days ahead.",
+    answer: "Most public lands near Las Vegas allow weddings with a permit. Valley of Fire requires a Nevada State Parks Special Use Permit ($25 processing fee, apply 60 days ahead). Red Rock Canyon requires a BLM Special Recreation Permit. The planning page checked November 8, 2026 lists a noncommercial minimum of the greater of $115 or $6 per person, and a $345 minimum for a new one-time commercial permit when an officiant or photographer is paid. Lake Mead requires a National Park Service Special Use Permit ($150 application fee), and Death Valley's permit starts with a $300 application fee, filed at least 30 days ahead.",
     title: "Desert & Outdoor Wedding Permits Near Las Vegas",
     nav: "Desert permits",
     eyebrow: "Outdoor weddings",
@@ -407,8 +407,9 @@ export const guides = [
 <h2>Red Rock Canyon National Conservation Area (BLM)</h2>
 <ul class="checklist">
   <li><strong>Weddings allowed?</strong> Yes, with a BLM Special Recreation Permit.</li>
-  <li><strong>Limits:</strong> 10 commercial wedding permittees (currently full) and 100 noncommercial wedding permits.</li>
-  <li><strong>How to apply:</strong> email the Red Rock recreation team listed on the BLM page.</li>
+  <li><strong>Fee, from the BLM planning page checked November 8, 2026:</strong> noncommercial groups, with unpaid or reimbursed help, pay the greater of $115 or $6 per person. A new one-time commercial permit, when an officiant and/or photographer is paid, has a $345 minimum. A chapel that already holds a permit includes that cost in its price. Scenic Drive gate fees are included.</li>
+  <li><strong>A different BLM number:</strong> the national special recreation permit FAQ, and a September 2026 Red Rock prospectus for commercial operators, use a $130 minimum and $7 per person per day. That is not the wedding figure on the planning page. The planning page does not date its wedding fees, and the permittee list it links is labeled fiscal year 2022, so pay the amount on the approved permit.</li>
+  <li><strong>How to apply:</strong> the form linked from the planning page, or call (702) 515-5371 or email RRC_Reservations@blm.gov. Apply no more than 180 days ahead and at least 30 days ahead.</li>
   <li><strong>Pro portraits:</strong> need a film permit, which can take up to 60 days.</li>
   <li><strong>Timed entry:</strong> required for the Scenic Drive October 1–May 31.</li>
 </ul>
@@ -461,7 +462,7 @@ export const guides = [
 `,
     faq: [
       { q: "Do you need a permit to get married at Valley of Fire?", a: "Yes. Weddings require a Special Use Permit from Nevada State Parks ($25 processing fee, apply 60 days ahead), and they're prohibited during the park's December 1–14 closure." },
-      { q: "Can you get married at Red Rock Canyon?", a: "Yes, with a BLM Special Recreation Permit. The BLM limits wedding permits to 10 commercial permittees and 100 noncommercial permits." },
+      { q: "Can you get married at Red Rock Canyon?", a: "Yes, with a BLM Special Recreation Permit. The planning page checked November 8, 2026 lists a noncommercial minimum of the greater of $115 or $6 per person, and a $345 minimum for a new one-time commercial permit when an officiant or photographer is paid. A $130 minimum on other BLM pages is for different permit types. Pay the amount on the approved permit." },
       { q: "Can you get married at Seven Magic Mountains?", a: "We found no official wedding permit process, and the site's official guidance limits photography to private, non-commercial use." },
     ],
     sources: [
@@ -579,7 +580,7 @@ export const guides = [
     readMins: 5,
     hero: "weekend",
     body: `
-<p class="lede">A Vegas wedding is a mini vacation for everyone you invite. Plan the weekend around them, not just the ceremony, and people will still be talking about it at your tenth anniversary. If the two of you are marrying the day you land, your clock is the <a href="/guides/same-day-las-vegas-wedding/">same-day plan</a>. This page is the guest weekend around it.</p>
+<p class="lede">A Vegas wedding is a mini vacation for everyone you invite. Plan the weekend around them, not just the ceremony: where they stay, how they get there, and a note with the times. If the two of you are marrying the day you land, your clock is the <a href="/guides/same-day-las-vegas-wedding/">same-day plan</a>. This page is the guest weekend around it.</p>
 
 <h2>Where should guests stay?</h2>
 <p>Base guests close to your ceremony. A downtown wedding (Neon Museum, Mob Museum, Graceland) suits Fremont-area hotels. A Strip ceremony makes walking to the reception easy. For desert venues, choose a Strip hotel and book one shuttle instead of 20 rideshares.</p>

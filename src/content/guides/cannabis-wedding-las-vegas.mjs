@@ -36,7 +36,7 @@ export default {
   <li><strong>Under 21:</strong> anyone under 21 can be fined for being on the premises of a cannabis business, and giving cannabis to anyone under 21 is a crime. Plan for younger guests.</li>
 </ul>
 
-<h2>Consumption lounges open now</h2>
+<h2>Consumption lounges, as of October 2025</h2>
 <p>As of FOX5's October 2025 report, two lounges were operating in Las Vegas:</p>
 <ul class="checklist">
   <li><strong>Dazed! at Planet 13</strong>, the state-licensed lounge inside the big dispensary just off the Strip. It serves cannabis-infused drinks instead of alcohol.</li>

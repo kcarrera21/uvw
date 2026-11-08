@@ -11,7 +11,7 @@ export default {
   metaDescription: "Wheelchair-friendly Las Vegas wedding spots, from Red Rock's boardwalk to the High Roller, plus the questions to ask any venue before you book.",
   title: "Accessible Las Vegas Wedding Venues (and the Questions to Ask)",
   description: "Some of the most Vegas places to get married are easier to reach in a wheelchair than you'd guess. Here's what the venues and land agencies actually say, and what to ask before you sign.",
-  answer: "Several of Las Vegas's signature wedding spots publish real accessibility details: Red Rock Canyon's Red Spring Boardwalk is wheelchair accessible and has its own wedding platform, the Neon Boneyard has a fine gravel surface built for wheeled devices, and the High Roller allows wheelchairs and scooters in its cabins. Anything a venue doesn't publish, ask in writing before you book.",
+  answer: "Several of Las Vegas's signature wedding spots publish real accessibility details: Red Rock Canyon's Red Spring Boardwalk is wheelchair accessible and has its own wedding platform, the Neon Museum says the Boneyard's fine gravel surface is easy to navigate with powered and unpowered wheeled devices, and the High Roller allows wheelchairs and scooters in its cabins. Anything a venue doesn't publish, ask in writing before you book.",
   readMins: 4,
   body: `
 <p class="lede">If someone in your wedding uses a wheelchair, a walker or just can't do stairs and long walks, you don't have to settle for the nearest ballroom. A handful of the city's most distinctive venues publish clear accessibility details. The rest you'll need to ask about, and the questions at the end of this post cover the gaps.</p>

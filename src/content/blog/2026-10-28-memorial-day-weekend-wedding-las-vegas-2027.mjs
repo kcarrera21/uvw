@@ -45,7 +45,7 @@ export default {
 <h2>Go early: a sunrise at Red Rock Canyon</h2>
 <p>Red Rock's sandstone is at its best in low light, and late May gives you a lot of it early. The Scenic Drive opens at 6 a.m. from April through September, and the Red Rock Overlook on SR 159 doesn't need a timed-entry reservation at all.</p>
 <p>Timed-entry reservations for the Scenic Drive are required from October 1 through May 31 for entry between 8 a.m. and 5 p.m., so Memorial Day 2027 is the last day of that season. If your guests arrive after 8, book their slots on Recreation.gov.</p>
-<p>Every wedding at Red Rock needs a BLM Special Recreation Permit. The BLM says its commercial wedding permit allotment is currently full, so if you're hiring a planner, ask whether they already hold one. Couples organizing their own ceremony can apply for a noncommercial permit. Our <a href="/guides/desert-wedding-permits/">desert permit guide</a> explains how the permits differ.</p>
+<p>Every wedding at Red Rock needs a BLM Special Recreation Permit. The planning page checked November 8, 2026 does not say the commercial allotment is full. If you're hiring a planner, ask whether they already hold a permit. A group with unpaid help can apply as noncommercial. Our <a href="/guides/desert-wedding-permits/">desert permit guide</a> has the fee difference.</p>
 {{venue-picks:red-rock-canyon}}
 
 <h2>Go out on the water: Lake Mead</h2>

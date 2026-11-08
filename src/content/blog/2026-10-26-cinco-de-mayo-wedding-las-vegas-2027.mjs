@@ -43,7 +43,7 @@ export default {
 <p>Early May is still comfortable for an outdoor ceremony, especially near sunset. The BLM's wedding sites at Red Rock are open 6 a.m. to 8 p.m. from April through September, so a 7 p.m. ceremony fits with time to spare.</p>
 <ul class="checklist">
   <li><strong>Window:</strong> apply no more than 180 days and at least 30 days ahead. For May 5, 2027, that's Nov. 6, 2026 through April 5, 2027. It's first come, first served.</li>
-  <li><strong>Fee:</strong> noncommercial groups pay the greater of $115 or $6 per person. Paying an officiant or photographer makes it a commercial permit, with a $345 minimum.</li>
+  <li><strong>Fee:</strong> on the BLM planning page checked November 8, 2026, noncommercial groups pay the greater of $115 or $6 per person. Paying an officiant or photographer makes a new one-time commercial permit, with a $345 minimum. A $130 minimum on other BLM pages is for different permits. Pay the amount on the approved permit.</li>
   <li><strong>Sites:</strong> the Red Rock Overlook on SR 159 and the Red Spring Boardwalk each hold up to 50, Ash Spring up to 12, and the Visitor Center Amphitheater up to 200. The amphitheater's last ceremony starts at 3:30 p.m., so it's not a sunset option.</li>
   <li><strong>Timed entry:</strong> Scenic Drive reservations are required from Oct. 1 through May 31 for entry between 8 a.m. and 5 p.m. The permit covers gate fees, but the BLM page doesn't say whether it covers the reservation, so ask when you apply.</li>
 </ul>
