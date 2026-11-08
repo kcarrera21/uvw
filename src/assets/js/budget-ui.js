@@ -48,12 +48,6 @@
     return input;
   }
 
-  var WARN = {
-    "civil-and-package": "You have both a courthouse ceremony and a venue package. Keep both only if the courthouse is the legal part and the venue is a separate celebration. Otherwise turn off the courthouse ceremony.",
-    "invalid-ignored": "A line that isn't a positive number was left out.",
-    "capped": "A very large number was reduced so the total stays readable."
-  };
-
   function renderTotals(r) {
     var partial = r.estimate === 0 && r.cushion === 0 && !r.payGuestCosts;
     if (partial) {
@@ -72,7 +66,7 @@
     if (r.payGuestCosts) guestsEl.textContent = "Included in what you pay";
     else if (r.guestCosts > 0) guestsEl.textContent = B.formatMoney(r.guestsPay);
     else guestsEl.textContent = "Not entered";
-    warnEl.textContent = r.warnings.map(function (code) { return WARN[code] || ""; }).filter(Boolean).join(" ");
+    warnEl.textContent = B.warningLines(r.warnings).join(" ");
     if (dirLink) {
       if (r.guests > 0) {
         dirLink.href = "/venues/?guests=" + r.guests;
@@ -229,6 +223,66 @@
     return "Not stated in our checked listing.";
   }
 
+  function currentSheet() {
+    var input = read();
+    var result = B.calculate(input);
+    var venue = venueSel && bySlug[venueSel.value];
+    return B.budgetSheet(input, result, {
+      prepared: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      venueName: venue ? venue.n : "",
+      venueChecked: venue && venue.checked ? prettyDate(venue.checked) : "",
+      packageNote: packageNote && packageNote.textContent ? packageNote.textContent : ""
+    });
+  }
+  function fillSheet(sheet) {
+    var el = document.getElementById("bp-sheet");
+    if (!el) return;
+    el.textContent = "";
+    var h = document.createElement("h1");
+    h.textContent = sheet.title;
+    el.appendChild(h);
+    if (sheet.prepared) addP(el, "Prepared " + sheet.prepared);
+    var h2 = document.createElement("h2");
+    h2.textContent = sheet.headline;
+    el.appendChild(h2);
+    var amt = document.createElement("p");
+    amt.className = "bp-sheet-amt";
+    amt.textContent = sheet.amountText;
+    el.appendChild(amt);
+    addP(el, sheet.note);
+    sheet.sections.forEach(function (section) {
+      var sh = document.createElement("h2");
+      sh.textContent = section.heading;
+      el.appendChild(sh);
+      var table = document.createElement("table");
+      section.rows.forEach(function (row) {
+        var tr = document.createElement("tr");
+        var th = document.createElement("th");
+        th.scope = "row";
+        th.textContent = row.label;
+        var td = document.createElement("td");
+        td.textContent = row.detail;
+        tr.appendChild(th);
+        tr.appendChild(td);
+        table.appendChild(tr);
+      });
+      el.appendChild(table);
+    });
+    if (sheet.warnings.length) {
+      var wh = document.createElement("h2");
+      wh.textContent = "Please check";
+      el.appendChild(wh);
+      sheet.warnings.forEach(function (line) { addP(el, line); });
+    }
+    var caveat = addP(el, sheet.caveat);
+    caveat.className = "bp-sheet-note";
+  }
+  function showSummary(text, message) {
+    var box = $("#bp-fallback");
+    var note = $("#bp-copy-note");
+    if (note) { note.hidden = false; note.textContent = message; }
+    if (box) { box.hidden = false; box.value = text; }
+  }
   function markIncluded() {
     $$("[data-flag]", root).forEach(function (box) {
       if (!/Included$/.test(box.getAttribute("data-flag") || "")) return;
@@ -242,6 +296,12 @@
     renderTotals(result);
     renderVenue(venueSel ? venueSel.value : "", input.guests);
     markIncluded();
+    fillSheet(B.budgetSheet(input, result, {
+      prepared: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      venueName: venueSel && bySlug[venueSel.value] ? bySlug[venueSel.value].n : "",
+      venueChecked: venueSel && bySlug[venueSel.value] && bySlug[venueSel.value].checked ? prettyDate(bySlug[venueSel.value].checked) : "",
+      packageNote: packageNote && packageNote.textContent ? packageNote.textContent : ""
+    }));
   }
 
   root.addEventListener("input", recalc);
@@ -283,6 +343,43 @@
     });
     split.dispatchEvent(new Event("input"));
   }
+
+  var pdfBtn = $("#bp-pdf");
+  var emailBtn = $("#bp-email");
+  var copyBtn = $("#bp-copy");
+  if (pdfBtn) pdfBtn.addEventListener("click", function () { recalc(); window.print(); });
+  if (emailBtn) emailBtn.addEventListener("click", function () {
+    var text = B.plainSummary(currentSheet());
+    var href = B.mailtoHref({ subject: "My Las Vegas wedding budget", body: text });
+    var note = $("#bp-copy-note");
+    if (!href) {
+      showSummary(text, "This summary is too long for an email link. It's selected below. Copy it into an email you send yourself. We don't send it.");
+      var box = $("#bp-fallback");
+      if (box) { box.focus(); box.select(); }
+      return;
+    }
+    var a = document.createElement("a");
+    a.href = href;
+    a.rel = "nofollow";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    if (note) { note.hidden = false; note.textContent = "If your email app didn't open, use Copy the summary. Add your address there and send it yourself."; }
+  });
+  if (copyBtn) copyBtn.addEventListener("click", function () {
+    var text = B.plainSummary(currentSheet());
+    var note = $("#bp-copy-note");
+    function failed() {
+      showSummary(text, "Copy didn't work in this browser. The summary is selected below.");
+      var box = $("#bp-fallback");
+      if (box) { box.focus(); box.select(); }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        if (note) { note.hidden = false; note.textContent = "Copied. Paste it wherever you want to keep it."; }
+      }).catch(failed);
+    } else failed();
+  });
 
   recalc();
 })();

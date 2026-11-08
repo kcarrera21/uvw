@@ -1127,6 +1127,7 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
       { q: "Do you save what I type?", a: "No. The numbers stay on this page while you use it. We don't ask for your email, and we don't store the amounts." },
       { q: "Which amounts are real prices?", a: `The marriage license is ${fm(fee.license)}, certified copies are ${fm(fee.copy)} each, paying the Clerk by card for those copies adds 2% plus ${fm(fee.copyCardFlat)} per transaction, a county civil ceremony is ${fm(fee.civil)} including the card fee, and a Nevada apostille is ${fm(fee.apostille)}. Venue lines start blank.` },
       { q: "Why is guest travel separate?", a: "Guests often pay their own flights and rooms. That spending is shown on its own line. Check the box if you are covering it, and it is added once, not twice." },
+      { q: "Can I save or email my numbers?", a: "Save as PDF opens the print window. Choose Save as PDF there. Email my results opens your own email app with the summary filled in. Add your address and send it yourself. If that app doesn't open, or the summary is too long for the link, use Copy the summary. We don't store the numbers or send the email." },
     ];
     const unit = (text) => `<span class="bp-kind">${text}</span>`;
     const moneyLine = (id, key, label, kind) => `<div class="bp-line"><label for="${id}">${label} ${unit(kind)}</label><input id="${id}" type="text" inputmode="decimal" autocomplete="off" data-money="${key}"></div>`;
@@ -1149,6 +1150,22 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
       <p class="small" id="bp-total-note">Your package and other costs are still blank, so this is not the full amount you pay.</p>
       <p class="bp-guestline"><span>Guests, on their own</span> <strong id="bp-guests-out">Not entered</strong></p>
       <p class="small" id="bp-warnings"></p>
+      <div class="bp-actions">
+        <div>
+          <button class="btn btn-ghost btn-sm" type="button" id="bp-pdf">Save as PDF</button>
+          <p class="small">Opens Print. Choose Save as PDF. Nothing is stored or sent.</p>
+        </div>
+        <div>
+          <button class="btn btn-ghost btn-sm" type="button" id="bp-email">Email my results</button>
+          <p class="small">Opens your email app. Add your address and send. We don't send it for you.</p>
+        </div>
+        <div>
+          <button class="btn btn-ghost btn-sm" type="button" id="bp-copy">Copy the summary</button>
+          <p class="small" id="bp-copy-note" hidden></p>
+        </div>
+      </div>
+      <label class="sr-only" for="bp-fallback">Budget summary to copy</label>
+      <textarea id="bp-fallback" class="bp-fallback" hidden readonly rows="8"></textarea>
     </div>
     <section class="bp-step">
       <h2>1. The basics</h2>
@@ -1220,6 +1237,7 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
   <h2>Questions</h2>${faqHtml(bpFaq)}
   ${plannerCta()}
   <script type="application/json" id="bp-venues">${JSON.stringify(budgetVenues).replace(/</g, "\\u003c")}</script>
+  <article class="bp-sheet" id="bp-sheet"></article>
 </div></section>`,
     });
   }

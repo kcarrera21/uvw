@@ -319,3 +319,78 @@ test("every real listing note is a verbatim sentence, and a silent listing stays
     }
   }
 });
+
+function summaryFor(input, context) {
+  const result = B.calculate(input);
+  const sheet = B.budgetSheet(input, result, context || { prepared: "November 8, 2026" });
+  return { result, sheet, text: B.plainSummary(sheet) };
+}
+
+test("a blank planner snapshot is county fees only, not a full wedding total", () => {
+  const { result, sheet, text } = summaryFor({ copies: 1 });
+  assert.equal(result.youPay, 122);
+  assert.equal(sheet.partial, true);
+  assert.equal(sheet.headline, "County fees so far");
+  assert.equal(sheet.amountText, "$122");
+  assert.match(text, /not the full amount you pay/);
+  assert.match(text, /Package price: Not entered/);
+  assert.match(text, /Who pays guest costs: Not entered/);
+  assert.match(text, /https:\/\/uniquevegasweddings\.com\/tools\/budget-planner\//);
+  assert.equal(text.includes("?"), false);
+});
+
+test("the snapshot matches the calculation, including excluded lines and guest costs", () => {
+  const input = {
+    copies: 1,
+    packageAmount: 2700,
+    photo: 800,
+    photoIncluded: true,
+    reception: 1000,
+    perGuest: 25,
+    guests: 10,
+    guestTravelEach: 250,
+    cushionPct: 10,
+    civil: true,
+    payGuestCosts: false
+  };
+  const separate = summaryFor(input, { prepared: "November 8, 2026", venueName: "Fish & Chips Chapel", venueChecked: "Oct 13, 2026" });
+  assert.equal(separate.sheet.amount, separate.result.youPay);
+  assert.equal(separate.sheet.headline, "You pay");
+  assert.match(separate.text, new RegExp("You pay: " + separate.sheet.amountText.replace("$", "\\$")));
+  assert.match(separate.text, /Photographer: \$800 typed\. Already included, not added\./);
+  assert.match(separate.text, /\$25 per guest × 10 = \$250/);
+  assert.match(separate.text, /\$250 per guest × 10 = \$2,500/);
+  assert.match(separate.text, /Guests pay \$2,500 themselves/);
+  assert.match(separate.text, /Courthouse ceremony: \$77\.75/);
+  assert.match(separate.text, /10% of the costs you entered/);
+  assert.match(separate.text, /Fish & Chips Chapel/);
+  assert.match(separate.text, /Listing checked Oct 13, 2026/);
+  assert.match(separate.text, /courthouse ceremony and a venue package/);
+  assert.match(separate.text, /Amounts you typed are your own estimates/);
+  assert.equal(separate.text.includes("?package="), false);
+
+  const coveredInput = Object.assign({}, input, { payGuestCosts: true, civil: false });
+  const covered = summaryFor(coveredInput);
+  assert.equal(covered.sheet.amount, covered.result.youPay);
+  assert.ok(covered.result.youPay > separate.result.youPay - 77.75);
+  assert.match(covered.text, /You're paying them, so \$2,500 is inside what you pay/);
+  assert.match(covered.text, /guest costs you're covering/);
+});
+
+test("mailto keeps currency, ampersands, and unicode, and falls back when the link is too long", () => {
+  const body = "You pay: $1,200\nVenue: Fish & Chips Chapel\nNote: café × 2";
+  const href = B.mailtoHref({ subject: "Budget & plans", body });
+  assert.ok(href.startsWith("mailto:?subject="));
+  assert.equal(href.includes("mailto:?subject="), true);
+  const query = href.slice("mailto:?".length);
+  const params = new URLSearchParams(query);
+  assert.equal(params.get("subject"), "Budget & plans");
+  assert.equal(params.get("body"), body);
+  assert.equal(decodeURIComponent(href).includes("$1,200"), true);
+  assert.equal(href.includes("&body="), true);
+  assert.equal(href.includes("Fish & Chips"), false);
+  const huge = B.mailtoHref({ body: "x".repeat(9000) });
+  assert.equal(huge, null);
+  const edge = "y".repeat(B.MAILTO_LIMIT);
+  assert.equal(B.mailtoHref({ body: edge, limit: 100 }), null);
+});
