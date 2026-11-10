@@ -46,7 +46,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Drive-thru weddings explained: how the Tunnel of Love works. Published 2026-11-07
 - [x] Elvis weddings: what actually happens at the ceremony. Published 2026-11-08
 - [x] Helicopter weddings: Strip flight vs. Grand Canyon landing. Published 2026-11-09
-- [ ] Ghost town weddings at Nelson: what to know before you drive out
+- [x] Ghost town weddings at Nelson: what to know before you drive out. Published 2026-11-10
 - [ ] Sky-high ceremonies: STRAT, High Roller and the Eiffel Tower compared
 - [ ] Museum weddings in Las Vegas: Neon Museum vs. Mob Museum
 - [ ] Desert sunrise elopements: Red Rock vs. Valley of Fire
