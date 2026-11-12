@@ -29,7 +29,7 @@ function bySlug(slug) {
 }
 
 test("the six new listings exist once, stay unpartnered, and never use a zero price", () => {
-  assert.equal(venues.length, 111);
+  assert.equal(venues.length, 123);
   const slugs = venues.map((v) => v.slug);
   assert.equal(new Set(slugs).size, slugs.length);
   for (const slug of ADDED) assert.equal(slugs.filter((s) => s === slug).length, 1);
