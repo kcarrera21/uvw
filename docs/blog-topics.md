@@ -48,7 +48,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Helicopter weddings: Strip flight vs. Grand Canyon landing. Published 2026-11-09
 - [x] Ghost town weddings at Nelson: what to know before you drive out. Published 2026-11-10
 - [x] Sky-high ceremonies: STRAT, High Roller and the Eiffel Tower compared. Published 2026-11-11
-- [ ] Museum weddings in Las Vegas: Neon Museum vs. Mob Museum
+- [x] Museum weddings in Las Vegas: Neon Museum vs. Mob Museum. Published 2026-11-12
 - [ ] Desert sunrise elopements: Red Rock vs. Valley of Fire
 - [ ] Lake Mead and boat weddings near Las Vegas
 - [ ] Garden weddings in the desert: Springs Preserve and Spring Mountain Ranch
@@ -59,3 +59,15 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [ ] The Welcome to Fabulous Las Vegas sign: wedding photos without the line
 - [ ] Courthouse wedding vs. chapel wedding in Las Vegas: cost and feel
 - [ ] Rainy-day backup plans for outdoor Las Vegas weddings
+
+## Evergreen: more ideas (added 2026-11-12)
+- [ ] Hot air balloon weddings near Las Vegas: what a sunrise flight involves
+- [ ] Lake Las Vegas weddings: the over-water chapel and lakeside resorts
+- [ ] Hoover Dam area weddings: Spillway House and Boulder City options
+- [ ] Mount Charleston weddings: pines, snow and cooler summer ceremonies
+- [ ] Aquarium and wildlife weddings: Shark Reef and Lion Habitat Ranch
+- [ ] Downtown Las Vegas weddings: Fremont Street, Circa and Container Park
+- [ ] Winery and farm weddings near Las Vegas: Sanders Family Winery and GreenGale Farms
+- [ ] Death Valley weddings from Las Vegas: The Oasis and park rules
+- [ ] Wax-figure and pop-culture weddings: Madame Tussauds and other quirky picks
+- [ ] Grand Canyon West Skywalk weddings: the drive, the fees and the views
