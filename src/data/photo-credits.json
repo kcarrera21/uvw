@@ -935,7 +935,7 @@
   "w": 1600,
   "h": 2133
  },
-"chapel-of-the-flowers": {
+ "chapel-of-the-flowers": {
   "alt": "A glass greenhouse filled with potted plants",
   "note": "representative",
   "title": "a greenhouse with many plants",
@@ -1564,5 +1564,31 @@
   "source": "https://www.pexels.com/photo/skydiver-on-air-7214101/",
   "w": 1600,
   "h": 1200
+ },
+ "titanic-artifact-exhibition-luxor": {
+  "alt": "The Luxor pyramid behind palm trees",
+  "note": "area",
+  "title": "The Luxor pyramid behind palm trees",
+  "creator": "Anil Baki Durmus",
+  "creatorUrl": "https://unsplash.com/@anldrms",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/black-glass-pyramid-with-palm-trees-8k2Z86qdaQo",
+  "image": "https://images.unsplash.com/photo-1786683028365-22bd13ee2866",
+  "w": 1600,
+  "h": 1067
+ },
+ "real-bodies-horseshoe-catacombs": {
+  "alt": "A wall of skulls in a European ossuary. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "Skulls in an ossuary in Switzerland",
+  "creator": "Malcolm Lightbody",
+  "creatorUrl": "https://unsplash.com/@mlightbody",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/skull-digital-wallpaper-4hhEvTB45vg",
+  "image": "https://images.unsplash.com/photo-1541783677340-d3d95e61e3f0",
+  "w": 1600,
+  "h": 1059
  }
 }
