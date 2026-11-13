@@ -29,7 +29,7 @@ function bySlug(slug) {
 }
 
 test("the six new listings exist once, stay unpartnered, and never use a zero price", () => {
-  assert.equal(venues.length, 123);
+  assert.equal(venues.length, 125);
   const slugs = venues.map((v) => v.slug);
   assert.equal(new Set(slugs).size, slugs.length);
   for (const slug of ADDED) assert.equal(slugs.filter((s) => s === slug).length, 1);
@@ -152,4 +152,18 @@ test("the public templates keep reception-only wording out of the ceremony defau
   const directory = fs.readFileSync(path.join(root, "src/assets/js/main.js"), "utf8");
   assert.match(directory, /Reception only/);
   assert.match(directory, /data-ceremony/);
+});
+
+test("the November 13 museum listings keep their published terms and honest photo labels", () => {
+  const bodies = bySlug("real-bodies-horseshoe-catacombs");
+  assert.equal(bodies.priceFrom, 1649);
+  assert.equal(bodies.guestMax, 12);
+  assert.match(bodies.priceLabel, /plus tax/);
+  assert.equal(credits["real-bodies-horseshoe-catacombs"].note, "illustrative");
+
+  const titanic = bySlug("titanic-artifact-exhibition-luxor");
+  assert.equal(titanic.priceFrom, null);
+  assert.equal(titanic.guestMax, 300);
+  assert.match(titanic.facts.join(" "), /buyout/);
+  assert.equal(credits["titanic-artifact-exhibition-luxor"].note, "area");
 });

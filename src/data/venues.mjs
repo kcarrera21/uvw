@@ -3120,4 +3120,51 @@ Honesty about the booking: unlike the helicopter companies in this category, Sky
     ],
     url: "https://skydivelasvegas.com/", checked: "2026-11-11", status: "listed", featured: false,
   },
+  {
+    name: "Real Bodies at Horseshoe (Catacombs Weddings)", slug: "real-bodies-horseshoe-catacombs", category: "quirky-pop-culture",
+    area: "Horseshoe Las Vegas, Center Strip", drive: "On the Strip", setting: "Indoor",
+    vibe: ["Catacombs", "Gothic", "Museum exhibit", "Tiny wedding"],
+    priceFrom: 1649, priceLabel: "Til Death Do Us Part (plus tax)", guestMax: 12,
+    facts: [
+      "Horseshoe Las Vegas sells a wedding package called Til Death Do Us Part, held in the Catacombs Room of the Real Bodies exhibit. Caesars describes the backdrop as faux bones made to look like the French catacombs.",
+      "The package starts at $1,649 plus tax and covers up to 12 guests.",
+      "Included: a personal wedding planner and day-of coordinator, a 6-rose bouquet and boutonniere, rose petals for the ceremony space, 12 luminaries down the aisle, music from a preselected playlist, a bottle of champagne for the couple, and 30 minutes with a professional photographer with six prints (three 4x6, two 5x7, one 8x10).",
+      "Guests who want to see the rest of the exhibit pay $25 each.",
+    ],
+    bestFor: "A small gothic wedding on the Strip, with the planner, flowers and photographer already in the price.",
+    description: `Most chapels try to look like a church. This one looks like a crypt. The ceremony happens in the Catacombs Room of the Real Bodies exhibit at Horseshoe Las Vegas, where the walls are lined with faux bones built to look like the catacombs under Paris. The candles are lit, the petals are down, and the mood is somewhere between romantic and spooky.
+
+The package is more complete than the theme suggests. A planner handles the details, and the price covers flowers, the aisle luminaries, champagne for the two of you and half an hour with a photographer. The catch is size: twelve guests is the limit, so this is for an elopement or a small group that's fully on board with the theme.`,
+    tips: [
+      "Twelve guests is the cap. If your list is longer, look at a bigger gothic option in our Halloween and gothic wedding guide.",
+      "Budget $25 a guest if people want to walk the rest of the exhibit. It isn't included.",
+      "The price is before tax. Ask what the officiant costs and whether a gratuity is expected, because the package page doesn't say.",
+      "The photo time is 30 minutes. Plan your must-have shots ahead so you use it well.",
+    ],
+    url: "https://www.caesars.com/horseshoe-las-vegas/things-to-do/weddings", checked: "2026-11-13", status: "listed", featured: false,
+  },
+  {
+    name: "Titanic: The Artifact Exhibition at Luxor", slug: "titanic-artifact-exhibition-luxor", category: "historic-iconic",
+    area: "Luxor, South Strip", drive: "On the Strip", setting: "Indoor",
+    vibe: ["Grand Staircase", "Real artifacts", "Museum exhibit", "Buyouts"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 300,
+    facts: [
+      "The exhibition's operator says couples can say their vows on the exhibit's Grand Staircase, for a wedding, vow renewal or engagement celebration.",
+      "Wedding packages are custom. The page says they can include catering, professional photography and keepsakes. No price is published.",
+      "A full venue buyout closes the exhibition to the public and holds up to 300 guests.",
+      "The venue is wheelchair accessible. Photos and video are allowed at weddings, with some limits on flash in rooms with artifacts.",
+      "Self-parking at Luxor costs extra. The page says local residents get three hours free.",
+    ],
+    bestFor: "Vows on the Grand Staircase, with Titanic artifacts around you. It works for a small group or a full buyout.",
+    description: `If you grew up rewinding the staircase scene, this is the one. The exhibition at Luxor recreates Titanic's Grand Staircase, and couples can marry on it. The rest of the exhibit is built around artifacts from the ship, so the setting is part romance, part history.
+
+It's also flexible. The exhibition builds wedding packages to order, with catering, photography and keepsakes available, and it can close entirely for a private buyout of up to 300 people. No prices are posted, so you'll be working from a quote. Email the group events team with your date, guest count and whether you want the whole place or just the staircase.`,
+    tips: [
+      "Email GroupEventsLV@emgroup.com to start. Nothing about weddings is bookable online.",
+      "Ask about flash rules before you hire a photographer. Some artifact rooms limit it.",
+      "Get it in writing whether your package closes the staircase to other visitors or only a buyout does.",
+      "Luxor parking costs extra for visitors. Factor it into guest logistics, or plan rideshare drop-offs.",
+    ],
+    url: "https://rmstitanicinc.com/exhibitions/titanic-las-vegas/event-venue/", checked: "2026-11-13", status: "listed", featured: false,
+  },
 ];
