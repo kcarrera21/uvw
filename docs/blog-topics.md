@@ -49,7 +49,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Ghost town weddings at Nelson: what to know before you drive out. Published 2026-11-10
 - [x] Sky-high ceremonies: STRAT, High Roller and the Eiffel Tower compared. Published 2026-11-11
 - [x] Museum weddings in Las Vegas: Neon Museum vs. Mob Museum. Published 2026-11-12
-- [ ] Desert sunrise elopements: Red Rock vs. Valley of Fire
+- [x] Desert sunrise elopements: Red Rock vs. Valley of Fire. Published 2026-11-13
 - [ ] Lake Mead and boat weddings near Las Vegas
 - [ ] Garden weddings in the desert: Springs Preserve and Spring Mountain Ranch
 - [ ] Immersive art weddings: AREA15 and Omega Mart
