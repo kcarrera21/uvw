@@ -51,7 +51,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Museum weddings in Las Vegas: Neon Museum vs. Mob Museum. Published 2026-11-12
 - [x] Desert sunrise elopements: Red Rock vs. Valley of Fire. Published 2026-11-13
 - [x] Lake Mead and boat weddings near Las Vegas. Published 2026-11-14
-- [ ] Garden weddings in the desert: Springs Preserve and Spring Mountain Ranch
+- [x] Garden weddings in the desert: Springs Preserve and Spring Mountain Ranch. Published 2026-11-15
 - [ ] Immersive art weddings: AREA15 and Omega Mart
 - [ ] Classic Strip resort weddings: Bellagio, Venetian and Caesars compared
 - [ ] Small wedding under $500 in Las Vegas: real published options
