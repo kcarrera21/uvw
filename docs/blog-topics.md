@@ -52,7 +52,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Desert sunrise elopements: Red Rock vs. Valley of Fire. Published 2026-11-13
 - [x] Lake Mead and boat weddings near Las Vegas. Published 2026-11-14
 - [x] Garden weddings in the desert: Springs Preserve and Spring Mountain Ranch. Published 2026-11-15
-- [ ] Immersive art weddings: AREA15 and Omega Mart
+- [x] Immersive art weddings: AREA15 and Omega Mart. Published 2026-11-16
 - [ ] Classic Strip resort weddings: Bellagio, Venetian and Caesars compared
 - [ ] Small wedding under $500 in Las Vegas: real published options
 - [x] Las Vegas wedding photo spots that don't need a permit (and ones that do). Covered by guide 2026-10-18
