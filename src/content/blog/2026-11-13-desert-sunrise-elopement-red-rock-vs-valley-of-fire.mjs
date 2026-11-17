@@ -10,7 +10,7 @@ export default {
   seoTitle: "Sunrise Elopement: Red Rock vs. Valley of Fire",
   metaDescription: "Red Rock's wedding sites open at 6 a.m.; Valley of Fire opens at sunrise. Sunrise times, permits, closures and drive times for a dawn desert elopement.",
   title: "Desert Sunrise Elopements: Red Rock Canyon vs. Valley of Fire",
-  description: "Both parks make a stunning backdrop at first light, but their gates work very differently. Here's which one lets you say your vows as the sun comes up, and when.",
+  description: "Both parks look great at first light, but their gates work very differently. Here's which one lets you say your vows as the sun comes up, and when.",
   answer: "For a true sunrise ceremony, pick Red Rock Canyon. Its wedding sites open at 6 a.m. year-round, and from now through late February sunrise there comes between about 6:15 and 6:55 a.m. Valley of Fire opens at sunrise, so you can't be set up before the sun, but an early-morning ceremony there is still beautiful.",
   readMins: 5,
   body: `

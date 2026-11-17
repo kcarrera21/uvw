@@ -544,22 +544,23 @@ The range is the point. A wedding of 50 fits a lobby lounge or the penthouse roo
     name: "The Venetian Resort (Gondola Weddings)", slug: "venetian-gondola-weddings", category: "strip-luxury",
     area: "The Strip (center)", drive: "On the Strip", setting: "Indoor & outdoor",
     vibe: ["Italian", "Gondola", "Romantic", "Grand"],
-    priceFrom: 950, priceLabel: "Gondola Bianca package (Mon–Thu)", guestMax: 100,
+    priceFrom: 1950, priceLabel: "Timeless package (gondola)", guestMax: 100,
     facts: [
-      "Gondola Bianca packages start at $950 Monday–Thursday, with exclusive use of the Signature Venetian White Wedding Gondola for the couple.",
-      "Wedding Chapel with Fountain View packages start at $2,150 Mon–Thu for up to 30 guests. The chapel holds up to 100 in larger packages.",
+      "The Timeless package starts at $1,950, with exclusive use of the Signature Venetian White Wedding Gondola for the couple, 90 minutes of photography and up to $200 in flowers. A weekend premium applies Friday through Sunday.",
+      "The Destiny package uses the Wedding Chapel with Garden View for up to 40 guests, from $3,250. Inspire, from $5,800, uses the Wedding Chapel with Fountain View, which holds up to 100.",
+      "The officiant's fee isn't included in any package and is paid in cash on the day. Packages booked within 14 days of the date carry a $500 fee.",
       "Other venues: Pool Garden Courtyard (100 guests), Waterfall Atrium (60) and the Wedding Fountain Terrace (40).",
     ],
     bestFor: "Romantics who want Venice, gondolier included, without the jet lag.",
-    description: `A white gondola, a gondolier and a canal under a painted sky. It's joyful theater, and your guests get to be in on it. It's also one of the most affordable "only in Vegas" experiences on the Strip.
+    description: `A white gondola, a gondolier and a canal under a painted sky. It's joyful theater, and your guests get to be in on it. And the price is posted before you ever pick up the phone.
 
 For a bigger group, the resort has a chapel with a fountain view, a waterfall atrium and a pool garden courtyard. That's a lot of Italian romance in one address, and your guests can walk to the reception.`,
     tips: [
-      "Monday–Thursday pricing is lower. The gondola doesn't know it's a weekday.",
+      "Weekday dates skip the Friday-to-Sunday premium. The gondola doesn't know it's a weekday.",
       "The gondola is for the couple. Guests watch from the bridges and walkways.",
       "Ask whether the gondolier will sing. (It's a Venetian tradition worth asking about.)",
     ],
-    url: "https://www.venetianlasvegas.com/resort/celebrations/weddings/wedding-packages.html", checked: "2026-10-04", status: "listed", featured: false,
+    url: "https://www.venetianlasvegas.com/resort/celebrations/weddings/wedding-packages.html", checked: "2026-11-17", status: "listed", featured: false,
   },
   {
     name: "Caesars Palace", slug: "caesars-palace-weddings", category: "strip-luxury",
@@ -2854,17 +2855,17 @@ The same article does not say minus5 hosts ceremonies. Plan the vows at a place 
       "Wynn's wedding brochure lists packages from the Harmony at $1,950 (Mon–Thu, up to 4 guests) and the Classical at $2,400–$3,100, up to the Symphony at $35,000 for 100 guests.",
       "The Primrose Courtyard is an add-on at $2,200 per hour on top of a ceremony package, and it can host small receptions of up to 50.",
       "Only one ceremony is held at a time across the Wedding Salons, and all ceremony floral must come from the Wedding Salons' own floral team.",
-      "A limited Intimate Elegance elopement — half an hour in the Lilac Salon, no guests — runs $1,200 on weekdays for ceremonies held June 1–December 30, 2026.",
+      "A limited Intimate Elegance elopement (half an hour in the Lilac Salon, no guests) runs $1,200 on weekdays for ceremonies held June 1–December 30, 2026.",
     ],
-    bestFor: "Full-service Strip luxury in salons built only for weddings, not a ballroom corner.",
-    description: `Wynn was the conspicuous gap in this directory: Bellagio, Caesars and The Venetian have been listed here for a long time, and the resort many locals rate the most polished of the three had no page. The Wedding Salons are why it belongs. They are not a chapel squeezed into a conference floor. They are a dedicated wing — foyer, dressing rooms, two salons — where only one ceremony happens at a time.
+    bestFor: "Full-service Strip luxury in salons built only for weddings.",
+    description: `Wynn's Wedding Salons are a wing built only for weddings: a foyer, dressing rooms and two salons. Only one ceremony runs at a time, so the hallway is yours.
 
-Choose the Lilac for up to 60 guests, the Lavender for up to 120, or take the Primrose Courtyard outdoors. The brochure's ladder runs from a four-guest weekday package to a $35,000 production for 100, and a wedding manager runs the day either way. It is the least Vegas-chaotic way to get married on Las Vegas Boulevard.`,
+Pick the Lilac Salon for up to 60 guests, the Lavender for up to 120, or the Primrose Courtyard if you want to be outside. Packages run from a four-guest weekday ceremony up to a $35,000 production for 100, and a wedding manager runs the day at every level. If you want Strip luxury with very little chaos, start here.`,
     tips: [
       "Weekend and after-hours ceremonies carry an extra cost. The weekday Harmony package is the value end of the brochure.",
-      "You cannot bring an outside florist for the ceremony. Budget Wynn's floral team from the start.",
+      "You can't bring an outside florist for the ceremony. Budget Wynn's floral team from the start.",
       "Ask about the wedding-party room rates. The salons offer special pricing on standard rooms for the couple and guests.",
-      "Planning runs through (702) 770-7400 or the weddings page. A six-to-twelve-month lead time is what the resort itself suggests.",
+      "Planning runs through (702) 770-7400 or the weddings page. The resort suggests booking six to twelve months ahead.",
     ],
     url: "https://www.wynnlasvegas.com/weddings", checked: "2026-11-11", status: "listed", featured: false,
   },
@@ -2881,13 +2882,13 @@ Choose the Lilac for up to 60 guests, the Lavender for up to 120, or take the Pr
       "In-suite ceremonies require a room reservation of at least two nights, events are not scheduled on check-in day, and packages do not include accommodations.",
     ],
     bestFor: "The newest big resort on the Strip, with a packaged ceremony format for almost every guest count.",
-    description: `Fontainebleau is the Strip's newest full-size resort, and its wedding program reads like it was designed on a whiteboard last year — because it was. Six named packages scale from an elopement inside your own suite to a 150-guest premium-venue ceremony, each with a wedding manager, officiant services, photography time and license filing built in.
+    description: `Fontainebleau opened in December 2023, which makes it the Strip's newest full-size resort, and its wedding program comes as six named packages. They run from an elopement inside your own suite to a 150-guest ceremony in a premium venue, and each one includes a wedding manager, officiant services, photography time and license filing.
 
-The settings are the interesting part. You can marry in the foyer of the BleauLive Theater, on the La Mer lawn by the pools, or in the Nowhere lounge. What the brochure will not give you is a number: every ceremony package is priced on request, so the first step is an email, not a booking page.`,
+The settings are the fun part. You can marry in the foyer of the BleauLive Theater, on the La Mer lawn by the pools, or in the Nowhere lounge. What you won't find is a price. Every ceremony package is quoted on request, so your first step is an email to the wedding team.`,
     tips: [
       "Start with weddings@fblasvegas.com and name the package and guest count. Nothing about ceremony pricing is published.",
-      "Do not mistake The Moment's $1,500 for a ceremony price. It buys a one-hour photo tour of the resort.",
-      "Weekends and holidays add premium fees to every package. A weekday date is the lever you have.",
+      "Don't mistake The Moment's $1,500 for a ceremony price. It buys a one-hour photo tour of the resort.",
+      "Weekends and holidays add premium fees to every package. A weekday date is the easiest way to save.",
       "The Jewel's in-suite format needs a two-night room reservation minimum, booked separately from the package.",
     ],
     url: "https://www.fontainebleaulasvegas.com/uploads/2025/05/Wedding_Packages_05092025.pdf", checked: "2026-11-11", status: "listed", featured: false,
@@ -2904,9 +2905,9 @@ The settings are the interesting part. You can marry in the foyer of the BleauLi
       "No wedding package price is published. Pricing is quoted by the events team for the date and space.",
     ],
     bestFor: "Strip luxury without a chapel: a suite, a theater, or a speakeasy instead.",
-    description: `Every other resort in this category will sell you a chapel or a ballroom. The Cosmopolitan skipped both and built its wedding program out of the spaces people actually talk about: a suite high over the boulevard, a theater, a speakeasy hidden behind a barbershop, and terrace suites with some of the best fountain views on the Strip.
+    description: `There's no chapel at The Cosmopolitan. You can marry in a Wedding Suite high above the boulevard, in The Chelsea theater, in The Barbershop speakeasy hidden behind a working barbershop, or in a terrace suite over the Strip.
 
-That makes it a design-first wedding. The trade-off is transparency. There is no package menu and no published price, so your first move is a conversation with the events team about which space fits your count. Couples who want a number before a phone call should look at Wynn or Bellagio first; couples who want a room nobody else is using for weddings tend to land here.`,
+That's a lot of style, with very little published detail. There's no package menu and no price online, so start by telling the events team your guest count and which space you like. If you want a number before you pick up the phone, Wynn and The Venetian both publish package prices. If you want a setting most Strip weddings don't use, look here.`,
     tips: [
       "Ask for the Wedding Suite, The Chelsea and The Barbershop in one inquiry, with your guest count, so the team quotes comparable options.",
       "Terrace suites face different directions. If the fountain view matters, say so before you sign, not at check-in.",
@@ -2927,13 +2928,13 @@ That makes it a design-first wedding. The trade-off is transparency. There is no
       "No ceremony price is published. Event booking runs through Divine Events.",
     ],
     bestFor: "A small ceremony inside a working cactus garden, with a chocolate factory next door.",
-    description: `Most desert venues on this site ask you to drive to a canyon. Ethel M asks you to drive to a chocolate factory in Henderson, where three acres of cacti — more than 300 species, laid out like an English landscape garden that happens to be made of succulents — sit behind the production floor.
+    description: `Most desert venues on our list mean a drive out to a canyon. This one means a drive to a chocolate factory in Henderson. Ethel M's three-acre cactus garden sits right behind it, with more than 300 species laid out like an English landscape garden, only with succulents.
 
-The scale is the point. Thirty guests, maximum. You marry on the paths between mature saguaros and barrel cacti, then walk your guests into the factory for a tasting. Book in late November or December and the same garden is the Holiday Cactus Garden, lit for the season, which changes the photos completely.`,
+It's small on purpose: 30 guests is the most it takes. You'll say your vows on the paths between the saguaros and barrel cacti. Book in late November or December and the garden becomes the Holiday Cactus Garden, strung with lights for the season, which gives you a very different set of photos.`,
     tips: [
       "Thirty guests is a hard ceiling, not a starting point. Count your list before you fall for the garden.",
       "Henderson summers are as hot as the Strip's. Spring, fall and the holiday-lights season are the comfortable windows.",
-      "Ask Divine Events about pairing the ceremony with a factory tasting or tour for guests. It is the natural reception substitute here.",
+      "Ask Divine Events about pairing the ceremony with a factory tasting or tour for guests. It's the easy stand-in for a reception here.",
       "The garden is a public attraction by day. Ask what part of your event time is private.",
     ],
     url: "https://www.ethelm.com/botanical-cactus-garden", checked: "2026-11-11", status: "listed", featured: false,
@@ -2951,14 +2952,14 @@ The scale is the point. Thirty guests, maximum. You marry on the paths between m
       "The chapel's site describes its packages without printing prices. Weddings Under 5K's venue directory lists an 'I Do Service' at $185, with packages running to $575.",
     ],
     bestFor: "A 1957 Strip original that still does the full chauffeur, license run and chapel routine.",
-    description: `Chapel of the Bells has been marrying people on this stretch of the boulevard since 1957, long enough that couples whose parents married here come back to watch their own kids do it. It kept the whole classic apparatus: the garden out front, the white baby grand inside, the chauffeur who collects you from your hotel, takes you to get the license, and delivers you to the aisle.
+    description: `Chapel of the Bells has been marrying couples on this stretch of the Strip since 1957, and it still does the whole classic routine. A chauffeur picks you up at your hotel, takes you to get your license and drops you at the chapel. There's a garden out front and a white baby grand inside.
 
-It is a traditional chapel in the best sense — non-denominational or civil, candlelight if you want it, Elvis if you would rather. The one modern frustration is price: the chapel describes its packages in detail but prints no numbers, so the $185 starting figure on this listing comes from a venue directory, and the real quote is a phone call away.`,
+Choose a non-denominational or civil ceremony, add candlelight, or bring in Elvis. The one hassle is price. The chapel describes its packages in detail but doesn't print the numbers, so the $185 starting price on this page comes from a venue directory. Call for the real quote.`,
     tips: [
-      "Call (702) 735-6803 for current package prices. The website does not print them, and directory prices age.",
+      "Call (702) 735-6803 for current package prices. The website doesn't print them, and directory prices age.",
       "Budget the ministerial fee, service charge and tax on top of any deluxe package price you are quoted.",
       "Sunday ceremonies need a reservation. Early mornings are available by appointment.",
-      "The complimentary photo shoot is genuinely complimentary; the prints are the purchase. Decide your photo budget before the sales conversation.",
+      "The photo shoot is free, and the prints are what you pay for. Set your photo budget before the sales conversation.",
     ],
     url: "https://www.chapelofthebellslasvegas.com/packages.html", checked: "2026-11-11", status: "listed", featured: false,
   },
@@ -2973,13 +2974,13 @@ It is a traditional chapel in the best sense — non-denominational or civil, ca
       "The chapel is still operating, but its website is not: the weekirk.com address now resolves to an unrelated spam page, so this listing links to the Frommer's guide entry, which carries the chapel's address and phone number, instead of the chapel's own site.",
       "Older directories describe traditional and Elvis packages, with a largest package for up to 35 guests, but no current price list could be verified when we checked. This listing leaves the price and capacity blank rather than guess.",
     ],
-    bestFor: "The oldest chapel in the city. Book it by phone, the way couples did in 1940.",
-    description: `Every chapel in this category owes something to this one. Wee Kirk O' the Heather opened in 1940, when Las Vegas weddings were a new idea, and it is still standing at the downtown end of the boulevard in a small white building that predates the chapel by fifteen years. The sign alone — 'Vegas Finest Since 1940' — is a piece of the city's neon history, documented in UNLV's neon survey.
+    bestFor: "A downtown chapel that's been marrying couples since 1940. You book it by phone.",
+    description: `Wee Kirk O' the Heather opened in 1940, when Las Vegas weddings were still a new idea, and Frommer's calls it the oldest wedding chapel in the city. It's a small white building at the downtown end of the boulevard, and the building is fifteen years older than the chapel. Its 'Vegas Finest Since 1940' sign is part of the city's neon history, recorded in UNLV's neon survey.
 
-Being the oldest also means being the least digital. The chapel's website has been lost to a spam takeover, and there is no booking page to link you to. What works is the phone: (702) 382-9830. Couples who care about the history tend to find that fitting. Couples who need a price list online should pick one of the other chapels on this row.`,
+The chapel is old-school online, too. Its website was taken over by a spam page, so there's no booking page we can send you to. Call (702) 382-9830 instead. If you'd rather see a price list online before you commit, one of the other chapels on this row will suit you better.`,
     tips: [
       "Call (702) 382-9830 to confirm today's packages and prices. Nothing current is published online that we could verify.",
-      "Do not use the chapel's old website address. It no longer belongs to the chapel.",
+      "Don't use the chapel's old website address. It no longer belongs to the chapel.",
       "The chapel sits close to the downtown marriage license bureau, which makes a same-day license-and-ceremony plan easy.",
       "Ask about Elvis and traditional package options when you call. Directories describe both, at prices that need confirming.",
     ],
@@ -2997,9 +2998,9 @@ Being the oldest also means being the least digital. The chapel's website has be
       "Eventective lists its packages from $199 to $3,399 across traditional, Elvis, drive-thru and adventure ceremonies. The chapel's own site lists Elvis packages from $489.",
     ],
     bestFor: "One downtown chapel that can do the steeple ceremony, the drive-thru, or Elvis and a pink Cadillac.",
-    description: `A Special Memory looks like it was airlifted out of a New England postcard — white clapboard, tall steeple — and set down on a downtown corner in 1971. Then it spent five decades absorbing every Las Vegas wedding idea that came along. Today the same property holds a proper chapel ceremony for 85 people, a drive-thru window for couples who want the story, and Elvis packages with a pink Cadillac.
+    description: `A Special Memory looks like a New England postcard: white clapboard and a tall steeple on a downtown corner, open since 1971. Over the years it's picked up most of the Las Vegas wedding formats. You can have a traditional chapel ceremony for about 85 people, use the drive-thru window, or book an Elvis package with a pink Cadillac.
 
-That range is the reason to list it. Most chapels make you choose a personality in advance. This one lets a couple have the traditional ceremony their family wants and the drive-thru photo their friends expect, in a single stop, a short drive from the license bureau.`,
+That range helps if your family wants a traditional ceremony and your friends want the drive-thru photo. You can do both in one stop, a short drive from the license bureau.`,
     tips: [
       "The $199 starting figure is a directory price. Confirm which package it buys on the chapel's own site or by phone before you budget around it.",
       "Elvis packages on the chapel's site start higher than the traditional packages. The pink Cadillac is the upgrade to ask about by name.",
@@ -3019,14 +3020,14 @@ That range is the reason to list it. Most chapels make you choose a personality 
       "There is no in-house catering; outside caterers are allowed. The venue is cashless, and the listed hire prices include sales tax.",
     ],
     bestFor: "A ceremony inside a working cinema, with the marquee outside and a courtyard for the party.",
-    description: `The Beverly is a real, working arthouse cinema — Las Vegas's first — that also rents itself out for weddings. The ceremony happens in a room built for an audience: 146 theater seats, a proper Meyer Sound system, and a retractable platform that opens the floor to 450 standing if your event is more party than screening.
+    description: `The Beverly is a working arthouse cinema, the first independent film house in Las Vegas, and it rents out its spaces for weddings. The main room was built for an audience, with 146 theater seats, a Meyer Sound system and a retractable platform that opens the floor to 450 standing if you'd rather throw a party than hold a screening.
 
-For film people there is nothing else like it in this directory. Your names can go where the feature presentation goes, the Segue terrace handles the reception drinks around its fire pits, and the courtyard works for a smaller ceremony at a third of the main room's price. It is a venue hire, not a wedding package — your officiant, photographer and caterer are yours to bring — which is exactly the freedom some couples are looking for downtown.`,
+If you love film, you can put your names where the feature presentation usually goes. The Segue terrace works for drinks around the fire pits, and the courtyard fits a smaller ceremony for $1,000 a day, against $5,500 for the main theater. You're hiring a venue, not buying a package, so you'll bring your own officiant, photographer and caterer.`,
     tips: [
       "The theater's own site has a weddings page. Start there, and use the Tagvenue listing to compare the three spaces and their day rates.",
       "A venue hire is not a package. Price your officiant, photographer, catering and rentals separately before comparing it to chapel packages.",
       "Full refunds run to 60 days out on the Tagvenue terms, then step down. Read the cancellation ladder before you sign.",
-      "Ask about the marquee. A wedding-day marquee photo is the shot this venue exists for.",
+      "Ask about putting your names on the marquee for photos out front.",
     ],
     url: "https://www.thebeverlytheater.com/weddings", checked: "2026-11-11", status: "listed", featured: false,
   },
@@ -3042,12 +3043,12 @@ For film people there is nothing else like it in this directory. Your names can 
       "Venue directories list capacity up to about 400 guests across the courtyard and ballroom.",
     ],
     bestFor: "A full-service off-Strip wedding with Red Rock views, and the whole venue to yourselves.",
-    description: `Emerald is the Summerlin answer to the Strip resort wedding: a purpose-built event center in a gated community, where the ceremony happens in a courtyard of waterscapes with the Red Rock escarpment behind it, and the reception moves into a ballroom with a grand staircase made for entrances.
+    description: `Emerald is an event center in the gated Queensridge community in Summerlin. You'll hold the ceremony in a courtyard with waterscapes and the Red Rock escarpment behind you, then move inside to a ballroom with a grand staircase and vaulted ceilings.
 
-The difference from a resort is exclusivity. It is a single-event facility, so the courtyard, the ballroom and the staff belong to one wedding at a time. The difference from a desert permit site is infrastructure: this is a full-service operation with all-inclusive packages, about twenty minutes from the Strip, in the neighborhood where half your local guests probably live.`,
+It hosts one event at a time, so the courtyard, the ballroom and the staff are yours that day. It's full-service, too, with all-inclusive packages you won't get at a desert permit site, and it's about twenty minutes from the Strip.`,
     tips: [
       "Get the split between ceremony-only, elopement and all-inclusive pricing in writing. Directory figures are a starting point, not a quote.",
-      "Single-event venues book out on Saturdays first. Ask about Friday and Sunday pricing if your date is flexible.",
+      "If your date is flexible, ask about Friday and Sunday pricing.",
       "Plan guest transport. Twenty minutes is nothing to locals and a logistics problem for a hundred Strip-hotel guests.",
     ],
     url: "https://www.emeraldatqueensridge.com/weddings", checked: "2026-11-11", status: "listed", featured: false,
@@ -3064,21 +3065,21 @@ The difference from a resort is exclusivity. It is a single-event facility, so t
       "The club's own site lists weddings among its events but publishes no ceremony package or price that we could check, and no single wedding capacity. Both are by inquiry.",
     ],
     bestFor: "Lakefront vows at sunset on Nevada's only Nicklaus Signature course, with the property to yourselves that day.",
-    description: `Five golf clubs were already in this directory before Reflection Bay, and the omission was odd, because this is the one with a lake. The course — the only Jack Nicklaus Signature Design in Nevada — wraps around the shore of Lake Las Vegas, and the ceremony site sits at the water's edge below the clubhouse, so the procession is a walk down through green fairways to a white-sand shoreline.
+    description: `Reflection Bay is the golf club on our list with a lake. Its course, the only Jack Nicklaus Signature Design in Nevada, wraps around the shore of Lake Las Vegas. The ceremony site sits at the water's edge below the clubhouse, so you'll walk down a winding path through the grounds to get there.
 
-It runs one wedding a day, which changes the feel of the place: no ceremony before yours, none after. Time it for sunset and the lake does the decorating. The club does not publish what that costs, so treat this listing as a shortlist entry, not a budget line — the quote comes from the events team.`,
+The club hosts one wedding a day, so there's no ceremony before yours and none after. Time it for sunset and the lake handles the decorating. Prices aren't published, so the events team will quote you.`,
     tips: [
       "Ask the events team for the ceremony-only and full-package figures, and which spaces each includes. Nothing is published.",
-      "Sunset is the obvious ceremony time on a west-facing shoreline. Build the whole timeline backwards from it.",
-      "The Westin and Hilton at Lake Las Vegas are minutes away, which solves the guest-hotel problem for a venue 30 minutes from the Strip.",
-      "Older write-ups mention a post-ceremony yacht toast on the lake. Ask whether it is still offered before you plan around it.",
+      "If you want sunset vows, build the whole timeline backward from sunset on your date.",
+      "The Westin and Hilton at Lake Las Vegas are minutes away, so guests can stay close to a venue that's 30 minutes from the Strip.",
+      "Older write-ups mention a post-ceremony yacht toast on the lake. Ask whether it's still offered before you plan around it.",
     ],
     url: "https://www.reflectionbaygolf.com/", checked: "2026-11-11", status: "listed", featured: false,
   },
   {
     name: "Marché Bacchus", slug: "marche-bacchus", category: "desert-outdoors",
     area: "Desert Shores (Lake Jacqueline)", drive: "2620 Regatta Dr, Suite 106", setting: "Indoor & outdoor",
-    vibe: ["Lakeside patio", "French bistro", "Wine shop", "Locals' favorite"],
+    vibe: ["Lakeside patio", "French bistro", "Wine shop", "Desert Shores"],
     priceFrom: null, priceLabel: null, guestMax: 150,
     facts: [
       "A French bistro and wine shop at 2620 Regatta Dr, Suite 106, on Lake Jacqueline in Desert Shores. It shares an address with Lakeside Weddings & Events (Suite 102), a separate business that is also in this directory.",
@@ -3087,13 +3088,13 @@ It runs one wedding a day, which changes the feel of the place: no ceremony befo
       "No wedding package price is published. Private-party menus are posted on the restaurant's site.",
     ],
     bestFor: "Vows on a lakeside patio, then a French dinner with wine you chose off the shop shelf.",
-    description: `Marché Bacchus is the rare restaurant listing that earns its place as a ceremony venue. It sits on Lake Jacqueline in Desert Shores — the same lake as the Lakeside Weddings property a few doors down — with a patio that runs right to the water, and it explicitly hosts wedding ceremonies, not just rehearsal dinners.
+    description: `Marché Bacchus is a French bistro and wine shop on Lake Jacqueline in Desert Shores, on the same lake as Lakeside Weddings a few doors down. Its patio runs right to the water, and the restaurant hosts wedding ceremonies as well as receptions.
 
-The format sells itself to food people: vows on the patio for up to 125, then dinner in a French bistro where the wine list is a working wine shop next door, and your table's bottles can come straight off its shelves. It is a locals' room, not a tourist one, and a wedding here feels like you found the place rather than booked the package.`,
+Say your vows on the patio with up to 125 guests, then move to dinner. The bistro adjoins the wine shop, so your table's bottles can come straight off its shelves. It's a neighborhood restaurant in a residential part of town, well away from the Strip.`,
     tips: [
       "The patio is the ceremony site, so ask about shade and temperature for your date and hour. Lake light is best late in the day.",
-      "It is a working restaurant. Ask which hours a buyout or partial buyout covers, and what happens to regular service during your event.",
-      "Confirm how wine-shop bottles are charged for a private event — retail, corkage, or a package — before the tasting gets out of hand.",
+      "It's a working restaurant. Ask which hours a buyout or partial buyout covers, and what happens to regular service during your event.",
+      "Confirm how wine-shop bottles are charged for a private event (retail, corkage or a package) before the tasting gets out of hand.",
     ],
     url: "http://www.marchebacchus.com/", checked: "2026-11-11", status: "listed", featured: false,
   },
@@ -3105,13 +3106,13 @@ The format sells itself to food people: vows on the patio for up to 125, then di
     facts: [
       "A tandem skydiving operator at Jean Aviation Sport Center, 23600 S Las Vegas Blvd, Jean, NV, about 30 minutes south of the Strip. Its site says it has run tandem jumps for over 30 years, with a free shuttle from the Strip.",
       "The operator is a USPA-certified center and owns and maintains its own aircraft and gear.",
-      "Its site sells tandem jumps and publishes no wedding package and no wedding price. A landing-zone ceremony — vows on the ground paired with a tandem jump, before or after — is arranged on request by phone.",
-      "The skydiving wedding prices of roughly $1,200 quoted in older articles belong to a different operator, Vegas Extreme Skydiving. Do not budget them for this company.",
+      "Its site sells tandem jumps and publishes no wedding package and no wedding price. A landing-zone ceremony (vows on the ground paired with a tandem jump, before or after) is arranged on request by phone.",
+      "The skydiving wedding prices of roughly $1,200 quoted in older articles belong to a different operator, Vegas Extreme Skydiving. Don't budget them for this company.",
     ],
     bestFor: "A landing-zone ceremony arranged directly with the operator. There is no published wedding package, so every detail gets confirmed by phone.",
-    description: `This is the most literal 'taking the plunge' in the directory: tandem jumps from Jean airport, with the Mojave, the Strip skyline and Lake Mead in the distance, and a ceremony on the ground at the landing zone — vows first, then the jump, or land as a married couple. The operator has been running tandem jumps here for over thirty years and runs a free shuttle from the Strip.
+    description: `Skydive Las Vegas flies tandem jumps out of Jean, about 30 minutes south of the Strip, with the Mojave, the Strip skyline and Lake Mead in the distance. A wedding here means a ceremony on the ground at the landing zone. Say your vows and then jump, or jump first and land married. The operator says it's run tandem jumps for over thirty years, and it offers a free shuttle from the Strip.
 
-Honesty about the booking: unlike the helicopter companies in this category, Skydive Las Vegas does not publish a wedding product. There is no package page and no price to print, which is why this listing shows a quote. Wedding jumps have been arranged here before, and the route in is a phone call to build the day with the operator — your officiant, the jump order, and where guests stand to watch. If you need a bookable package with a number attached, a helicopter ceremony is the easier buy.`,
+Know this before you call: Skydive Las Vegas doesn't sell a wedding package. There's no package page and no price, which is why this listing says quote. Weddings are arranged on request by phone, where you'll work out your officiant, the jump order and where guests stand to watch. If you'd rather book a package with a set price, a helicopter ceremony is the simpler buy.`,
     tips: [
       "Call (702) 759-3483 and describe the ceremony you want. Nothing about weddings is bookable online.",
       "Tandem jumpers must be 18 or older. Guests who are not jumping watch from the landing zone.",
