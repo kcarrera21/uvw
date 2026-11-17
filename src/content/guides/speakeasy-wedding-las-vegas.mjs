@@ -2,7 +2,7 @@
 export default {
   slug: "speakeasy-wedding-las-vegas",
   photo: "the-mob-museum",
-  seoTitle: "Speakeasy Weddings in Las Vegas: Hidden Bars, Mob History & Prices",
+  seoTitle: "Speakeasy Weddings in Las Vegas: Hidden Bars and Prices",
   metaDescription: "Where to have a speakeasy or 1920s wedding in Las Vegas: a ceremony behind a fake bakery at the Flamingo, the Mob Museum's courtroom and moonshine bar, and Prohibition-bar receptions.",
   answer: "The real speakeasy ceremony in Las Vegas is the Count Room behind Bugsy & Meyer's Steakhouse at the Flamingo: $7,000 plus tax for up to 25 guests, officiated by Meyer Lansky II, through a fake bakery front. For less, the Mob Museum marries couples in a historic federal courtroom from $700 and has a basement speakeasy for the party.",
   title: "Speakeasy Weddings in Las Vegas: Hidden Doors, Mob History and Where to Party After",

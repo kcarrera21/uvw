@@ -2,7 +2,7 @@
 export default {
   slug: "cannabis-wedding-las-vegas",
   photo: "the-neon-museum",
-  seoTitle: "Cannabis Weddings in Las Vegas: What's Legal, Where & How (2026)",
+  seoTitle: "Cannabis Weddings in Las Vegas: What's Legal (2026)",
   metaDescription: "Planning a cannabis-friendly wedding in Las Vegas? The county's sober-license rule, where consumption is legal, the lounges open now, dispensary wedding packages and what to skip.",
   answer: "Cannabis is legal for adults 21 and over in Nevada, but you can't marry or get your license while impaired, per the Clark County Clerk. Public consumption is prohibited. Use is legal in private residences and licensed consumption lounges, which ban alcohol. Plan the ceremony sober and save the cannabis for a private, legal after-party.",
   title: "Cannabis Weddings in Las Vegas: What's Legal, Where to Go and What to Skip",

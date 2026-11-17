@@ -228,7 +228,7 @@ export const guides = [
 
 <h2>Price bands, in plain English</h2>
 <ul class="checklist">
-  <li><strong>Under $1,000:</strong> classic chapels, the drive-thru, the courthouse, the STRAT's base-of-tower Minimony, the Venetian gondola (midweek) and park-permit DIY options. Packages with a published starting price of $500 or less are listed in <a href="/guides/las-vegas-wedding-packages-under-500/">Las Vegas wedding packages under $500</a>.</li>
+  <li><strong>Under $1,000:</strong> classic chapels, the drive-thru, the courthouse, the STRAT's base-of-tower Minimony and park-permit DIY options. Packages with a published starting price of $500 or less are listed in <a href="/guides/las-vegas-wedding-packages-under-500/">Las Vegas wedding packages under $500</a>.</li>
   <li><strong>$1,000–$3,000:</strong> Neon Museum, Nelson Ghost Town, Springs Preserve ceremonies, Valley of Fire packages, helicopter flights over the Strip.</li>
   <li><strong>$3,000–$10,000:</strong> Grand Canyon helicopter weddings, Red Rock packages, garden receptions.</li>
   <li><strong>$10,000+:</strong> full-production receptions like AREA15. Large Strip-resort weddings are usually quote-only, so ask for a full estimate.</li>

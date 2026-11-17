@@ -31,7 +31,7 @@ export default {
 <h2>Why a Wednesday can work in your favor</h2>
 <p>Midweek dates open some doors that weekends close. A few we checked today:</p>
 <ul class="checklist">
-  <li><strong>The Venetian.</strong> Its Gondola Bianca package (just the two of you on the white wedding gondola) starts at $950, and the Sweetheart chapel package for up to 30 guests starts at $2,150. Both of those prices are listed as Monday–Thursday rates.</li>
+  <li><strong>The Venetian.</strong> Its Timeless package (just the two of you on the white wedding gondola) starts at $1,950, and the Destiny chapel package for up to 40 guests starts at $3,250. A weekend premium applies to both from Friday through Sunday.</li>
   <li><strong>Nevada Southern Railway.</strong> The museum's train in Boulder City can be chartered for weddings Wednesday through Friday only, with a two-hour minimum and room for up to 200 people. Rates are by quote: call 702-486-5952.</li>
   <li><strong>Floyd Lamb Park.</strong> The City of Las Vegas rate card lists the Lakeside Courtyard and Courtyard Gazebo at $600 for two hours, Monday through Thursday, for up to 275 people. The weekend Hay Barn package is $2,250. Events have to end by 7 p.m. in summer and 4 p.m. in winter, so ask which applies to early May before you plan around sunset.</li>
   <li><strong>Ice Age Fossils State Park.</strong> Open Wednesday through Sunday, 8 a.m. to 4:30 p.m., so a Wednesday just makes the cut. Our listing covers the special use permit, which needs at least 60 days' notice (by March 6 for May 5) and liability insurance.</li>
