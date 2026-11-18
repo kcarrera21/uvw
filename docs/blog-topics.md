@@ -54,9 +54,9 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Garden weddings in the desert: Springs Preserve and Spring Mountain Ranch. Published 2026-11-15
 - [x] Immersive art weddings: AREA15 and Omega Mart. Published 2026-11-16
 - [x] Classic Strip resort weddings: Bellagio, Venetian and Caesars compared. Published 2026-11-17
-- [ ] Small wedding under $500 in Las Vegas: real published options
+- [x] Small wedding under $500 in Las Vegas: real published options. Covered by the packages under $500 guide (skipped 2026-11-18)
 - [x] Las Vegas wedding photo spots that don't need a permit (and ones that do). Covered by guide 2026-10-18
-- [ ] The Welcome to Fabulous Las Vegas sign: wedding photos without the line
+- [x] The Welcome to Fabulous Las Vegas sign: wedding photos without the line. Published 2026-11-18
 - [ ] Courthouse wedding vs. chapel wedding in Las Vegas: cost and feel
 - [ ] Rainy-day backup plans for outdoor Las Vegas weddings
 
