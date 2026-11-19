@@ -29,7 +29,7 @@ function bySlug(slug) {
 }
 
 test("the six new listings exist once, stay unpartnered, and never use a zero price", () => {
-  assert.equal(venues.length, 125);
+  assert.equal(venues.length, 127);
   const slugs = venues.map((v) => v.slug);
   assert.equal(new Set(slugs).size, slugs.length);
   for (const slug of ADDED) assert.equal(slugs.filter((s) => s === slug).length, 1);
@@ -166,4 +166,19 @@ test("the November 13 museum listings keep their published terms and honest phot
   assert.equal(titanic.guestMax, 300);
   assert.match(titanic.facts.join(" "), /buyout/);
   assert.equal(credits["titanic-artifact-exhibition-luxor"].note, "area");
+});
+
+test("the November 19 listings keep their published terms and honest photo labels", () => {
+  const storybook = bySlug("storybook-wedding-chapel");
+  assert.equal(storybook.priceFrom, 179);
+  assert.equal(storybook.guestMax, 32);
+  assert.match(storybook.priceLabel, /plus tax/);
+  assert.match(storybook.facts.join(" "), /\$60/);
+  assert.equal(credits["storybook-wedding-chapel"].note, "illustrative");
+
+  const burlesque = bySlug("burlesque-hall-of-fame");
+  assert.equal(burlesque.priceFrom, 250);
+  assert.equal(burlesque.guestMax, 50);
+  assert.match(burlesque.priceLabel, /per hour/);
+  assert.equal(credits["burlesque-hall-of-fame"].note, "illustrative");
 });

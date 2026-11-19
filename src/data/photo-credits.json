@@ -1590,5 +1590,31 @@
   "image": "https://images.unsplash.com/photo-1541783677340-d3d95e61e3f0",
   "w": 1600,
   "h": 1059
+ },
+ "storybook-wedding-chapel": {
+  "alt": "Light through a stained glass window set in a wall. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "Stained glass installed in a wall",
+  "creator": "Daniel McCullough",
+  "creatorUrl": "https://unsplash.com/@d_mccullough",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/stained-glass-installed-in-wall-yJj-x3bBSao",
+  "image": "https://images.unsplash.com/photo-1517373062-f3b2f3f98ada",
+  "w": 1600,
+  "h": 1202
+ },
+ "burlesque-hall-of-fame": {
+  "alt": "A performer in a red feather boa, red opera gloves and a jeweled headpiece. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "1920s-inspired cabaret performer in a feather boa",
+  "creator": "Zohair Mirza",
+  "creatorUrl": "https://unsplash.com/@zamclicks",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/woman-in-red-feather-boa-Y5cCR58JKxU",
+  "image": "https://images.unsplash.com/photo-1788389335590-260c01cba671",
+  "w": 1600,
+  "h": 2000
  }
 }

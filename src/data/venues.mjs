@@ -3168,4 +3168,53 @@ It's also flexible. The exhibition builds wedding packages to order, with cateri
     ],
     url: "https://rmstitanicinc.com/exhibitions/titanic-las-vegas/event-venue/", checked: "2026-11-13", status: "listed", featured: false,
   },
+  {
+    name: "Storybook Wedding Chapel", slug: "storybook-wedding-chapel", category: "classic-chapels",
+    area: "Downtown (S. 6th St.)", drive: "10–15 min from the Strip", setting: "Indoor & outdoor",
+    vibe: ["Restored cottage", "Stained glass", "Garden gazebo", "Elvis option"],
+    priceFrom: 179, priceLabel: "A Short Story (plus tax & fees)", guestMax: 32,
+    facts: [
+      "Owned and operated by Graceland Wedding Chapel, in a restored century-old building at 618 S. 6th St. with classic stained-glass windows.",
+      "Five traditional packages run from $179 to $599 plus tax and fees. The $179 A Short Story is an outdoor ceremony in the Storybook Garden or Gazebo for up to 10 guests.",
+      "Chapel packages start at $279 and cover up to 32 guests at no extra charge. From $379, a round-trip limo from Strip and downtown hotels is included at set start times.",
+      "The officiant's fee is $60 on every package, plus a $25 photographer's tip, and a $40 chauffeur's tip when a limo is included.",
+      "The chapel calls itself an Elvis Presley Enterprises-licensed venue. Elvis packages run from $349 to $699 plus tax and fees.",
+      "The $479 and $599 packages add a bridal and first-look suite, video of the ceremony and a first dance to a song you pick.",
+    ],
+    bestFor: "A small downtown wedding in an old cottage, with garden and chapel options and an Elvis upgrade if you want one.",
+    description: `Storybook is the younger sibling of Graceland Wedding Chapel, set in a restored century-old building in downtown Las Vegas. Stained glass, a garden and a gazebo give it a softer feel than most downtown chapels, and the prices are posted plainly.
+
+You can keep it tiny with the $179 garden ceremony for up to 10 people, or move inside, where every chapel package fits up to 32 guests. The upper packages add the things couples usually ask about later: a first-look suite, a video of the ceremony and a first dance right after the vows. And because the owners run Graceland, Elvis is on the menu too.`,
+    tips: [
+      "Add the extras to the package price: $60 officiant fee, $25 photographer's tip, and $40 for the chauffeur on limo packages, plus tax and fees.",
+      "The cheapest package is outdoors. On hot or windy days, compare it with the $279 chapel package.",
+      "Limo pickups run on set start times. Ask which times are open before you lock in a dinner reservation.",
+      "Bring your Clark County marriage license. The chapel performs the ceremony, but it can't issue the license.",
+    ],
+    url: "https://storybookchapel.com/traditional-wedding-chapels/", checked: "2026-11-19", status: "listed", featured: false,
+  },
+  {
+    name: "Burlesque Hall of Fame (Studio Rental)", slug: "burlesque-hall-of-fame", category: "quirky-pop-culture",
+    area: "Arts District (S. Main St.)", drive: "About 10 min from the Strip", setting: "Indoor",
+    vibe: ["Burlesque history", "Museum", "Arts District", "Tiny wedding"],
+    priceFrom: 250, priceLabel: "Studio rental, per hour", guestMax: 50,
+    facts: [
+      "The Burlesque Hall of Fame rents its studio for weddings, receptions and parties at its special-events rate of $250 an hour.",
+      "The studio is 25.5 by 18 feet, with mirrors and high ceilings. It seats up to 40 theater-style or 18 to 20 at tables, with a 50-person maximum.",
+      "The studio can be reserved outside the museum's public hours. Burlesque Hall of Fame members get 10% off hourly rates.",
+      "The museum is at 1027 S. Main St., Suite 110, in the Las Vegas Arts District. Its collection holds several thousand costumes, props, photographs and personal items from burlesque performers.",
+      "The museum lists free two-hour street parking on Main and First streets, plus free parking in the Art Square lot a block east.",
+    ],
+    bestFor: "A small, theatrical wedding or after-party in the Arts District, inside a museum devoted to burlesque.",
+    description: `This is a museum devoted to burlesque, with a studio you can rent for your wedding. The studio itself is a mirrored room with high ceilings, built for rehearsals and classes, so think of it as a blank stage you dress up yourselves. The museum around it, with thousands of costumes and photos, sets the tone.
+
+It works best for a small group. Forty people fit in rows for a ceremony, or about twenty at tables for dinner. Pricing is by the hour, so a short ceremony and toast can stay affordable. You'll be bringing more of the pieces yourself than you would at a chapel, from the officiant to the flowers.`,
+    tips: [
+      "Ask what's included before you book. The rental page doesn't say whether tables, chairs, sound or a microphone come with the room.",
+      "Ask about food and drink rules. The page doesn't cover catering or alcohol.",
+      "Bring your own officiant and your Clark County marriage license. This is a room rental, not a wedding package.",
+      "Guests who want to see the galleries may need museum tickets. Check current hours and admission on the museum's visit page.",
+    ],
+    url: "https://burlesquehall.com/visit/space-rental", checked: "2026-11-19", status: "listed", featured: false,
+  },
 ];
