@@ -57,8 +57,8 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Small wedding under $500 in Las Vegas: real published options. Covered by the packages under $500 guide (skipped 2026-11-18)
 - [x] Las Vegas wedding photo spots that don't need a permit (and ones that do). Covered by guide 2026-10-18
 - [x] The Welcome to Fabulous Las Vegas sign: wedding photos without the line. Published 2026-11-18
-- [ ] Courthouse wedding vs. chapel wedding in Las Vegas: cost and feel
-- [ ] Rainy-day backup plans for outdoor Las Vegas weddings
+- [x] Courthouse wedding vs. chapel wedding in Las Vegas: cost and feel. Covered by the courthouse wedding guide (skipped 2026-11-19)
+- [x] Rainy-day backup plans for outdoor Las Vegas weddings. Published 2026-11-19
 
 ## Evergreen: more ideas (added 2026-11-12)
 - [ ] Hot air balloon weddings near Las Vegas: what a sunrise flight involves
