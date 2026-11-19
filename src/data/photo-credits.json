@@ -1616,5 +1616,18 @@
   "image": "https://images.unsplash.com/photo-1788389335590-260c01cba671",
   "w": 1600,
   "h": 2000
+ },
+ "rita-deanin-abbey-art-museum": {
+  "alt": "Modern paintings hung in a gallery hall. Illustrative photo, not the venue.",
+  "note": "illustrative",
+  "title": "Modern art paintings displayed in a gallery hall",
+  "creator": "Far Chinberdiev",
+  "creatorUrl": "https://unsplash.com/@fardevio",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "source": "https://unsplash.com/photos/modern-art-paintings-displayed-in-a-gallery-hall-jRWSTB2W864",
+  "image": "https://images.unsplash.com/photo-1766289496802-6a8b6977ca55",
+  "w": 1600,
+  "h": 1067
  }
 }

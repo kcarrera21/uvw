@@ -3217,4 +3217,28 @@ It works best for a small group. Forty people fit in rows for a ceremony, or abo
     ],
     url: "https://burlesquehall.com/visit/space-rental", checked: "2026-11-19", status: "listed", featured: false,
   },
+  {
+    name: "Rita Deanin Abbey Art Museum", slug: "rita-deanin-abbey-art-museum", category: "quirky-pop-culture",
+    area: "Northwest Las Vegas (N. Park St.)", drive: "About 20 min from downtown", setting: "Indoor & outdoor",
+    vibe: ["Art museum", "Single-artist collection", "Sculpture garden", "Micro wedding"],
+    priceFrom: null, priceLabel: "Custom quote", guestMax: 50,
+    facts: [
+      "The museum shows the work of Las Vegas artist Rita Deanin Abbey (1930–2021) at 5850 N. Park St., with parking entered from Tee Pee Ln.",
+      "The museum's own site says weddings are booked through its exclusive partner, Cactus Collective Weddings.",
+      "Cactus Collective lists the museum for up to 50 guests, with indoor galleries in a 10,500-square-foot building, a cactus garden, an outdoor sculpture area and a patio with a skyline view.",
+      "Its packages cover the venue, professional photography, an officiant, a bouquet and boutonnière, and the wedding permit. No prices are published.",
+      "Public hours are Thursday through Sunday, 10 a.m. to 5 p.m. General admission is $20.",
+    ],
+    bestFor: "An art-filled micro wedding or elopement, with the galleries for cool or hot days and a sculpture garden for photos.",
+    description: `This museum is devoted to one artist, Rita Deanin Abbey, whose work runs from small pieces to monumental ones. It sits in the northwest corner of the valley, far from the Strip's noise, and the art does most of the decorating for you.
+
+Weddings here go through one company, Cactus Collective Weddings, which the museum names as its exclusive partner. That makes it close to all-inclusive: the venue, photographer, officiant, flowers and permit come in one package. The cap is 50 guests, which suits an elopement or a small family wedding. You'll get a quote rather than a price list, so ask early.`,
+    tips: [
+      "Book through Cactus Collective Weddings. The museum sends wedding inquiries there.",
+      "No prices are posted. Ask for the full quote in writing, including any add-ons for extra photo time.",
+      "Want guests to see more of the collection? Regular hours are Thursday to Sunday, and the museum recommends booking visits ahead.",
+      "Use the Tee Pee Ln. entrance to the parking lot. Put it in your guest directions.",
+    ],
+    url: "https://cactus-collective.com/venue/rita-deanin-abbey-art-museum/", checked: "2026-11-19", status: "listed", featured: false,
+  },
 ];

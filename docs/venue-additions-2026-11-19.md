@@ -1,6 +1,6 @@
 # Venue additions checked November 19, 2026
 
-Internal only. Not linked from the site. Two listings added; the directory goes from 125 to 127 venues. Fields were read from the official pages on November 19, 2026.
+Internal only. Not linked from the site. Three listings added; the directory goes from 125 to 128 venues. Fields were read from the official pages on November 19, 2026.
 
 ## Storybook Wedding Chapel
 
@@ -23,9 +23,17 @@ Internal only. Not linked from the site. Two listings added; the directory goes 
 - The visit page still carries COVID-era rules and old ticket notes, so museum hours and admission are not on the listing.
 - Photo: Unsplash cabaret performer in a feather boa (Zohair Mirza, photo Y5cCR58JKxU). Marked `illustrative`.
 
+## Rita Deanin Abbey Art Museum
+
+- Slug: `rita-deanin-abbey-art-museum`. Category `quirky-pop-culture`.
+- Exclusive-partner confirmation from the museum itself: https://shop.rdamuseum.org/host-an-event ("Book your wedding at the museum via our exclusive partner, Cactus Collective Weddings.").
+- Wedding details: https://cactus-collective.com/venue/rita-deanin-abbey-art-museum/ (listing `url`). Up to 50 guests; indoor galleries, cactus garden, sculpture area, patio. Package covers venue, photography, officiant, bouquet and boutonnière, permit. No prices published, so `priceFrom` null.
+- Address, hours (Thu–Sun 10–5) and $20 general admission from https://ritadeaninabbeymuseum.org/. Museum phone (702) 658-5097; Cactus Collective (702) 702-9799.
+- Not used: "most important unknown artist" quote and the 2023 paid partnership article.
+- Photo: Unsplash gallery hall (Far Chinberdiev, photo jRWSTB2W864). Marked `illustrative`.
+
 ## Researched and not added
 
-- Rita Deanin Abbey Art Museum: up to 50 guests, gallery and sculpture garden, booked through Cactus Collective Weddings. Only sources are Cactus Collective and a 2023 paid partnership post. Confirm with the museum before listing.
 - Say I Do Chapel (628 S. Las Vegas Blvd., opened April 2025): real, but another classic chapel. Lower priority.
 - Mt. Charleston Lodge: rebuild under construction, no opening date (Review-Journal, Jan. 21, 2026).
 - Goldwell Open Air Museum: no wedding or permit policy published. Email information@goldwellmuseum.org.

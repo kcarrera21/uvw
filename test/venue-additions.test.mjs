@@ -29,7 +29,7 @@ function bySlug(slug) {
 }
 
 test("the six new listings exist once, stay unpartnered, and never use a zero price", () => {
-  assert.equal(venues.length, 127);
+  assert.equal(venues.length, 128);
   const slugs = venues.map((v) => v.slug);
   assert.equal(new Set(slugs).size, slugs.length);
   for (const slug of ADDED) assert.equal(slugs.filter((s) => s === slug).length, 1);
@@ -181,4 +181,12 @@ test("the November 19 listings keep their published terms and honest photo label
   assert.equal(burlesque.guestMax, 50);
   assert.match(burlesque.priceLabel, /per hour/);
   assert.equal(credits["burlesque-hall-of-fame"].note, "illustrative");
+});
+
+test("the Rita Deanin Abbey listing stays a custom quote with an honest photo label", () => {
+  const rda = bySlug("rita-deanin-abbey-art-museum");
+  assert.equal(rda.priceFrom, null);
+  assert.equal(rda.guestMax, 50);
+  assert.match(rda.facts.join(" "), /exclusive partner/);
+  assert.equal(credits["rita-deanin-abbey-art-museum"].note, "illustrative");
 });
