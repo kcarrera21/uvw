@@ -61,7 +61,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Rainy-day backup plans for outdoor Las Vegas weddings. Published 2026-11-19
 
 ## Evergreen: more ideas (added 2026-11-12)
-- [ ] Hot air balloon weddings near Las Vegas: what a sunrise flight involves
+- [x] Hot air balloon weddings near Las Vegas: what a sunrise flight involves. Published 2026-11-20
 - [ ] Lake Las Vegas weddings: the over-water chapel and lakeside resorts
 - [ ] Hoover Dam area weddings: Spillway House and Boulder City options
 - [ ] Mount Charleston weddings: pines, snow and cooler summer ceremonies
@@ -71,3 +71,15 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [ ] Death Valley weddings from Las Vegas: The Oasis and park rules
 - [ ] Wax-figure and pop-culture weddings: Madame Tussauds and other quirky picks
 - [ ] Grand Canyon West Skywalk weddings: the drive, the fees and the views
+
+## More topics (added 2026-11-20)
+- [ ] CES week in January 2027: booking a Las Vegas wedding around the convention crowds
+- [ ] Lunar New Year 2027 wedding ideas in Las Vegas
+- [ ] Livestreaming your Las Vegas wedding: which chapels offer it and what to ask
+- [ ] Sunset ceremony timing in Las Vegas: golden hour by month
+- [ ] Weekday vs. Saturday weddings in Las Vegas: what changes besides the price
+- [ ] Rooftop and skyline-view weddings in Las Vegas
+- [ ] Restaurant private dining rooms for a small Las Vegas wedding reception
+- [ ] Art museum weddings: Rita Deanin Abbey and the Burlesque Hall of Fame
+- [ ] Retro and 1950s-themed weddings in Las Vegas
+- [ ] Hiring an elopement photographer in Las Vegas: what to ask before you book
