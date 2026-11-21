@@ -73,7 +73,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [ ] Grand Canyon West Skywalk weddings: the drive, the fees and the views
 
 ## More topics (added 2026-11-20)
-- [ ] CES week in January 2027: booking a Las Vegas wedding around the convention crowds
+- [x] CES week in January 2027: booking a Las Vegas wedding around the convention crowds. Published 2026-11-21
 - [ ] Lunar New Year 2027 wedding ideas in Las Vegas
 - [ ] Livestreaming your Las Vegas wedding: which chapels offer it and what to ask
 - [ ] Sunset ceremony timing in Las Vegas: golden hour by month
