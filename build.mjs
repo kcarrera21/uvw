@@ -1250,8 +1250,8 @@ b.addEventListener("click",function(){t.select();try{navigator.clipboard.writeTe
     <summary>What this page doesn't price</summary>
     <ul class="checklist">
       <li>Both of you pick up the license together, in person. The Marriage License Bureau is open 8 a.m. to midnight. <a href="/guides/las-vegas-marriage-license/">License steps</a>.</li>
-      <li>Nevada requires at least one witness besides the officiant. If the venue charges for one, put it in extras. <a href="/blog/2026-11-02-do-you-need-a-witness-las-vegas-wedding/">Witness rules</a>.</li>
-      <li>Parking, a long walk, and heat are not dollar lines here. <a href="/blog/2026-11-03-las-vegas-wedding-guest-logistics-parking-rideshare/">Guest logistics</a> and <a href="/blog/2026-11-05-accessible-las-vegas-wedding-venues/">access notes</a>.</li>
+      <li>Nevada requires at least one witness besides the officiant. If the venue charges for one, put it in extras. <a href="/blog/do-you-need-a-witness-las-vegas-wedding/">Witness rules</a>.</li>
+      <li>Parking, a long walk, and heat are not dollar lines here. <a href="/blog/las-vegas-wedding-guest-logistics-parking-rideshare/">Guest logistics</a> and <a href="/blog/accessible-las-vegas-wedding-venues/">access notes</a>.</li>
       <li>Summer heat changes the plan for an outdoor ceremony. <a href="/guides/best-time-to-get-married-in-las-vegas/">Month by month</a>.</li>
       <li>A starting price is not a quote. <a href="/guides/las-vegas-wedding-cost/">Published venue prices</a>.</li>
     </ul>
