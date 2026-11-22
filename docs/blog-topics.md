@@ -62,7 +62,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 
 ## Evergreen: more ideas (added 2026-11-12)
 - [x] Hot air balloon weddings near Las Vegas: what a sunrise flight involves. Published 2026-11-20
-- [ ] Lake Las Vegas weddings: the over-water chapel and lakeside resorts
+- [x] Lake Las Vegas weddings: the over-water chapel and lakeside resorts. Published 2026-11-22
 - [ ] Hoover Dam area weddings: Spillway House and Boulder City options
 - [ ] Mount Charleston weddings: pines, snow and cooler summer ceremonies
 - [ ] Aquarium and wildlife weddings: Shark Reef and Lion Habitat Ranch
