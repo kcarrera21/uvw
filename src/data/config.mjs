@@ -65,7 +65,10 @@ export const config = {
     "/resources.html": "/guides/",
     "/partners.html": "/for-venues/",
     "/partner.html": "/for-venues/",
-    "/thank-you.html": "/thanks/",
+    "/thank-you.html": "/thanks/", 
+    "/blog/2026-11-02-do-you-need-a-witness-las-vegas-wedding/": "/blog/do-you-need-a-witness-las-vegas-wedding/", 
+    "/blog/2026-11-03-las-vegas-wedding-guest-logistics-parking-rideshare/": "/blog/las-vegas-wedding-guest-logistics-parking-rideshare/", 
+    "/blog/2026-11-05-accessible-las-vegas-wedding-venues/": "/blog/accessible-las-vegas-wedding-venues/",
   },
 
   // ---------- OPTIONAL: add venues from a Google Sheet (no code) ----------
