@@ -65,7 +65,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Lake Las Vegas weddings: the over-water chapel and lakeside resorts. Published 2026-11-22
 - [x] Hoover Dam area weddings: Spillway House and Boulder City options. Published 2026-11-23
 - [x] Mount Charleston weddings: pines, snow and cooler summer ceremonies. Published 2026-11-24
-- [ ] Aquarium and wildlife weddings: Shark Reef and Lion Habitat Ranch
+- [x] Aquarium and wildlife weddings: Shark Reef and Lion Habitat Ranch. Published 2026-11-25
 - [ ] Downtown Las Vegas weddings: Fremont Street, Circa and Container Park
 - [ ] Winery and farm weddings near Las Vegas: Sanders Family Winery and GreenGale Farms
 - [ ] Death Valley weddings from Las Vegas: The Oasis and park rules
