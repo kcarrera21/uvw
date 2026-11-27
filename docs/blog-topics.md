@@ -66,7 +66,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Hoover Dam area weddings: Spillway House and Boulder City options. Published 2026-11-23
 - [x] Mount Charleston weddings: pines, snow and cooler summer ceremonies. Published 2026-11-24
 - [x] Aquarium and wildlife weddings: Shark Reef and Lion Habitat Ranch. Published 2026-11-25
-- [ ] Downtown Las Vegas weddings: Fremont Street, Circa and Container Park
+- [x] Downtown Las Vegas weddings: Fremont Street, Circa and Container Park. Published 2026-11-27
 - [ ] Winery and farm weddings near Las Vegas: Sanders Family Winery and GreenGale Farms
 - [ ] Death Valley weddings from Las Vegas: The Oasis and park rules
 - [ ] Wax-figure and pop-culture weddings: Madame Tussauds and other quirky picks
@@ -83,3 +83,15 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [ ] Art museum weddings: Rita Deanin Abbey and the Burlesque Hall of Fame
 - [ ] Retro and 1950s-themed weddings in Las Vegas
 - [ ] Hiring an elopement photographer in Las Vegas: what to ask before you book
+
+## More topics (added 2026-11-27)
+- [ ] Rehearsal dinner spots near the downtown chapels
+- [ ] Golf course weddings around Las Vegas: what the clubhouses publish
+- [ ] Speakeasy and hidden-bar weddings in Las Vegas
+- [ ] Wedding-day hair and makeup in Las Vegas: in-chapel add-ons vs. hiring your own
+- [ ] Getting married at a Las Vegas wedding chapel in Spanish or another language
+- [ ] Planning a Las Vegas wedding around a residency show or concert night
+- [ ] Locals-casino weddings: Red Rock, Green Valley Ranch and other off-Strip resorts
+- [ ] Desert stargazing weddings near Las Vegas: dark-sky spots and permit rules
+- [ ] Group-friendly Las Vegas chapels for 50 or more guests
+- [ ] Day-after wedding brunch spots for a group in Las Vegas
