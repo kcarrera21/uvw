@@ -67,7 +67,7 @@ Tick a topic with its publish date when used. Timely topics first; see `blog-pla
 - [x] Mount Charleston weddings: pines, snow and cooler summer ceremonies. Published 2026-11-24
 - [x] Aquarium and wildlife weddings: Shark Reef and Lion Habitat Ranch. Published 2026-11-25
 - [x] Downtown Las Vegas weddings: Fremont Street, Circa and Container Park. Published 2026-11-27
-- [ ] Winery and farm weddings near Las Vegas: Sanders Family Winery and GreenGale Farms
+- [x] Winery and farm weddings near Las Vegas: Sanders Family Winery and GreenGale Farms. Published 2026-11-28 (Sanders is closed; post covers farms and ranches)
 - [ ] Death Valley weddings from Las Vegas: The Oasis and park rules
 - [ ] Wax-figure and pop-culture weddings: Madame Tussauds and other quirky picks
 - [ ] Grand Canyon West Skywalk weddings: the drive, the fees and the views
